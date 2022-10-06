@@ -1,6 +1,7 @@
+@all @WIP
 Feature: login to ECL
-@WIP
-  Scenario: User able to navigate to economic crime and levy page
-    Given I launch the login page
+
+  Scenario: User able to navigate to economic crime levy start page
+    Given I am on the start page
     When I click on submit button
     Then I am on levy screen

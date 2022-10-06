@@ -16,16 +16,10 @@
 
 package uk.gov.hmrc.test.ui.cucumber.stepdefs
 import uk.gov.hmrc.test.ui.pages.LoginPage
-import io.cucumber.scala.{EN, ScalaDsl}
-import org.openqa.selenium.By
-import uk.gov.hmrc.test.ui.pages.LoginPage
-import uk.gov.hmrc.test.ui.pages.LoginPage.authLoginPageUrl
-
-
 
 class LoginStepDef extends BaseStepDef{
 
-  Given("""I launch the login page""") { () =>
+  Given("""I am on the start page""") { () =>
 
     LoginPage.navigateToUrl()
   }

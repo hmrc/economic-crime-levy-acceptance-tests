@@ -25,13 +25,11 @@ object LoginPage extends BasePage {
   val authoritySubmitButton = By.id("submit-top")
 
   def navigateToUrl(): Unit = {
-
     driver.get(authLoginPageUrl)
   }
 
   def authorityWizardSubmitButton(): Unit = {
     clickElement(authoritySubmitButton)
-//    driver.findElement(authoritySubmitButton).click()
   }
 
   def assertPartialTextIsDisplayed(): Unit ={

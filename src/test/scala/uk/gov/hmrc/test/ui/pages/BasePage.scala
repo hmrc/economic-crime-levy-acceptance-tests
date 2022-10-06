@@ -19,18 +19,15 @@ package uk.gov.hmrc.test.ui.pages
 import org.openqa.selenium.support.ui.{ExpectedConditions, FluentWait, Wait}
 import org.openqa.selenium.{By, WebDriver, WebElement}
 import org.scalatest.matchers.should.Matchers
-import uk.gov.hmrc.test.ui.conf.TestConfiguration.config
+import uk.gov.hmrc.test.ui.conf.TestConfiguration
 import uk.gov.hmrc.test.ui.driver.BrowserDriver
 
 import java.time.Duration
 import java.time.temporal.ChronoUnit
-import scala.sys.env
 
 trait BasePage extends BrowserDriver with Matchers {
 
-  val authBaseUrl: String = host(9949)
-  val authLoginPageUrl: String = authBaseUrl + "/auth-login-stub/gg-sign-in?continue=http%3A%2F%2Flocalhost%3A14000%2Fregister-for-economic-crime-levy%2F"
-
+  val authLoginPageUrl        = s"${TestConfiguration.url("auth-login-stub")}/gg-sign-in?continue=http%3A%2F%2Flocalhost%3A14000%2Fregister-for-economic-crime-levy%2F"
 
   val WAIT_POLLING_INTERVAL: Duration = Duration.of(250, ChronoUnit.MILLIS)
   val WAIT_TIME_OUT: Duration = Duration.of(20, ChronoUnit.SECONDS)
@@ -38,12 +35,6 @@ trait BasePage extends BrowserDriver with Matchers {
   private val fluentWait: Wait[WebDriver] = new FluentWait[WebDriver](driver)
     .withTimeout(WAIT_POLLING_INTERVAL)
     .pollingEvery(WAIT_TIME_OUT)
-
-
-  def host(localPort: Int): String = env match {
-  //  case "qa" => "http://localhost:14000/register-for-economic-crime-levy/"
-    case _ => s"http://localhost:$localPort"
-  }
 
   def clickElement(locator: By): Unit = {
     waitForElementToBeClickable(locator)
