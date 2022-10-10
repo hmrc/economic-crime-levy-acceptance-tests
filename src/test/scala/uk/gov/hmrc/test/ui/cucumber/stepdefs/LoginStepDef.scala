@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 HM Revenue & Customs
+ * Copyright 2022 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,20 +14,26 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.test.ui.pages
+package uk.gov.hmrc.test.ui.cucumber.stepdefs
+import uk.gov.hmrc.test.ui.pages.LoginPage
 
-import org.openqa.selenium.By
+class LoginStepDef extends BaseStepDef{
 
-object CheckYourVATResult extends BasePage {
+  Given("""I am on the start page""") { () =>
 
-  val checkYourVatResult   = "Your VAT calculation - Check your VAT flat rate - GOV.UK"
-  val resultOutcome        = "resultOutcome"
-  val useSetVATFlatRate    = "You can use the 16.5% VAT flat rate"
-  val useUniqueVATFlatRate = "You can use the VAT flat rate for your business type"
-
-  def result: String = {
-    onPage(checkYourVatResult)
-    driver.findElement(By.id(resultOutcome)).getText
+    LoginPage.navigateToUrl()
   }
+
+    When("""I click on submit button""") { () =>
+
+      LoginPage.authorityWizardSubmitButton()
+    }
+
+  Then("""I am on levy screen""") { () =>
+
+    LoginPage.assertPartialTextIsDisplayed()
+
+  }
+
 
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 HM Revenue & Customs
+ * Copyright 2022 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,18 +16,25 @@
 
 package uk.gov.hmrc.test.ui.pages
 
-import org.openqa.selenium.By
+import org.openqa.selenium.{By, WebElement}
+import org.junit.Assert
 
-object Turnover extends BasePage {
 
-  val turnover      = "Enter your turnover - Check your VAT flat rate - GOV.UK"
-  val turnoverInput = "turnover"
+object LoginPage extends BasePage {
 
-  def provideTurnoverAmount(amount: String): CostOfGoods.type = {
-    onPage(turnover)
-    driver.findElement(By.id(turnoverInput)).sendKeys(amount)
-    submitPage()
-    CostOfGoods
+  val authoritySubmitButton = By.id("submit-top")
+
+  def navigateToUrl(): Unit = {
+    driver.get(authLoginPageUrl)
   }
 
+  def authorityWizardSubmitButton(): Unit = {
+    clickElement(authoritySubmitButton)
+  }
+
+  def assertPartialTextIsDisplayed(): Unit ={
+    val actualHeading = driver.findElement(By.cssSelector("h1")).getText()
+    println("actual value:" + actualHeading)
+    Assert.assertEquals("economic-crime-levy-registration-frontend",actualHeading)
+  }
 }

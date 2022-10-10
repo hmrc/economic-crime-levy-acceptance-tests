@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 HM Revenue & Customs
+ * Copyright 2022 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,21 +16,36 @@
 
 package uk.gov.hmrc.test.ui.pages
 
-import org.openqa.selenium.By
+import org.openqa.selenium.support.ui.{ExpectedConditions, FluentWait, Wait}
+import org.openqa.selenium.{By, WebDriver, WebElement}
 import org.scalatest.matchers.should.Matchers
+import uk.gov.hmrc.test.ui.conf.TestConfiguration
 import uk.gov.hmrc.test.ui.driver.BrowserDriver
 
+import java.time.Duration
+import java.time.temporal.ChronoUnit
+
 trait BasePage extends BrowserDriver with Matchers {
-  val continueButton = "continue-button"
 
-  def submitPage(): Unit =
-    driver.findElement(By.id(continueButton)).click()
+  val authLoginPageUrl        = s"${TestConfiguration.url("auth-login-stub")}/gg-sign-in?continue=http%3A%2F%2Flocalhost%3A14000%2Fregister-for-economic-crime-levy%2F"
 
-  def onPage(pageTitle: String): Unit =
-    if (driver.getTitle != pageTitle)
-      throw PageNotFoundException(
-        s"Expected '$pageTitle' page, but found '${driver.getTitle}' page."
-      )
+  val WAIT_POLLING_INTERVAL: Duration = Duration.of(250, ChronoUnit.MILLIS)
+  val WAIT_TIME_OUT: Duration = Duration.of(20, ChronoUnit.SECONDS)
+
+  private val fluentWait: Wait[WebDriver] = new FluentWait[WebDriver](driver)
+    .withTimeout(WAIT_POLLING_INTERVAL)
+    .pollingEvery(WAIT_TIME_OUT)
+
+  def clickElement(locator: By): Unit = {
+    waitForElementToBeClickable(locator)
+    findElement(locator).click()
+  }
+
+  def findElement(locator: By): WebElement =
+    driver.findElement(locator)
+
+  def waitForElementToBeClickable(locator: By): WebElement =
+    fluentWait.until(ExpectedConditions.elementToBeClickable(findElement(locator)))
 }
 
 case class PageNotFoundException(s: String) extends Exception(s)
