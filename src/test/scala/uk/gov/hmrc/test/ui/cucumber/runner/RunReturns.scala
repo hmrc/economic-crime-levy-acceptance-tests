@@ -14,27 +14,19 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.test.ui.pages
-
-import org.openqa.selenium.{By, WebElement}
-import org.junit.Assert
+package uk.gov.hmrc.test.ui.cucumber.runner
 
 
-object LoginPage extends BasePage {
 
-  val authoritySubmitButton = By.id("submit-top")
+import io.cucumber.junit.Cucumber
+import io.cucumber.junit.CucumberOptions
+import org.junit.runner.RunWith
 
-  def navigateToUrl(): Unit = {
-    driver.get(authLoginPageUrl)
-  }
-
-  def authorityWizardSubmitButton(): Unit = {
-    clickElement(authoritySubmitButton)
-  }
-
-  def assertPartialTextIsDisplayed(): Unit ={
-    val actualHeading = driver.findElement(By.cssSelector("h1")).getText()
-    println("actual value:" + actualHeading)
-    Assert.assertEquals("economic-crime-levy-registration-frontend",actualHeading)
-  }
-}
+@RunWith(classOf[Cucumber])
+@CucumberOptions(
+  features = Array("src/test/resources/features"),
+  glue = Array("uk.gov.hmrc.test.ui.cucumber.stepdefs"),
+  plugin = Array("pretty", "html:target/cucumber", "json:target/cucumber.json", "junit:target/test-reports/RunReturns.xml"),
+  tags = "@submit"
+)
+class RunReturns {}

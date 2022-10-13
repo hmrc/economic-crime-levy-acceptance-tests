@@ -14,26 +14,17 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.test.ui.cucumber.stepdefs
-import uk.gov.hmrc.test.ui.pages.LoginPage
+package uk.gov.hmrc.test.ui.cucumber.runner
 
-class LoginStepDef extends BaseStepDef{
+import io.cucumber.junit.Cucumber
+import io.cucumber.junit.CucumberOptions
+import org.junit.runner.RunWith
 
-  Given("""I am on the start page""") { () =>
-
-    LoginPage.navigateToUrl()
-  }
-
-    When("""I click on submit button""") { () =>
-
-      LoginPage.authorityWizardSubmitButton()
-    }
-
-  Then("""I am on levy screen""") { () =>
-
-    LoginPage.assertPartialTextIsDisplayed()
-
-  }
-
-
-}
+@RunWith(classOf[Cucumber])
+@CucumberOptions(
+  features = Array("src/test/resources/features"),
+  glue = Array("uk.gov.hmrc.test.ui.cucumber.stepdefs"),
+  plugin = Array("pretty", "html:target/cucumber", "json:target/cucumber.json", "junit:target/test-reports/RunRegistration.xml"),
+  tags = "@reg"
+)
+class RunRegistration {}

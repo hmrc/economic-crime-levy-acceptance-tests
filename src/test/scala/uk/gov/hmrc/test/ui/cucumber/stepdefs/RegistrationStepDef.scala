@@ -14,17 +14,26 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.test.ui.cucumber.runner
+package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
-import io.cucumber.junit.Cucumber
-import io.cucumber.junit.CucumberOptions
-import org.junit.runner.RunWith
+import uk.gov.hmrc.test.ui.pages.SharedActions
+import uk.gov.hmrc.test.ui.pages.registration.RegistrationLoginPage
 
-@RunWith(classOf[Cucumber])
-@CucumberOptions(
-  features = Array("src/test/resources/features"),
-  glue = Array("uk.gov.hmrc.test.ui.cucumber.stepdefs"),
-  plugin = Array("pretty", "html:target/cucumber", "json:target/cucumber.json", "junit:target/test-reports/Runner.xml"),
-  tags = "@WIP"
-)
-class Runner {}
+class RegistrationStepDef extends BaseStepDef{
+
+  Given("""I am on the registration start page""") { () =>
+
+    RegistrationLoginPage.navigateToUrl()
+  }
+
+    When("""I click on submit button""") { () =>
+
+      SharedActions.authorityWizardSubmitButton()
+    }
+
+  Then("^text is displayed (.*)$") { (value: String) =>
+
+    SharedActions.assertPartialTextIsDisplayed(value)
+  }
+
+}

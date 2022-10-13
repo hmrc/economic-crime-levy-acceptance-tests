@@ -27,10 +27,11 @@ import java.time.temporal.ChronoUnit
 
 trait BasePage extends BrowserDriver with Matchers {
 
-  val authLoginPageUrl        = s"${TestConfiguration.url("auth-login-stub")}/gg-sign-in?continue=http%3A%2F%2Flocalhost%3A14000%2Fregister-for-economic-crime-levy%2F"
+  val registerAuthLoginPageUrl        = s"${TestConfiguration.url("auth-login-stub")}/gg-sign-in?continue=http%3A%2F%2Flocalhost%3A14000%2Fregister-for-economic-crime-levy%2F"
+  val returnsAuthLoginPageUrl         = s"${TestConfiguration.url("auth-login-stub")}/gg-sign-in?continue=http%3A%2F%2Flocalhost%3A14002%2Fsubmit-economic-crime-levy-return%2F"
 
   val WAIT_POLLING_INTERVAL: Duration = Duration.of(250, ChronoUnit.MILLIS)
-  val WAIT_TIME_OUT: Duration = Duration.of(20, ChronoUnit.SECONDS)
+  val WAIT_TIME_OUT: Duration         = Duration.of(20, ChronoUnit.SECONDS)
 
   private val fluentWait: Wait[WebDriver] = new FluentWait[WebDriver](driver)
     .withTimeout(WAIT_POLLING_INTERVAL)
@@ -46,6 +47,15 @@ trait BasePage extends BrowserDriver with Matchers {
 
   def waitForElementToBeClickable(locator: By): WebElement =
     fluentWait.until(ExpectedConditions.elementToBeClickable(findElement(locator)))
+
+  protected def getText(locator: By): String = {
+    waitForElementToBePresent(locator)
+    findElement(locator).getText
+  }
+
+  private def waitForElementToBePresent(locator: By): WebElement =
+    fluentWait.until(ExpectedConditions.presenceOfElementLocated(locator))
+
 }
 
 case class PageNotFoundException(s: String) extends Exception(s)
