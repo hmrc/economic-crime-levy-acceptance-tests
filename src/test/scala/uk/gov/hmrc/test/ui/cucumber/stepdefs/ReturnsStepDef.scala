@@ -25,5 +25,4 @@ class ReturnsStepDef extends BaseStepDef {
 
     ReturnsLoginPage.navigateToUrl()
   }
-
 }
