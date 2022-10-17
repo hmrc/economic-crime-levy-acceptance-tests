@@ -15,25 +15,25 @@
  */
 
 package uk.gov.hmrc.test.ui.cucumber.stepdefs
-import uk.gov.hmrc.test.ui.pages.LoginPage
 
-class LoginStepDef extends BaseStepDef{
+import uk.gov.hmrc.test.ui.pages.SharedActions
+import uk.gov.hmrc.test.ui.pages.registration.RegistrationLoginPage
 
-  Given("""I am on the start page""") { () =>
+class RegistrationStepDef extends BaseStepDef{
 
-    LoginPage.navigateToUrl()
+  Given("""I am on the registration start page""") { () =>
+
+    RegistrationLoginPage.navigateToUrl()
   }
 
     When("""I click on submit button""") { () =>
 
-      LoginPage.authorityWizardSubmitButton()
+      SharedActions.authorityWizardSubmitButton()
     }
 
-  Then("""I am on levy screen""") { () =>
+  Then("^text is displayed (.*)$") { (value: String) =>
 
-    LoginPage.assertPartialTextIsDisplayed()
-
+    SharedActions.assertPartialTextIsDisplayed(value)
   }
-
 
 }

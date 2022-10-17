@@ -14,27 +14,15 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.test.ui.pages
+package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
-import org.openqa.selenium.{By, WebElement}
-import org.junit.Assert
+import uk.gov.hmrc.test.ui.pages.SharedActions
+import uk.gov.hmrc.test.ui.pages.returns.ReturnsLoginPage
 
+class ReturnsStepDef extends BaseStepDef {
 
-object LoginPage extends BasePage {
+  Given("""I am on the returns start page""") { () =>
 
-  val authoritySubmitButton = By.id("submit-top")
-
-  def navigateToUrl(): Unit = {
-    driver.get(authLoginPageUrl)
-  }
-
-  def authorityWizardSubmitButton(): Unit = {
-    clickElement(authoritySubmitButton)
-  }
-
-  def assertPartialTextIsDisplayed(): Unit ={
-    val actualHeading = driver.findElement(By.cssSelector("h1")).getText()
-    println("actual value:" + actualHeading)
-    Assert.assertEquals("economic-crime-levy-registration-frontend",actualHeading)
+    ReturnsLoginPage.navigateToUrl()
   }
 }
