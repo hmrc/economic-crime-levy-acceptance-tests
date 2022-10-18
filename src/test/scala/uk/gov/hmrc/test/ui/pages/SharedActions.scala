@@ -16,19 +16,15 @@
 
 package uk.gov.hmrc.test.ui.pages
 
-import org.junit.Assert
-import org.openqa.selenium.{By, WebElement}
+import org.openqa.selenium.By
 import uk.gov.hmrc.test.ui.pages.registration.RegistrationLoginPage.authoritySubmitButton
 
 object SharedActions extends BasePage {
 
-
   def authorityWizardSubmitButton(): Unit =
     clickElement(authoritySubmitButton)
 
-  def assertPartialTextIsDisplayed(value:String): Unit = {
+  def assertPartialTextIsDisplayed(value: String): Unit =
     assert(getText(By.id("main-content")).contains(value))
-  }
-
 
 }

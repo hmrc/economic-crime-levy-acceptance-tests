@@ -16,7 +16,6 @@
 
 package uk.gov.hmrc.test.ui.pages.registration
 
-import org.junit.Assert
 import org.openqa.selenium.By
 import uk.gov.hmrc.test.ui.pages.BasePage
 
@@ -26,6 +25,5 @@ object RegistrationLoginPage extends BasePage {
 
   def navigateToUrl(): Unit =
     driver.get(registerAuthLoginPageUrl)
-
 
 }

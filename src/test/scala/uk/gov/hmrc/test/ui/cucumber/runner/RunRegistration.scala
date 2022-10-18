@@ -24,7 +24,12 @@ import org.junit.runner.RunWith
 @CucumberOptions(
   features = Array("src/test/resources/features"),
   glue = Array("uk.gov.hmrc.test.ui.cucumber.stepdefs"),
-  plugin = Array("pretty", "html:target/cucumber", "json:target/cucumber.json", "junit:target/test-reports/RunRegistration.xml"),
+  plugin = Array(
+    "pretty",
+    "html:target/cucumber",
+    "json:target/cucumber.json",
+    "junit:target/test-reports/RunRegistration.xml"
+  ),
   tags = "@reg"
 )
 class RunRegistration {}

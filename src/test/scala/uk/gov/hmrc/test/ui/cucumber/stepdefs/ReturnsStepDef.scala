@@ -16,13 +16,11 @@
 
 package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
-import uk.gov.hmrc.test.ui.pages.SharedActions
 import uk.gov.hmrc.test.ui.pages.returns.ReturnsLoginPage
 
 class ReturnsStepDef extends BaseStepDef {
 
   Given("""I am on the returns start page""") { () =>
-
     ReturnsLoginPage.navigateToUrl()
   }
 }
