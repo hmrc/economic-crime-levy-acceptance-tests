@@ -18,8 +18,7 @@ package uk.gov.hmrc.test.ui.pages.returns
 
 import uk.gov.hmrc.test.ui.pages.BasePage
 
-
-object ReturnsLoginPage extends BasePage{
+object ReturnsLoginPage extends BasePage {
   def navigateToUrl() = driver.get(returnsAuthLoginPageUrl)
 
 }

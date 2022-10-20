@@ -19,20 +19,17 @@ package uk.gov.hmrc.test.ui.cucumber.stepdefs
 import uk.gov.hmrc.test.ui.pages.SharedActions
 import uk.gov.hmrc.test.ui.pages.registration.RegistrationLoginPage
 
-class RegistrationStepDef extends BaseStepDef{
+class RegistrationStepDef extends BaseStepDef {
 
   Given("""I am on the registration start page""") { () =>
-
     RegistrationLoginPage.navigateToUrl()
   }
 
-    When("""I click on submit button""") { () =>
-
-      SharedActions.authorityWizardSubmitButton()
-    }
+  When("""I click on submit button""") { () =>
+    SharedActions.authorityWizardSubmitButton()
+  }
 
   Then("^text is displayed (.*)$") { (value: String) =>
-
     SharedActions.assertPartialTextIsDisplayed(value)
   }
 
