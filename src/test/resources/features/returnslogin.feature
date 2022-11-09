@@ -1,4 +1,4 @@
-@all @submit
+@all @submit @accessibility
 Feature: login to ECL
 
   Scenario: User able to navigate to economic crime levy returns page

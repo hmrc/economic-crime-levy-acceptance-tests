@@ -1,4 +1,4 @@
-@all @reg
+@all @reg @accessibility
 Feature: login to ECL
 
   Scenario: User able to navigate to economic crime levy registration page
