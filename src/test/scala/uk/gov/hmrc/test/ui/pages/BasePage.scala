@@ -58,6 +58,14 @@ trait BasePage extends BrowserDriver with Matchers {
   private def waitForElementToBePresent(locator: By): WebElement =
     fluentWait.until(ExpectedConditions.presenceOfElementLocated(locator))
 
+  private def clear(locator: By): Unit = {
+    waitForElementToBePresent(locator)
+    findElement(locator).clear()
+  }
+  protected def sendKeys(locator: By, value: String): Unit = {
+    clear(locator)
+    findElement(locator).sendKeys(value)
+  }
 }
 
 case class PageNotFoundException(s: String) extends Exception(s)
