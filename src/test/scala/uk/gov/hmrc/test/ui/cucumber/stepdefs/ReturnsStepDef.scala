@@ -17,10 +17,16 @@
 package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
 import uk.gov.hmrc.test.ui.pages.returns.ReturnsLoginPage
+import uk.gov.hmrc.test.ui.pages.returns.ReturnsLoginPage.enterEnrolmentDetails
 
 class ReturnsStepDef extends BaseStepDef {
 
   Given("""I am on the returns start page""") { () =>
     ReturnsLoginPage.navigateToUrl()
   }
+
+   And("""I enter the enrolment details""") { () =>
+     enterEnrolmentDetails(enrolmentKey="HMRC-ECL-ORG",identifierName="EclRegistrationReference",identifierValue="XMECL0000000001")
+  }
+
 }
