@@ -17,19 +17,33 @@
 package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
 import uk.gov.hmrc.test.ui.pages.SharedActions
-import uk.gov.hmrc.test.ui.pages.registration.RegistrationLoginPage
+import uk.gov.hmrc.test.ui.pages.registration.{GatewaySignInPage, RegistrationPage}
 
 class RegistrationStepDef extends BaseStepDef {
 
   Given("""I am on the registration start page""") { () =>
-    RegistrationLoginPage.navigateToUrl()
+    GatewaySignInPage.navigateToClearAllUrl()
+    RegistrationPage.navigateToUrl()
   }
 
-  When("""I click on submit button""") { () =>
+  When("""^I click on (.*) button""") { (value: String) =>
+    SharedActions.clickLinkByPartialText(value)
+  }
+
+  And("""^I enter valid login credentials""") { () =>
+    GatewaySignInPage.signInGateway(userID = "67 03 89 79 83 09", password = "Opencast123")
+    GatewaySignInPage.enterAccessCode(accessCode = "123456")
+  }
+
+  And("""^I select a (.*) category for ECL payments""") { value: String =>
+      SharedActions.selectLabelByPartialText(value)
+  }
+
+  And("""I click Submit button on authority wizard page""") { () =>
     SharedActions.authorityWizardSubmitButton()
   }
 
-  Then("^text is displayed (.*)$") { (value: String) =>
+  Then("^I should see a message, (.*)$") { (value: String) =>
     SharedActions.assertPartialTextIsDisplayed(value)
   }
 

@@ -27,10 +27,8 @@ import java.time.temporal.ChronoUnit
 
 trait BasePage extends BrowserDriver with Matchers {
 
-  val registerAuthLoginPageUrl =
-    s"${TestConfiguration.url("auth-login-stub")}/gg-sign-in?continue=http%3A%2F%2Flocalhost%3A14000%2Fregister-for-economic-crime-levy%2F"
   val returnsAuthLoginPageUrl  =
-    s"${TestConfiguration.url("auth-login-stub")}/gg-sign-in?continue=http%3A%2F%2Flocalhost%3A14002%2Fsubmit-economic-crime-levy-return%2F"
+    s"${TestConfiguration.url("auth-login-stub-ret")}/submit-economic-crime-levy-return/"
 
   val WAIT_POLLING_INTERVAL: Duration = Duration.of(250, ChronoUnit.MILLIS)
   val WAIT_TIME_OUT: Duration         = Duration.of(20, ChronoUnit.SECONDS)
@@ -65,6 +63,11 @@ trait BasePage extends BrowserDriver with Matchers {
   protected def sendKeys(locator: By, value: String): Unit = {
     clear(locator)
     findElement(locator).sendKeys(value)
+  }
+
+  protected def click(locator: By): Unit = {
+    waitForElementToBeClickable(locator)
+    findElement(locator).click()
   }
 }
 

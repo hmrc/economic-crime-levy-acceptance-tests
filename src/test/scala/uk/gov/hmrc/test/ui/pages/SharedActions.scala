@@ -17,9 +17,13 @@
 package uk.gov.hmrc.test.ui.pages
 
 import org.openqa.selenium.By
-import uk.gov.hmrc.test.ui.pages.registration.RegistrationLoginPage.authoritySubmitButton
 
 object SharedActions extends BasePage {
+
+  val authoritySubmitButton = By.id("submit-top")
+  def clickLinkByPartialText(value: String): Unit ={
+    click(By.partialLinkText(value))
+  }
 
   def authorityWizardSubmitButton(): Unit =
     clickElement(authoritySubmitButton)
@@ -27,4 +31,27 @@ object SharedActions extends BasePage {
   def assertPartialTextIsDisplayed(value: String): Unit =
     assert(getText(By.id("main-content")).contains(value))
 
+  def clickById(id: String): Unit = {
+    driver.findElement(By.id(id)).click()
+  }
+
+  def assertPage(value: String) = {
+    assert(getText(By.id("main-content")).contains(value))
+  }
+
+  def selectLabelByPartialText(value: String): Unit = {
+    if (value == "") {
+      driver.findElement(By.cssSelector(".govuk-button")).click()
+      assertPage("Select your UK turnover for {0}")
+  }
+    else {
+    click(By.xpath(s"//label[contains(text(), '$value')]"))
+    driver.findElement(By.cssSelector(".govuk-button")).click()
+    value match {
+        case "Less than £10.2 million" => assertPage("You do not need to register for the Economic Crime Levy")
+        case "Equal to or more than £10.2 million" => assertPage("Who is your Anti-Money Laundering (AML) supervisor?")
+    }
+    }
+
+  }
 }
