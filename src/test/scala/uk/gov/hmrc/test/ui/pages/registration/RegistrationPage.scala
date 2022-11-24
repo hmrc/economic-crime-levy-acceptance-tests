@@ -22,7 +22,7 @@ import uk.gov.hmrc.test.ui.pages.BasePage
 object RegistrationPage extends BasePage {
 
   val registerAuthLoginPageUrl =
-    s"${TestConfiguration.url("auth-login-stub-reg")}/register-for-economic-crime-levy/"
+    s"${TestConfiguration.url("economic-crime-levy-registration-frontend")}/register-for-economic-crime-levy/"
 
   def navigateToUrl(): Unit = {
     driver.get(registerAuthLoginPageUrl)

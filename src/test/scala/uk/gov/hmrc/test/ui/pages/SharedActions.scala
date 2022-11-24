@@ -20,13 +20,9 @@ import org.openqa.selenium.By
 
 object SharedActions extends BasePage {
 
-  val authoritySubmitButton = By.id("submit-top")
   def clickLinkByPartialText(value: String): Unit ={
     click(By.partialLinkText(value))
   }
-
-  def authorityWizardSubmitButton(): Unit =
-    clickElement(authoritySubmitButton)
 
   def assertPartialTextIsDisplayed(value: String): Unit =
     assert(getText(By.id("main-content")).contains(value))
@@ -35,23 +31,20 @@ object SharedActions extends BasePage {
     driver.findElement(By.id(id)).click()
   }
 
-  def assertPage(value: String) = {
-    assert(getText(By.id("main-content")).contains(value))
-  }
-
-  def selectLabelByPartialText(value: String): Unit = {
+  def selectRadioButtonById(value: String): Unit = {
     if (value == "") {
-      driver.findElement(By.cssSelector(".govuk-button")).click()
-      assertPage("Select your UK turnover for {0}")
+      findElementByCssSelector(".govuk-button").click()
+      assertPartialTextIsDisplayed("Select your UK turnover for {0}")
   }
-    else {
-    click(By.xpath(s"//label[contains(text(), '$value')]"))
-    driver.findElement(By.cssSelector(".govuk-button")).click()
-    value match {
-        case "Less than £10.2 million" => assertPage("You do not need to register for the Economic Crime Levy")
-        case "Equal to or more than £10.2 million" => assertPage("Who is your Anti-Money Laundering (AML) supervisor?")
+    else if (value == "less-than"){
+      clickById(value)
+      findElementByCssSelector(".govuk-button").click()
+      assertPartialTextIsDisplayed("You do not need to register for the Economic Crime Levy")
     }
+    else{
+      clickById(value)
+      findElementByCssSelector(".govuk-button").click()
+      assertPartialTextIsDisplayed("Who is your Anti-Money Laundering (AML) supervisor?")
     }
-
   }
 }

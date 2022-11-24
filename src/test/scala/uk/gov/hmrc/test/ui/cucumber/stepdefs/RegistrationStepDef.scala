@@ -30,17 +30,12 @@ class RegistrationStepDef extends BaseStepDef {
     SharedActions.clickLinkByPartialText(value)
   }
 
-  And("""^I enter valid login credentials""") { () =>
-    GatewaySignInPage.signInGateway(userID = "67 03 89 79 83 09", password = "Opencast123")
-    GatewaySignInPage.enterAccessCode(accessCode = "123456")
-  }
-
-  And("""^I select a (.*) category for ECL payments""") { value: String =>
-      SharedActions.selectLabelByPartialText(value)
+  And("^I select that my UK revenue is (.*)$") { value: String =>
+      SharedActions.selectRadioButtonById(value)
   }
 
   And("""I click Submit button on authority wizard page""") { () =>
-    SharedActions.authorityWizardSubmitButton()
+    SharedActions.clickById("submit-top")
   }
 
   Then("^I should see a message, (.*)$") { (value: String) =>

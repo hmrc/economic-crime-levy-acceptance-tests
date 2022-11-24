@@ -16,29 +16,15 @@
 
 package uk.gov.hmrc.test.ui.pages.registration
 
-import org.openqa.selenium.By
 import uk.gov.hmrc.test.ui.conf.TestConfiguration
 import uk.gov.hmrc.test.ui.pages.BasePage
 
 object GatewaySignInPage extends BasePage {
 
   val clearAllUrl =
-    s"${TestConfiguration.url("auth-login-stub-reg")}/register-for-economic-crime-levy/test-only/clear-all"
+    s"${TestConfiguration.url("economic-crime-levy-registration-frontend")}/register-for-economic-crime-levy/test-only/clear-all"
 
   def navigateToClearAllUrl(): Unit = {
     driver.get(clearAllUrl)
   }
-
-  def signInGateway(userID: String, password: String) = {
-    sendKeys(By.id("user_id"), userID)
-    sendKeys(By.id("password"), password)
-    click(By.id("continue"))
-
-  }
-
-  def enterAccessCode(accessCode: String): Unit = {
-    sendKeys(By.xpath("//input[@id='oneTimePassword']"), accessCode)
-    click(By.id("continue"))
-  }
-
 }

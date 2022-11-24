@@ -17,9 +17,14 @@
 package uk.gov.hmrc.test.ui.pages.returns
 
 import org.openqa.selenium.By
+import uk.gov.hmrc.test.ui.conf.TestConfiguration
 import uk.gov.hmrc.test.ui.pages.BasePage
 
 object ReturnsLoginPage extends BasePage {
+
+  val returnsAuthLoginPageUrl =
+    s"${TestConfiguration.url("economic-crime-levy-returns-frontend")}/submit-economic-crime-levy-return/"
+
   def navigateToUrl() = driver.get(returnsAuthLoginPageUrl)
 
   def enterEnrolmentDetails(enrolmentKey: String,

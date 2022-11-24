@@ -19,16 +19,12 @@ package uk.gov.hmrc.test.ui.pages
 import org.openqa.selenium.support.ui.{ExpectedConditions, FluentWait, Wait}
 import org.openqa.selenium.{By, WebDriver, WebElement}
 import org.scalatest.matchers.should.Matchers
-import uk.gov.hmrc.test.ui.conf.TestConfiguration
 import uk.gov.hmrc.test.ui.driver.BrowserDriver
 
 import java.time.Duration
 import java.time.temporal.ChronoUnit
 
 trait BasePage extends BrowserDriver with Matchers {
-
-  val returnsAuthLoginPageUrl  =
-    s"${TestConfiguration.url("auth-login-stub-ret")}/submit-economic-crime-levy-return/"
 
   val WAIT_POLLING_INTERVAL: Duration = Duration.of(250, ChronoUnit.MILLIS)
   val WAIT_TIME_OUT: Duration         = Duration.of(20, ChronoUnit.SECONDS)
@@ -68,6 +64,10 @@ trait BasePage extends BrowserDriver with Matchers {
   protected def click(locator: By): Unit = {
     waitForElementToBeClickable(locator)
     findElement(locator).click()
+  }
+
+  protected def findElementByCssSelector(locator: String) ={
+    findElement(By.cssSelector(locator))
   }
 }
 
