@@ -20,31 +20,17 @@ import org.openqa.selenium.By
 
 object SharedActions extends BasePage {
 
-  def clickLinkByPartialText(value: String): Unit ={
+  def clickLinkByPartialText(value: String): Unit =
     click(By.partialLinkText(value))
-  }
 
   def assertPartialTextIsDisplayed(value: String): Unit =
     assert(getText(By.id("main-content")).contains(value))
 
-  def clickById(id: String): Unit = {
+  def clickById(id: String): Unit =
     driver.findElement(By.id(id)).click()
+
+  def clickButton(): Unit = {
+    findElementByCssSelector(".govuk-button").click()
   }
 
-  def selectRadioButtonById(value: String): Unit = {
-    if (value == "") {
-      findElementByCssSelector(".govuk-button").click()
-      assertPartialTextIsDisplayed("Select your UK turnover for {0}")
-  }
-    else if (value == "less-than"){
-      clickById(value)
-      findElementByCssSelector(".govuk-button").click()
-      assertPartialTextIsDisplayed("You do not need to register for the Economic Crime Levy")
-    }
-    else{
-      clickById(value)
-      findElementByCssSelector(".govuk-button").click()
-      assertPartialTextIsDisplayed("Who is your Anti-Money Laundering (AML) supervisor?")
-    }
-  }
 }

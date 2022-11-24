@@ -24,7 +24,7 @@ object RegistrationPage extends BasePage {
   val registerAuthLoginPageUrl =
     s"${TestConfiguration.url("economic-crime-levy-registration-frontend")}/register-for-economic-crime-levy/"
 
-  def navigateToUrl(): Unit = {
+  def navigateToUrl(url: String = registerAuthLoginPageUrl): Unit = {
     driver.get(registerAuthLoginPageUrl)
   }
 }

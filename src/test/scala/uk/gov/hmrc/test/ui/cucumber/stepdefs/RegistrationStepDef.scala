@@ -26,19 +26,19 @@ class RegistrationStepDef extends BaseStepDef {
     RegistrationPage.navigateToUrl()
   }
 
-  When("""^I click on (.*) button""") { (value: String) =>
-    SharedActions.clickLinkByPartialText(value)
+  When("""^I click on the (.*) button""") { (_: String) =>
+    SharedActions.clickButton()
   }
 
-  And("^I select that my UK revenue is (.*)$") { value: String =>
-      SharedActions.selectRadioButtonById(value)
+  And("^I select that my (.*) is (.*)$") { (_: String, value: String) =>
+    SharedActions.clickById(value)
   }
 
-  And("""I click Submit button on authority wizard page""") { () =>
+  And("""I click on the Submit button on the authority wizard page""") { () =>
     SharedActions.clickById("submit-top")
   }
 
-  Then("^I should see a message, (.*)$") { (value: String) =>
+  Then("^I should be on the page with the content (.*)$") { (value: String) =>
     SharedActions.assertPartialTextIsDisplayed(value)
   }
 
