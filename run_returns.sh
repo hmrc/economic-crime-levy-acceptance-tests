@@ -13,6 +13,6 @@ fi
 
 
 # Scalafmt checks have been separated from the test command to avoid OutOfMemoryError in Jenkins
-sbt scalafmtCheckAll scalafmtSbtCheck
+# sbt scalafmtCheckAll scalafmtSbtCheck
 
 sbt -Dbrowser="${BROWSER_TYPE:=$BROWSER}" -Denvironment="${ENV:=local}" "testOnly uk.gov.hmrc.test.ui.cucumber.runner.RunReturns"

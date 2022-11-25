@@ -38,6 +38,13 @@ class RegistrationStepDef extends BaseStepDef {
     SharedActions.clickById("submit-top")
   }
 
+  And("""I click on the Other professional body list box on the AML supervisor page""") { () =>
+    SharedActions.clickById("otherProfessionalBody")
+  }
+
+  And("""^I click on the (.*) button on the AML supervisor page""") { (_: String) =>
+    SharedActions.clickButton()
+  }
   Then("^I should be on the page with the content (.*)$") { (value: String) =>
     SharedActions.assertPartialTextIsDisplayed(value)
   }
