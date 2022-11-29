@@ -14,19 +14,23 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.test.ui.cucumber.stepdefs
+package uk.gov.hmrc.test.ui.pages.registration
 
-import org.scalatest.matchers.should.Matchers
-import org.scalatest.concurrent.Eventually
-import uk.gov.hmrc.test.ui.driver.BrowserDriver
-import io.cucumber.scala.{EN, ScalaDsl}
-import uk.gov.hmrc.webdriver.SingletonDriver
+import org.openqa.selenium.By.{ByCssSelector, cssSelector}
+import org.openqa.selenium.WebElement
+import uk.gov.hmrc.test.ui.conf.TestConfiguration
+import uk.gov.hmrc.test.ui.pages.BasePage
 
-import scala.util.Try
+import java.util.List
 
-trait BaseStepDef extends ScalaDsl with EN with BrowserDriver with Eventually with Matchers {
-//
-//  sys.addShutdownHook {
-//    Try(SingletonDriver.closeInstance)
-//  }
+
+object AMLSupervisorPage extends BasePage{
+
+  val amlUrl =
+    s"${TestConfiguration.url("economic-crime-levy-registration-frontend")}/register-for-economic-crime-levy/who-is-your-aml-supervisor"
+
+  def navigateToAmlUrl(): Unit = {
+    driver.get(amlUrl)
+  }
+
 }

@@ -10,9 +10,9 @@ Feature: Register for ECL service
     Then I should be on the page with the content <Expected content>
 
     Examples:
-      | UK revenue         | Expected content                                        |
-      | less-than          | You do not need to register for the Economic Crime Levy |
-      | equal-or-more-than | Who is your Anti-Money Laundering (AML) supervisor?     |
+      | UK revenue                          | Expected content                                        |
+      | Less than £10.2 million             | You do not need to register for the Economic Crime Levy |
+      | Equal to or more than £10.2 million | Who is your Anti-Money Laundering (AML) supervisor?     |
 
   Scenario: User is presented with an error if they submit the UK revenue form without selecting an option
     Given I am on the registration start page
@@ -21,45 +21,74 @@ Feature: Register for ECL service
     And I click on the Save and continue button
     Then I should be on the page with the content Select your UK turnover for 2022
 
-  Scenario Outline: User is able to select their AML supervisor apart from Other category and proceed to the next page
-    Given I am on the registration start page
-    When I click on the Start now button
-    And I click on the Submit button on the authority wizard page
-    And I select that my UK revenue is equal-or-more-than
-    And I click on the Save and continue button
-    When I select that my AML supervisor is <AML supervisor>
-    And I click on the Save and continue button
-    Then I should be on the page with the content <Expected content>
-
-    Examples:
-      | AML supervisor | Expected content                                                                |
-      | value_0        | What is your entity type?                                                       |
-      | value_1        | You need to register with the Gambling Commission (GC) to pay the levy          |
-      | value_2        | You need to register with the Financial Conduct Authority (FCA) to pay the levy |
-
-  Scenario Outline: User is able to select their AML supervisor as Other and proceed to the next page
-    Given I am on the registration start page
-    When I click on the Start now button
-    And I click on the Submit button on the authority wizard page
-    And I select that my UK revenue is equal-or-more-than
-    And I click on the Save and continue button
-    When I select that my AML supervisor is <AML supervisor>
-    And I click on the Other professional body list box on the AML supervisor page
-    And I select that my professional body name is <Professional body name>
-    And I click on the Save and continue button
-    Then I should be on the page with the content <Expected content>
-
-    Examples:
-      | AML supervisor | Expected content          | Professional body name            |
-      | value_3        | What is your entity type? | otherProfessionalBody__option--0  |
-      | value_3        | What is your entity type? | otherProfessionalBody__option--10 |
-      | value_3        | What is your entity type? | otherProfessionalBody__option--20 |
-
   Scenario: User is presented with an error if they submit the AML supervisor form without selecting an option
     Given I am on the registration start page
     When I click on the Start now button
     And I click on the Submit button on the authority wizard page
-    And I select that my UK revenue is equal-or-more-than
+    And I select that my UK revenue is Equal to or more than £10.2 million
     And I click on the Save and continue button
     And I click on the Save and continue button on the AML supervisor page
     Then I should be on the page with the content Select an AML supervisor
+
+  Scenario Outline: User is able to select their AML supervisor as <AML supervisor> and proceed to the next page
+    Given I am on the registration start page
+    When I click on the Start now button
+    And I click on the Submit button on the authority wizard page
+    And I select that my UK revenue is Equal to or more than £10.2 million
+    And I click on the Save and continue button
+    When I select that my AML supervisor is <AML supervisor>
+    And I click on the Save and continue button
+    Then I should be on the page with the content <Expected content>
+
+    Examples:
+      | AML supervisor              | Expected content                                                                |
+      | HMRC                        | What is your entity type?                                                       |
+      | Gambling Commission         | You need to register with the Gambling Commission (GC) to pay the levy          |
+      | Financial Conduct Authority | You need to register with the Financial Conduct Authority (FCA) to pay the levy |
+
+
+  Scenario Outline: User is able to select their AML supervisor as Other and proceed to the next page
+    Given I am on the AML supervisor page
+    And I click on the Submit button on the authority wizard page
+    When I select that my AML supervisor is Other
+    And I click and select the other professional body name is <Professional body name>
+    And I click on the Save and continue button
+    And I select that my entity type is <Entity type>
+    And I click on the Save and continue button
+    Then I should be on the page with the content <Expected content>
+
+    Examples:
+      | Professional body name            | Entity type                   | Expected content                                 |
+      | otherProfessionalBody__option--0  | Limited company               | Stub GRS Journey Data                            |
+      | otherProfessionalBody__option--1  | Limited liability partnership | Stub GRS Journey Data                            |
+      | otherProfessionalBody__option--5  | Limited partnership           | Stub GRS Journey Data                            |
+      | otherProfessionalBody__option--10 | Scottish limited partnership  | Stub GRS Journey Data                            |
+      | otherProfessionalBody__option--15 | General partnership           | Stub GRS Journey Data                            |
+      | otherProfessionalBody__option--20 | Scottish partnership          | Stub GRS Journey Data                            |
+      | otherProfessionalBody__option--19 | Sole trader                   | Stub GRS Journey Data                            |
+      | otherProfessionalBody__option--18 | Other                         | Sorry, we’re experiencing technical difficulties |
+
+
+  Scenario Outline: User is able to select their AML supervisor as HMRC and proceed to the next page
+    Given I am on the AML supervisor page
+    And I click on the Submit button on the authority wizard page
+    When I select that my AML supervisor is HMRC
+    And I click on the Save and continue button
+    And I select that my entity type is <Entity type>
+    And I click on the Save and continue button
+#    And I enter the journey id is <Journey ID> and business partner id is <Business partner ID>
+#    And I click on the Save and continue button
+    Then I should be on the page with the content <Expected content>
+
+    Examples:
+      | Entity type                   | Journey ID | Business partner ID | Expected content                                 |
+      | Limited company               | 0          | X00000000000001     | Stub GRS Journey Data                            |
+      | Limited liability partnership | 1          |                     | Stub GRS Journey Data                            |
+      | Limited partnership           | 2          |                     | Stub GRS Journey Data                            |
+      | Scottish limited partnership  | 3          |                     | Stub GRS Journey Data                            |
+      | General partnership           | 4          |                     | Stub GRS Journey Data                            |
+      | Scottish partnership          | 5          |                     | Stub GRS Journey Data                            |
+      | Sole trader                   | 6          |                     | Stub GRS Journey Data                            |
+      | Other                         | 0          |                     | Sorry, we’re experiencing technical difficulties |
+
+

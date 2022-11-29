@@ -17,7 +17,7 @@
 package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
 import uk.gov.hmrc.test.ui.pages.SharedActions
-import uk.gov.hmrc.test.ui.pages.registration.{GatewaySignInPage, RegistrationPage}
+import uk.gov.hmrc.test.ui.pages.registration.{AMLSupervisorPage, GRSJourneyDataPage, GatewaySignInPage, RegistrationPage}
 
 class RegistrationStepDef extends BaseStepDef {
 
@@ -30,23 +30,35 @@ class RegistrationStepDef extends BaseStepDef {
     SharedActions.clickButton()
   }
 
+  And("""^I enter the journey id is (.*) and business partner id is (.*)""") {
+    (journeyId: String, businessPartnerId: String) =>
+      GRSJourneyDataPage.enterJourneyIdAndBusinessPartnerId(journeyId, businessPartnerId)
+  }
+
   And("^I select that my (.*) is (.*)$") { (_: String, value: String) =>
-    SharedActions.clickById(value)
+    SharedActions.selectLabelByPartialText(value)
   }
 
   And("""I click on the Submit button on the authority wizard page""") { () =>
     SharedActions.clickById("submit-top")
   }
 
-  And("""I click on the Other professional body list box on the AML supervisor page""") { () =>
+  And("""I click and select the other professional body name is (.*)$""") { (value: String) =>
     SharedActions.clickById("otherProfessionalBody")
+    SharedActions.clickById(value)
   }
 
   And("""^I click on the (.*) button on the AML supervisor page""") { (_: String) =>
     SharedActions.clickButton()
   }
+
   Then("^I should be on the page with the content (.*)$") { (value: String) =>
     SharedActions.assertPartialTextIsDisplayed(value)
+  }
+
+  Given("""I am on the AML supervisor page""") { () =>
+    GatewaySignInPage.navigateToClearAllUrl()
+    AMLSupervisorPage.navigateToAmlUrl()
   }
 
 }

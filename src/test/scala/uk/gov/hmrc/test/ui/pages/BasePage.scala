@@ -20,6 +20,7 @@ import org.openqa.selenium.support.ui.{ExpectedConditions, FluentWait, Wait}
 import org.openqa.selenium.{By, WebDriver, WebElement}
 import org.scalatest.matchers.should.Matchers
 import uk.gov.hmrc.test.ui.driver.BrowserDriver
+import java.util
 
 import java.time.Duration
 import java.time.temporal.ChronoUnit
@@ -69,6 +70,11 @@ trait BasePage extends BrowserDriver with Matchers {
   protected def findElementByCssSelector(locator: String) ={
     findElement(By.cssSelector(locator))
   }
+
+  protected  def findElementsByCssSelector(css: String): util.List[WebElement] = {
+    driver.findElements(By.cssSelector(css))
+  }
+
 }
 
 case class PageNotFoundException(s: String) extends Exception(s)
