@@ -22,7 +22,7 @@ import uk.gov.hmrc.test.ui.pages.BasePage
 object GatewaySignInPage extends BasePage {
 
   val clearAllUrl =
-    s"${TestConfiguration.url("economic-crime-levy-registration-frontend")}/register-for-economic-crime-levy/test-only/clear-all"
+    s"${TestConfiguration.url("economic-crime-levy-registration-frontend")}/register-for-the-economic-crime-levy/test-only/clear-all"
 
   def navigateToClearAllUrl(): Unit = {
     driver.get(clearAllUrl)

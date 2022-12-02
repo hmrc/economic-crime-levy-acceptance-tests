@@ -16,18 +16,15 @@
 
 package uk.gov.hmrc.test.ui.pages.registration
 
-import org.openqa.selenium.By.{ByCssSelector, cssSelector}
+import org.openqa.selenium.By.{ByCssSelector, cssSelector, xpath}
 import org.openqa.selenium.WebElement
 import uk.gov.hmrc.test.ui.conf.TestConfiguration
 import uk.gov.hmrc.test.ui.pages.BasePage
 
-import java.util.List
-
-
 object AMLSupervisorPage extends BasePage{
 
   val amlUrl =
-    s"${TestConfiguration.url("economic-crime-levy-registration-frontend")}/register-for-economic-crime-levy/who-is-your-aml-supervisor"
+    s"${TestConfiguration.url("economic-crime-levy-registration-frontend")}/register-for-the-economic-crime-levy/who-is-your-aml-supervisor"
 
   def navigateToAmlUrl(): Unit = {
     driver.get(amlUrl)

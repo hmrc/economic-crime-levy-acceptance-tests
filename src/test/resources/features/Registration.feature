@@ -19,7 +19,7 @@ Feature: Register for ECL service
     When I click on the Start now button
     And I click on the Submit button on the authority wizard page
     And I click on the Save and continue button
-    Then I should be on the page with the content Select your UK turnover for 2022
+    Then I should be on the page with the content Select your UK revenue for 2022
 
   Scenario: User is presented with an error if they submit the AML supervisor form without selecting an option
     Given I am on the registration start page
@@ -45,7 +45,6 @@ Feature: Register for ECL service
       | HMRC                        | What is your entity type?                                                       |
       | Gambling Commission         | You need to register with the Gambling Commission (GC) to pay the levy          |
       | Financial Conduct Authority | You need to register with the Financial Conduct Authority (FCA) to pay the levy |
-
 
   Scenario Outline: User is able to select their AML supervisor as Other and proceed to the next page
     Given I am on the AML supervisor page
@@ -76,19 +75,15 @@ Feature: Register for ECL service
     And I click on the Save and continue button
     And I select that my entity type is <Entity type>
     And I click on the Save and continue button
-#    And I enter the journey id is <Journey ID> and business partner id is <Business partner ID>
-#    And I click on the Save and continue button
     Then I should be on the page with the content <Expected content>
 
     Examples:
-      | Entity type                   | Journey ID | Business partner ID | Expected content                                 |
-      | Limited company               | 0          | X00000000000001     | Stub GRS Journey Data                            |
-      | Limited liability partnership | 1          |                     | Stub GRS Journey Data                            |
-      | Limited partnership           | 2          |                     | Stub GRS Journey Data                            |
-      | Scottish limited partnership  | 3          |                     | Stub GRS Journey Data                            |
-      | General partnership           | 4          |                     | Stub GRS Journey Data                            |
-      | Scottish partnership          | 5          |                     | Stub GRS Journey Data                            |
-      | Sole trader                   | 6          |                     | Stub GRS Journey Data                            |
-      | Other                         | 0          |                     | Sorry, we’re experiencing technical difficulties |
-
-
+      | Entity type                   | Expected content                                 |
+      | Limited company               | Stub GRS Journey Data                            |
+      | Limited liability partnership | Stub GRS Journey Data                            |
+      | Limited partnership           | Stub GRS Journey Data                            |
+      | Scottish limited partnership  | Stub GRS Journey Data                            |
+      | General partnership           | Stub GRS Journey Data                            |
+      | Scottish partnership          | Stub GRS Journey Data                            |
+      | Sole trader                   | Stub GRS Journey Data                            |
+      | Other                         | Sorry, we’re experiencing technical difficulties |
