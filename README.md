@@ -1,7 +1,7 @@
 **This is a template README.md.  Be sure to update this with project specific content that describes your ui test project.**
 
 # economic-crime-levy-acceptance-tests
-UI test suite for the `<digital service name>` using WebDriver and `<scalatest/cucumber>`.  
+UI test suite for the `economic-crime-levy` using WebDriver , `cucumber` and `scalatest`.  
 
 ## Running the tests
 
@@ -13,15 +13,16 @@ Prior to executing the tests ensure you have:
 Run the following command to start services locally:
 
     docker run --rm -d --name mongo -d -p 27017:27017 mongo:4.0
-    sm --start PLATFORM_EXAMPLE_UI_TESTS -r --wait 100
+    sm --start ECONOMIC_CRIME_LEVY_ALL -r --wait 100
 
 Using the `--wait 100` argument ensures a health check is run on all the services started as part of the profile. `100` refers to the given number of seconds to wait for services to pass health checks.
 
-Then execute the `run_tests.sh` script:
+Then execute the `run_registration.sh` script for Registration and `run_returns.sh` script for Returns :
 
-    ./run_tests.sh <browser-driver> <environment> 
+    ./run_registration.sh <browser-driver> <environment> 
+    ./run_returns.sh <browser-driver> <environment>
 
-The `run_tests.sh` script defaults to using `chrome` in the `local` environment.  For a complete list of supported param values, see:
+The `run_registration.sh` and `run_returns.sh` scripts defaults to using `chrome` in the `local` environment.  For a complete list of supported param values, see:
  - `src/test/resources/application.conf` for **environment** 
  - [webdriver-factory](https://github.com/hmrc/webdriver-factory#2-instantiating-a-browser-with-default-options) for **browser-driver**
 
@@ -46,9 +47,9 @@ To run against a containerised Chrome browser:
 To run the tests against an environment set the corresponding `host` environment property as specified under
  `<env>.host.services` in the [application.conf](/src/test/resources/application.conf). 
 
-For example, to execute the `run_tests.sh` script using Chrome remote-webdriver against QA environment 
+For example, to execute the `run_registration.sh` script using Chrome remote-webdriver against QA environment 
 
-    ./run_tests.sh remote-chrome qa
+    ./run_registration.sh remote-chrome qa
 
 ## Running ZAP tests
 
