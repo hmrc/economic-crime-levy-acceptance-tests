@@ -56,9 +56,10 @@ class RegistrationStepDef extends BaseStepDef {
     SharedActions.assertPartialTextIsDisplayed(value)
   }
 
-  Given("""I am on the AML supervisor page""") { () =>
+  Given("""I am authorised and on the AML supervisor page""") { () =>
     GatewaySignInPage.navigateToClearAllUrl()
     AMLSupervisorPage.navigateToAmlUrl()
+    SharedActions.clickById("submit-top")
   }
 
 }

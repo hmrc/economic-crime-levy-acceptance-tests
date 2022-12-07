@@ -47,8 +47,7 @@ Feature: Register for ECL service
       | Financial Conduct Authority | You need to register with the Financial Conduct Authority (FCA) to pay the levy |
 
   Scenario Outline: User is able to select their AML supervisor as Other and proceed to the next page
-    Given I am on the AML supervisor page
-    And I click on the Submit button on the authority wizard page
+    Given I am authorised and on the AML supervisor page
     When I select that my AML supervisor is Other
     And I click and select the other professional body name is <Professional body name>
     And I click on the Save and continue button
@@ -68,9 +67,8 @@ Feature: Register for ECL service
       | otherProfessionalBody__option--18 | Other                         | Sorry, we’re experiencing technical difficulties |
 
 
-  Scenario Outline: User is able to select their AML supervisor as HMRC and proceed to the next page
-    Given I am on the AML supervisor page
-    And I click on the Submit button on the authority wizard page
+  Scenario Outline: User is able to select their entity type as <Entity type> and proceed to the next page
+    Given I am authorised and on the AML supervisor page
     When I select that my AML supervisor is HMRC
     And I click on the Save and continue button
     And I select that my entity type is <Entity type>
