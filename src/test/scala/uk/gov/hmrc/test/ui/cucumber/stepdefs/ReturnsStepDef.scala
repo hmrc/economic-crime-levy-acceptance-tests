@@ -25,8 +25,12 @@ class ReturnsStepDef extends BaseStepDef {
     ReturnsLoginPage.navigateToUrl()
   }
 
-   And("""I enter the enrolment details""") { () =>
-     enterEnrolmentDetails(enrolmentKey="HMRC-ECL-ORG",identifierName="EclRegistrationReference",identifierValue="XMECL0000000001")
+  And("""I enter the enrolment details""") { () =>
+    enterEnrolmentDetails(
+      enrolmentKey = "HMRC-ECL-ORG",
+      identifierName = "EclRegistrationReference",
+      identifierValue = "XMECL0000000001"
+    )
   }
 
 }

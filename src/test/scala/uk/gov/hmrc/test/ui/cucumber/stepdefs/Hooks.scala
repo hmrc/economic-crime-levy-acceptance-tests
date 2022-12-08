@@ -22,6 +22,7 @@ import uk.gov.hmrc.test.ui.driver.BrowserDriver
 
 class Hooks extends ScalaDsl with EN with BrowserDriver {
   After { scenario: Scenario =>
+    driver.manage().deleteAllCookies()
     if (scenario.isFailed) {
       val screenshotName = scenario.getName.replaceAll(" ", "_")
       val screenshot     = driver.asInstanceOf[TakesScreenshot].getScreenshotAs(OutputType.BYTES)

@@ -14,22 +14,13 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.test.ui.pages.returns
+package uk.gov.hmrc.test.ui.pages.registration
 
 import org.openqa.selenium.By
-import uk.gov.hmrc.test.ui.conf.TestConfiguration
 import uk.gov.hmrc.test.ui.pages.BasePage
 
-object ReturnsLoginPage extends BasePage {
+object StubGRSJourneyDataPage extends BasePage {
 
-  val returnsAuthLoginPageUrl =
-    s"${TestConfiguration.url("economic-crime-levy-returns-frontend")}/submit-economic-crime-levy-return/"
+  val heading = "Stub GRS Journey Data"
 
-  def navigateToUrl() = driver.get(returnsAuthLoginPageUrl)
-
-  def enterEnrolmentDetails(enrolmentKey: String, identifierName: String, identifierValue: String): Unit = {
-    sendKeys(By.id("enrolment[0].name"), enrolmentKey)
-    sendKeys(By.id("input-0-0-name"), identifierName)
-    sendKeys(By.id("input-0-0-value"), identifierValue)
-  }
 }

@@ -17,20 +17,83 @@
 package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
 import uk.gov.hmrc.test.ui.pages.SharedActions
-import uk.gov.hmrc.test.ui.pages.registration.RegistrationLoginPage
+import uk.gov.hmrc.test.ui.pages.registration.RegistrationPage._
+import uk.gov.hmrc.test.ui.pages.registration.{AmlSupervisorPage, EntityTypePage, RegistrationPage, UkRevenuePage}
 
 class RegistrationStepDef extends BaseStepDef {
 
-  Given("""I am on the registration start page""") { () =>
-    RegistrationLoginPage.navigateToUrl()
+  Given("""I am signed in to the registration journey""") { () =>
+    RegistrationPage
+      .navigateTo()
+      .startAndSignIn()
   }
 
-  When("""I click on submit button""") { () =>
-    SharedActions.authorityWizardSubmitButton()
+  When("""I provide details of my limited company that is supervised by HMRC and liable for ECL""") { () =>
+    provideUkRevenue()
+      .provideHmrcOrOtherAmlSupervisor()
+      .provideEntityType("Limited company")
+      .provideGrsData()
   }
 
-  Then("^text is displayed (.*)$") { (value: String) =>
+  When(
+    """I provide details of my limited company that is supervised by an other professional body and liable for ECL"""
+  ) { () =>
+    provideUkRevenue()
+      .provideHmrcOrOtherAmlSupervisor("Other")
+      .provideEntityType("Limited company")
+      .provideGrsData()
+  }
+
+  When("""I say that my UK revenue is less than £10.2 million""") { () =>
+    UkRevenuePage.navigateTo().ukRevenueLessThan()
+  }
+
+  When("""^I say that my AML supervisor is (.*)$""") { (value: String) =>
+    AmlSupervisorPage
+      .navigateTo()
+      .provideGcOrFcaAmlSupervisor(value)
+  }
+
+  When("""I say that my entity type is Other""") { () =>
+    EntityTypePage.navigateTo().otherEntityType()
+  }
+
+  When("""I do not select an other professional body when I have selected the Other option""") { () =>
+    AmlSupervisorPage.navigateTo().selectOtherWithNoProfessionalBodyAndSubmit
+  }
+
+  And("^I do not select an option for my UK revenue") { () =>
+    UkRevenuePage
+      .navigateTo()
+      .submitPage()
+  }
+
+  And("^I do not select an option for my AML supervisor") { () =>
+    AmlSupervisorPage
+      .navigateTo()
+      .submitPage()
+  }
+
+  And("^I do not select an option for my entity type") { () =>
+    EntityTypePage
+      .navigateTo()
+      .submitPage()
+  }
+
+  Then("^I should be on the page that asks (.*)$") { (value: String) =>
     SharedActions.assertPartialTextIsDisplayed(value)
+  }
+
+  Then("^I should see an error that says (.*)$") { (value: String) =>
+    SharedActions.assertPartialTextIsDisplayed(value)
+  }
+
+  Then("^I should be on the page that says (.*)$") { (value: String) =>
+    SharedActions.assertPartialTextIsDisplayed(value)
+  }
+
+  Then("^I should be on the placeholder page that says (.*)$") { (value: String) =>
+    SharedActions.assertHtmlContains(value)
   }
 
 }

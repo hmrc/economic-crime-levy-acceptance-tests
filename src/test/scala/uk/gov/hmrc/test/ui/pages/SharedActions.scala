@@ -17,14 +17,28 @@
 package uk.gov.hmrc.test.ui.pages
 
 import org.openqa.selenium.By
-import uk.gov.hmrc.test.ui.pages.registration.RegistrationLoginPage.authoritySubmitButton
 
 object SharedActions extends BasePage {
 
-  def authorityWizardSubmitButton(): Unit =
-    clickElement(authoritySubmitButton)
+  def clickLinkByPartialText(value: String): Unit =
+    click(By.partialLinkText(value))
+
+  def selectLabelByPartialText(value: String): Unit =
+    click(By.xpath(s"//label[contains(text(), '$value')]"))
+
+  def assertHtmlContains(value: String): Unit =
+    assert(driver.getPageSource.contains(value))
 
   def assertPartialTextIsDisplayed(value: String): Unit =
     assert(getText(By.id("main-content")).contains(value))
+
+  def clickById(id: String): Unit =
+    driver.findElement(By.id(id)).click()
+
+  def clickButton(): Unit =
+    findElementByCssSelector(".govuk-button").click()
+
+  def clickBackButton(): Unit =
+    click(By.partialLinkText("Back"))
 
 }

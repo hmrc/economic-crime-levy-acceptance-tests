@@ -28,9 +28,8 @@ import org.junit.runner.RunWith
     "pretty",
     "html:target/cucumber.html",
     "json:target/cucumber.json",
-    "junit:target/test-reports/RunAccessibility.xml"),
+    "junit:target/test-reports/RunAccessibility.xml"
+  ),
   tags = "@accessibility"
 )
-class RunAccessibility {
-
-}
+class RunAccessibility {}

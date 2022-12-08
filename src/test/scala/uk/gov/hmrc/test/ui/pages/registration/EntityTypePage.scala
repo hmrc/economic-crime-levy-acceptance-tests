@@ -16,14 +16,31 @@
 
 package uk.gov.hmrc.test.ui.pages.registration
 
-import org.openqa.selenium.By
-import uk.gov.hmrc.test.ui.pages.BasePage
+import uk.gov.hmrc.test.ui.conf.TestConfiguration
+import uk.gov.hmrc.test.ui.pages.{BasePage, SharedActions}
 
-object RegistrationLoginPage extends BasePage {
+object EntityTypePage extends BasePage {
 
-  val authoritySubmitButton = By.id("submit-top")
+  val url =
+    s"${TestConfiguration.url("economic-crime-levy-registration-frontend")}/register-for-the-economic-crime-levy/what-is-your-entity-type"
 
-  def navigateToUrl(): Unit =
-    driver.get(registerAuthLoginPageUrl)
+  val heading = "What is your entity type?"
+
+  def navigateTo(): this.type = {
+    navigateToClearAllUrl()
+    driver.get(url)
+    this
+  }
+
+  def otherEntityType(): this.type = {
+    SharedActions.selectLabelByPartialText("Other")
+    submitPage()
+    this
+  }
+
+  def submitPage(): this.type = {
+    SharedActions.clickButton()
+    this
+  }
 
 }
