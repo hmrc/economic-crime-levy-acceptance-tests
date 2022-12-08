@@ -19,9 +19,10 @@ package uk.gov.hmrc.test.ui.pages
 import org.openqa.selenium.support.ui.{ExpectedConditions, FluentWait, Wait}
 import org.openqa.selenium.{By, WebDriver, WebElement}
 import org.scalatest.matchers.should.Matchers
+import uk.gov.hmrc.test.ui.conf.TestConfiguration
 import uk.gov.hmrc.test.ui.driver.BrowserDriver
-import java.util
 
+import java.util
 import java.time.Duration
 import java.time.temporal.ChronoUnit
 
@@ -29,6 +30,12 @@ trait BasePage extends BrowserDriver with Matchers {
 
   val WAIT_POLLING_INTERVAL: Duration = Duration.of(250, ChronoUnit.MILLIS)
   val WAIT_TIME_OUT: Duration         = Duration.of(20, ChronoUnit.SECONDS)
+
+  val clearAllUrl =
+    s"${TestConfiguration.url("economic-crime-levy-registration-frontend")}/register-for-the-economic-crime-levy/test-only/clear-all"
+
+  protected def navigateToClearAllUrl(): Unit =
+    driver.get(clearAllUrl)
 
   private val fluentWait: Wait[WebDriver] = new FluentWait[WebDriver](driver)
     .withTimeout(WAIT_POLLING_INTERVAL)
@@ -67,14 +74,14 @@ trait BasePage extends BrowserDriver with Matchers {
     findElement(locator).click()
   }
 
-  protected def findElementByCssSelector(locator: String) ={
+  protected def findElementByCssSelector(locator: String) =
     findElement(By.cssSelector(locator))
-  }
 
-  protected  def findElementsByCssSelector(css: String): util.List[WebElement] = {
+  protected def findElementsByCssSelector(css: String): util.List[WebElement] =
     driver.findElements(By.cssSelector(css))
-  }
 
+  def onPage(heading: String): Unit =
+    SharedActions.assertPartialTextIsDisplayed(heading)
 }
 
 case class PageNotFoundException(s: String) extends Exception(s)

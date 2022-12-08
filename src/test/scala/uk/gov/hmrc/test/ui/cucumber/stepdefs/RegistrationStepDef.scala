@@ -17,49 +17,83 @@
 package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
 import uk.gov.hmrc.test.ui.pages.SharedActions
-import uk.gov.hmrc.test.ui.pages.registration.{AMLSupervisorPage, GRSJourneyDataPage, GatewaySignInPage, RegistrationPage}
+import uk.gov.hmrc.test.ui.pages.registration.RegistrationPage._
+import uk.gov.hmrc.test.ui.pages.registration.{AmlSupervisorPage, EntityTypePage, RegistrationPage, UkRevenuePage}
 
 class RegistrationStepDef extends BaseStepDef {
 
-  Given("""I am on the registration start page""") { () =>
-    GatewaySignInPage.navigateToClearAllUrl()
-    RegistrationPage.navigateToUrl()
+  Given("""I am signed in to the registration journey""") { () =>
+    RegistrationPage
+      .navigateTo()
+      .startAndSignIn()
   }
 
-  When("""^I click on the (.*) button""") { (_: String) =>
-    SharedActions.clickButton()
+  When("""I provide details of my limited company that is supervised by HMRC and liable for ECL""") { () =>
+    provideUkRevenue()
+      .provideHmrcOrOtherAmlSupervisor()
+      .provideEntityType("Limited company")
+      .provideGrsData()
   }
 
-  And("""^I enter the journey id is (.*) and business partner id is (.*)""") {
-    (journeyId: String, businessPartnerId: String) =>
-      GRSJourneyDataPage.enterJourneyIdAndBusinessPartnerId(journeyId, businessPartnerId)
+  When(
+    """I provide details of my limited company that is supervised by an other professional body and liable for ECL"""
+  ) { () =>
+    provideUkRevenue()
+      .provideHmrcOrOtherAmlSupervisor("Other")
+      .provideEntityType("Limited company")
+      .provideGrsData()
   }
 
-  And("^I select that my (.*) is (.*)$") { (_: String, value: String) =>
-    SharedActions.selectLabelByPartialText(value)
+  When("""I say that my UK revenue is less than £10.2 million""") { () =>
+    UkRevenuePage.navigateTo().ukRevenueLessThan()
   }
 
-  And("""I click on the Submit button on the authority wizard page""") { () =>
-    SharedActions.clickById("submit-top")
+  When("""^I say that my AML supervisor is (.*)$""") { (value: String) =>
+    AmlSupervisorPage
+      .navigateTo()
+      .provideGcOrFcaAmlSupervisor(value)
   }
 
-  And("""I click and select the other professional body name is (.*)$""") { (value: String) =>
-    SharedActions.clickById("otherProfessionalBody")
-    SharedActions.clickById(value)
+  When("""I say that my entity type is Other""") { () =>
+    EntityTypePage.navigateTo().otherEntityType()
   }
 
-  And("""^I click on the (.*) button on the AML supervisor page""") { (_: String) =>
-    SharedActions.clickButton()
+  When("""I do not select an other professional body when I have selected the Other option""") { () =>
+    AmlSupervisorPage.navigateTo().selectOtherWithNoProfessionalBodyAndSubmit
   }
 
-  Then("^I should be on the page with the content (.*)$") { (value: String) =>
+  And("^I do not select an option for my UK revenue") { () =>
+    UkRevenuePage
+      .navigateTo()
+      .submitPage()
+  }
+
+  And("^I do not select an option for my AML supervisor") { () =>
+    AmlSupervisorPage
+      .navigateTo()
+      .submitPage()
+  }
+
+  And("^I do not select an option for my entity type") { () =>
+    EntityTypePage
+      .navigateTo()
+      .submitPage()
+  }
+
+  Then("^I should be on the page that asks (.*)$") { (value: String) =>
     SharedActions.assertPartialTextIsDisplayed(value)
   }
 
-  Given("""I am authorised and on the AML supervisor page""") { () =>
-    GatewaySignInPage.navigateToClearAllUrl()
-    AMLSupervisorPage.navigateToAmlUrl()
-    SharedActions.clickById("submit-top")
+  Then("^I should see an error that says (.*)$") { (value: String) =>
+    SharedActions.assertPartialTextIsDisplayed(value)
+  }
+
+  Then("^I should be on the page that says (.*)$") { (value: String) =>
+    SharedActions.assertPartialTextIsDisplayed(value)
+  }
+
+  Then("^I should be on the placeholder page that says (.*)$") { (value: String) =>
+    SharedActions.assertHtmlContains(value)
   }
 
 }

@@ -17,14 +17,63 @@
 package uk.gov.hmrc.test.ui.pages.registration
 
 import uk.gov.hmrc.test.ui.conf.TestConfiguration
-import uk.gov.hmrc.test.ui.pages.BasePage
+import uk.gov.hmrc.test.ui.pages.{BasePage, SharedActions}
 
 object RegistrationPage extends BasePage {
 
-  val registerAuthLoginPageUrl =
+  val url =
     s"${TestConfiguration.url("economic-crime-levy-registration-frontend")}/register-for-the-economic-crime-levy/"
 
-  def navigateToUrl(url: String = registerAuthLoginPageUrl): Unit = {
-    driver.get(registerAuthLoginPageUrl)
+  def navigateTo(): this.type = {
+    navigateToClearAllUrl()
+    driver.get(url)
+    this
   }
+
+  def startAndSignIn(): this.type = {
+    submitPage()
+    SharedActions.clickById("submit-top")
+    onPage(UkRevenuePage.heading)
+    this
+  }
+
+  def provideUkRevenue(value: String = "Equal to or more than £10.2 million"): this.type = {
+    SharedActions.selectLabelByPartialText(value)
+    submitPage()
+    onPage(AmlSupervisorPage.heading)
+    this
+  }
+
+  def provideHmrcOrOtherAmlSupervisor(value: String = "HMRC"): this.type = {
+    value match {
+      case "Other" =>
+        SharedActions.selectLabelByPartialText("Other")
+        SharedActions.clickById("otherProfessionalBody")
+        SharedActions.clickById("otherProfessionalBody__option--0")
+      case _       =>
+        SharedActions.selectLabelByPartialText(value)
+    }
+
+    submitPage()
+    onPage(EntityTypePage.heading)
+    this
+  }
+
+  def provideEntityType(value: String): this.type = {
+    SharedActions.selectLabelByPartialText(value)
+    submitPage()
+    onPage(StubGRSJourneyDataPage.heading)
+    this
+  }
+
+  def provideGrsData(): this.type = {
+    submitPage()
+    this
+  }
+
+  def submitPage(): this.type = {
+    SharedActions.clickButton()
+    this
+  }
+
 }

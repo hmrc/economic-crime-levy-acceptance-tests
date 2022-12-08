@@ -23,9 +23,11 @@ object SharedActions extends BasePage {
   def clickLinkByPartialText(value: String): Unit =
     click(By.partialLinkText(value))
 
-  def selectLabelByPartialText(value: String): Unit = {
+  def selectLabelByPartialText(value: String): Unit =
     click(By.xpath(s"//label[contains(text(), '$value')]"))
-  }
+
+  def assertHtmlContains(value: String): Unit =
+    assert(driver.getPageSource.contains(value))
 
   def assertPartialTextIsDisplayed(value: String): Unit =
     assert(getText(By.id("main-content")).contains(value))
@@ -33,12 +35,10 @@ object SharedActions extends BasePage {
   def clickById(id: String): Unit =
     driver.findElement(By.id(id)).click()
 
-  def clickButton(): Unit = {
+  def clickButton(): Unit =
     findElementByCssSelector(".govuk-button").click()
-  }
 
-  def clickBackButton(): Unit ={
+  def clickBackButton(): Unit =
     click(By.partialLinkText("Back"))
-  }
 
 }

@@ -1,79 +1,62 @@
 @all @reg @accessibility @zap
-Feature: Register for ECL service
+Feature: Register for ECL
 
-  Scenario Outline: User is able to select whether their UK revenue is less than or more than/equal to £10.2m and proceed to the next page
-    Given I am on the registration start page
-    When I click on the Start now button
-    And I click on the Submit button on the authority wizard page
-    And I select that my UK revenue is <UK revenue>
-    And I click on the Save and continue button
-    Then I should be on the page with the content <Expected content>
+  Scenario Outline: User registers a <Entity type> supervised by HMRC for AML that is liable for ECL
+    Given I am signed in to the registration journey
+    When I provide details of my limited company that is supervised by HMRC and liable for ECL
+    Then I should be on the placeholder page that says Success - you can continue registering for ECL
 
     Examples:
-      | UK revenue                          | Expected content                                        |
-      | Less than £10.2 million             | You do not need to register for the Economic Crime Levy |
-      | Equal to or more than £10.2 million | Who is your Anti-Money Laundering (AML) supervisor?     |
+      | Entity type                   |
+      | Limited company               |
+      | Limited liability partnership |
+      | Limited partnership           |
+      | Scottish limited partnership  |
+      | General partnership           |
+      | Scottish partnership          |
+      | Sole trader                   |
 
-  Scenario: User is presented with an error if they submit the UK revenue form without selecting an option
-    Given I am on the registration start page
-    When I click on the Start now button
-    And I click on the Submit button on the authority wizard page
-    And I click on the Save and continue button
-    Then I should be on the page with the content Select your UK revenue for 2022
+  Scenario: User registers a limited company supervised by an other professional body for AML that is liable for ECL
+    Given I am signed in to the registration journey
+    When I provide details of my limited company that is supervised by an other professional body and liable for ECL
+    Then I should be on the placeholder page that says Success - you can continue registering for ECL
 
-  Scenario: User is presented with an error if they submit the AML supervisor form without selecting an option
-    Given I am on the registration start page
-    When I click on the Start now button
-    And I click on the Submit button on the authority wizard page
-    And I select that my UK revenue is Equal to or more than £10.2 million
-    And I click on the Save and continue button
-    And I click on the Save and continue button on the AML supervisor page
-    Then I should be on the page with the content Select an AML supervisor
+  Scenario: User's UK revenue is less than £10.2 million
+    Given I am signed in to the registration journey
+    When I say that my UK revenue is less than £10.2 million
+    Then I should be on the page that says You do not need to register for the Economic Crime Levy
 
-  Scenario Outline: User is able to select their AML supervisor as <AML supervisor> and proceed to the next page
-    Given I am on the registration start page
-    When I click on the Start now button
-    And I click on the Submit button on the authority wizard page
-    And I select that my UK revenue is Equal to or more than £10.2 million
-    And I click on the Save and continue button
-    When I select that my AML supervisor is <AML supervisor>
-    And I click on the Save and continue button
-    Then I should be on the page with the content <Expected content>
+  Scenario: User does not select their UK revenue
+    Given I am signed in to the registration journey
+    When I do not select an option for my UK revenue
+    Then I should see an error that says Select your UK revenue for 2022
+
+  Scenario Outline: User's AML supervisor is GC or FCA
+    Given I am signed in to the registration journey
+    When I say that my AML supervisor is <AML supervisor>
+    Then I should be on the page that says <Expected content>
 
     Examples:
       | AML supervisor              | Expected content                                                                |
-      | HMRC                        | What is your entity type?                                                       |
       | Gambling Commission         | You need to register with the Gambling Commission (GC) to pay the levy          |
       | Financial Conduct Authority | You need to register with the Financial Conduct Authority (FCA) to pay the levy |
 
-  Scenario Outline: User is able to select their AML supervisor as Other and proceed to the next page
-    Given I am authorised and on the AML supervisor page
-    When I select that my AML supervisor is Other
-    And I click and select the other professional body name is <Professional body name>
-    And I click on the Save and continue button
-    Then I should be on the page with the content <Expected content>
+  Scenario: User does not select their AML supervisor
+    Given I am signed in to the registration journey
+    When I do not select an option for my AML supervisor
+    Then I should see an error that says Select an AML supervisor
 
-    Examples:
-      | Professional body name            | Expected content          |
-      | otherProfessionalBody__option--0  | What is your entity type? |
-      | otherProfessionalBody__option--10 | What is your entity type? |
-      | otherProfessionalBody__option--20 | What is your entity type? |
+  Scenario: User selects AML supervisor as other but does not select the professional body
+    Given I am signed in to the registration journey
+    When I do not select an other professional body when I have selected the Other option
+    Then I should see an error that says Enter the name of your professional body or select from the list
 
-  Scenario Outline: User is able to select their entity type as <Entity type> and proceed to the next page
-    Given I am authorised and on the AML supervisor page
-    When I select that my AML supervisor is HMRC
-    And I click on the Save and continue button
-    And I select that my entity type is <Entity type>
-    And I click on the Save and continue button
-    Then I should be on the page with the content <Expected content>
+  Scenario: User's entity type is Other
+    Given I am signed in to the registration journey
+    When I say that my entity type is Other
+    Then I should be on the page that says Sorry, we’re experiencing technical difficulties
 
-    Examples:
-      | Entity type                   | Expected content                                 |
-      | Limited company               | Stub GRS Journey Data                            |
-      | Limited liability partnership | Stub GRS Journey Data                            |
-      | Limited partnership           | Stub GRS Journey Data                            |
-      | Scottish limited partnership  | Stub GRS Journey Data                            |
-      | General partnership           | Stub GRS Journey Data                            |
-      | Scottish partnership          | Stub GRS Journey Data                            |
-      | Sole trader                   | Stub GRS Journey Data                            |
-      | Other                         | Sorry, we’re experiencing technical difficulties |
+  Scenario: User does not select their entity type
+    Given I am signed in to the registration journey
+    When I do not select an option for my entity type
+    Then I should see an error that says Please select your entity type

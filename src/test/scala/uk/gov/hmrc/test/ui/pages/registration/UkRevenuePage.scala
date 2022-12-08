@@ -17,14 +17,30 @@
 package uk.gov.hmrc.test.ui.pages.registration
 
 import uk.gov.hmrc.test.ui.conf.TestConfiguration
-import uk.gov.hmrc.test.ui.pages.BasePage
+import uk.gov.hmrc.test.ui.pages.{BasePage, SharedActions}
 
-object GatewaySignInPage extends BasePage {
+object UkRevenuePage extends BasePage {
 
-  val clearAllUrl =
-    s"${TestConfiguration.url("economic-crime-levy-registration-frontend")}/register-for-the-economic-crime-levy/test-only/clear-all"
+  val url =
+    s"${TestConfiguration.url("economic-crime-levy-registration-frontend")}/register-for-the-economic-crime-levy/what-was-your-uk-revenue"
 
-  def navigateToClearAllUrl(): Unit = {
-    driver.get(clearAllUrl)
+  val heading = "What was your UK revenue in 2022?"
+
+  def navigateTo(): this.type = {
+    navigateToClearAllUrl()
+    driver.get(url)
+    this
   }
+
+  def ukRevenueLessThan(): this.type = {
+    SharedActions.selectLabelByPartialText("Less than £10.2 million")
+    submitPage()
+    this
+  }
+
+  def submitPage(): this.type = {
+    SharedActions.clickButton()
+    this
+  }
+
 }
