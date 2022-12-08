@@ -51,21 +51,13 @@ Feature: Register for ECL service
     When I select that my AML supervisor is Other
     And I click and select the other professional body name is <Professional body name>
     And I click on the Save and continue button
-    And I select that my entity type is <Entity type>
-    And I click on the Save and continue button
     Then I should be on the page with the content <Expected content>
 
     Examples:
-      | Professional body name            | Entity type                   | Expected content                                 |
-      | otherProfessionalBody__option--0  | Limited company               | Stub GRS Journey Data                            |
-      | otherProfessionalBody__option--1  | Limited liability partnership | Stub GRS Journey Data                            |
-      | otherProfessionalBody__option--5  | Limited partnership           | Stub GRS Journey Data                            |
-      | otherProfessionalBody__option--10 | Scottish limited partnership  | Stub GRS Journey Data                            |
-      | otherProfessionalBody__option--15 | General partnership           | Stub GRS Journey Data                            |
-      | otherProfessionalBody__option--20 | Scottish partnership          | Stub GRS Journey Data                            |
-      | otherProfessionalBody__option--19 | Sole trader                   | Stub GRS Journey Data                            |
-      | otherProfessionalBody__option--18 | Other                         | Sorry, we’re experiencing technical difficulties |
-
+      | Professional body name            | Expected content          |
+      | otherProfessionalBody__option--0  | What is your entity type? |
+      | otherProfessionalBody__option--10 | What is your entity type? |
+      | otherProfessionalBody__option--20 | What is your entity type? |
 
   Scenario Outline: User is able to select their entity type as <Entity type> and proceed to the next page
     Given I am authorised and on the AML supervisor page
