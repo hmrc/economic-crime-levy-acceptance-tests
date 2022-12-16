@@ -33,6 +33,9 @@ class RegistrationStepDef extends BaseStepDef {
       .provideHmrcOrOtherAmlSupervisor()
       .provideEntityType("Limited company")
       .provideGrsData()
+    SharedActions
+      .selectYesOrNo(value = "No")
+      .submitPage()
   }
 
   When(
@@ -45,7 +48,9 @@ class RegistrationStepDef extends BaseStepDef {
   }
 
   When("""I say that my UK revenue is less than £10.2 million""") { () =>
-    UkRevenuePage.navigateTo().ukRevenueLessThan()
+    UkRevenuePage
+      .navigateTo()
+      .ukRevenueLessThan()
   }
 
   When("""^I say that my AML supervisor is (.*)$""") { (value: String) =>

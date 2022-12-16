@@ -4,7 +4,6 @@ Feature: Register for ECL
   Scenario Outline: User registers a <Entity type> supervised by HMRC for AML that is liable for ECL
     Given I am signed in to the registration journey
     When I provide details of my limited company that is supervised by HMRC and liable for ECL
-    And I select No for whether or not I started AML regulated activity in current FY
     Then I should be on the page that says What is your business sector?
 
     Examples:

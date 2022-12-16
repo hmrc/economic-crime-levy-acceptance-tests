@@ -29,8 +29,9 @@ class AmlActivityStepDef extends BaseStepDef {
   When("^I select (.*) for whether or not I started AML regulated activity in current FY$") { (value: String) =>
     AmlActivityPage
       .navigateTo()
-    SharedActions.selectYesOrNo(value)
-    AmlActivityPage.submitPage()
+    SharedActions
+      .selectYesOrNo(value)
+      .submitPage()
   }
 
   And("^I enter the start date for my AML regulated activity as day (.*) month (.*) and year (.*)$") {
