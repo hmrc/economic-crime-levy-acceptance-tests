@@ -16,7 +16,6 @@
 
 package uk.gov.hmrc.test.ui.pages.registration
 
-import org.openqa.selenium.By
 import uk.gov.hmrc.test.ui.pages.BasePage
 
 object StubGRSJourneyDataPage extends BasePage {

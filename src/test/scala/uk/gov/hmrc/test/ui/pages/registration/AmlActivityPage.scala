@@ -38,16 +38,6 @@ object AmlActivityPage extends BasePage {
     this
   }
 
-  def selectYesOrNoAmlActivity(value: String): this.type = {
-    value match {
-      case "Yes" =>
-        SharedActions.selectLabelByPartialText("Yes")
-      case _     =>
-        SharedActions.selectLabelByPartialText("No")
-    }
-    this
-  }
-
   def enterStartDateForAmlActivity(day: String, month: String, year: String): Unit = {
     sendKeys(By.id("value.day"), day)
     sendKeys(By.id("value.month"), month)

@@ -41,4 +41,14 @@ object SharedActions extends BasePage {
   def clickBackButton(): Unit =
     click(By.partialLinkText("Back"))
 
+  def selectYesOrNo(value: String): this.type = {
+    value match {
+      case "Yes" =>
+        SharedActions.selectLabelByPartialText("Yes")
+      case _     =>
+        SharedActions.selectLabelByPartialText("No")
+    }
+    this
+  }
+
 }

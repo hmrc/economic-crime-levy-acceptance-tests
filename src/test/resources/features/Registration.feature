@@ -4,7 +4,8 @@ Feature: Register for ECL
   Scenario Outline: User registers a <Entity type> supervised by HMRC for AML that is liable for ECL
     Given I am signed in to the registration journey
     When I provide details of my limited company that is supervised by HMRC and liable for ECL
-    Then I should be on the page that says Did you start AML-regulated activity in FY 2022?
+    And I select No for whether or not I started AML regulated activity in current FY
+    Then I should be on the page that says What is your business sector?
 
     Examples:
       | Entity type                   |
@@ -61,26 +62,21 @@ Feature: Register for ECL
     When I do not select an option for my entity type
     Then I should see an error that says Please select your entity type
 
-  Scenario: User does not select their start AML regulated activity questions
+  Scenario: User does not select whether or not they started AML regulated activity in current FY
     Given I am signed in to the registration journey
-    When I do not select an option for my AML regulated activity questions
+    When I do not select an option for whether or not I started AML regulated activity in current FY
     Then I should see an error that says Select an answer
 
-  Scenario: User select No for their start AML regulated activity questions
+  Scenario: User selects Yes and enters a valid date for when they started AML regulated activity
     Given I am signed in to the registration journey
-    When I select No for my AML regulated activity questions
-    Then I should be on the page that says What is your business sector?
-
-  Scenario: User select Yes and enter a valid date for their start AML regulated activity questions
-    Given I am signed in to the registration journey
-    When I select Yes for my AML regulated activity questions
-    And I enter start date for my AML regulated activities as date 10 month 10 and year 2022
+    When I select Yes for whether or not I started AML regulated activity in current FY
+    And I enter the start date for my AML regulated activity as day 10 month 10 and year 2022
     Then I should be on the page that says What is your business sector?
 
   Scenario Outline: User select Yes and enter an invalid date for their start AML regulated activity questions
     Given I am signed in to the registration journey
-    When I select Yes for my AML regulated activity questions
-    And I enter start date for my AML regulated activities as date <Day> month <Month> and year <Year>
+    When I select Yes for whether or not I started AML regulated activity in current FY
+    And I enter the start date for my AML regulated activity as day <Day> month <Month> and year <Year>
     Then I should see an error that says <Expected content>
 
     Examples:

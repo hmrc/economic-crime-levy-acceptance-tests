@@ -15,24 +15,25 @@
  */
 
 package uk.gov.hmrc.test.ui.cucumber.stepdefs
+import uk.gov.hmrc.test.ui.pages.SharedActions
 import uk.gov.hmrc.test.ui.pages.registration.AmlActivityPage
 
 class AmlActivityStepDef extends BaseStepDef {
 
-  When("^I do not select an option for my AML regulated activity questions") { () =>
+  When("^I do not select an option for whether or not I started AML regulated activity in current FY") { () =>
     AmlActivityPage
       .navigateTo()
       .submitPage()
   }
 
-  When("^I select (.*) for my AML regulated activity questions$") { (value: String) =>
+  When("^I select (.*) for whether or not I started AML regulated activity in current FY$") { (value: String) =>
     AmlActivityPage
       .navigateTo()
-      .selectYesOrNoAmlActivity(value)
-      .submitPage()
+    SharedActions.selectYesOrNo(value)
+    AmlActivityPage.submitPage()
   }
 
-  And("^I enter start date for my AML regulated activities as date (.*) month (.*) and year (.*)$") {
+  And("^I enter the start date for my AML regulated activity as day (.*) month (.*) and year (.*)$") {
     (day: String, month: String, year: String) =>
       AmlActivityPage
         .enterStartDateForAmlActivity(day, month, year)
