@@ -25,7 +25,7 @@ object AmlActivityPage extends BasePage {
   val url =
     s"${TestConfiguration.url("economic-crime-levy-registration-frontend")}/register-for-the-economic-crime-levy/did-you-start-aml-activity-in-current-year"
 
-  val heading = "Who is your Anti-Money Laundering (AML) supervisor?"
+  val heading = "Did you start AML-regulated activity in FY 2022?"
 
   def navigateTo(): this.type = {
     navigateToClearAllUrl()
