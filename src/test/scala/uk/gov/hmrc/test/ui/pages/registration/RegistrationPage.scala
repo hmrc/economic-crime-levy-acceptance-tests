@@ -71,6 +71,13 @@ object RegistrationPage extends BasePage {
     this
   }
 
+  def provideAmlRegulated(): this.type = {
+    SharedActions
+      .selectYesOrNo(value = "No")
+      .submitPage()
+    this
+  }
+
   def submitPage(): this.type = {
     SharedActions.clickButton()
     this

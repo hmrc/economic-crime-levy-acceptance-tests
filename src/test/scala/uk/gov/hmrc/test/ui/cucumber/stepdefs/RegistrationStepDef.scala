@@ -33,9 +33,7 @@ class RegistrationStepDef extends BaseStepDef {
       .provideHmrcOrOtherAmlSupervisor()
       .provideEntityType("Limited company")
       .provideGrsData()
-    SharedActions
-      .selectYesOrNo(value = "No")
-      .submitPage()
+      .provideAmlRegulated()
   }
 
   When(
