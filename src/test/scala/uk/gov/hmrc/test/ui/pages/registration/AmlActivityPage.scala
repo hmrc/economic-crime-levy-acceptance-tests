@@ -16,15 +16,16 @@
 
 package uk.gov.hmrc.test.ui.pages.registration
 
+import org.openqa.selenium.By
 import uk.gov.hmrc.test.ui.conf.TestConfiguration
 import uk.gov.hmrc.test.ui.pages.{BasePage, SharedActions}
 
-object AmlSupervisorPage extends BasePage {
+object AmlActivityPage extends BasePage {
 
   val url =
-    s"${TestConfiguration.url("economic-crime-levy-registration-frontend")}/register-for-the-economic-crime-levy/who-is-your-aml-supervisor"
+    s"${TestConfiguration.url("economic-crime-levy-registration-frontend")}/register-for-the-economic-crime-levy/did-you-start-aml-activity-in-current-year"
 
-  val heading = "Who is your Anti-Money Laundering (AML) supervisor?"
+  val heading = "Did you start AML-regulated activity in FY 2022?"
 
   def navigateTo(): this.type = {
     navigateToClearAllUrl()
@@ -32,20 +33,14 @@ object AmlSupervisorPage extends BasePage {
     this
   }
 
-  def provideGcOrFcaAmlSupervisor(value: String): this.type = {
-    SharedActions.selectLabelByPartialText(value)
-    submitPage()
-    this
-  }
-
-  def selectOtherWithNoProfessionalBodyAndSubmit: this.type = {
-    SharedActions.selectLabelByPartialText("Other")
-    submitPage()
-  }
-
   def submitPage(): this.type = {
     SharedActions.clickButton()
     this
   }
 
+  def enterStartDateForAmlActivity(day: String, month: String, year: String): Unit = {
+    sendKeys(By.id("value.day"), day)
+    sendKeys(By.id("value.month"), month)
+    sendKeys(By.id("value.year"), year)
+  }
 }

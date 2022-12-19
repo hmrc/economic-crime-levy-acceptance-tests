@@ -68,6 +68,14 @@ object RegistrationPage extends BasePage {
 
   def provideGrsData(): this.type = {
     submitPage()
+    onPage(AmlActivityPage.heading)
+    this
+  }
+
+  def provideAmlRegulated(): this.type = {
+    SharedActions
+      .selectYesOrNo()
+      .submitPage()
     this
   }
 

@@ -33,6 +33,7 @@ class RegistrationStepDef extends BaseStepDef {
       .provideHmrcOrOtherAmlSupervisor()
       .provideEntityType("Limited company")
       .provideGrsData()
+      .provideAmlRegulated()
   }
 
   When(
@@ -45,7 +46,9 @@ class RegistrationStepDef extends BaseStepDef {
   }
 
   When("""I say that my UK revenue is less than £10.2 million""") { () =>
-    UkRevenuePage.navigateTo().ukRevenueLessThan()
+    UkRevenuePage
+      .navigateTo()
+      .ukRevenueLessThan()
   }
 
   When("""^I say that my AML supervisor is (.*)$""") { (value: String) =>
@@ -55,11 +58,15 @@ class RegistrationStepDef extends BaseStepDef {
   }
 
   When("""I say that my entity type is Other""") { () =>
-    EntityTypePage.navigateTo().otherEntityType()
+    EntityTypePage
+      .navigateTo()
+      .otherEntityType()
   }
 
   When("""I do not select an other professional body when I have selected the Other option""") { () =>
-    AmlSupervisorPage.navigateTo().selectOtherWithNoProfessionalBodyAndSubmit
+    AmlSupervisorPage
+      .navigateTo()
+      .selectOtherWithNoProfessionalBodyAndSubmit
   }
 
   And("^I do not select an option for my UK revenue") { () =>
