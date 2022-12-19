@@ -18,7 +18,7 @@ package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
 import uk.gov.hmrc.test.ui.pages.SharedActions
 import uk.gov.hmrc.test.ui.pages.registration.RegistrationPage._
-import uk.gov.hmrc.test.ui.pages.registration.{AmlSupervisorPage, EntityTypePage, RegistrationPage, UkRevenuePage}
+import uk.gov.hmrc.test.ui.pages.registration.{AmlSupervisorPage, BusinessSectorPage, EntityTypePage, RegistrationPage, UkRevenuePage}
 
 class RegistrationStepDef extends BaseStepDef {
 
@@ -34,6 +34,7 @@ class RegistrationStepDef extends BaseStepDef {
       .provideEntityType("Limited company")
       .provideGrsData()
       .provideAmlRegulated()
+      .provideBusinessSector("Credit institution")
   }
 
   When(
@@ -83,6 +84,12 @@ class RegistrationStepDef extends BaseStepDef {
 
   And("^I do not select an option for my entity type") { () =>
     EntityTypePage
+      .navigateTo()
+      .submitPage()
+  }
+
+  And("^I do not select an option for my business sector") { () =>
+    BusinessSectorPage
       .navigateTo()
       .submitPage()
   }

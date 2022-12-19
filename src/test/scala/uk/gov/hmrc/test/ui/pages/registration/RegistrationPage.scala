@@ -76,9 +76,16 @@ object RegistrationPage extends BasePage {
     SharedActions
       .selectYesOrNo()
       .submitPage()
+    onPage(BusinessSectorPage.heading)
     this
   }
 
+  def provideBusinessSector(value: String): this.type = {
+    SharedActions.selectLabelByPartialText(value)
+    submitPage()
+    onPage(FirstContactNamePage.heading)
+    this
+  }
   def submitPage(): this.type = {
     SharedActions.clickButton()
     this

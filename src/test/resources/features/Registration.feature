@@ -4,7 +4,7 @@ Feature: Register for ECL
   Scenario Outline: User registers a <Entity type> supervised by HMRC for AML that is liable for ECL
     Given I am signed in to the registration journey
     When I provide details of my limited company that is supervised by HMRC and liable for ECL
-    Then I should be on the page that says What is your business sector?
+    Then I should be on the page that says Provide a contact name
 
     Examples:
       | Entity type                   |
@@ -92,3 +92,8 @@ Feature: Register for ECL
       | 01  | 13    | 2021 | The month entered must be a real month                  |
       | 01  | 04    | 2023 | The date must be between 1 April 2022 and 31 March 2023 |
       | 31  | 03    | 2022 | The date must be between 1 April 2022 and 31 March 2023 |
+
+  Scenario: User does not select their business sector
+    Given I am signed in to the registration journey
+    When I do not select an option for my business sector
+    Then I should see an error that says Select a business sector
