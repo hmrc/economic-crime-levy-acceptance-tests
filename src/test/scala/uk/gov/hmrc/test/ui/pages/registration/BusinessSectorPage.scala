@@ -16,6 +16,7 @@
 
 package uk.gov.hmrc.test.ui.pages.registration
 
+import org.openqa.selenium.By
 import uk.gov.hmrc.test.ui.conf.TestConfiguration
 import uk.gov.hmrc.test.ui.pages.{BasePage, SharedActions}
 
@@ -36,4 +37,7 @@ object BusinessSectorPage extends BasePage {
     SharedActions.clickButton()
     this
   }
+
+  def enterBusinessContactPersonDetails(name: String): Unit =
+    sendKeys(By.id("value"), name)
 }

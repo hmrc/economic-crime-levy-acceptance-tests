@@ -19,16 +19,18 @@ package uk.gov.hmrc.test.ui.pages.registration
 import uk.gov.hmrc.test.ui.conf.TestConfiguration
 import uk.gov.hmrc.test.ui.pages.{BasePage, SharedActions}
 
-object FirstContactNamePage extends BasePage {
+object FirstContactEmailPage extends BasePage {
 
   val url =
-    s"${TestConfiguration.url("economic-crime-levy-registration-frontend")}/register-for-the-economic-crime-levy/contact-name"
+    s"${TestConfiguration.url("economic-crime-levy-registration-frontend")}/register-for-the-economic-crime-levy/contact-email-address"
 
-  val heading = "Provide a contact name"
+//  val heading = "Provide a contact name"
 
   def navigateTo(): this.type = {
     navigateToClearAllUrl()
+    println("We are here")
     driver.get(url)
+    println("We are here now")
     this
   }
 
@@ -36,4 +38,5 @@ object FirstContactNamePage extends BasePage {
     SharedActions.clickButton()
     this
   }
+
 }

@@ -18,7 +18,7 @@ package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
 import uk.gov.hmrc.test.ui.pages.SharedActions
 import uk.gov.hmrc.test.ui.pages.registration.RegistrationPage._
-import uk.gov.hmrc.test.ui.pages.registration.{AmlSupervisorPage, BusinessSectorPage, EntityTypePage, RegistrationPage, UkRevenuePage}
+import uk.gov.hmrc.test.ui.pages.registration.{AmlSupervisorPage, BusinessSectorPage, EntityTypePage, FirstContactEmailPage, FirstContactNamePage, FirstContactRolePage, RegistrationPage, UkRevenuePage}
 
 class RegistrationStepDef extends BaseStepDef {
 
@@ -35,6 +35,7 @@ class RegistrationStepDef extends BaseStepDef {
       .provideGrsData()
       .provideAmlRegulated()
       .provideBusinessSector("Credit institution")
+      .provideContactPersonDetails("Oliver Tom", "Account Manager", "a.m@am.com", "12")
   }
 
   When(
@@ -90,6 +91,24 @@ class RegistrationStepDef extends BaseStepDef {
 
   And("^I do not select an option for my business sector") { () =>
     BusinessSectorPage
+      .navigateTo()
+      .submitPage()
+  }
+
+  And("^I do not enter the first contact person's name for my business") { () =>
+    FirstContactNamePage
+      .navigateTo()
+      .submitPage()
+  }
+
+  And("^I do not enter the first contact person's role for my business") { () =>
+    FirstContactRolePage
+      .navigateTo()
+//      .submitPage()
+  }
+
+  And("^I do not enter the first contact person's email for my business") { () =>
+    FirstContactEmailPage
       .navigateTo()
       .submitPage()
   }
