@@ -87,16 +87,41 @@ object RegistrationPage extends BasePage {
     this
   }
 
-  def provideContactPersonDetails(name: String, role: String, email: String, contactNumber: String): this.type = {
-    BusinessSectorPage.enterBusinessContactPersonDetails(name)
+  def provideFirstContactDetails(
+    contactName: String,
+    contactRole: String,
+    emailAddress: String,
+    contactNumber: String
+  ): this.type = {
+    SharedActions.enterDetails(contactName)
     submitPage()
-    BusinessSectorPage.enterBusinessContactPersonDetails(role)
+    SharedActions.enterDetails(contactRole)
     submitPage()
-    BusinessSectorPage.enterBusinessContactPersonDetails(email)
+    SharedActions.enterDetails(emailAddress)
     submitPage()
-    BusinessSectorPage.enterBusinessContactPersonDetails(contactNumber)
+    SharedActions.enterDetails(contactNumber)
     submitPage()
     onPage(SecondContactNamePage.heading)
+    this
+  }
+
+  def provideSecondContactDetails(
+    contactName: String,
+    contactRole: String,
+    emailAddress: String,
+    contactNumber: String
+  ): this.type = {
+    SharedActions
+      .selectYesOrNo("Yes")
+      .submitPage()
+    SharedActions.enterDetails(contactName)
+    submitPage()
+    SharedActions.enterDetails(contactRole)
+    submitPage()
+    SharedActions.enterDetails(emailAddress)
+    submitPage()
+    SharedActions.enterDetails(contactNumber)
+    submitPage()
     this
   }
 

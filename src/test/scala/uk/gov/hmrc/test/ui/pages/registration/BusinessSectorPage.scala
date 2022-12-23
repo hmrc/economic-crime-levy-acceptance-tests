@@ -38,6 +38,4 @@ object BusinessSectorPage extends BasePage {
     this
   }
 
-  def enterBusinessContactPersonDetails(name: String): Unit =
-    sendKeys(By.id("value"), name)
 }

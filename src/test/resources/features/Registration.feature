@@ -4,7 +4,7 @@ Feature: Register for ECL
   Scenario Outline: User registers a <Entity type> supervised by HMRC for AML that is liable for ECL
     Given I am signed in to the registration journey
     When I provide details of my limited company that is supervised by HMRC and liable for ECL
-    Then I should be on the page that says Would you like to add another contact?
+    Then I should be on the page that says Do you want to use this registered address as the main contact address?
 
     Examples:
       | Entity type                   |
@@ -98,17 +98,22 @@ Feature: Register for ECL
     When I do not select an option for my business sector
     Then I should see an error that says Select a business sector
 
-  Scenario: User does not provide their first contact name
+  Scenario: User does not provide their first contact name for the business sector page
     Given I am signed in to the registration journey
     When I do not enter the first contact person's name for my business
     Then I should see an error that says Enter a full name
 
-  Scenario: User does not provide their first contact person's role
+  Scenario: User does not provide their first contact person's role for the business sector page
     Given I am signed in to the registration journey
     When I do not enter the first contact person's role for my business
     Then I should see an error that says Enter a role
-#
-#  Scenario: User does not provide their first contact person's role
-#    Given I am signed in to the registration journey
-#    When I do not enter the first contact person's email for my business
-##    Then I should see an error that says Enter a role
+
+  Scenario: User does not provide their first contact person's email address for the business sector page
+    Given I am signed in to the registration journey
+    When I do not enter the first contact person's email address for my business
+    Then I should see an error that says Enter an email address
+
+  Scenario: User does not provide their first contact person's telephone number for the business sector page
+    Given I am signed in to the registration journey
+    When I do not enter the first contact person's telephone number for my business
+    Then I should see an error that says Enter a telephone number

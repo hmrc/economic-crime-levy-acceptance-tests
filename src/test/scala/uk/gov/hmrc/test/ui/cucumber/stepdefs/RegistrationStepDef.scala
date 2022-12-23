@@ -18,7 +18,7 @@ package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
 import uk.gov.hmrc.test.ui.pages.SharedActions
 import uk.gov.hmrc.test.ui.pages.registration.RegistrationPage._
-import uk.gov.hmrc.test.ui.pages.registration.{AmlSupervisorPage, BusinessSectorPage, EntityTypePage, FirstContactEmailPage, FirstContactNamePage, FirstContactRolePage, RegistrationPage, UkRevenuePage}
+import uk.gov.hmrc.test.ui.pages.registration.{AmlSupervisorPage, BusinessSectorPage, EntityTypePage, FirstContactNamePage, RegistrationPage, UkRevenuePage}
 
 class RegistrationStepDef extends BaseStepDef {
 
@@ -35,7 +35,9 @@ class RegistrationStepDef extends BaseStepDef {
       .provideGrsData()
       .provideAmlRegulated()
       .provideBusinessSector("Credit institution")
-      .provideContactPersonDetails("Oliver Tom", "Account Manager", "a.m@am.com", "12")
+      .provideFirstContactDetails("Oliver Tom", "Account Manager", "test@test.com", "12")
+      .provideSecondContactDetails("Mark", "Account Assistant", "verify@verify.com", "12")
+
   }
 
   When(
@@ -101,15 +103,39 @@ class RegistrationStepDef extends BaseStepDef {
       .submitPage()
   }
 
-  And("^I do not enter the first contact person's role for my business") { () =>
-    FirstContactRolePage
+  When("^I do not enter the first contact person's role for my business") { () =>
+    FirstContactNamePage
       .navigateTo()
-//      .submitPage()
+    SharedActions
+      .enterDetails("Tom")
+    submitPage()
+      .submitPage()
   }
 
-  And("^I do not enter the first contact person's email for my business") { () =>
-    FirstContactEmailPage
+  When("^I do not enter the first contact person's email address for my business") { () =>
+    FirstContactNamePage
       .navigateTo()
+    SharedActions
+      .enterDetails("Tom")
+    submitPage()
+    SharedActions
+      .enterDetails("Account Manager")
+    submitPage()
+      .submitPage()
+  }
+
+  When("^I do not enter the first contact person's telephone number for my business") { () =>
+    FirstContactNamePage
+      .navigateTo()
+    SharedActions
+      .enterDetails("Tom")
+    submitPage()
+    SharedActions
+      .enterDetails("Account Manager")
+    submitPage()
+    SharedActions
+      .enterDetails("verify@test.com")
+    submitPage()
       .submitPage()
   }
 
