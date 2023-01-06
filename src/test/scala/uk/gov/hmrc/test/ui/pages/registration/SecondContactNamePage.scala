@@ -17,30 +17,12 @@
 package uk.gov.hmrc.test.ui.pages.registration
 
 import uk.gov.hmrc.test.ui.conf.TestConfiguration
-import uk.gov.hmrc.test.ui.pages.{BasePage, SharedActions}
+import uk.gov.hmrc.test.ui.pages.BasePage
 
-object UkRevenuePage extends BasePage {
+object SecondContactNamePage extends BasePage {
 
   val url =
-    s"${TestConfiguration.url("economic-crime-levy-registration-frontend")}/register-for-the-economic-crime-levy/what-was-your-uk-revenue"
+    s"${TestConfiguration.url("economic-crime-levy-registration-frontend")}/register-for-the-economic-crime-levy/second-contact"
 
-  val heading = "What was your UK revenue in 2022?"
-
-  def navigateTo(): this.type = {
-    navigateToClearAllUrl()
-    driver.get(url)
-    this
-  }
-
-  def ukRevenueLessThan(): this.type = {
-    SharedActions.selectLabelByPartialText("Less than £10.2 million")
-    submitPage()
-    this
-  }
-
-  def submitPage(): this.type = {
-    SharedActions.clickButton()
-    this
-  }
-
+  val heading = "Would you like to add another contact?"
 }

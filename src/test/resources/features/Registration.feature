@@ -4,7 +4,7 @@ Feature: Register for ECL
   Scenario Outline: User registers a <Entity type> supervised by HMRC for AML that is liable for ECL
     Given I am signed in to the registration journey
     When I provide details of my limited company that is supervised by HMRC and liable for ECL
-    Then I should be on the page that says Provide a contact name
+    Then I should be on the page that says Do you want to use this registered address as the main contact address?
 
     Examples:
       | Entity type                   |
@@ -97,3 +97,46 @@ Feature: Register for ECL
     Given I am signed in to the registration journey
     When I do not select an option for my business sector
     Then I should see an error that says Select a business sector
+
+  Scenario Outline: User does not provide their first contact person's valid name for the business sector page
+    Given I am signed in to the registration journey
+    When I enter the first contact person's name <Name> for my business
+    Then I should see an error that says <Expected content>
+
+    Examples:
+      | Name                                                                                                                                                              | Expected content                         |
+      |                                                                                                                                                                   | Enter a full name                        |
+      | ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyabcdefghijklmnopqrstuvwxyabcdefghijklmnopqrstu1234567890!@£#$%^&*()-+={}[]"';:,.<>/? | Full name must be 160 characters or less |
+
+  Scenario Outline: User does not provide their first contact person's valid role for the business sector page
+    Given I am signed in to the registration journey
+    When I enter the first contact person's role <Role> for my business
+    Then I should see an error that says <Expected content>
+
+    Examples:
+      | Role                                                           | Expected content                   |
+      |                                                                | Enter a role                       |
+      | ABCDEFGHIJKlmnouvwxyz1234567890!@£$%^&#* ()-_+=[]{}":;'\?><,./ | Role must be 60 characters or less |
+
+  Scenario Outline: User does not provide their first contact person's valid email address for the business sector page
+    Given I am signed in to the registration journey
+    When I enter the first contact person's email address <Email address> for my business
+    Then I should see an error that says <Expected content>
+
+    Examples:
+      | Email address | Expected content                                                    |
+      |               | Enter an email address                                              |
+      | email-address | Enter an email address in the correct format, like name@example.com |
+
+
+  Scenario Outline: User does not provide their first contact person's valid contact number for the business sector page
+    Given I am signed in to the registration journey
+    When I enter the first contact person's contact number <Contact number> for my business
+    Then I should see an error that says <Expected content>
+
+    Examples:
+      | Contact number            | Expected content                                                                |
+      |                           | Enter a telephone number                                                        |
+      | 1234567890123456789012345 | Telephone number must be 24 characters or less                                  |
+      | contact number            | Enter a telephone number, like 01632 960 001, 07700 900 982 or +44 808 157 0192 |
+      | 1234567890 1234567890-12  | Enter a telephone number, like 01632 960 001, 07700 900 982 or +44 808 157 0192 |

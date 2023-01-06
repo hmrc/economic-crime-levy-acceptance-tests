@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 HM Revenue & Customs
+ * Copyright 2023 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,7 +18,7 @@ package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
 import uk.gov.hmrc.test.ui.pages.SharedActions
 import uk.gov.hmrc.test.ui.pages.registration.RegistrationPage._
-import uk.gov.hmrc.test.ui.pages.registration.{AmlSupervisorPage, BusinessSectorPage, EntityTypePage, RegistrationPage, UkRevenuePage}
+import uk.gov.hmrc.test.ui.pages.registration.{AmlSupervisorPage, BusinessSectorPage, EntityTypePage, FirstContactNamePage, RegistrationPage, UkRevenuePage}
 
 class RegistrationStepDef extends BaseStepDef {
 
@@ -35,6 +35,9 @@ class RegistrationStepDef extends BaseStepDef {
       .provideGrsData()
       .provideAmlRegulated()
       .provideBusinessSector("Credit institution")
+      .provideFirstContactDetails("Oliver Tom", "Account Manager", "test@test.com", "01632 960 001")
+      .provideSecondContactDetails("Mark 1", "Compliance Officer", "verify@verify.com", "+44 808 157 0192")
+
   }
 
   When(
@@ -92,6 +95,56 @@ class RegistrationStepDef extends BaseStepDef {
     BusinessSectorPage
       .navigateTo()
       .submitPage()
+  }
+
+  And("^I enter the first contact person's name (.*) for my business$") { (contactName: String) =>
+    FirstContactNamePage
+      .navigateTo()
+    SharedActions
+      .enterDetails(contactName)
+    submitPage()
+  }
+
+  When("^I enter the first contact person's role (.*) for my business$") { (contactRole: String) =>
+    FirstContactNamePage
+      .navigateTo()
+    SharedActions
+      .enterDetails("James")
+    submitPage()
+    SharedActions
+      .enterDetails(contactRole)
+    submitPage()
+  }
+
+  When("^I enter the first contact person's email address (.*) for my business$") { (emailAddress: String) =>
+    FirstContactNamePage
+      .navigateTo()
+    SharedActions
+      .enterDetails("Tom")
+    submitPage()
+    SharedActions
+      .enterDetails("Account Director")
+    submitPage()
+    SharedActions
+      .enterDetails(emailAddress)
+    submitPage()
+  }
+
+  When("^I enter the first contact person's contact number (.*) for my business$") { (contactNumber: String) =>
+    FirstContactNamePage
+      .navigateTo()
+    SharedActions
+      .enterDetails("Paul")
+    submitPage()
+    SharedActions
+      .enterDetails("Account Manager")
+    submitPage()
+    SharedActions
+      .enterDetails("verify@test.com")
+    submitPage()
+    SharedActions
+      .enterDetails(contactNumber)
+    submitPage()
   }
 
   Then("^I should be on the page that asks (.*)$") { (value: String) =>

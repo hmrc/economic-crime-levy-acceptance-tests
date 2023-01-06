@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 HM Revenue & Customs
+ * Copyright 2023 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -86,6 +86,45 @@ object RegistrationPage extends BasePage {
     onPage(FirstContactNamePage.heading)
     this
   }
+
+  def provideFirstContactDetails(
+    contactName: String,
+    contactRole: String,
+    emailAddress: String,
+    contactNumber: String
+  ): this.type = {
+    SharedActions.enterDetails(contactName)
+    submitPage()
+    SharedActions.enterDetails(contactRole)
+    submitPage()
+    SharedActions.enterDetails(emailAddress)
+    submitPage()
+    SharedActions.enterDetails(contactNumber)
+    submitPage()
+    onPage(SecondContactNamePage.heading)
+    this
+  }
+
+  def provideSecondContactDetails(
+    contactName: String,
+    contactRole: String,
+    emailAddress: String,
+    contactNumber: String
+  ): this.type = {
+    SharedActions
+      .selectYesOrNo("Yes")
+      .submitPage()
+    SharedActions.enterDetails(contactName)
+    submitPage()
+    SharedActions.enterDetails(contactRole)
+    submitPage()
+    SharedActions.enterDetails(emailAddress)
+    submitPage()
+    SharedActions.enterDetails(contactNumber)
+    submitPage()
+    this
+  }
+
   def submitPage(): this.type = {
     SharedActions.clickButton()
     this
