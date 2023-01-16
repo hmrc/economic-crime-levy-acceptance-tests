@@ -37,7 +37,7 @@ class RegistrationStepDef extends BaseStepDef {
       .provideBusinessSector("Credit institution")
       .provideFirstContactDetails("Oliver Tom", "Account Manager", "test@test.com", "01632 960 001")
       .provideSecondContactDetails("Mark 1", "Compliance Officer", "verify@verify.com", "+44 808 157 0192")
-
+      .provideRegisteredAddress("Yes")
   }
 
   When(
@@ -145,6 +145,24 @@ class RegistrationStepDef extends BaseStepDef {
     SharedActions
       .enterDetails(contactNumber)
     submitPage()
+  }
+
+  When("^I select (.*) to use my registered address as the main contact address$") { (value: String) =>
+    provideUkRevenue()
+      .provideHmrcOrOtherAmlSupervisor()
+      .provideEntityType("Limited company")
+      .provideGrsData()
+      .provideAmlRegulated()
+      .provideBusinessSector("Credit institution")
+      .provideFirstContactDetails("Oliver Tom", "Account Manager", "test@test.com", "01632 960 001")
+      .provideSecondContactDetails("Mark 1", "Compliance Officer", "verify@verify.com", "+44 808 157 0192")
+      .provideRegisteredAddress(value)
+  }
+
+  And("I select (.*) for whether or not my contact address is based in the UK$") { (value: String) =>
+    SharedActions
+      .selectYesOrNo(value)
+      .submitPage()
   }
 
   Then("^I should be on the page that asks (.*)$") { (value: String) =>

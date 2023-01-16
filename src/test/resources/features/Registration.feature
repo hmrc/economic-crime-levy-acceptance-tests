@@ -4,7 +4,7 @@ Feature: Register for ECL
   Scenario Outline: User registers a <Entity type> supervised by HMRC for AML that is liable for ECL
     Given I am signed in to the registration journey
     When I provide details of my limited company that is supervised by HMRC and liable for ECL
-    Then I should be on the page that says Do you want to use this registered address as the main contact address?
+    Then I should be on the page that says Check your answers
 
     Examples:
       | Entity type                   |
@@ -140,3 +140,15 @@ Feature: Register for ECL
       | 1234567890123456789012345 | Telephone number must be 24 characters or less                                  |
       | contact number            | Enter a telephone number, like 01632 960 001, 07700 900 982 or +44 808 157 0192 |
       | 1234567890 1234567890-12  | Enter a telephone number, like 01632 960 001, 07700 900 982 or +44 808 157 0192 |
+
+  Scenario: User does not want to use his registered address as the main contact address but wants to use another UK address
+    Given I am signed in to the registration journey
+    When I select No to use my registered address as the main contact address
+    And I select Yes for whether or not my contact address is based in the UK
+    Then I should be on the page that says Stub Address Lookup Journey Data
+
+  Scenario: User does not want to use his registered address as the main contact address but wants to use another non UK address
+    Given I am signed in to the registration journey
+    When I select No to use my registered address as the main contact address
+    And I select No for whether or not my contact address is based in the UK
+    Then I should be on the page that says Stub Address Lookup Journey Data

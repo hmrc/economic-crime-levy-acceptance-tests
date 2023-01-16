@@ -125,6 +125,12 @@ object RegistrationPage extends BasePage {
     this
   }
 
+  def provideRegisteredAddress(value: String): this.type = {
+    SharedActions
+      .selectYesOrNo(value)
+      .submitPage()
+    this
+  }
   def submitPage(): this.type = {
     SharedActions.clickButton()
     this
