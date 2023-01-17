@@ -147,7 +147,7 @@ class RegistrationStepDef extends BaseStepDef {
     submitPage()
   }
 
-  When("^I select (.*) to use my registered address as the main contact address$") { (value: String) =>
+  And("I provide the details of another UK address as my main contact address") { () =>
     provideUkRevenue()
       .provideHmrcOrOtherAmlSupervisor()
       .provideEntityType("Limited company")
@@ -156,13 +156,27 @@ class RegistrationStepDef extends BaseStepDef {
       .provideBusinessSector("Credit institution")
       .provideFirstContactDetails("Oliver Tom", "Account Manager", "test@test.com", "01632 960 001")
       .provideSecondContactDetails("Mark 1", "Compliance Officer", "verify@verify.com", "+44 808 157 0192")
-      .provideRegisteredAddress(value)
+      .provideRegisteredAddress("No")
+    SharedActions
+      .selectYesOrNo("No")
+      .submitPage()
+    submitPage()
   }
 
-  And("I select (.*) for whether or not my contact address is based in the UK$") { (value: String) =>
+  And("I provide the details of a non UK address as my main contact address") { () =>
+    provideUkRevenue()
+      .provideHmrcOrOtherAmlSupervisor()
+      .provideEntityType("Limited company")
+      .provideGrsData()
+      .provideAmlRegulated()
+      .provideBusinessSector("Credit institution")
+      .provideFirstContactDetails("Oliver Tom", "Account Manager", "test@test.com", "01632 960 001")
+      .provideSecondContactDetails("Mark 1", "Compliance Officer", "verify@verify.com", "+44 808 157 0192")
+      .provideRegisteredAddress("No")
     SharedActions
-      .selectYesOrNo(value)
+      .selectYesOrNo("Yes")
       .submitPage()
+    submitPage()
   }
 
   Then("^I should be on the page that asks (.*)$") { (value: String) =>

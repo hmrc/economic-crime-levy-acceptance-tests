@@ -143,12 +143,10 @@ Feature: Register for ECL
 
   Scenario: User does not want to use his registered address as the main contact address but wants to use another UK address
     Given I am signed in to the registration journey
-    When I select No to use my registered address as the main contact address
-    And I select Yes for whether or not my contact address is based in the UK
-    Then I should be on the page that says Stub Address Lookup Journey Data
+    When I provide the details of another UK address as my main contact address
+    Then I should be on the page that says Check your answers
 
   Scenario: User does not want to use his registered address as the main contact address but wants to use another non UK address
     Given I am signed in to the registration journey
-    When I select No to use my registered address as the main contact address
-    And I select No for whether or not my contact address is based in the UK
-    Then I should be on the page that says Stub Address Lookup Journey Data
+    When I provide the details of a non UK address as my main contact address
+    Then I should be on the page that says Check your answers
