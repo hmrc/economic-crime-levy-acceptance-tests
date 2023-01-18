@@ -141,12 +141,12 @@ Feature: Register for ECL
       | contact number            | Enter a telephone number, like 01632 960 001, 07700 900 982 or +44 808 157 0192 |
       | 1234567890 1234567890-12  | Enter a telephone number, like 01632 960 001, 07700 900 982 or +44 808 157 0192 |
 
-  Scenario: User does not want to use his registered address as the main contact address but wants to use another UK address
+  Scenario: User wants to use another UK address as his registered address for the main contact
     Given I am signed in to the registration journey
     When I provide the details of another UK address as my main contact address
     Then I should be on the page that says Check your answers
 
-  Scenario: User does not want to use his registered address as the main contact address but wants to use another non UK address
+  Scenario: User wants to use another non UK address as his registered address for the main contact
     Given I am signed in to the registration journey
     When I provide the details of a non UK address as my main contact address
     Then I should be on the page that says Check your answers
