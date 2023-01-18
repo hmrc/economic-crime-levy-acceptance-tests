@@ -54,6 +54,12 @@ object SharedActions extends BasePage {
   def enterDetails(name: String): Unit =
     sendKeys(By.id("value"), name)
 
+  def confirmRegisteredAddress(value: String): this.type = {
+    SharedActions
+      .selectYesOrNo(value)
+      .submitPage()
+    this
+  }
   def submitPage(): this.type = {
     SharedActions.clickButton()
     this

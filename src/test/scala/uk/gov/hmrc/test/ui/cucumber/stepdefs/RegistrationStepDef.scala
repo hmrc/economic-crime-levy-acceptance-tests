@@ -37,7 +37,7 @@ class RegistrationStepDef extends BaseStepDef {
       .provideBusinessSector("Credit institution")
       .provideFirstContactDetails("Oliver Tom", "Account Manager", "test@test.com", "01632 960 001")
       .provideSecondContactDetails("Mark 1", "Compliance Officer", "verify@verify.com", "+44 808 157 0192")
-
+      .provideRegisteredAddress("Yes")
   }
 
   When(
@@ -144,6 +144,38 @@ class RegistrationStepDef extends BaseStepDef {
     submitPage()
     SharedActions
       .enterDetails(contactNumber)
+    submitPage()
+  }
+
+  And("I provide the details of another UK address as my main contact address") { () =>
+    provideUkRevenue()
+      .provideHmrcOrOtherAmlSupervisor()
+      .provideEntityType("Limited company")
+      .provideGrsData()
+      .provideAmlRegulated()
+      .provideBusinessSector("Credit institution")
+      .provideFirstContactDetails("Oliver Tom", "Account Manager", "test@test.com", "01632 960 001")
+      .provideSecondContactDetails("Mark 1", "Compliance Officer", "verify@verify.com", "+44 808 157 0192")
+      .provideRegisteredAddress("No")
+    SharedActions
+      .selectYesOrNo("No")
+      .submitPage()
+    submitPage()
+  }
+
+  And("I provide the details of a non UK address as my main contact address") { () =>
+    provideUkRevenue()
+      .provideHmrcOrOtherAmlSupervisor()
+      .provideEntityType("Limited company")
+      .provideGrsData()
+      .provideAmlRegulated()
+      .provideBusinessSector("Credit institution")
+      .provideFirstContactDetails("Oliver Tom", "Account Manager", "test@test.com", "01632 960 001")
+      .provideSecondContactDetails("Mark 1", "Compliance Officer", "verify@verify.com", "+44 808 157 0192")
+      .provideRegisteredAddress("No")
+    SharedActions
+      .selectYesOrNo("Yes")
+      .submitPage()
     submitPage()
   }
 
