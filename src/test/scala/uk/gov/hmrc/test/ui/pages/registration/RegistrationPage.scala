@@ -33,14 +33,14 @@ object RegistrationPage extends BasePage {
   def startAndSignIn(): this.type = {
     submitPage()
     SharedActions.clickById("submit-top")
-    onPage(UkRevenuePage.heading)
+    onPage(AmlRegulatedActivityPage.heading)
     this
   }
 
-  def provideUkRevenue(value: String = "Equal to or more than £10.2 million"): this.type = {
-    SharedActions.selectLabelByPartialText(value)
+  def provideUkRevenue(value: String = "10200000"): this.type = {
+    SharedActions.enterDetails(value)
     submitPage()
-    onPage(AmlSupervisorPage.heading)
+    onPage(EntityTypePage.heading)
     this
   }
 
@@ -55,10 +55,17 @@ object RegistrationPage extends BasePage {
     }
 
     submitPage()
-    onPage(EntityTypePage.heading)
+    onPage(AmlAccountingActivityPage.heading)
     this
   }
 
+  def provideRelevantAccountingPeriod(): this.type = {
+    SharedActions
+      .selectYesOrNo("Yes")
+      .submitPage()
+    onPage(UkRevenuePage.heading)
+    this
+  }
   def provideEntityType(value: String): this.type = {
     SharedActions.selectLabelByPartialText(value)
     submitPage()
@@ -68,15 +75,15 @@ object RegistrationPage extends BasePage {
 
   def provideGrsData(): this.type = {
     submitPage()
-    onPage(AmlActivityPage.heading)
+    onPage(BusinessSectorPage.heading)
     this
   }
 
   def provideAmlRegulated(): this.type = {
     SharedActions
-      .selectYesOrNo()
+      .selectYesOrNo("Yes")
       .submitPage()
-    onPage(BusinessSectorPage.heading)
+    onPage(AmlSupervisorPage.heading)
     this
   }
 
@@ -122,6 +129,8 @@ object RegistrationPage extends BasePage {
     submitPage()
     SharedActions.enterDetails(contactNumber)
     submitPage()
+//    submitPage()
+    onPage(ContactAddressPage.heading)
     this
   }
 

@@ -16,30 +16,15 @@ Feature: Register for ECL
       | Scottish partnership          |
       | Sole trader                   |
 
-  Scenario: User registers a limited company supervised by an other professional body for AML that is liable for ECL
+  Scenario: User does not select whether or not they carry out AML-regulated activity between 1 April 2022 and 31 March 2023
     Given I am signed in to the registration journey
-    When I provide details of my limited company that is supervised by an other professional body and liable for ECL
-    Then I should be on the page that says Did you start AML-regulated activity in FY 2022?
+    When I do not select an option for whether or not I started AML regulated activity between 1 April 2022 and 31 March 2023
+    Then I should see an error that says Select an answer
 
-  Scenario: User's UK revenue is less than £10.2 million
+  Scenario: User selects no on whether or not they carry out AML-regulated activity between 1 April 2022 and 31 March 2023
     Given I am signed in to the registration journey
-    When I say that my UK revenue is less than £10.2 million
-    Then I should be on the page that says You do not need to register for the Economic Crime Levy
-
-  Scenario: User does not select their UK revenue
-    Given I am signed in to the registration journey
-    When I do not select an option for my UK revenue
-    Then I should see an error that says Select your UK revenue for 2022
-
-  Scenario Outline: User's AML supervisor is GC or FCA
-    Given I am signed in to the registration journey
-    When I say that my AML supervisor is <AML supervisor>
-    Then I should be on the page that says <Expected content>
-
-    Examples:
-      | AML supervisor              | Expected content                                                                |
-      | Gambling Commission         | You need to register with the Gambling Commission (GC) to pay the levy          |
-      | Financial Conduct Authority | You need to register with the Financial Conduct Authority (FCA) to pay the levy |
+    When I select No on whether or not I carried out AML-regulated activity between 1 April 2022 and 31 March 2023
+    Then I should see an error that says You do not need to register for the Economic Crime Levy
 
   Scenario: User does not select their AML supervisor
     Given I am signed in to the registration journey
@@ -51,47 +36,74 @@ Feature: Register for ECL
     When I do not select an other professional body when I have selected the Other option
     Then I should see an error that says Enter the name of your professional body or select from the list
 
-  Scenario: User's entity type is Other
+  Scenario Outline: User's AML supervisor is GC or FCA
     Given I am signed in to the registration journey
-    When I say that my entity type is Other
-    Then I should be on the page that says Sorry, we’re experiencing technical difficulties
+    When I say that my AML supervisor is <AML supervisor>
+    Then I should be on the page that says <Expected content>
+
+    Examples:
+      | AML supervisor              | Expected content                                                                |
+      | Gambling Commission         | You need to register with the Gambling Commission (GC) to pay the levy          |
+      | Financial Conduct Authority | You need to register with the Financial Conduct Authority (FCA) to pay the levy |
+
+  Scenario: User does not select whether or not their relevant accounting period 12 months
+    Given I am signed in to the registration journey
+    When I do not select an option for whether or not my relevant accounting period 12 months
+    Then I should see an error that says Select an answer
+
+  Scenario: User selects no on whether or not their relevant accounting period 12 months
+    Given I am signed in to the registration journey
+    When I select No on whether or not my relevant accounting period 12 months
+    Then I should see an error that says How long is your relevant accounting period?
+
+  Scenario: User does not select how long is their relevant accounting period?
+    Given I am signed in to the registration journey
+    When I do not enter the length of my accounting period in days
+    Then I should see an error that says Enter the length
+
+  Scenario Outline: User enters an invalid length for their relevant accounting period
+    Given I am signed in to the registration journey
+    When I enter the length of my accounting period in days <Days>
+    Then I should see an error that says <Expected content>
+    Examples:
+      | Days  | Expected content                      |
+      |       | Enter the length                      |
+      | 0     | Length must be between 1 and 999 days |
+      | -1    | Length must be between 1 and 999 days |
+      | 1000  | Length must be between 1 and 999 days |
+      | asdwa | Length must be a whole number         |
+      | 245.0 | Length must be a whole number         |
+
+  Scenario Outline: User enters an invalid amount for UK revenue for their relevant accounting period
+    Given I am signed in to the registration journey
+    When I enter the UK revenue <UK Revenue> for the relevant accounting period
+    Then I should see an error that says <Expected content>
+    Examples:
+      | UK Revenue | Expected content                                              |
+      |            | Enter the UK revenue                                          |
+      | -1         | UK revenue must be between 0 and 99,999,999,999               |
+      | asdfg      | UK revenue must be a number rounded down to the nearest pound |
+      | 99.999     | UK revenue must be a number rounded down to the nearest pound |
+      | 1019999.99 | UK revenue must be a number rounded down to the nearest pound |
+
+  Scenario Outline: User enters an valid amount for UK revenue but less than 10.2M for their relevant accounting period
+    Given I am signed in to the registration journey
+    When I enter the UK revenue <UK Revenue> for the relevant accounting period
+    Then I should be on the page that says You do not need to register for the Economic Crime Levy
+    Examples:
+      | UK Revenue |
+      | 0          |
+      | 10199999   |
 
   Scenario: User does not select their entity type
     Given I am signed in to the registration journey
     When I do not select an option for my entity type
     Then I should see an error that says Please select your entity type
 
-  Scenario: User does not select whether or not they started AML regulated activity in current FY
+  Scenario: User's entity type is Other
     Given I am signed in to the registration journey
-    When I do not select an option for whether or not I started AML regulated activity in current FY
-    Then I should see an error that says Select an answer
-
-  Scenario: User selects Yes and enters a valid date for when they started AML regulated activity
-    Given I am signed in to the registration journey
-    When I select Yes for whether or not I started AML regulated activity in current FY
-    And I enter the start date for my AML regulated activity as day 10 month 10 and year 2022
-    Then I should be on the page that says What is your business sector?
-
-  Scenario Outline: User select Yes and enter an invalid date for their start AML regulated activity questions
-    Given I am signed in to the registration journey
-    When I select Yes for whether or not I started AML regulated activity in current FY
-    And I enter the start date for my AML regulated activity as day <Day> month <Month> and year <Year>
-    Then I should see an error that says <Expected content>
-
-    Examples:
-      | Day | Month | Year | Expected content                                        |
-      |     |       |      | Enter a date                                            |
-      |     | 01    | 2022 | Enter a day                                             |
-      | 01  |       | 2022 | Enter a month                                           |
-      | 01  | 04    |      | Enter a year                                            |
-      | dd  | 02    | 2023 | The day entered must be a real day                      |
-      | 10  | mm    | 2023 | The month entered must be a real month                  |
-      | 10  | 02    | yyyy | The year entered must be a real year                    |
-      | 0   | 0     | 0    | The date entered must be a real date                    |
-      | 30  | 02    | 2023 | The date entered must be a real date                    |
-      | 01  | 13    | 2021 | The month entered must be a real month                  |
-      | 01  | 04    | 2023 | The date must be between 1 April 2022 and 31 March 2023 |
-      | 31  | 03    | 2022 | The date must be between 1 April 2022 and 31 March 2023 |
+    When I say that my entity type is Other
+    Then I should be on the page that says Sorry, we’re experiencing technical difficulties
 
   Scenario: User does not select their business sector
     Given I am signed in to the registration journey

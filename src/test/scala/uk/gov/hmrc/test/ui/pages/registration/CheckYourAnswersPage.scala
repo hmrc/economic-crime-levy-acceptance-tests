@@ -16,16 +16,15 @@
 
 package uk.gov.hmrc.test.ui.pages.registration
 
-import org.openqa.selenium.By
 import uk.gov.hmrc.test.ui.conf.TestConfiguration
 import uk.gov.hmrc.test.ui.pages.{BasePage, SharedActions}
 
-object AmlActivityPage extends BasePage {
+object CheckYourAnswersPage extends BasePage {
 
   val url =
-    s"${TestConfiguration.url("economic-crime-levy-registration-frontend")}/register-for-the-economic-crime-levy/did-you-start-aml-activity-in-current-year"
+    s"${TestConfiguration.url("economic-crime-levy-registration-frontend")}/register-for-the-economic-crime-levy/check-your-answers"
 
-  val heading = "Did you start AML-regulated activity in FY 2022?"
+  val heading = "Check your answers"
 
   def navigateTo(): this.type = {
     navigateToClearAllUrl()
@@ -38,9 +37,4 @@ object AmlActivityPage extends BasePage {
     this
   }
 
-  def enterStartDateForAmlActivity(day: String, month: String, year: String): Unit = {
-    sendKeys(By.id("value.day"), day)
-    sendKeys(By.id("value.month"), month)
-    sendKeys(By.id("value.year"), year)
-  }
 }
