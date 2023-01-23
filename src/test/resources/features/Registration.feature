@@ -16,15 +16,15 @@ Feature: Register for ECL
       | Scottish partnership          |
       | Sole trader                   |
 
-  Scenario: User does not select whether or not they carry out AML-regulated activity between 1 April 2022 and 31 March 2023
+  Scenario: User does not select whether or not they started AML regulated activity in current FY
     Given I am signed in to the registration journey
-    When I do not select an option for whether or not I started AML regulated activity between 1 April 2022 and 31 March 2023
+    When I do not select an option for whether or not I started AML regulated activity in current FY
     Then I should see an error that says Select an answer
 
-  Scenario: User selects no on whether or not they carry out AML-regulated activity between 1 April 2022 and 31 March 2023
+  Scenario: User does not select whether or not they started AML regulated activity in current FY
     Given I am signed in to the registration journey
-    When I select No on whether or not I carried out AML-regulated activity between 1 April 2022 and 31 March 2023
-    Then I should see an error that says You do not need to register for the Economic Crime Levy
+    When I select No on whether or not I carried out AML-regulated activity in current FY
+    Then I should be on the page that says You do not need to register for the Economic Crime Levy
 
   Scenario: User does not select their AML supervisor
     Given I am signed in to the registration journey

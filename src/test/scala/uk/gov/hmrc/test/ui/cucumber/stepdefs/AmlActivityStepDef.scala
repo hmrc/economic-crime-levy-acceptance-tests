@@ -21,7 +21,7 @@ import uk.gov.hmrc.test.ui.pages.registration._
 class AmlActivityStepDef extends BaseStepDef {
 
   When(
-    "^I do not select an option for whether or not I started AML regulated activity between 1 April 2022 and 31 March 2023"
+    "^I do not select an option for whether or not I started AML regulated activity in current FY"
   ) { () =>
     AmlRegulatedActivityPage
       .navigateTo()
@@ -29,7 +29,7 @@ class AmlActivityStepDef extends BaseStepDef {
   }
 
   When(
-    "^I select (.*) on whether or not I carried out AML-regulated activity between 1 April 2022 and 31 March 2023$"
+    "^I select (.*) on whether or not I carried out AML-regulated activity in current FY$"
   ) { (value: String) =>
     AmlRegulatedActivityPage
       .navigateTo()
