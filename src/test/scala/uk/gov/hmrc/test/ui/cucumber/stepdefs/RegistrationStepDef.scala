@@ -18,7 +18,7 @@ package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
 import uk.gov.hmrc.test.ui.pages.SharedActions
 import uk.gov.hmrc.test.ui.pages.registration.RegistrationPage._
-import uk.gov.hmrc.test.ui.pages.registration.{AmlSupervisorPage, BusinessSectorPage, EntityTypePage, FirstContactNamePage, RegistrationPage, UkRevenuePage}
+import uk.gov.hmrc.test.ui.pages.registration._
 
 class RegistrationStepDef extends BaseStepDef {
 
@@ -29,11 +29,12 @@ class RegistrationStepDef extends BaseStepDef {
   }
 
   When("""I provide details of my limited company that is supervised by HMRC and liable for ECL""") { () =>
-    provideUkRevenue()
+    provideAmlRegulated()
       .provideHmrcOrOtherAmlSupervisor()
+      .provideRelevantAccountingPeriod()
+      .provideUkRevenue()
       .provideEntityType("Limited company")
       .provideGrsData()
-      .provideAmlRegulated()
       .provideBusinessSector("Credit institution")
       .provideFirstContactDetails("Oliver Tom", "Account Manager", "test@test.com", "01632 960 001")
       .provideSecondContactDetails("Mark 1", "Compliance Officer", "verify@verify.com", "+44 808 157 0192")
@@ -47,12 +48,6 @@ class RegistrationStepDef extends BaseStepDef {
       .provideHmrcOrOtherAmlSupervisor("Other")
       .provideEntityType("Limited company")
       .provideGrsData()
-  }
-
-  When("""I say that my UK revenue is less than £10.2 million""") { () =>
-    UkRevenuePage
-      .navigateTo()
-      .ukRevenueLessThan()
   }
 
   When("""^I say that my AML supervisor is (.*)$""") { (value: String) =>
@@ -71,12 +66,6 @@ class RegistrationStepDef extends BaseStepDef {
     AmlSupervisorPage
       .navigateTo()
       .selectOtherWithNoProfessionalBodyAndSubmit
-  }
-
-  And("^I do not select an option for my UK revenue") { () =>
-    UkRevenuePage
-      .navigateTo()
-      .submitPage()
   }
 
   And("^I do not select an option for my AML supervisor") { () =>
@@ -148,11 +137,12 @@ class RegistrationStepDef extends BaseStepDef {
   }
 
   And("I provide the details of another UK address as my main contact address") { () =>
-    provideUkRevenue()
+    provideAmlRegulated()
       .provideHmrcOrOtherAmlSupervisor()
+      .provideRelevantAccountingPeriod()
+      .provideUkRevenue()
       .provideEntityType("Limited company")
       .provideGrsData()
-      .provideAmlRegulated()
       .provideBusinessSector("Credit institution")
       .provideFirstContactDetails("Oliver Tom", "Account Manager", "test@test.com", "01632 960 001")
       .provideSecondContactDetails("Mark 1", "Compliance Officer", "verify@verify.com", "+44 808 157 0192")
@@ -164,11 +154,12 @@ class RegistrationStepDef extends BaseStepDef {
   }
 
   And("I provide the details of a non UK address as my main contact address") { () =>
-    provideUkRevenue()
+    provideAmlRegulated()
       .provideHmrcOrOtherAmlSupervisor()
+      .provideRelevantAccountingPeriod()
+      .provideUkRevenue()
       .provideEntityType("Limited company")
       .provideGrsData()
-      .provideAmlRegulated()
       .provideBusinessSector("Credit institution")
       .provideFirstContactDetails("Oliver Tom", "Account Manager", "test@test.com", "01632 960 001")
       .provideSecondContactDetails("Mark 1", "Compliance Officer", "verify@verify.com", "+44 808 157 0192")
@@ -179,6 +170,14 @@ class RegistrationStepDef extends BaseStepDef {
     submitPage()
   }
 
+  When("I enter the UK revenue (.*)for the relevant accounting period$") { (revenue: String) =>
+    provideAmlRegulated()
+      .provideHmrcOrOtherAmlSupervisor()
+      .provideRelevantAccountingPeriod()
+    SharedActions
+      .enterDetails(revenue)
+    submitPage()
+  }
   Then("^I should be on the page that asks (.*)$") { (value: String) =>
     SharedActions.assertPartialTextIsDisplayed(value)
   }

@@ -16,15 +16,20 @@
 
 package uk.gov.hmrc.test.ui.pages.registration
 
+import org.openqa.selenium.By
 import uk.gov.hmrc.test.ui.conf.TestConfiguration
+import uk.gov.hmrc.test.ui.pages.utils.EclTaxYear
 import uk.gov.hmrc.test.ui.pages.{BasePage, SharedActions}
 
-object UkRevenuePage extends BasePage {
+object AmlRegulatedActivityPage extends BasePage {
 
   val url =
-    s"${TestConfiguration.url("economic-crime-levy-registration-frontend")}/register-for-the-economic-crime-levy/uk-revenue-for-accounting-period"
+    s"${TestConfiguration.url("economic-crime-levy-registration-frontend")}/register-for-the-economic-crime-levy/did-you-carry-out-aml-regulated-activity"
 
-  val heading = "What was your UK revenue for the relevant accounting period?"
+  val expectedTaxYearStart = EclTaxYear.currentFyStartYear
+  val expectedTaxYearEnd   = EclTaxYear.currentFyEndYear
+  val heading              =
+    "Did you carry out AML-regulated activity between 1 April " + expectedTaxYearStart + " and 31 March " + expectedTaxYearEnd + "?"
 
   def navigateTo(): this.type = {
     navigateToClearAllUrl()
@@ -32,14 +37,14 @@ object UkRevenuePage extends BasePage {
     this
   }
 
-  def ukRevenueLessThan(): this.type = {
-    SharedActions.selectLabelByPartialText("Less than £10.2 million")
-    submitPage()
-    this
-  }
   def submitPage(): this.type = {
     SharedActions.clickButton()
     this
   }
 
+  def enterStartDateForAmlActivity(day: String, month: String, year: String): Unit = {
+    sendKeys(By.id("value.day"), day)
+    sendKeys(By.id("value.month"), month)
+    sendKeys(By.id("value.year"), year)
+  }
 }

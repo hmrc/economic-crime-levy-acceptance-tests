@@ -16,28 +16,57 @@
 
 package uk.gov.hmrc.test.ui.cucumber.stepdefs
 import uk.gov.hmrc.test.ui.pages.SharedActions
-import uk.gov.hmrc.test.ui.pages.registration.AmlActivityPage
-
+import uk.gov.hmrc.test.ui.pages.SharedActions.submitPage
+import uk.gov.hmrc.test.ui.pages.registration._
 class AmlActivityStepDef extends BaseStepDef {
 
-  When("^I do not select an option for whether or not I started AML regulated activity in current FY") { () =>
-    AmlActivityPage
+  When(
+    "^I do not select an option for whether or not I started AML regulated activity in current FY"
+  ) { () =>
+    AmlRegulatedActivityPage
       .navigateTo()
       .submitPage()
   }
 
-  When("^I select (.*) for whether or not I started AML regulated activity in current FY$") { (value: String) =>
-    AmlActivityPage
+  When(
+    "^I select (.*) on whether or not I carried out AML-regulated activity in current FY$"
+  ) { (value: String) =>
+    AmlRegulatedActivityPage
       .navigateTo()
     SharedActions
       .selectYesOrNo(value)
       .submitPage()
   }
 
-  And("^I enter the start date for my AML regulated activity as day (.*) month (.*) and year (.*)$") {
-    (day: String, month: String, year: String) =>
-      AmlActivityPage
-        .enterStartDateForAmlActivity(day, month, year)
-      AmlActivityPage.submitPage()
+  When(
+    "^I do not select an option for whether or not my relevant accounting period 12 months"
+  ) { () =>
+    AmlAccountingActivityPage
+      .navigateTo()
+      .submitPage()
+  }
+
+  When(
+    "^I select (.*) on whether or not my relevant accounting period 12 months$"
+  ) { (value: String) =>
+    AmlAccountingActivityPage
+      .navigateTo()
+    SharedActions
+      .selectYesOrNo(value)
+      .submitPage()
+  }
+
+  When("^I do not enter the length of my accounting period in days") { () =>
+    AmlAccountingPeriodPage
+      .navigateTo()
+      .submitPage()
+  }
+
+  When("^I enter the length of my accounting period in days (.*)$") { (accountingPeriod: String) =>
+    AmlAccountingPeriodPage
+      .navigateTo()
+    SharedActions
+      .enterDetails(accountingPeriod)
+    submitPage()
   }
 }

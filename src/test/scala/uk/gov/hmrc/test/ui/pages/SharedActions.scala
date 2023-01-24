@@ -36,9 +36,10 @@ object SharedActions extends BasePage {
     driver.findElement(By.id(id)).click()
 
   def clickButton(): Unit =
-    findElementByCssSelector(".govuk-button").click()
+//    findElementByCssSelector(".govuk-button").click()
+    click(By.className("govuk-button"))
 
-  def clickBackButton(): Unit =
+  def clickBackButton(): Unit          =
     click(By.partialLinkText("Back"))
 
   def selectYesOrNo(value: String = "No"): this.type = {
@@ -50,9 +51,8 @@ object SharedActions extends BasePage {
     }
     this
   }
-
   def enterDetails(name: String): Unit =
-    sendKeys(By.id("value"), name)
+    sendKeys(By.id("value"), name.trim())
 
   def confirmRegisteredAddress(value: String): this.type = {
     SharedActions
