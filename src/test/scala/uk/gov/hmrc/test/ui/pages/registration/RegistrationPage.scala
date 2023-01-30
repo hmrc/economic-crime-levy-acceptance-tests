@@ -129,7 +129,6 @@ object RegistrationPage extends BasePage {
     submitPage()
     SharedActions.enterDetails(contactNumber)
     submitPage()
-//    submitPage()
     onPage(ContactAddressPage.heading)
     this
   }
