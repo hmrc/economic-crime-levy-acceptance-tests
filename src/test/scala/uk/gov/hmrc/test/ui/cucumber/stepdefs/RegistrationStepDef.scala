@@ -178,6 +178,12 @@ class RegistrationStepDef extends BaseStepDef {
       .enterDetails(revenue)
     submitPage()
   }
+  And("I go to check your answers page directly without providing answers for any of the previous page questions") {
+    () =>
+      CheckYourAnswersPage
+        .navigateTo()
+  }
+
   Then("^I should be on the page that asks (.*)$") { (value: String) =>
     SharedActions.assertPartialTextIsDisplayed(value)
   }

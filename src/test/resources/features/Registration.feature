@@ -162,3 +162,9 @@ Feature: Register for ECL
     Given I am signed in to the registration journey
     When I provide the details of a non UK address as my main contact address
     Then I should be on the page that says Check your answers
+
+  Scenario: User wants to go to check your answers page directly without providing any of the previous pages details
+    Given I am signed in to the registration journey
+    When I go to check your answers page directly without providing answers for any of the previous page questions
+    Then I should be on the page that says The answers you provided are not valid
+
