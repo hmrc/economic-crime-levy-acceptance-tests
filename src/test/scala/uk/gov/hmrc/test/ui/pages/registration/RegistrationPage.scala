@@ -139,6 +139,12 @@ object RegistrationPage extends BasePage {
       .submitPage()
     this
   }
+
+  def provideCheckYourAnswers(): this.type = {
+    submitPage()
+    this
+  }
+
   def submitPage(): this.type = {
     SharedActions.clickButton()
     this
