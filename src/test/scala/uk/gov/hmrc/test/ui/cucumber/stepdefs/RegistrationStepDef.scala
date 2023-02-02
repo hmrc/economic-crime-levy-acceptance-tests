@@ -39,6 +39,7 @@ class RegistrationStepDef extends BaseStepDef {
       .provideFirstContactDetails("Oliver Tom", "Account Manager", "test@test.com", "01632 960 001")
       .provideSecondContactDetails("Mark 1", "Compliance Officer", "verify@verify.com", "+44 808 157 0192")
       .provideRegisteredAddress("Yes")
+      .provideCheckYourAnswers()
   }
 
   When(
