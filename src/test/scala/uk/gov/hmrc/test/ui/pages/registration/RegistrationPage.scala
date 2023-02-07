@@ -176,7 +176,6 @@ object RegistrationPage extends BasePage {
       .changeAmlSupervisor()
       .changeUkRevenue()
       .changeAccountingPeriod()
-      .changeAmlRegulatedActivity()
     this
   }
   def provideChangeAmlRegulatedActivity(): this.type = {

@@ -185,6 +185,11 @@ Feature: Register for ECL
     And I select No on whether or not to use a different UK address as my main contact address
     Then I should be on the page that says Check your answers
 
+  Scenario: User wants to change the the organisation details before submitting the registration
+    Given I am signed in to the registration journey
+    When I click on the change link and edit my organisation details
+    Then I should be on the page that says Check your answers
+
   Scenario: User wants to change the AML regulated activity of the organisation before submitting the registration
     Given I am signed in to the registration journey
     When I click on the change link and select No on whether or not I carried out AML-regulated activity in current FY
