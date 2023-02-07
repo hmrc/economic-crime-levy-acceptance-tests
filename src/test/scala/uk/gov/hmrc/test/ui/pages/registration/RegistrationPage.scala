@@ -55,7 +55,7 @@ object RegistrationPage extends BasePage {
     }
 
     submitPage()
-    onPage(AmlAccountingActivityPage.heading)
+//    onPage(AmlAccountingActivityPage.heading)
     this
   }
 
@@ -137,6 +137,57 @@ object RegistrationPage extends BasePage {
     SharedActions
       .selectYesOrNo(value)
       .submitPage()
+    this
+  }
+
+  def provideChangeFirstContactDetails(): this.type = {
+    ChangeContactDetailsPage
+      .changeFirstContactName()
+      .changeFirstContactRole()
+      .changeFirstContactEmail()
+      .changeFirstContactTelephoneNumber()
+    this
+  }
+
+  def provideChangeSecondContactDetails(): this.type = {
+    ChangeContactDetailsPage
+      .changeSecondContactName()
+      .changeSecondContactRole()
+      .changeSecondContactEmail()
+      .changeSecondContactTelephoneNumber()
+    this
+  }
+
+  def provideChangeSecondaryContact(): this.type = {
+    ChangeContactDetailsPage
+      .changeSecondaryContact()
+    this
+  }
+
+  def provideChangeRegisteredAddress(): this.type = {
+    ChangeContactDetailsPage
+      .changeRegisteredAddress()
+    this
+  }
+
+  def provideChangeOrganisationDetails(): this.type = {
+    ChangeOrganisationDetails
+      .changeBusinessSector()
+      .changeAmlSupervisor()
+      .changeUkRevenue()
+      .changeAccountingPeriod()
+      .changeAmlRegulatedActivity()
+    this
+  }
+  def provideChangeAmlRegulatedActivity(): this.type = {
+    ChangeOrganisationDetails
+      .changeAmlRegulatedActivity()
+    this
+  }
+
+  def provideChangeEntityType(): this.type = {
+    ChangeOrganisationDetails
+      .changeEntityType()
     this
   }
 
