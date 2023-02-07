@@ -16,7 +16,6 @@
 
 package uk.gov.hmrc.test.ui.pages.registration
 
-import org.openqa.selenium.By
 import uk.gov.hmrc.test.ui.pages.{BasePage, SharedActions}
 
 object ChangeOrganisationDetails extends BasePage {
@@ -44,8 +43,13 @@ object ChangeOrganisationDetails extends BasePage {
 
   def changeAmlSupervisor(): this.type = {
     clickByCssSelector(cssForChangeAmlSupervisor)
-    RegistrationPage
-      .provideHmrcOrOtherAmlSupervisor("Other")
+    SharedActions
+      .selectLabelByPartialText("Other")
+    SharedActions
+      .clickById("otherProfessionalBody")
+    SharedActions
+      .clickById("otherProfessionalBody__option--4")
+    submitPage()
     this
   }
 

@@ -179,13 +179,13 @@ Feature: Register for ECL
     And I select No on whether or not to add a secondary contact details
     Then I should be on the page that says Check your answers
 
-  Scenario: User wants to change the UK registered address before submitting the registration
+  Scenario: User wants to change the contact address before submitting the registration
     Given I am signed in to the registration journey
     When I click on the change link to modify the registered address
     And I select No on whether or not to use a different UK address as my main contact address
     Then I should be on the page that says Check your answers
 
-  Scenario: User wants to change the the organisation details before submitting the registration
+  Scenario: User wants to change the the organisation details (Business sector, AML supervisor, UK revenue and Accounting Period) before submitting the registration
     Given I am signed in to the registration journey
     When I click on the change link and edit my organisation details
     Then I should be on the page that says Check your answers

@@ -55,7 +55,7 @@ object RegistrationPage extends BasePage {
     }
 
     submitPage()
-//    onPage(AmlAccountingActivityPage.heading)
+    onPage(AmlAccountingActivityPage.heading)
     this
   }
 
