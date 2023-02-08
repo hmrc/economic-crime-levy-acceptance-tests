@@ -17,6 +17,7 @@
 package uk.gov.hmrc.test.ui.pages.registration
 
 import uk.gov.hmrc.test.ui.conf.TestConfiguration
+import uk.gov.hmrc.test.ui.pages.registration.BusinessSectorPage.cssForSaveAndContinue
 import uk.gov.hmrc.test.ui.pages.{BasePage, SharedActions}
 
 object RegistrationPage extends BasePage {
@@ -74,7 +75,7 @@ object RegistrationPage extends BasePage {
   }
 
   def provideGrsData(): this.type = {
-    submitPage()
+    clickByCssSelector(cssForSaveAndContinue)
     onPage(BusinessSectorPage.heading)
     this
   }

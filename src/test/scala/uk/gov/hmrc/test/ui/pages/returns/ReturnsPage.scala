@@ -18,18 +18,35 @@ package uk.gov.hmrc.test.ui.pages.returns
 
 import org.openqa.selenium.By
 import uk.gov.hmrc.test.ui.conf.TestConfiguration
-import uk.gov.hmrc.test.ui.pages.BasePage
+import uk.gov.hmrc.test.ui.pages.{BasePage, SharedActions}
 
-object ReturnsLoginPage extends BasePage {
+object ReturnsPage extends BasePage {
 
-  val returnsAuthLoginPageUrl =
+  val url =
     s"${TestConfiguration.url("economic-crime-levy-returns-frontend")}/submit-economic-crime-levy-return/"
 
-  def navigateToUrl() = driver.get(returnsAuthLoginPageUrl)
+  def navigateTo(): this.type = {
+    navigateToClearAllUrl()
+    driver.get(url)
+    this
+  }
 
-  def enterEnrolmentDetails(enrolmentKey: String, identifierName: String, identifierValue: String): Unit = {
+  def startAndSignIn(): this.type = {
+    submitPage()
+    submitPage()
+    onPage(AccountingPeriodPage.heading)
+    this
+  }
+
+  def provideEnrolmentDetails(enrolmentKey: String, identifierName: String, identifierValue: String): this.type = {
     sendKeys(By.id("enrolment[0].name"), enrolmentKey)
     sendKeys(By.id("input-0-0-name"), identifierName)
     sendKeys(By.id("input-0-0-value"), identifierValue)
+    this
+  }
+
+  def submitPage(): this.type = {
+    SharedActions.clickButton()
+    this
   }
 }
