@@ -82,6 +82,9 @@ trait BasePage extends BrowserDriver with Matchers {
 
   def onPage(heading: String): Unit =
     SharedActions.assertPartialTextIsDisplayed(heading)
+
+  def clickByCssSelector(css: String): Unit =
+    driver.findElement(By.cssSelector(css)).click()
 }
 
 case class PageNotFoundException(s: String) extends Exception(s)

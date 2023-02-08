@@ -167,4 +167,35 @@ Feature: Register for ECL
     Given I am signed in to the registration journey
     When I go to check your answers page directly without providing answers for any of the previous page questions
     Then I should be on the page that says The answers you provided are not valid
+#
+  Scenario: User wants to change the contact details before submitting the registration
+    Given I am signed in to the registration journey
+    When I click on the change link and edit my contact details
+    Then I should be on the page that says Check your answers
 
+  Scenario: User wants to remove the secondary contact details before submitting the registration
+    Given I am signed in to the registration journey
+    When I click on the change link to modify my secondary contact
+    And I select No on whether or not to add a secondary contact details
+    Then I should be on the page that says Check your answers
+
+  Scenario: User wants to change the contact address before submitting the registration
+    Given I am signed in to the registration journey
+    When I click on the change link to modify the registered address
+    And I select No on whether or not to use a different UK address as my main contact address
+    Then I should be on the page that says Check your answers
+
+  Scenario: User wants to change the the organisation details (Business sector, AML supervisor, UK revenue and Accounting Period) before submitting the registration
+    Given I am signed in to the registration journey
+    When I click on the change link and edit my organisation details
+    Then I should be on the page that says Check your answers
+
+  Scenario: User wants to change the AML regulated activity of the organisation before submitting the registration
+    Given I am signed in to the registration journey
+    When I click on the change link and select No on whether or not I carried out AML-regulated activity in current FY
+    Then I should be on the page that says You do not need to register for the Economic Crime Levy
+
+  Scenario: User wants to change the entity type of the organisation before submitting the registration
+    Given I am signed in to the registration journey
+    When I click on the change link and select the new entity type
+    Then I should be on the page that says Check your answers

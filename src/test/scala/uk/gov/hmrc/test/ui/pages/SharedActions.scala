@@ -36,7 +36,6 @@ object SharedActions extends BasePage {
     driver.findElement(By.id(id)).click()
 
   def clickButton(): Unit =
-//    findElementByCssSelector(".govuk-button").click()
     click(By.className("govuk-button"))
 
   def clickBackButton(): Unit          =

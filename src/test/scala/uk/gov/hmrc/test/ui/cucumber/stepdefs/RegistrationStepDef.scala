@@ -45,7 +45,7 @@ class RegistrationStepDef extends BaseStepDef {
   When(
     """I provide details of my limited company that is supervised by an other professional body and liable for ECL"""
   ) { () =>
-    provideUkRevenue()
+    provideUkRevenue("10200000")
       .provideHmrcOrOtherAmlSupervisor("Other")
       .provideEntityType("Limited company")
       .provideGrsData()
@@ -185,6 +185,108 @@ class RegistrationStepDef extends BaseStepDef {
         .navigateTo()
   }
 
+  When("I click on the change link and edit my contact details") { () =>
+    provideAmlRegulated()
+      .provideHmrcOrOtherAmlSupervisor()
+      .provideRelevantAccountingPeriod()
+      .provideUkRevenue()
+      .provideEntityType("Limited company")
+      .provideGrsData()
+      .provideBusinessSector("Credit institution")
+      .provideFirstContactDetails("Oliver Tom", "Account Manager", "test@test.com", "01632 960 001")
+      .provideSecondContactDetails("Mark 1", "Compliance Officer", "verify@verify.com", "+44 808 157 0192")
+      .provideRegisteredAddress("Yes")
+      .provideChangeFirstContactDetails()
+      .provideChangeSecondContactDetails()
+  }
+
+  When("I click on the change link to modify my secondary contact") { () =>
+    provideAmlRegulated()
+      .provideHmrcOrOtherAmlSupervisor()
+      .provideRelevantAccountingPeriod()
+      .provideUkRevenue()
+      .provideEntityType("Limited company")
+      .provideGrsData()
+      .provideBusinessSector("Credit institution")
+      .provideFirstContactDetails("Oliver Tom", "Account Manager", "test@test.com", "01632 960 001")
+      .provideSecondContactDetails("Mark 1", "Compliance Officer", "verify@verify.com", "+44 808 157 0192")
+      .provideRegisteredAddress("Yes")
+      .provideChangeFirstContactDetails()
+      .provideChangeSecondContactDetails()
+      .provideChangeSecondaryContact()
+  }
+
+  When("I select (.*) on whether or not to add a secondary contact details$") { (value: String) =>
+    SharedActions
+      .selectYesOrNo(value)
+    submitPage()
+  }
+
+  When("I click on the change link to modify the registered address") { () =>
+    provideAmlRegulated()
+      .provideHmrcOrOtherAmlSupervisor()
+      .provideRelevantAccountingPeriod()
+      .provideUkRevenue()
+      .provideEntityType("Limited company")
+      .provideGrsData()
+      .provideBusinessSector("Credit institution")
+      .provideFirstContactDetails("Oliver Tom", "Account Manager", "test@test.com", "01632 960 001")
+      .provideSecondContactDetails("Mark 1", "Compliance Officer", "verify@verify.com", "+44 808 157 0192")
+      .provideRegisteredAddress("Yes")
+      .provideChangeRegisteredAddress()
+  }
+
+  When("I select (.*) on whether or not to use a different UK address as my main contact address$") { (value: String) =>
+    provideRegisteredAddress("No")
+    SharedActions
+      .selectYesOrNo("Yes")
+      .submitPage()
+    submitPage()
+  }
+
+  When("I click on the change link and edit my organisation details") { () =>
+    provideAmlRegulated()
+      .provideHmrcOrOtherAmlSupervisor()
+      .provideRelevantAccountingPeriod()
+      .provideUkRevenue()
+      .provideEntityType("Limited company")
+      .provideGrsData()
+      .provideBusinessSector("Credit institution")
+      .provideFirstContactDetails("Oliver Tom", "Account Manager", "test@test.com", "01632 960 001")
+      .provideSecondContactDetails("Mark 1", "Compliance Officer", "verify@verify.com", "+44 808 157 0192")
+      .provideRegisteredAddress("Yes")
+      .provideChangeOrganisationDetails()
+  }
+
+  When(
+    "I click on the change link and select (.*) on whether or not I carried out AML-regulated activity in current FY$"
+  ) { (value: String) =>
+    provideAmlRegulated()
+      .provideHmrcOrOtherAmlSupervisor()
+      .provideRelevantAccountingPeriod()
+      .provideUkRevenue()
+      .provideEntityType("Limited company")
+      .provideGrsData()
+      .provideBusinessSector("Credit institution")
+      .provideFirstContactDetails("Oliver Tom", "Account Manager", "test@test.com", "01632 960 001")
+      .provideSecondContactDetails("Mark 1", "Compliance Officer", "verify@verify.com", "+44 808 157 0192")
+      .provideRegisteredAddress("Yes")
+      .provideChangeAmlRegulatedActivity()
+  }
+
+  When("I click on the change link and select the new entity type") { () =>
+    provideAmlRegulated()
+      .provideHmrcOrOtherAmlSupervisor()
+      .provideRelevantAccountingPeriod()
+      .provideUkRevenue()
+      .provideEntityType("Limited company")
+      .provideGrsData()
+      .provideBusinessSector("Credit institution")
+      .provideFirstContactDetails("Oliver Tom", "Account Manager", "test@test.com", "01632 960 001")
+      .provideSecondContactDetails("Mark 1", "Compliance Officer", "verify@verify.com", "+44 808 157 0192")
+      .provideRegisteredAddress("Yes")
+      .provideChangeEntityType()
+  }
   Then("^I should be on the page that asks (.*)$") { (value: String) =>
     SharedActions.assertPartialTextIsDisplayed(value)
   }
