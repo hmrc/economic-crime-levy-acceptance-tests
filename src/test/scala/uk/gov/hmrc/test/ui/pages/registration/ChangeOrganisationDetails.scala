@@ -32,6 +32,7 @@ object ChangeOrganisationDetails extends BasePage {
     "a[href='/register-for-the-economic-crime-levy/change-answer/did-you-carry-out-aml-regulated-activity']"
   val cssForChangeEntityType: String           =
     "a[href='/register-for-the-economic-crime-levy/change-answer/what-is-your-entity-type']"
+  val cssForSaveAndContinue                    = "button[class='govuk-button']"
 
   def changeBusinessSector(): this.type = {
     clickByCssSelector(cssForChangeBusinessSector)
@@ -87,7 +88,8 @@ object ChangeOrganisationDetails extends BasePage {
     SharedActions
       .selectLabelByPartialText("Scottish limited partnership")
     submitPage()
-      .submitPage()
+    clickByCssSelector(cssForSaveAndContinue)
+//      .submitPage()
     this
   }
 

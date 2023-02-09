@@ -14,28 +14,15 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.test.ui.pages.registration
+package uk.gov.hmrc.test.ui.pages.returns
 
 import uk.gov.hmrc.test.ui.conf.TestConfiguration
-import uk.gov.hmrc.test.ui.pages.{BasePage, SharedActions}
+import uk.gov.hmrc.test.ui.pages.BasePage
 
-object BusinessSectorPage extends BasePage {
-
+object AccountingPeriodPage extends BasePage {
   val url =
-    s"${TestConfiguration.url("economic-crime-levy-registration-frontend")}/register-for-the-economic-crime-levy/what-is-your-business-sector"
+    s"${TestConfiguration.url("economic-crime-levy-returns-frontend")}/submit-economic-crime-levy-return/relevant-accounting-period-length"
 
-  val heading               = "What is your business sector?"
-  val cssForSaveAndContinue = "button[class='govuk-button']"
-
-  def navigateTo(): this.type = {
-    navigateToClearAllUrl()
-    driver.get(url)
-    this
-  }
-
-  def submitPage(): this.type = {
-    SharedActions.clickButton()
-    this
-  }
+  val heading = "Is your relevant accounting period 12 months?"
 
 }
