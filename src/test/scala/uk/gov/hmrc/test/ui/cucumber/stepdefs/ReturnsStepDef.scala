@@ -18,7 +18,6 @@ package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
 import uk.gov.hmrc.test.ui.pages.returns.ReturnsPage
 
-
 class ReturnsStepDef extends BaseStepDef {
 
   Given("""I am signed in to the return journey""") { () =>

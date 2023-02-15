@@ -199,3 +199,13 @@ Feature: Register for ECL
     Given I am signed in to the registration journey
     When I click on the change link and select the new entity type
     Then I should be on the page that says Check your answers
+
+  Scenario Outline: User wants to select their entity type as General or Scottish Partnerships
+    Given I am signed in to the registration journey
+    When I provide the details of my entity type is <Entity type>
+    Then I should be on the page that says Check your answers
+    Examples:
+      | Entity type          |
+      | General partnership  |
+      | Scottish partnership |
+
