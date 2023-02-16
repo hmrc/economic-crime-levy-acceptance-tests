@@ -217,6 +217,18 @@ Feature: Register for ECL
     Examples:
       | Entity type          | Partnership Name                                                                                                                                                  | Expected content                                |
       | General partnership  |                                                                                                                                                                   | Enter a partnership name                        |
-      | General partnership  | ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyabcdefghijklmnopqrstuvwxyabcdefghijklmnopqrstu1234567890!@£#$%^&*()-+={}[]"';:,.<>/? | Partnership name must be 160 characters or less |
       | Scottish partnership |                                                                                                                                                                   | Enter a partnership name                        |
+      | General partnership  | ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyabcdefghijklmnopqrstuvwxyabcdefghijklmnopqrstu1234567890!@£#$%^&*()-+={}[]"';:,.<>/? | Partnership name must be 160 characters or less |
       | Scottish partnership | ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyabcdefghijklmnopqrstuvwxyabcdefghijklmnopqrstu1234567890!@£#$%^&*()-+={}[]"';:,.<>/? | Partnership name must be 160 characters or less |
+
+  Scenario Outline: User provides their valid entity name for General or Scottish Partnership
+    Given I am signed in to the registration journey
+    When I enter my entity <Entity type>'s name is <Partnership Name>
+    Then I should be on the page that says What is your business sector?
+
+    Examples:
+      | Entity type          | Partnership Name                                                                                                                                                 |
+      | General partnership  | A                                                                                                                                                                |
+      | Scottish partnership | 1                                                                                                                                                                |
+      | General partnership  | ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyabcdefghijklmnopqrstuvwxyabcdefghijklmnopqrst1234567890!@£#$%^&*()-+={}[]"';:,.<>/? |
+      | Scottish partnership | ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyabcdefghijklmnopqrstuvwxyabcdefghijklmnopqrst1234567890!@£#$%^&*()-+={}[]"';:,.<>/? |
