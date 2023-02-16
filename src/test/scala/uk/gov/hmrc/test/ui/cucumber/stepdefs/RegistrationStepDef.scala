@@ -301,6 +301,14 @@ class RegistrationStepDef extends BaseStepDef {
       .provideCheckYourAnswers()
   }
 
+  When("I enter my entity (.*)'s name is (.*)$") { (_: String, partnershipName: String) =>
+    PartnershipNamePage
+      .navigateTo()
+    SharedActions
+      .enterDetails(partnershipName)
+    submitPage()
+  }
+
   Then("^I should be on the page that asks (.*)$") { (value: String) =>
     SharedActions.assertPartialTextIsDisplayed(value)
   }

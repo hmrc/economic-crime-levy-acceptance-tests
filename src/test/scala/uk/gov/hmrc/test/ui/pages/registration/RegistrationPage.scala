@@ -203,15 +203,17 @@ object RegistrationPage extends BasePage {
         submitPage()
         clickByCssSelector(cssForSaveAndContinue)
         SharedActions
-          .enterDetails("A & J Company")
+          .enterDetails("A & J Company12")
         submitPage()
+        onPage(BusinessSectorPage.heading)
       case "Scottish partnership" =>
         SharedActions.selectLabelByPartialText("Scottish partnership")
         submitPage()
         clickByCssSelector(cssForSaveAndContinue)
         SharedActions
-          .enterDetails("Example Consultancy")
+          .enterDetails("Example-Consultancy!")
         submitPage()
+        onPage(BusinessSectorPage.heading)
     }
     this
   }

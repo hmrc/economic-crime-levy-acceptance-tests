@@ -209,3 +209,14 @@ Feature: Register for ECL
       | General partnership  |
       | Scottish partnership |
 
+  Scenario Outline: User does not provide their valid entity name for General or Scottish Partnership
+    Given I am signed in to the registration journey
+    When I enter my entity <Entity type>'s name is <Partnership Name>
+    Then I should see an error that says <Expected content>
+
+    Examples:
+      | Entity type          | Partnership Name                                                                                                                                                  | Expected content                                |
+      | General partnership  |                                                                                                                                                                   | Enter a partnership name                        |
+      | General partnership  | ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyabcdefghijklmnopqrstuvwxyabcdefghijklmnopqrstu1234567890!@£#$%^&*()-+={}[]"';:,.<>/? | Partnership name must be 160 characters or less |
+      | Scottish partnership |                                                                                                                                                                   | Enter a partnership name                        |
+      | Scottish partnership | ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyabcdefghijklmnopqrstuvwxyabcdefghijklmnopqrstu1234567890!@£#$%^&*()-+={}[]"';:,.<>/? | Partnership name must be 160 characters or less |
