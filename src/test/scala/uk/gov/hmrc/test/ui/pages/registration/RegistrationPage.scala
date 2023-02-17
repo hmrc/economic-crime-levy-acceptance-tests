@@ -196,6 +196,24 @@ object RegistrationPage extends BasePage {
     this
   }
 
+  def provideEntityTypeDetailsForGeneralOrScottishPartnership(value: String): this.type = {
+    SharedActions.selectLabelByPartialText(value)
+    submitPage()
+    clickByCssSelector(cssForSaveAndContinue)
+    SharedActions
+      .enterDetails("A & J Company12")
+    submitPage()
+    onPage(BusinessSectorPage.heading)
+    this
+  }
+
+  def provideAddAnotherContactYesOrNo(value: String): this.type = {
+    SharedActions
+      .selectYesOrNo(value)
+      .submitPage()
+    this
+  }
+
   def submitPage(): this.type = {
     SharedActions.clickButton()
     this

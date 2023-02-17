@@ -287,6 +287,28 @@ class RegistrationStepDef extends BaseStepDef {
       .provideRegisteredAddress("Yes")
       .provideChangeEntityType()
   }
+
+  When("I select my entity type as (.*) and provide the registration details$") { (entityType: String) =>
+    provideAmlRegulated()
+      .provideHmrcOrOtherAmlSupervisor()
+      .provideRelevantAccountingPeriod()
+      .provideUkRevenue()
+      .provideEntityTypeDetailsForGeneralOrScottishPartnership(entityType)
+      .provideBusinessSector("Credit institution")
+      .provideFirstContactDetails("Oliver Tom", "Account Manager", "test@test.com", "01632 960 001")
+      .provideAddAnotherContactYesOrNo("No")
+      .provideRegisteredAddress("Yes")
+      .provideCheckYourAnswers()
+  }
+
+  When("I enter my (.*)'s name as (.*)$") { (_: String, partnershipName: String) =>
+    PartnershipNamePage
+      .navigateTo()
+    SharedActions
+      .enterDetails(partnershipName)
+    submitPage()
+  }
+
   Then("^I should be on the page that asks (.*)$") { (value: String) =>
     SharedActions.assertPartialTextIsDisplayed(value)
   }

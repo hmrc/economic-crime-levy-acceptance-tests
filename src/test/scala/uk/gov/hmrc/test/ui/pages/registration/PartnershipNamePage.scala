@@ -14,25 +14,27 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.test.ui.cucumber.stepdefs
+package uk.gov.hmrc.test.ui.pages.registration
 
-import uk.gov.hmrc.test.ui.pages.returns.ReturnsPage
+import uk.gov.hmrc.test.ui.conf.TestConfiguration
+import uk.gov.hmrc.test.ui.pages.{BasePage, SharedActions}
 
-class ReturnsStepDef extends BaseStepDef {
+object PartnershipNamePage extends BasePage {
 
-  Given("""I am signed in to the return journey""") { () =>
-    ReturnsPage
-      .navigateTo()
-      .provideEnrolmentDetails(
-        enrolmentKey = "HMRC-ECL-ORG",
-        identifierName = "EclRegistrationReference",
-        identifierValue = "XMECL0000000001"
-      )
+  val url =
+    s"${TestConfiguration.url("economic-crime-levy-registration-frontend")}/register-for-the-economic-crime-levy/partnership-name"
+
+  val heading = "What is the partnership name?"
+
+  def navigateTo(): this.type = {
+    navigateToClearAllUrl()
+    driver.get(url)
+    this
   }
 
-  When("""I click on Start now button""") { () =>
-    ReturnsPage
-      .startAndSignIn()
+  def submitPage(): this.type = {
+    SharedActions.clickButton()
+    this
   }
 
 }

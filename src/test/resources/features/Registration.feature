@@ -126,9 +126,9 @@ Feature: Register for ECL
     Then I should see an error that says <Expected content>
 
     Examples:
-      | Role                                                           | Expected content                   |
-      |                                                                | Enter a role                       |
-      | ABCDEFGHIJKlmnouvwxyz1234567890!@£$%^&#* ()-_+=[]{}":;'\?><,./ | Role must be 60 characters or less |
+      | Role                                                                                                                                                              | Expected content                    |
+      |                                                                                                                                                                   | Enter a role                        |
+      | ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyabcdefghijklmnopqrstuvwxyabcdefghijklmnopqrstu1234567890!@£#$%^&*()-+={}[]"';:,.<>/? | Role must be 160 characters or less |
 
   Scenario Outline: User does not provide their first contact person's valid email address for the business sector page
     Given I am signed in to the registration journey
@@ -151,7 +151,7 @@ Feature: Register for ECL
       |                           | Enter a telephone number                                                        |
       | 1234567890123456789012345 | Telephone number must be 24 characters or less                                  |
       | contact number            | Enter a telephone number, like 01632 960 001, 07700 900 982 or +44 808 157 0192 |
-      | 1234567890 1234567890-12  | Enter a telephone number, like 01632 960 001, 07700 900 982 or +44 808 157 0192 |
+      | 1234567890 1234567890-1_  | Enter a telephone number, like 01632 960 001, 07700 900 982 or +44 808 157 0192 |
 
   Scenario: User wants to use another UK address as his registered address for the main contact
     Given I am signed in to the registration journey
@@ -199,3 +199,36 @@ Feature: Register for ECL
     Given I am signed in to the registration journey
     When I click on the change link and select the new entity type
     Then I should be on the page that says Check your answers
+
+  Scenario Outline: User selects their entity type as General or Scottish Partnership
+    Given I am signed in to the registration journey
+    When I select my entity type as <Entity type> and provide the registration details
+    Then I should be on the page that says Check your answers
+    Examples:
+      | Entity type          |
+      | General partnership  |
+      | Scottish partnership |
+
+  Scenario Outline: User does not provide a valid entity name for their General or Scottish Partnership
+    Given I am signed in to the registration journey
+    When I enter my <Entity type>'s name as <Partnership Name>
+    Then I should see an error that says <Expected content>
+
+    Examples:
+      | Entity type          | Partnership Name                                                                                                                                                  | Expected content                                |
+      | General partnership  |                                                                                                                                                                   | Enter a partnership name                        |
+      | Scottish partnership |                                                                                                                                                                   | Enter a partnership name                        |
+      | General partnership  | ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyabcdefghijklmnopqrstuvwxyabcdefghijklmnopqrstu1234567890!@£#$%^&*()-+={}[]"';:,.<>/? | Partnership name must be 160 characters or less |
+      | Scottish partnership | ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyabcdefghijklmnopqrstuvwxyabcdefghijklmnopqrstu1234567890!@£#$%^&*()-+={}[]"';:,.<>/? | Partnership name must be 160 characters or less |
+
+  Scenario Outline: User provides a valid entity name for their General or Scottish Partnership
+    Given I am signed in to the registration journey
+    When I enter my <Entity type>'s name as <Partnership Name>
+    Then I should be on the page that says What is your business sector?
+
+    Examples:
+      | Entity type          | Partnership Name                                                                                                                                                 |
+      | General partnership  | A                                                                                                                                                                |
+      | Scottish partnership | 1                                                                                                                                                                |
+      | General partnership  | ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyabcdefghijklmnopqrstuvwxyabcdefghijklmnopqrst1234567890!@£#$%^&*()-+={}[]"';:,.<>/? |
+      | Scottish partnership | ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyabcdefghijklmnopqrstuvwxyabcdefghijklmnopqrst1234567890!@£#$%^&*()-+={}[]"';:,.<>/? |
