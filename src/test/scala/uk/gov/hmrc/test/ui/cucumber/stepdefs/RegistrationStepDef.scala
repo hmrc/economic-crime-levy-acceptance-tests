@@ -288,7 +288,7 @@ class RegistrationStepDef extends BaseStepDef {
       .provideChangeEntityType()
   }
 
-  When("I provide the details of my entity type is (.*)$") { (entityType: String) =>
+  When("I select my entity type as (.*) and provide the registration details$") { (entityType: String) =>
     provideAmlRegulated()
       .provideHmrcOrOtherAmlSupervisor()
       .provideRelevantAccountingPeriod()
@@ -301,7 +301,7 @@ class RegistrationStepDef extends BaseStepDef {
       .provideCheckYourAnswers()
   }
 
-  When("I enter my entity (.*)'s name is (.*)$") { (_: String, partnershipName: String) =>
+  When("I enter my (.*)'s name as (.*)$") { (_: String, partnershipName: String) =>
     PartnershipNamePage
       .navigateTo()
     SharedActions
