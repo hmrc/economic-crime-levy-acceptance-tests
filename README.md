@@ -107,7 +107,73 @@ See the `drivers/` directory for some helpful scripts to do the installation wor
 
 **Note 2** *These scripts use sudo to set the right permissions on the drivers so you will likely be prompted to enter your password.*
 
-### Scalafmt
+
+## Running accessibility tests
+You can run the accessibility test for either the registration or the returns frontend service.
+
+1. Keep the registration (or the returns) frontend service up and running the way you would normally do (for example via its `sbt run` command line)
+
+
+2. Then run the _"dockerized"_ accessibility assessment service:
+    ```sh
+    $ docker container run \
+          --name "accessibility-assessment" \
+          --detach --restart unless-stopped \
+          --publish 6010:6010 \
+          --env TARGET_IP='host.docker.internal' \
+          artefacts.tax.service.gov.uk/accessibility-assessment:latest
+    ```
+   Be aware that's a _"stateful"_ service. You may want to read more about it. See https://github.com/hmrc/accessibility-assessment
+   > NOTE  
+   > You may need an Intel x86_64 architecture as the Docker image for ARM may not be available yet.
+
+
+3. Now time to run the test with the right arguments:
+   ```sh
+   $ cd $WORKSPACE/economic-crime-levy-acceptance-tests
+   $ sbt \
+        -Dbrowser="chrome" \
+        -Denvironment="local" \
+        -Daccessibility.test="true"  \
+        "testOnly uk.gov.hmrc.test.ui.cucumber.runner.RunRegistration"
+   ```
+   > NOTE  
+   > You may need to install Google Chrome and the WebDriver for Chrome as be above instructions (or read https://chromedriver.chromium.org/downloads)
+
+
+4. Once the above accessibility test completes, request the assessment service to assess (collect and assemble) the report pages:
+   ```sh
+   $ curl --verbose \
+          --request POST \
+          "http://localhost:6010/api/assess-pages"
+   ```
+   Since that's a _"stateful"_ service, after a short while, query for the status:
+   ```sh
+   $ curl --verbose \
+          --request GET \
+          "http://localhost:6010/api/status"
+   ```
+   Keep querying until the status turns into `REPORT_READY`
+
+
+5. Finally extract the HTML report from the assessment service container
+   ```sh
+   $ docker container cp \
+       accessibility-assessment:/home/seluser/output/accessibility-assessment-report.html \
+      ./target
+   ```
+   and open it using any browser you like.
+
+
+6. (Optional) In case you want to repeat the accessibility test again, reset the accessibility service to its initial state (it will remove previously collected pages and generated reports):
+   ```sh
+   $ curl --verbose \
+          --request POST \
+          "http://localhost:6010/api/app/reset"
+   ```
+
+
+## Scalafmt
  This repository uses [Scalafmt](https://scalameta.org/scalafmt/), a code formatter for Scala. The formatting rules configured for this repository are defined within [.scalafmt.conf](.scalafmt.conf).
 
  To apply formatting to this repository using the configured rules in [.scalafmt.conf](.scalafmt.conf) execute:
