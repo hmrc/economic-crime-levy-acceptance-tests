@@ -16,7 +16,7 @@
 
 package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
-import uk.gov.hmrc.test.ui.pages.returns.ReturnsPage
+import uk.gov.hmrc.test.ui.pages.returns.{ContactNamePage, ReturnsPage}
 
 class ReturnsStepDef extends BaseStepDef {
 
@@ -35,4 +35,12 @@ class ReturnsStepDef extends BaseStepDef {
       .startAndSignIn()
   }
 
+  When("""I provide the details to submit the economic crime levy return""") { () =>
+    ReturnsPage
+      .startAndSignIn()
+    ContactNamePage
+      .navigateTo()
+    ReturnsPage
+      .provideContactDetails("Oliver Tom", "Account Manager", "test@test.com", "01632 960 001")
+  }
 }
