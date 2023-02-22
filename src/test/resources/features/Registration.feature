@@ -1,4 +1,4 @@
-@all @reg @accessibility @zap
+@all @registration
 Feature: Register for ECL
 
   Scenario Outline: User registers a <Entity type> supervised by HMRC for AML that is liable for ECL

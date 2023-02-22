@@ -16,6 +16,8 @@
 
 package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
+import uk.gov.hmrc.test.ui.pages.SharedActions
+import uk.gov.hmrc.test.ui.pages.SharedActions.submitPage
 import uk.gov.hmrc.test.ui.pages.returns.{ContactNamePage, ReturnsPage}
 
 class ReturnsStepDef extends BaseStepDef {
@@ -28,6 +30,7 @@ class ReturnsStepDef extends BaseStepDef {
         identifierName = "EclRegistrationReference",
         identifierValue = "XMECL0000000001"
       )
+      .startAndSignIn()
   }
 
   When("""I click on Start now button""") { () =>
@@ -42,5 +45,56 @@ class ReturnsStepDef extends BaseStepDef {
       .navigateTo()
     ReturnsPage
       .provideContactDetails("Oliver Tom", "Account Manager", "test@test.com", "01632 960 001")
+  }
+
+  And("^I enter the contact person's name (.*) for completing my ECL return$") { (contactName: String) =>
+    ContactNamePage
+      .navigateTo()
+    SharedActions
+      .enterDetails(contactName)
+    submitPage()
+  }
+
+  And("^I enter the contact person's role (.*) for completing my ECL return$") { (contactRole: String) =>
+    ContactNamePage
+      .navigateTo()
+    SharedActions
+      .enterDetails("James")
+    submitPage()
+    SharedActions
+      .enterDetails(contactRole)
+    submitPage()
+
+  }
+
+  And("^I enter the contact person's email address (.*) for completing my ECL return$") { (emailAddress: String) =>
+    ContactNamePage
+      .navigateTo()
+    SharedActions
+      .enterDetails("Tom")
+    submitPage()
+    SharedActions
+      .enterDetails("Account Director")
+    submitPage()
+    SharedActions
+      .enterDetails(emailAddress)
+    submitPage()
+  }
+
+  When("^I enter the contact person's contact number (.*) for completing my ECL return$") { (contactNumber: String) =>
+    ContactNamePage
+      .navigateTo()
+    SharedActions
+      .enterDetails("Paul")
+    submitPage()
+    SharedActions
+      .enterDetails("Account Manager")
+    submitPage()
+    SharedActions
+      .enterDetails("verify@test.com")
+    submitPage()
+    SharedActions
+      .enterDetails(contactNumber)
+    submitPage()
   }
 }
