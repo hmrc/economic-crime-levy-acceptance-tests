@@ -45,6 +45,24 @@ object ReturnsPage extends BasePage {
     this
   }
 
+  def provideContactDetails(
+    contactName: String,
+    contactRole: String,
+    emailAddress: String,
+    contactNumber: String
+  ): this.type = {
+    SharedActions.enterDetails(contactName)
+    submitPage()
+    SharedActions.enterDetails(contactRole)
+    submitPage()
+    SharedActions.enterDetails(emailAddress)
+    submitPage()
+    SharedActions.enterDetails(contactNumber)
+    submitPage()
+    onPage(CheckYourAnswersPage.heading)
+    this
+  }
+
   def submitPage(): this.type = {
     SharedActions.clickButton()
     this

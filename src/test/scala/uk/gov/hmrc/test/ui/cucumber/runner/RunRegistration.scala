@@ -30,6 +30,6 @@ import org.junit.runner.RunWith
     "json:target/cucumber.json",
     "junit:target/test-reports/RunRegistration.xml"
   ),
-  tags = "@reg"
+  tags = "@registration"
 )
 class RunRegistration {}
