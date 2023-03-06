@@ -19,11 +19,11 @@ package uk.gov.hmrc.test.ui.pages.returns
 import uk.gov.hmrc.test.ui.conf.TestConfiguration
 import uk.gov.hmrc.test.ui.pages.{BasePage, SharedActions}
 
-object AccountingPeriodPage extends BasePage {
+object AmountDuePage extends BasePage {
   val url =
-    s"${TestConfiguration.url("economic-crime-levy-returns-frontend")}/submit-economic-crime-levy-return/is-relevant-accounting-period-12-months"
+    s"${TestConfiguration.url("economic-crime-levy-returns-frontend")}/submit-economic-crime-levy-return/amount-due"
 
-  val heading = "Is your relevant accounting period 12 months?"
+  val heading = "Amount of ECL you need to pay"
 
   def navigateTo(): this.type = {
     navigateToClearAllUrl()

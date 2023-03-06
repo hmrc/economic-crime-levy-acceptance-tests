@@ -17,7 +17,8 @@
 package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
 import uk.gov.hmrc.test.ui.pages.SharedActions
-import uk.gov.hmrc.test.ui.pages.SharedActions.submitPage
+import uk.gov.hmrc.test.ui.pages.SharedActions._
+import uk.gov.hmrc.test.ui.pages.registration.RegistrationPage.provideRelevantAccountingPeriod
 import uk.gov.hmrc.test.ui.pages.returns.{ContactNamePage, ReturnsPage}
 
 class ReturnsStepDef extends BaseStepDef {
@@ -33,17 +34,12 @@ class ReturnsStepDef extends BaseStepDef {
       .startAndSignIn()
   }
 
-  When("""I click on Start now button""") { () =>
-    ReturnsPage
-      .startAndSignIn()
-  }
-
   When("""I provide the details to submit the economic crime levy return""") { () =>
+    provideRelevantAccountingPeriod()
     ReturnsPage
-      .startAndSignIn()
-    ContactNamePage
-      .navigateTo()
-    ReturnsPage
+      .provideUkRevenueInAccountingPeriod()
+      .provideAmlRegulatedActivity()
+      .submitPage()
       .provideContactDetails("Oliver Tom", "Account Manager", "test@test.com", "01632 960 001")
   }
 

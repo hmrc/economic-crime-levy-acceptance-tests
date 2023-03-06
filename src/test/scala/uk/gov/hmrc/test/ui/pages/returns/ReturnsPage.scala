@@ -63,6 +63,19 @@ object ReturnsPage extends BasePage {
     this
   }
 
+  def provideUkRevenueInAccountingPeriod(value: String = "10200000"): this.type = {
+    SharedActions.enterDetails(value)
+    submitPage()
+    onPage(AmlRegulatedActivityPage.heading)
+    this
+  }
+  def provideAmlRegulatedActivity(): this.type = {
+    SharedActions
+      .selectYesOrNo("Yes")
+      .submitPage()
+    onPage(AmountDuePage.heading)
+    this
+  }
   def submitPage(): this.type = {
     SharedActions.clickButton()
     this
