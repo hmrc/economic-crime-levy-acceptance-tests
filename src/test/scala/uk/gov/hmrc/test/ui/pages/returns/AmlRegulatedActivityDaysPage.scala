@@ -19,11 +19,11 @@ package uk.gov.hmrc.test.ui.pages.returns
 import uk.gov.hmrc.test.ui.conf.TestConfiguration
 import uk.gov.hmrc.test.ui.pages.{BasePage, SharedActions}
 
-object AccountingPeriodPage extends BasePage {
+object AmlRegulatedActivityDaysPage extends BasePage {
   val url =
-    s"${TestConfiguration.url("economic-crime-levy-returns-frontend")}/submit-economic-crime-levy-return/relevant-accounting-period-length"
+    s"${TestConfiguration.url("economic-crime-levy-returns-frontend")}/submit-economic-crime-levy-return/aml-regulated-activity-days"
 
-  val heading = "How long is your relevant accounting period?"
+  val heading = "How many days of the financial year did you carry out AML-regulated activity?"
 
   def navigateTo(): this.type = {
     navigateToClearAllUrl()
@@ -35,6 +35,5 @@ object AccountingPeriodPage extends BasePage {
     SharedActions.clickButton()
     this
   }
-
 
 }

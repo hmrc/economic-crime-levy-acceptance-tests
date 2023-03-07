@@ -19,7 +19,7 @@ package uk.gov.hmrc.test.ui.cucumber.stepdefs
 import uk.gov.hmrc.test.ui.pages.SharedActions
 import uk.gov.hmrc.test.ui.pages.SharedActions._
 import uk.gov.hmrc.test.ui.pages.registration.RegistrationPage.provideRelevantAccountingPeriod
-import uk.gov.hmrc.test.ui.pages.returns.{ContactNamePage, ReturnsPage}
+import uk.gov.hmrc.test.ui.pages.returns._
 
 class ReturnsStepDef extends BaseStepDef {
 
@@ -31,6 +31,7 @@ class ReturnsStepDef extends BaseStepDef {
         identifierName = "EclRegistrationReference",
         identifierValue = "XMECL0000000001"
       )
+      .submitPage()
       .startAndSignIn()
   }
 
@@ -93,4 +94,62 @@ class ReturnsStepDef extends BaseStepDef {
       .enterDetails(contactNumber)
     submitPage()
   }
+
+  When("^I do not select an option for my relevant accounting period 12 months") { () =>
+    AccountingActivityPage
+      .navigateTo()
+      .submitPage()
+  }
+  When("^I select (.*) option for my relevant accounting period 12 months$") { (value: String) =>
+    AccountingActivityPage
+      .navigateTo()
+    SharedActions
+      .selectYesOrNo(value)
+      .submitPage()
+  }
+
+  When("^I do not enter the length of my accounting period") { () =>
+    AccountingPeriodPage
+      .navigateTo()
+      .submitPage()
+  }
+
+  When("^I enter the length of my relevant accounting period in days (.*)$") { (accountingPeriod: String) =>
+    AccountingPeriodPage
+      .navigateTo()
+    SharedActions
+      .enterDetails(accountingPeriod)
+    submitPage()
+  }
+  When("^I enter the UK revenue (.*) for my relevant accounting period$") { (ukRevenue: String) =>
+    UkRevenuePage
+      .navigateTo()
+    SharedActions
+      .enterDetails(ukRevenue)
+    submitPage()
+  }
+
+  When("""I do not select an option for whether or not I carry out AML-regulated activity for the full financial year?""") { () =>
+    AmlRegulatedActivityPage
+      .navigateTo()
+      .submitPage()
+  }
+
+  When("^I select (.*) option for my AML-regulated activity for the full financial year$") { (value: String) =>
+    AmlRegulatedActivityPage
+      .navigateTo()
+    SharedActions
+      .selectYesOrNo(value)
+      .submitPage()
+    onPage(AmlRegulatedActivityDaysPage.heading)
+  }
+
+  When("^I enter the total number of days (.*) I carried out AML regulated activity$") { (days: String) =>
+    AmlRegulatedActivityDaysPage
+      .navigateTo()
+    SharedActions
+      .enterDetails(days)
+    submitPage()
+  }
+
 }

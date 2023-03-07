@@ -33,8 +33,7 @@ object ReturnsPage extends BasePage {
 
   def startAndSignIn(): this.type = {
     submitPage()
-    submitPage()
-    onPage(AccountingPeriodPage.heading)
+    onPage(AccountingActivityPage.heading)
     this
   }
 
