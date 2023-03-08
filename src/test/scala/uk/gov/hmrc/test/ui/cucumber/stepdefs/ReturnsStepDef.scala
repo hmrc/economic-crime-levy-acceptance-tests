@@ -17,8 +17,7 @@
 package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
 import uk.gov.hmrc.test.ui.pages.SharedActions
-import uk.gov.hmrc.test.ui.pages.SharedActions._
-import uk.gov.hmrc.test.ui.pages.registration.RegistrationPage.provideRelevantAccountingPeriod
+import uk.gov.hmrc.test.ui.pages.returns.ReturnsPage._
 import uk.gov.hmrc.test.ui.pages.returns._
 
 class ReturnsStepDef extends BaseStepDef {
@@ -36,10 +35,9 @@ class ReturnsStepDef extends BaseStepDef {
   }
 
   When("""I provide the details to submit the economic crime levy return""") { () =>
-    provideRelevantAccountingPeriod()
-    ReturnsPage
+    selectAccountingPeriod("Yes")
       .provideUkRevenueInAccountingPeriod()
-      .provideAmlRegulatedActivity()
+      .selectAmlRegulatedActivity()
       .submitPage()
       .provideContactDetails("Oliver Tom", "Account Manager", "test@test.com", "01632 960 001")
   }
@@ -47,52 +45,31 @@ class ReturnsStepDef extends BaseStepDef {
   And("^I enter the contact person's name (.*) for completing my ECL return$") { (contactName: String) =>
     ContactNamePage
       .navigateTo()
-    SharedActions
-      .enterDetails(contactName)
-    submitPage()
+      .provideContactName(contactName)
   }
 
   And("^I enter the contact person's role (.*) for completing my ECL return$") { (contactRole: String) =>
     ContactNamePage
       .navigateTo()
-    SharedActions
-      .enterDetails("James")
-    submitPage()
-    SharedActions
-      .enterDetails(contactRole)
-    submitPage()
-
+      .provideContactName("James")
+      .provideContactRole(contactRole)
   }
 
   And("^I enter the contact person's email address (.*) for completing my ECL return$") { (emailAddress: String) =>
     ContactNamePage
       .navigateTo()
-    SharedActions
-      .enterDetails("Tom")
-    submitPage()
-    SharedActions
-      .enterDetails("Account Director")
-    submitPage()
-    SharedActions
-      .enterDetails(emailAddress)
-    submitPage()
+      .provideContactName("Tom")
+      .provideContactRole("Account Director")
+      .provideContactEmailAddress(emailAddress)
   }
 
   When("^I enter the contact person's contact number (.*) for completing my ECL return$") { (contactNumber: String) =>
     ContactNamePage
       .navigateTo()
-    SharedActions
-      .enterDetails("Paul")
-    submitPage()
-    SharedActions
-      .enterDetails("Account Manager")
-    submitPage()
-    SharedActions
-      .enterDetails("verify@test.com")
-    submitPage()
-    SharedActions
-      .enterDetails(contactNumber)
-    submitPage()
+      .provideContactName("Paul")
+      .provideContactRole("Account Manager")
+      .provideContactEmailAddress("verify@test.com")
+      .provideContactNumber(contactNumber)
   }
 
   When("^I do not select an option for my relevant accounting period 12 months") { () =>
@@ -103,9 +80,7 @@ class ReturnsStepDef extends BaseStepDef {
   When("^I select (.*) option for my relevant accounting period 12 months$") { (value: String) =>
     AccountingActivityPage
       .navigateTo()
-    SharedActions
-      .selectYesOrNo(value)
-      .submitPage()
+    selectAccountingPeriod(value)
   }
 
   When("^I do not enter the length of my accounting period") { () =>
@@ -114,22 +89,20 @@ class ReturnsStepDef extends BaseStepDef {
       .submitPage()
   }
 
-  When("^I enter the length of my relevant accounting period in days (.*)$") { (accountingPeriod: String) =>
+  When("^I enter the length of my relevant accounting period as (.*) days$") { (accountingPeriod: String) =>
     AccountingPeriodPage
       .navigateTo()
-    SharedActions
-      .enterDetails(accountingPeriod)
-    submitPage()
+    provideAccountingPeriod(accountingPeriod)
   }
   When("^I enter the UK revenue (.*) for my relevant accounting period$") { (ukRevenue: String) =>
     UkRevenuePage
       .navigateTo()
-    SharedActions
-      .enterDetails(ukRevenue)
-    submitPage()
+    provideUkRevenue(ukRevenue)
   }
 
-  When("""I do not select an option for whether or not I carry out AML-regulated activity for the full financial year?""") { () =>
+  When(
+    """I do not select an option for whether or not I carry out AML-regulated activity for the full financial year?"""
+  ) { () =>
     AmlRegulatedActivityPage
       .navigateTo()
       .submitPage()
@@ -138,18 +111,43 @@ class ReturnsStepDef extends BaseStepDef {
   When("^I select (.*) option for my AML-regulated activity for the full financial year$") { (value: String) =>
     AmlRegulatedActivityPage
       .navigateTo()
-    SharedActions
-      .selectYesOrNo(value)
-      .submitPage()
+    selectAmlRegulatedActivity(value)
     onPage(AmlRegulatedActivityDaysPage.heading)
   }
 
   When("^I enter the total number of days (.*) I carried out AML regulated activity$") { (days: String) =>
     AmlRegulatedActivityDaysPage
       .navigateTo()
-    SharedActions
-      .enterDetails(days)
-    submitPage()
+    provideAmlRegulatedActivityDays(days)
   }
 
+  When(
+    "^I enter 12 month accounting period revenue (.*) and select (.*) for my AML-regulated activity for the full financial year$"
+  ) { (ukRevenue: String, value: String) =>
+    selectAccountingPeriod("Yes")
+      .provideUkRevenue(ukRevenue)
+      .selectAmlRegulatedActivity(value)
+  }
+
+  And("^I enter the number of days (.*) I carried out AML regulated activity during the financial year$") {
+    (days: String) =>
+      provideAmlRegulatedActivityDays(days)
+  }
+
+  When("^I select (.*) for my accounting period 12 months and enter the length of my accounting period as (.*) days$") {
+    (value: String, days: String) =>
+      selectAccountingPeriod(value)
+        .provideAmlRegulatedActivityDays(days)
+  }
+
+  When(
+    "^I enter my UK revenue (.*) for the accounting period and select (.*) for my AML-regulated activity for the full financial year$"
+  ) { (ukRevenue: String, value: String) =>
+    provideUkRevenue(ukRevenue)
+      .selectAmlRegulatedActivity(value)
+  }
+  Then("^I should be see the amount of ECL need to pay (.*)$") { (value: String) =>
+    SharedActions
+      .validateLevyAmount(value)
+  }
 }

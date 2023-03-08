@@ -68,11 +68,46 @@ object ReturnsPage extends BasePage {
     onPage(AmlRegulatedActivityPage.heading)
     this
   }
-  def provideAmlRegulatedActivity(): this.type = {
+  def selectAmlRegulatedActivity(): this.type = {
     SharedActions
       .selectYesOrNo("Yes")
       .submitPage()
     onPage(AmountDuePage.heading)
+    this
+  }
+
+  def selectAccountingPeriod(value: String): this.type = {
+    SharedActions
+      .selectYesOrNo(value)
+      .submitPage()
+    this
+  }
+
+  def provideAccountingPeriod(accountingPeriod: String): this.type = {
+    SharedActions
+      .enterDetails(accountingPeriod)
+    submitPage()
+    this
+  }
+
+  def provideUkRevenue(ukRevenue: String): this.type = {
+    SharedActions
+      .enterDetails(ukRevenue)
+    submitPage()
+    this
+  }
+
+  def selectAmlRegulatedActivity(value: String): this.type = {
+    SharedActions
+      .selectYesOrNo(value)
+      .submitPage()
+    this
+  }
+
+  def provideAmlRegulatedActivityDays(days: String): this.type = {
+    SharedActions
+      .enterDetails(days)
+    submitPage()
     this
   }
   def submitPage(): this.type = {

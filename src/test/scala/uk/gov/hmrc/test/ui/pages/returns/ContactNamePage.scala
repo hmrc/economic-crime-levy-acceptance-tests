@@ -32,6 +32,34 @@ object ContactNamePage extends BasePage {
     this
   }
 
+  def provideContactName(contactName: String): this.type = {
+    SharedActions
+      .enterDetails(contactName)
+    submitPage()
+    this
+  }
+
+  def provideContactRole(contactRole: String): this.type = {
+    SharedActions
+      .enterDetails(contactRole)
+    submitPage()
+    this
+  }
+
+  def provideContactEmailAddress(emailAddress: String): this.type = {
+    SharedActions
+      .enterDetails(emailAddress)
+    submitPage()
+    this
+  }
+
+  def provideContactNumber(contactNumber: String): this.type = {
+    SharedActions
+      .enterDetails(contactNumber)
+    submitPage()
+    this
+  }
+
   def submitPage(): this.type = {
     SharedActions.clickButton()
     this

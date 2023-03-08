@@ -36,5 +36,4 @@ object AccountingPeriodPage extends BasePage {
     this
   }
 
-
 }
