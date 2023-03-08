@@ -16,6 +16,7 @@
 
 package uk.gov.hmrc.test.ui.pages
 
+import org.junit.Assert
 import org.openqa.selenium.By
 
 object SharedActions extends BasePage {
@@ -59,6 +60,14 @@ object SharedActions extends BasePage {
       .submitPage()
     this
   }
+
+  def validateLevyAmount(value: String): Unit = {
+    val actual = getText(
+      By.xpath(s"//p[contains(text(),'The amount of levy you need to pay for this financ')]")
+    )
+    Assert.assertEquals(value, actual)
+  }
+
   def submitPage(): this.type = {
     SharedActions.clickButton()
     this

@@ -19,12 +19,11 @@ package uk.gov.hmrc.test.ui.pages.returns
 import uk.gov.hmrc.test.ui.conf.TestConfiguration
 import uk.gov.hmrc.test.ui.pages.{BasePage, SharedActions}
 
-object ContactNamePage extends BasePage {
-
+object AmountDuePage extends BasePage {
   val url =
-    s"${TestConfiguration.url("economic-crime-levy-returns-frontend")}/submit-economic-crime-levy-return/contact-name"
+    s"${TestConfiguration.url("economic-crime-levy-returns-frontend")}/submit-economic-crime-levy-return/amount-due"
 
-  val heading = "Who is completing this return?"
+  val heading = "Amount of ECL you need to pay"
 
   def navigateTo(): this.type = {
     navigateToClearAllUrl()
@@ -32,15 +31,9 @@ object ContactNamePage extends BasePage {
     this
   }
 
-  def provideContactName(contactName: String): this.type = {
-    SharedActions
-      .enterDetails(contactName)
-    submitPage()
-    this
-  }
-
   def submitPage(): this.type = {
     SharedActions.clickButton()
     this
   }
+
 }

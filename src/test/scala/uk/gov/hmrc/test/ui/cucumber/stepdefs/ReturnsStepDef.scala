@@ -17,8 +17,8 @@
 package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
 import uk.gov.hmrc.test.ui.pages.SharedActions
-import uk.gov.hmrc.test.ui.pages.SharedActions.submitPage
-import uk.gov.hmrc.test.ui.pages.returns.{ContactNamePage, ReturnsPage}
+import uk.gov.hmrc.test.ui.pages.returns.ReturnsPage._
+import uk.gov.hmrc.test.ui.pages.returns._
 
 class ReturnsStepDef extends BaseStepDef {
 
@@ -30,71 +30,148 @@ class ReturnsStepDef extends BaseStepDef {
         identifierName = "EclRegistrationReference",
         identifierValue = "XMECL0000000001"
       )
-      .startAndSignIn()
-  }
-
-  When("""I click on Start now button""") { () =>
-    ReturnsPage
+      .submitPage()
       .startAndSignIn()
   }
 
   When("""I provide the details to submit the economic crime levy return""") { () =>
+    selectAccountingPeriod("Yes")
+    onPage(UkRevenuePage.heading)
     ReturnsPage
-      .startAndSignIn()
-    ContactNamePage
-      .navigateTo()
-    ReturnsPage
+      .provideUkRevenueInAccountingPeriod()
+      .selectAmlRegulatedActivity()
+      .submitPage()
       .provideContactDetails("Oliver Tom", "Account Manager", "test@test.com", "01632 960 001")
   }
 
   And("^I enter the contact person's name (.*) for completing my ECL return$") { (contactName: String) =>
     ContactNamePage
       .navigateTo()
-    SharedActions
-      .enterDetails(contactName)
-    submitPage()
+      .provideContactName(contactName)
+    confirmUrl(ContactNamePage.url)
+
   }
 
   And("^I enter the contact person's role (.*) for completing my ECL return$") { (contactRole: String) =>
     ContactNamePage
       .navigateTo()
-    SharedActions
-      .enterDetails("James")
-    submitPage()
-    SharedActions
-      .enterDetails(contactRole)
-    submitPage()
-
+      .provideContactName("James")
+    ContactRolePage
+      .provideContactRole(contactRole)
+    confirmUrl(ContactRolePage.url)
   }
 
   And("^I enter the contact person's email address (.*) for completing my ECL return$") { (emailAddress: String) =>
     ContactNamePage
       .navigateTo()
-    SharedActions
-      .enterDetails("Tom")
-    submitPage()
-    SharedActions
-      .enterDetails("Account Director")
-    submitPage()
-    SharedActions
-      .enterDetails(emailAddress)
-    submitPage()
+      .provideContactName("Tom")
+      ContactRolePage
+        .provideContactRole("Account Director")
+      ContactEmailAddressPage
+        .provideContactEmailAddress(emailAddress)
+    confirmUrl(ContactEmailAddressPage.url)
   }
 
   When("^I enter the contact person's contact number (.*) for completing my ECL return$") { (contactNumber: String) =>
     ContactNamePage
       .navigateTo()
+      .provideContactName("Paul")
+    ContactRolePage
+        .provideContactRole("Account Manager")
+    ContactEmailAddressPage
+        .provideContactEmailAddress("verify@test.com")
+    ContactTelephonePage
+        .provideContactNumber(contactNumber)
+    confirmUrl(ContactTelephonePage.url)
+  }
+
+  When("^I do not select an option for my relevant accounting period 12 months") { () =>
+    AccountingActivityPage
+      .navigateTo()
+      .submitPage()
+  }
+  When("^I select (.*) option for my relevant accounting period 12 months$") { (value: String) =>
+    AccountingActivityPage
+      .navigateTo()
+    selectAccountingPeriod(value)
+    onPage(AccountingPeriodPage.heading)
+  }
+
+  When("^I do not enter the length of my accounting period") { () =>
+    AccountingPeriodPage
+      .navigateTo()
+      .submitPage()
+  }
+
+  When("^I enter the length of my relevant accounting period as (.*) days$") { (accountingPeriod: String) =>
+    AccountingPeriodPage
+      .navigateTo()
+    provideAccountingPeriod(accountingPeriod)
+  }
+  When("^I enter the UK revenue (.*) for my relevant accounting period$") { (ukRevenue: String) =>
+    UkRevenuePage
+      .navigateTo()
+    provideUkRevenue(ukRevenue)
+  }
+
+  When(
+    """I do not select an option for whether or not I carry out AML-regulated activity for the full financial year?"""
+  ) { () =>
+    AmlRegulatedActivityPage
+      .navigateTo()
+      .submitPage()
+  }
+
+  When("^I select (.*) option for my AML-regulated activity for the full financial year$") { (value: String) =>
+    AmlRegulatedActivityPage
+      .navigateTo()
+    selectAmlRegulatedActivity(value)
+    onPage(AmlRegulatedActivityDaysPage.heading)
+  }
+
+  When("^I enter the total number of days (.*) I carried out AML regulated activity$") { (days: String) =>
+    AmlRegulatedActivityDaysPage
+      .navigateTo()
+    provideAmlRegulatedActivityDays(days)
+  }
+
+  When(
+    "^I enter 12 month accounting period revenue (.*) and select (.*) for my AML-regulated activity for the full financial year$"
+  ) { (ukRevenue: String, value: String) =>
+    selectAccountingPeriod("Yes")
+    onPage(UkRevenuePage.heading)
+    ReturnsPage
+      .provideUkRevenue(ukRevenue)
+    onPage(AmlRegulatedActivityPage.heading)
+    ReturnsPage
+      .selectAmlRegulatedActivity(value)
+  }
+
+  And("^I enter the number of days (.*) I carried out AML regulated activity during the financial year$") {
+    (days: String) =>
+      provideAmlRegulatedActivityDays(days)
+      onPage(AmountDuePage.heading)
+  }
+
+  When("^I select (.*) for my accounting period 12 months and enter the length of my accounting period as (.*) days$") {
+    (value: String, days: String) =>
+      selectAccountingPeriod(value)
+      onPage(AccountingPeriodPage.heading)
+      ReturnsPage
+        .provideAmlRegulatedActivityDays(days)
+      onPage(UkRevenuePage.heading)
+  }
+
+  When(
+    "^I enter my UK revenue (.*) for the accounting period and select (.*) for my AML-regulated activity for the full financial year$"
+  ) { (ukRevenue: String, value: String) =>
+    provideUkRevenue(ukRevenue)
+    onPage(AmlRegulatedActivityPage.heading)
+    ReturnsPage
+      .selectAmlRegulatedActivity(value)
+  }
+  Then("^I should be see the amount of ECL need to pay (.*)$") { (value: String) =>
     SharedActions
-      .enterDetails("Paul")
-    submitPage()
-    SharedActions
-      .enterDetails("Account Manager")
-    submitPage()
-    SharedActions
-      .enterDetails("verify@test.com")
-    submitPage()
-    SharedActions
-      .enterDetails(contactNumber)
-    submitPage()
+      .validateLevyAmount(value)
   }
 }
