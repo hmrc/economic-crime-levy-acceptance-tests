@@ -48,17 +48,17 @@ Feature: Submit ECL Return
       | contact number            | Enter a telephone number, like 01632 960 001, 07700 900 982 or +44 808 157 0192 |
       | 1234567890_               | Enter a telephone number, like 01632 960 001, 07700 900 982 or +44 808 157 0192 |
 
-  Scenario: User does not select whether or not their relevant accounting period 12 months
+  Scenario: User does not select whether or not their relevant accounting period is 12 months
     Given I am signed in to the return journey
     When I do not select an option for my relevant accounting period 12 months
     Then I should see an error that says Select an answer
 
-  Scenario: User selects no on whether or not their relevant accounting period 12 months
+  Scenario: User selects no on whether or not their relevant accounting period 12 is months
     Given I am signed in to the return journey
     When I select No option for my relevant accounting period 12 months
     Then I should see an error that says How long is your relevant accounting period?
 
-  Scenario: User does not select how long is their relevant accounting period?
+  Scenario: User does not enter how long their relevant accounting period is?
     Given I am signed in to the return journey
     When I do not enter the length of my accounting period
     Then I should see an error that says Enter the length
@@ -93,12 +93,12 @@ Feature: Submit ECL Return
       | 99.999     | UK revenue must be a number rounded down to the nearest pound |
       | 1019999.99 | UK revenue must be a number rounded down to the nearest pound |
 
-  Scenario: User does not select whether or not they carry out AML-regulated activity for the full financial year?
+  Scenario: User does not select whether or not they carried out AML-regulated activity for the full financial year
     Given I am signed in to the return journey
     When I do not select an option for whether or not I carry out AML-regulated activity for the full financial year?
     Then I should see an error that says Select if you carried out AML-regulated activity in the financial year
 
-  Scenario: User select no whether or not they carry out AML-regulated activity for the full financial year?
+  Scenario: User selects no for whether or not they carried out AML-regulated activity for the full financial year
     Given I am signed in to the return journey
     When I select No option for my AML-regulated activity for the full financial year
     Then I should see an error that says How many days of the financial year did you carry out AML-regulated activity?

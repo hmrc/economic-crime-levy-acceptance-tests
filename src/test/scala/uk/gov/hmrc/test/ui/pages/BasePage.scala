@@ -16,6 +16,7 @@
 
 package uk.gov.hmrc.test.ui.pages
 
+import org.junit.Assert
 import org.openqa.selenium.support.ui.{ExpectedConditions, FluentWait, Wait}
 import org.openqa.selenium.{By, WebDriver, WebElement}
 import org.scalatest.matchers.should.Matchers
@@ -85,6 +86,12 @@ trait BasePage extends BrowserDriver with Matchers {
 
   def clickByCssSelector(css: String): Unit =
     driver.findElement(By.cssSelector(css)).click()
+
+  def confirmUrl(url: String): Unit = {
+    fluentWait.until(ExpectedConditions.urlContains(url))
+    val currentUrl = driver.getCurrentUrl
+    Assert.assertEquals(currentUrl, url)
+  }
 }
 
 case class PageNotFoundException(s: String) extends Exception(s)

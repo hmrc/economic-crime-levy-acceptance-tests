@@ -67,6 +67,7 @@ object SharedActions extends BasePage {
     )
     Assert.assertEquals(value, actual)
   }
+
   def submitPage(): this.type = {
     SharedActions.clickButton()
     this

@@ -36,6 +36,8 @@ class ReturnsStepDef extends BaseStepDef {
 
   When("""I provide the details to submit the economic crime levy return""") { () =>
     selectAccountingPeriod("Yes")
+    onPage(UkRevenuePage.heading)
+    ReturnsPage
       .provideUkRevenueInAccountingPeriod()
       .selectAmlRegulatedActivity()
       .submitPage()
@@ -46,30 +48,41 @@ class ReturnsStepDef extends BaseStepDef {
     ContactNamePage
       .navigateTo()
       .provideContactName(contactName)
+    confirmUrl(ContactNamePage.url)
+
   }
 
   And("^I enter the contact person's role (.*) for completing my ECL return$") { (contactRole: String) =>
     ContactNamePage
       .navigateTo()
       .provideContactName("James")
+    ContactRolePage
       .provideContactRole(contactRole)
+    confirmUrl(ContactRolePage.url)
   }
 
   And("^I enter the contact person's email address (.*) for completing my ECL return$") { (emailAddress: String) =>
     ContactNamePage
       .navigateTo()
       .provideContactName("Tom")
-      .provideContactRole("Account Director")
-      .provideContactEmailAddress(emailAddress)
+      ContactRolePage
+        .provideContactRole("Account Director")
+      ContactEmailAddressPage
+        .provideContactEmailAddress(emailAddress)
+    confirmUrl(ContactEmailAddressPage.url)
   }
 
   When("^I enter the contact person's contact number (.*) for completing my ECL return$") { (contactNumber: String) =>
     ContactNamePage
       .navigateTo()
       .provideContactName("Paul")
-      .provideContactRole("Account Manager")
-      .provideContactEmailAddress("verify@test.com")
-      .provideContactNumber(contactNumber)
+    ContactRolePage
+        .provideContactRole("Account Manager")
+    ContactEmailAddressPage
+        .provideContactEmailAddress("verify@test.com")
+    ContactTelephonePage
+        .provideContactNumber(contactNumber)
+    confirmUrl(ContactTelephonePage.url)
   }
 
   When("^I do not select an option for my relevant accounting period 12 months") { () =>
@@ -81,6 +94,7 @@ class ReturnsStepDef extends BaseStepDef {
     AccountingActivityPage
       .navigateTo()
     selectAccountingPeriod(value)
+    onPage(AccountingPeriodPage.heading)
   }
 
   When("^I do not enter the length of my accounting period") { () =>
@@ -125,25 +139,35 @@ class ReturnsStepDef extends BaseStepDef {
     "^I enter 12 month accounting period revenue (.*) and select (.*) for my AML-regulated activity for the full financial year$"
   ) { (ukRevenue: String, value: String) =>
     selectAccountingPeriod("Yes")
+    onPage(UkRevenuePage.heading)
+    ReturnsPage
       .provideUkRevenue(ukRevenue)
+    onPage(AmlRegulatedActivityPage.heading)
+    ReturnsPage
       .selectAmlRegulatedActivity(value)
   }
 
   And("^I enter the number of days (.*) I carried out AML regulated activity during the financial year$") {
     (days: String) =>
       provideAmlRegulatedActivityDays(days)
+      onPage(AmountDuePage.heading)
   }
 
   When("^I select (.*) for my accounting period 12 months and enter the length of my accounting period as (.*) days$") {
     (value: String, days: String) =>
       selectAccountingPeriod(value)
+      onPage(AccountingPeriodPage.heading)
+      ReturnsPage
         .provideAmlRegulatedActivityDays(days)
+      onPage(UkRevenuePage.heading)
   }
 
   When(
     "^I enter my UK revenue (.*) for the accounting period and select (.*) for my AML-regulated activity for the full financial year$"
   ) { (ukRevenue: String, value: String) =>
     provideUkRevenue(ukRevenue)
+    onPage(AmlRegulatedActivityPage.heading)
+    ReturnsPage
       .selectAmlRegulatedActivity(value)
   }
   Then("^I should be see the amount of ECL need to pay (.*)$") { (value: String) =>
