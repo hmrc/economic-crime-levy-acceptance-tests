@@ -172,7 +172,32 @@ Feature: Submit ECL Return
     When I go to the return submission check your answers page directly without providing answers for any of the previous page questions
     Then I should be on the page that says The answers you provided are not valid
 
-  Scenario: User wants to change the contact details before submitting the returns
+  Scenario: User wants to change their ECL contact details before submitting the returns
     Given I am signed in to the return journey
     When I click on the change link to modify my contact details
+    Then I should be on the page that says Check your answers
+
+  Scenario: User wants to change their ECL accounting period before submitting the returns
+    Given I am signed in to the return journey
+    When I click on the change link to modify my economic crime levy accounting period
+    Then I should be on the page that says Check your answers
+
+  Scenario: User wants to change their ECL accounting period length before submitting the returns
+    Given I am signed in to the return journey
+    When I click on the change link to modify my accounting period length
+    Then I should be on the page that says Check your answers
+
+  Scenario: User wants to change their ECL UK revenue before submitting the returns
+    Given I am signed in to the return journey
+    When I click on the change link to modify my uk revenue
+    Then I should be on the page that says Check your answers
+
+  Scenario: User wants to change their AML-regulated activity for the full financial year before submitting the returns
+    Given I am signed in to the return journey
+    When I click on the change link to modify my AML-regulated activity for the full financial year
+    Then I should be on the page that says Check your answers
+
+  Scenario: User wants to change their AML-regulated activity length before submitting the returns
+    Given I am signed in to the return journey
+    When I click on the change link to modify my AML-regulated activity length
     Then I should be on the page that says Check your answers

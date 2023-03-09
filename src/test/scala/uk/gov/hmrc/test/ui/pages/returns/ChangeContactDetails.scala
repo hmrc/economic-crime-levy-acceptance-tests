@@ -18,11 +18,10 @@ package uk.gov.hmrc.test.ui.pages.returns
 
 import uk.gov.hmrc.test.ui.pages.{BasePage, SharedActions}
 
-object ChangeContactDetailsPage extends BasePage {
+object ChangeContactDetails extends BasePage {
 
   val cssForChangeContactName: String =
     "a[href='/submit-economic-crime-levy-return/change-answer/contact-name']"
-
   val cssForChangeContactRole: String =
     "a[href='/submit-economic-crime-levy-return/change-answer/contact-role']"
   val cssForChangeContactEmail: String =
@@ -31,38 +30,34 @@ object ChangeContactDetailsPage extends BasePage {
     "a[href='/submit-economic-crime-levy-return/change-answer/contact-telephone']"
 
 
-  def changeFirstContactName(): this.type = {
+  def changeContactName(name: String): this.type = {
     clickByCssSelector(cssForChangeContactName)
-    SharedActions
-      .enterDetails("James Bond 007")
-    submitPage()
+    ContactNamePage
+      .provideContactName(name)
     onPage(CheckYourAnswersPage.heading)
     this
   }
 
-  def changeFirstContactRole(): this.type = {
+  def changeContactRole(role: String): this.type = {
     clickByCssSelector(cssForChangeContactRole)
-    SharedActions
-      .enterDetails("Compliance Office")
-    submitPage()
+    ContactRolePage
+      .provideContactRole(role)
     onPage(CheckYourAnswersPage.heading)
     this
   }
 
-  def changeFirstContactEmail(): this.type = {
+  def changeContactEmail(emailAddress: String): this.type = {
     clickByCssSelector(cssForChangeContactEmail)
-    SharedActions
-      .enterDetails("verify@test.com")
-    submitPage()
+    ContactEmailAddressPage
+      .provideContactEmailAddress(emailAddress)
     onPage(CheckYourAnswersPage.heading)
     this
   }
 
-  def changeFirstContactTelephoneNumber(): this.type = {
+  def changeContactTelephoneNumber(contactNumber: String): this.type = {
     clickByCssSelector(cssForChangeContactTelephoneNumber)
-    SharedActions
-      .enterDetails("014753777777")
-    submitPage()
+    ContactTelephonePage
+      .provideContactNumber(contactNumber)
     onPage(CheckYourAnswersPage.heading)
     this
   }
