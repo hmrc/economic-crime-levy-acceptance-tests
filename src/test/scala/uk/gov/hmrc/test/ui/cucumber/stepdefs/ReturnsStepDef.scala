@@ -177,6 +177,16 @@ class ReturnsStepDef extends BaseStepDef {
         .navigateTo()
   }
 
+  When("I click on the change link to modify my contact details") { () =>
+    selectAccountingPeriod("Yes")
+    ReturnsPage
+      .provideUkRevenueInAccountingPeriod()
+      .selectAmlRegulatedActivity()
+      .submitPage()
+      .provideContactDetails("Oliver Tom", "Account Manager", "test@test.com", "01632 960 001")
+      .provideChangeContactDetails()
+  }
+
   Then("^I should be see the amount of ECL need to pay (.*)$") { (value: String) =>
     SharedActions
       .validateLevyAmount(value)

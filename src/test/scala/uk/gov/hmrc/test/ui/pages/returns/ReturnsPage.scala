@@ -110,6 +110,15 @@ object ReturnsPage extends BasePage {
     submitPage()
     this
   }
+
+  def provideChangeContactDetails(): this.type = {
+    ChangeContactDetailsPage
+      .changeFirstContactName()
+      .changeFirstContactRole()
+      .changeFirstContactEmail()
+      .changeFirstContactTelephoneNumber()
+    this
+  }
   def submitPage(): this.type = {
     SharedActions.clickButton()
     this
