@@ -26,6 +26,11 @@ object CheckYourAnswersPage extends BasePage {
 
   val heading = "Check your answers"
 
+  def navigateTo(): this.type = {
+    navigateToClearAllUrl()
+    driver.get(url)
+    this
+  }
   def submitPage(): this.type = {
     SharedActions.clickButton()
     this

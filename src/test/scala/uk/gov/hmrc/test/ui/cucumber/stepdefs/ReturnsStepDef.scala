@@ -170,6 +170,13 @@ class ReturnsStepDef extends BaseStepDef {
     ReturnsPage
       .selectAmlRegulatedActivity(value)
   }
+
+  And("I go to the return submission check your answers page directly without providing answers for any of the previous page questions") {
+    () =>
+      CheckYourAnswersPage
+        .navigateTo()
+  }
+
   Then("^I should be see the amount of ECL need to pay (.*)$") { (value: String) =>
     SharedActions
       .validateLevyAmount(value)
