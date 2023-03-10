@@ -40,8 +40,9 @@ class ReturnsStepDef extends BaseStepDef {
     ReturnsPage
       .provideUkRevenueInAccountingPeriod()
       .selectAmlRegulatedActivity()
-      .submitPage()
+      .provideAmountDue()
       .provideContactDetails("Oliver Tom", "Account Manager", "test@test.com", "01632 960 001")
+      .provideCheckYourAnswers()
   }
 
   And("^I enter the contact person's name (.*) for completing my ECL return$") { (contactName: String) =>
@@ -182,7 +183,7 @@ class ReturnsStepDef extends BaseStepDef {
     ReturnsPage
       .provideUkRevenueInAccountingPeriod()
       .selectAmlRegulatedActivity()
-      .submitPage()
+      .provideAmountDue()
       .provideContactDetails("Oliver Tom", "Account Manager", "test@test.com", "01632 960 001")
       .provideChangeContactDetails("James Bond 007", "Compliance Officer", "verify@oc.com", "014753777777")
   }
@@ -192,7 +193,7 @@ class ReturnsStepDef extends BaseStepDef {
     ReturnsPage
       .provideUkRevenueInAccountingPeriod()
       .selectAmlRegulatedActivity()
-      .submitPage()
+      .provideAmountDue()
       .provideContactDetails("Oliver Tom", "Account Manager", "test@test.com", "01632 960 001")
       .provideChangeAccountingPeriod("No")
   }
@@ -202,7 +203,7 @@ class ReturnsStepDef extends BaseStepDef {
     ReturnsPage
       .provideUkRevenueInAccountingPeriod()
       .selectAmlRegulatedActivity()
-      .submitPage()
+      .provideAmountDue()
       .provideContactDetails("Oliver Tom", "Account Manager", "test@test.com", "01632 960 001")
       .provideChangeAccountingPeriod("No")
       .provideChangeAccountingPeriodLength("364")
@@ -213,7 +214,7 @@ class ReturnsStepDef extends BaseStepDef {
     ReturnsPage
       .provideUkRevenueInAccountingPeriod()
       .selectAmlRegulatedActivity()
-      .submitPage()
+      .provideAmountDue()
       .provideContactDetails("Oliver Tom", "Account Manager", "test@test.com", "01632 960 001")
       .provideChangeUkRevenue("20200000")
   }
@@ -223,7 +224,7 @@ class ReturnsStepDef extends BaseStepDef {
     ReturnsPage
       .provideUkRevenueInAccountingPeriod()
       .selectAmlRegulatedActivity()
-      .submitPage()
+      .provideAmountDue()
       .provideContactDetails("Oliver Tom", "Account Manager", "test@test.com", "01632 960 001")
       .provideChangeAmlRegulatedActivity("No")
   }
@@ -233,7 +234,7 @@ class ReturnsStepDef extends BaseStepDef {
     ReturnsPage
       .provideUkRevenueInAccountingPeriod()
       .selectAmlRegulatedActivity()
-      .submitPage()
+      .provideAmountDue()
       .provideContactDetails("Oliver Tom", "Account Manager", "test@test.com", "01632 960 001")
       .provideChangeAmlRegulatedActivity("No")
       .provideChangeAmlRegulatedActivityLength("291")

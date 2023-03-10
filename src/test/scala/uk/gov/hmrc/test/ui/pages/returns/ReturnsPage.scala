@@ -150,6 +150,16 @@ object ReturnsPage extends BasePage {
     this
   }
 
+  def provideAmountDue(): this.type = {
+    submitPage()
+    this
+  }
+
+  def provideCheckYourAnswers(): this.type = {
+    submitPage()
+    this
+  }
+
   def submitPage(): this.type = {
     SharedActions.clickButton()
     this
