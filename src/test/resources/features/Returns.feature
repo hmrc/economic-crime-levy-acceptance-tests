@@ -4,7 +4,7 @@ Feature: Submit ECL Return
   Scenario: User that is registered for ECL starts a return submission
     Given I am signed in to the return journey
     When I provide the details to submit the economic crime levy return
-    Then I should be on the page that says Check your answers
+    Then I should be on the page that says Return submitted
 
   Scenario Outline: User does not provide their contact person's valid name for completing the ECL return
     Given I am signed in to the return journey
@@ -110,9 +110,9 @@ Feature: Submit ECL Return
     Examples:
       | Days  | Expected content                                                |
       |       | Enter the number of days you carried out AML-regulated activity |
-      | 0     | Length must be between 1 and 999 days                           |
-      | -1    | Length must be between 1 and 999 days                           |
-      | 1000  | Length must be between 1 and 999 days                           |
+      | 0     | Length must be between 1 and 365 days                           |
+      | -1    | Length must be between 1 and 365 days                           |
+      | 1000  | Length must be between 1 and 365 days                           |
       | asdwa | Length must be a whole number                                   |
       | 245.0 | Length must be a whole number                                   |
 
