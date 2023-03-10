@@ -177,6 +177,69 @@ class ReturnsStepDef extends BaseStepDef {
         .navigateTo()
   }
 
+  When("I click on the change link to modify my contact details") { () =>
+    selectAccountingPeriod("Yes")
+    ReturnsPage
+      .provideUkRevenueInAccountingPeriod()
+      .selectAmlRegulatedActivity()
+      .submitPage()
+      .provideContactDetails("Oliver Tom", "Account Manager", "test@test.com", "01632 960 001")
+      .provideChangeContactDetails("James Bond 007", "Compliance Officer", "verify@oc.com", "014753777777")
+  }
+
+  When("I click on the change link to modify my economic crime levy accounting period") { () =>
+    selectAccountingPeriod("Yes")
+    ReturnsPage
+      .provideUkRevenueInAccountingPeriod()
+      .selectAmlRegulatedActivity()
+      .submitPage()
+      .provideContactDetails("Oliver Tom", "Account Manager", "test@test.com", "01632 960 001")
+      .provideChangeAccountingPeriod("No")
+  }
+
+  When("I click on the change link to modify my accounting period length") { () =>
+    selectAccountingPeriod("Yes")
+    ReturnsPage
+      .provideUkRevenueInAccountingPeriod()
+      .selectAmlRegulatedActivity()
+      .submitPage()
+      .provideContactDetails("Oliver Tom", "Account Manager", "test@test.com", "01632 960 001")
+      .provideChangeAccountingPeriod("No")
+      .provideChangeAccountingPeriodLength("364")
+  }
+
+  When("I click on the change link to modify my uk revenue") { () =>
+    selectAccountingPeriod("Yes")
+    ReturnsPage
+      .provideUkRevenueInAccountingPeriod()
+      .selectAmlRegulatedActivity()
+      .submitPage()
+      .provideContactDetails("Oliver Tom", "Account Manager", "test@test.com", "01632 960 001")
+      .provideChangeUkRevenue("20200000")
+  }
+
+  When("I click on the change link to modify my AML-regulated activity for the full financial year") { () =>
+    selectAccountingPeriod("Yes")
+    ReturnsPage
+      .provideUkRevenueInAccountingPeriod()
+      .selectAmlRegulatedActivity()
+      .submitPage()
+      .provideContactDetails("Oliver Tom", "Account Manager", "test@test.com", "01632 960 001")
+      .provideChangeAmlRegulatedActivity("No")
+  }
+
+  When("I click on the change link to modify my AML-regulated activity length") { () =>
+    selectAccountingPeriod("Yes")
+    ReturnsPage
+      .provideUkRevenueInAccountingPeriod()
+      .selectAmlRegulatedActivity()
+      .submitPage()
+      .provideContactDetails("Oliver Tom", "Account Manager", "test@test.com", "01632 960 001")
+      .provideChangeAmlRegulatedActivity("No")
+      .provideChangeAmlRegulatedActivityLength("291")
+
+  }
+
   Then("^I should be see the amount of ECL need to pay (.*)$") { (value: String) =>
     SharedActions
       .validateLevyAmount(value)

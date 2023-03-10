@@ -110,6 +110,46 @@ object ReturnsPage extends BasePage {
     submitPage()
     this
   }
+
+  def provideChangeContactDetails(name: String, role:String, emailAddress: String, contactNumber: String): this.type = {
+    ChangeContactDetails
+      .changeContactName(name)
+      .changeContactRole(role)
+      .changeContactEmail(emailAddress)
+      .changeContactTelephoneNumber(contactNumber)
+    this
+  }
+
+  def provideChangeAccountingPeriod(value: String): this.type = {
+    ChangeEconomicCrimeLevyDetails
+      .changeAccountingPeriod(value)
+    this
+  }
+
+  def provideChangeAccountingPeriodLength(days: String): this.type = {
+    ChangeEconomicCrimeLevyDetails
+      .changeAccountingPeriodLength(days)
+    this
+  }
+
+  def provideChangeUkRevenue(ukRevenue: String): this.type = {
+    ChangeEconomicCrimeLevyDetails
+      .changeUkRevenue(ukRevenue)
+    this
+  }
+
+  def provideChangeAmlRegulatedActivity(value: String): this.type = {
+    ChangeEconomicCrimeLevyDetails
+      .ChangeAmlRegulatedActivity(value)
+    this
+  }
+
+  def provideChangeAmlRegulatedActivityLength(days: String): this.type = {
+    ChangeEconomicCrimeLevyDetails
+      .ChangeAmlRegulatedActivityLength(days)
+    this
+  }
+
   def submitPage(): this.type = {
     SharedActions.clickButton()
     this
