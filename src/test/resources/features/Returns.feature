@@ -122,7 +122,7 @@ Feature: Submit ECL Return
     Then I should be on the page that says <Expected content>
     Examples:
       | UK Revenue | Expected content                                                        |
-      | 10199999   | The amount of levy you need to pay for this financial year is £0.00      |
+      | 10199999   | The amount of levy you need to pay for this financial year is £0.     |
       | 10200000   | The amount of levy you need to pay for this financial year is £10,000.  |
       | 35999999   | The amount of levy you need to pay for this financial year is £10,000.  |
       | 36000000   | The amount of levy you need to pay for this financial year is £36,000.  |
@@ -136,7 +136,7 @@ Feature: Submit ECL Return
     Then I should be see the amount of ECL need to pay <Expected content>
     Examples:
       | UK Revenue | AMLDays | Expected content                                                           |
-      | 10199999   | 120     | The amount of levy you need to pay for this financial year is £0.00.          |
+      | 10199999   | 120     | The amount of levy you need to pay for this financial year is £0.          |
       | 10200000   | 60      | The amount of levy you need to pay for this financial year is £1,643.83.   |
       | 999999999  | 204     | The amount of levy you need to pay for this financial year is £20,120.54.  |
       | 1000000000 | 330     | The amount of levy you need to pay for this financial year is £226,027.39. |
@@ -148,10 +148,10 @@ Feature: Submit ECL Return
     Then I should be see the amount of ECL need to pay <Expected content>
     Examples:
       | UK Revenue | APDays | Expected content                                                        |
-      | 5000000    | 245    | The amount of levy you need to pay for this financial year is £0.00.      |
-      | 10000000   | 182    | The amount of levy you need to pay for this financial year is £10,000.00. |
-      | 8000000    | 73     | The amount of levy you need to pay for this financial year is £36,000.00.  |
-      | 1300000000 | 450    | The amount of levy you need to pay for this financial year is £250,000.00. |
+      | 5000000    | 245    | The amount of levy you need to pay for this financial year is £0.      |
+      | 10000000   | 182    | The amount of levy you need to pay for this financial year is £10,000. |
+      | 8000000    | 73     | The amount of levy you need to pay for this financial year is £36,000.  |
+      | 1300000000 | 450    | The amount of levy you need to pay for this financial year is £250,000. |
 
 
   Scenario Outline: Return submission for non 12 month accounting period and AML-regulated activity for the non-full financial year
@@ -162,7 +162,7 @@ Feature: Submit ECL Return
     Then I should be see the amount of ECL need to pay <Expected content>
     Examples:
       | UK Revenue | APDays | AMLDays | Expected content                                                           |
-      | 7000000    | 314    | 92      | The amount of levy you need to pay for this financial year is £0.00.          |
+      | 7000000    | 314    | 92      | The amount of levy you need to pay for this financial year is £0.         |
       | 10000000   | 113    | 198     | The amount of levy you need to pay for this financial year is £5,424.65.   |
       | 31000000   | 284    | 300     | The amount of levy you need to pay for this financial year is £29,589.04.  |
       | 350000000  | 91     | 256     | The amount of levy you need to pay for this financial year is £175,342.46. |
