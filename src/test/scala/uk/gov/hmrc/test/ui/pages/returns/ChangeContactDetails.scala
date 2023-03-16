@@ -20,15 +20,14 @@ import uk.gov.hmrc.test.ui.pages.{BasePage, SharedActions}
 
 object ChangeContactDetails extends BasePage {
 
-  val cssForChangeContactName: String =
+  val cssForChangeContactName: String            =
     "a[href='/submit-economic-crime-levy-return/change-answer/contact-name']"
-  val cssForChangeContactRole: String =
+  val cssForChangeContactRole: String            =
     "a[href='/submit-economic-crime-levy-return/change-answer/contact-role']"
-  val cssForChangeContactEmail: String =
+  val cssForChangeContactEmail: String           =
     "a[href='/submit-economic-crime-levy-return/change-answer/contact-email-address']"
   val cssForChangeContactTelephoneNumber: String =
     "a[href='/submit-economic-crime-levy-return/change-answer/contact-telephone']"
-
 
   def changeContactName(name: String): this.type = {
     clickByCssSelector(cssForChangeContactName)

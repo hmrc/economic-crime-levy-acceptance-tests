@@ -21,17 +21,17 @@ import uk.gov.hmrc.test.ui.pages.{BasePage, SharedActions}
 object ChangeOrganisationDetails extends BasePage {
 
   val cssForChangeBusinessSector: String       =
-    "a[href='/register-for-the-economic-crime-levy/change-answer/what-is-your-business-sector']"
+    "a[href='/register-for-economic-crime-levy/change-answer/what-is-your-business-sector']"
   val cssForChangeAmlSupervisor: String        =
-    "a[href='/register-for-the-economic-crime-levy/change-answer/who-is-your-aml-supervisor']"
+    "a[href='/register-for-economic-crime-levy/change-answer/who-is-your-aml-supervisor']"
   val cssForChangeUkRevenue: String            =
-    "a[href='/register-for-the-economic-crime-levy/change-answer/uk-revenue-for-accounting-period']"
+    "a[href='/register-for-economic-crime-levy/change-answer/uk-revenue-for-accounting-period']"
   val cssForChangeAccountingPeriod: String     =
-    "a[href='/register-for-the-economic-crime-levy/change-answer/is-relevant-accounting-period-12-months']"
+    "a[href='/register-for-economic-crime-levy/change-answer/is-relevant-accounting-period-12-months']"
   val cssForChangeAmlRegulatedActivity: String =
-    "a[href='/register-for-the-economic-crime-levy/change-answer/did-you-carry-out-aml-regulated-activity']"
+    "a[href='/register-for-economic-crime-levy/change-answer/did-you-carry-out-aml-regulated-activity']"
   val cssForChangeEntityType: String           =
-    "a[href='/register-for-the-economic-crime-levy/change-answer/what-is-your-entity-type']"
+    "a[href='/register-for-economic-crime-levy/change-answer/what-is-your-entity-type']"
   val cssForSaveAndContinue                    = "button[class='govuk-button']"
 
   def changeBusinessSector(): this.type = {

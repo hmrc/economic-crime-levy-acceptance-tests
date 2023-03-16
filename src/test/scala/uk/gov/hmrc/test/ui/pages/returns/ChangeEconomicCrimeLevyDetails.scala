@@ -20,13 +20,13 @@ import uk.gov.hmrc.test.ui.pages.{BasePage, SharedActions}
 
 object ChangeEconomicCrimeLevyDetails extends BasePage {
 
-  val cssForChangeAccountingPeriod: String =
+  val cssForChangeAccountingPeriod: String           =
     "a[href='/submit-economic-crime-levy-return/change-answer/is-relevant-accounting-period-12-months']"
-  val cssForChangeAccountingPeriodLength: String =
+  val cssForChangeAccountingPeriodLength: String     =
     "a[href='/submit-economic-crime-levy-return/change-answer/relevant-accounting-period-length']"
-  val cssForChangeUkRevenue: String =
+  val cssForChangeUkRevenue: String                  =
     "a[href='/submit-economic-crime-levy-return/change-answer/uk-revenue-in-accounting-period']"
-  val cssForChangeAmlRegulatedActivity: String =
+  val cssForChangeAmlRegulatedActivity: String       =
     "a[href='/submit-economic-crime-levy-return/change-answer/aml-regulated-activity']"
   val cssForChangeAmlRegulatedActivityLength: String =
     "a[href='/submit-economic-crime-levy-return/change-answer/aml-regulated-activity-days']"
@@ -43,8 +43,8 @@ object ChangeEconomicCrimeLevyDetails extends BasePage {
 
   def changeAccountingPeriodLength(days: String): this.type = {
     clickByCssSelector(cssForChangeAccountingPeriodLength)
-      ReturnsPage
-        .provideAccountingPeriod(days)
+    ReturnsPage
+      .provideAccountingPeriod(days)
     submitPage()
     onPage(CheckYourAnswersPage.heading)
     this
@@ -77,7 +77,6 @@ object ChangeEconomicCrimeLevyDetails extends BasePage {
     onPage(CheckYourAnswersPage.heading)
     this
   }
-
 
   def submitPage(): this.type = {
     SharedActions.clickButton()

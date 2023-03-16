@@ -24,7 +24,7 @@ import uk.gov.hmrc.test.ui.pages.{BasePage, SharedActions}
 object AmlRegulatedActivityPage extends BasePage {
 
   val url =
-    s"${TestConfiguration.url("economic-crime-levy-registration-frontend")}/register-for-the-economic-crime-levy/did-you-carry-out-aml-regulated-activity"
+    s"${TestConfiguration.url("economic-crime-levy-registration-frontend")}/register-for-economic-crime-levy/did-you-carry-out-aml-regulated-activity"
 
   val expectedTaxYearStart = EclTaxYear.currentFyStartYear
   val expectedTaxYearEnd   = EclTaxYear.currentFyEndYear

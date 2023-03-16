@@ -33,7 +33,7 @@ trait BasePage extends BrowserDriver with Matchers {
   val WAIT_TIME_OUT: Duration         = Duration.of(20, ChronoUnit.SECONDS)
 
   val clearAllUrl =
-    s"${TestConfiguration.url("economic-crime-levy-registration-frontend")}/register-for-the-economic-crime-levy/test-only/clear-all"
+    s"${TestConfiguration.url("economic-crime-levy-registration-frontend")}/register-for-economic-crime-levy/test-only/clear-all"
 
   protected def navigateToClearAllUrl(): Unit =
     driver.get(clearAllUrl)
