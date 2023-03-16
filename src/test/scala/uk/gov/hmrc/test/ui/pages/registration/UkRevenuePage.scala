@@ -22,7 +22,7 @@ import uk.gov.hmrc.test.ui.pages.{BasePage, SharedActions}
 object UkRevenuePage extends BasePage {
 
   val url =
-    s"${TestConfiguration.url("economic-crime-levy-registration-frontend")}/register-for-the-economic-crime-levy/uk-revenue-for-accounting-period"
+    s"${TestConfiguration.url("economic-crime-levy-registration-frontend")}/register-for-economic-crime-levy/uk-revenue-for-accounting-period"
 
   val heading = "What was your UK revenue for the relevant accounting period?"
 

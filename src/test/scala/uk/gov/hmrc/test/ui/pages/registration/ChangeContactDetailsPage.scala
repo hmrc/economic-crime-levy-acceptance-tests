@@ -22,28 +22,28 @@ import uk.gov.hmrc.test.ui.pages.{BasePage, SharedActions}
 object ChangeContactDetailsPage extends BasePage {
 
   val cssForChangeFirstContactName: String            =
-    "a[href='/register-for-the-economic-crime-levy/change-answer/contact-name']"
+    "a[href='/register-for-economic-crime-levy/change-answer/contact-name']"
   val cssForChangeFirstContactRole: String            =
-    "a[href='/register-for-the-economic-crime-levy/change-answer/contact-role']"
+    "a[href='/register-for-economic-crime-levy/change-answer/contact-role']"
   val cssForChangeFirstContactEmail: String           =
-    "a[href='/register-for-the-economic-crime-levy/change-answer/contact-email-address']"
+    "a[href='/register-for-economic-crime-levy/change-answer/contact-email-address']"
   val cssForChangeFirstContactTelephoneNumber: String =
-    "a[href='/register-for-the-economic-crime-levy/change-answer/contact-telephone']"
+    "a[href='/register-for-economic-crime-levy/change-answer/contact-telephone']"
 
   val cssForChangeSecondaryContact: String =
-    "a[href='/register-for-the-economic-crime-levy/change-answer/second-contact']"
+    "a[href='/register-for-economic-crime-levy/change-answer/second-contact']"
 
   val cssForChangeSecondContactName: String            =
-    "a[href='/register-for-the-economic-crime-levy/change-answer/second-contact-name']"
+    "a[href='/register-for-economic-crime-levy/change-answer/second-contact-name']"
   val cssForChangeSecondContactRole: String            =
-    "a[href='/register-for-the-economic-crime-levy/change-answer/second-contact-role']"
+    "a[href='/register-for-economic-crime-levy/change-answer/second-contact-role']"
   val cssForChangeSecondContactEmail: String           =
-    "a[href='/register-for-the-economic-crime-levy/change-answer/second-contact-email-address']"
+    "a[href='/register-for-economic-crime-levy/change-answer/second-contact-email-address']"
   val cssForChangeSecondContactTelephoneNumber: String =
-    "a[href='/register-for-the-economic-crime-levy/change-answer/second-contact-telephone']"
+    "a[href='/register-for-economic-crime-levy/change-answer/second-contact-telephone']"
 
   val cssForChangeRegisteredAddress: String =
-    "a[href='/register-for-the-economic-crime-levy/change-answer/contact-address']"
+    "a[href='/register-for-economic-crime-levy/change-answer/contact-address']"
 
   def changeFirstContactName(): this.type = {
     clickByCssSelector(cssForChangeFirstContactName)

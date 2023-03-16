@@ -22,7 +22,7 @@ import uk.gov.hmrc.test.ui.pages.BasePage
 object SecondContactNamePage extends BasePage {
 
   val url =
-    s"${TestConfiguration.url("economic-crime-levy-registration-frontend")}/register-for-the-economic-crime-levy/second-contact"
+    s"${TestConfiguration.url("economic-crime-levy-registration-frontend")}/register-for-economic-crime-levy/second-contact"
 
   val heading = "Would you like to add another contact?"
 }

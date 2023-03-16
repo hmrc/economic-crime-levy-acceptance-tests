@@ -22,7 +22,7 @@ import uk.gov.hmrc.test.ui.pages.{BasePage, SharedActions}
 object CheckYourAnswersPage extends BasePage {
 
   val url =
-    s"${TestConfiguration.url("economic-crime-levy-registration-frontend")}/register-for-the-economic-crime-levy/check-your-answers"
+    s"${TestConfiguration.url("economic-crime-levy-registration-frontend")}/register-for-economic-crime-levy/check-your-answers"
 
   val heading = "Check your answers"
 

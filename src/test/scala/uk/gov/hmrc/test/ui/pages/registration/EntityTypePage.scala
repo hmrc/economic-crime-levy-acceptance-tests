@@ -22,7 +22,7 @@ import uk.gov.hmrc.test.ui.pages.{BasePage, SharedActions}
 object EntityTypePage extends BasePage {
 
   val url =
-    s"${TestConfiguration.url("economic-crime-levy-registration-frontend")}/register-for-the-economic-crime-levy/what-is-your-entity-type"
+    s"${TestConfiguration.url("economic-crime-levy-registration-frontend")}/register-for-economic-crime-levy/what-is-your-entity-type"
 
   val heading = "What is your entity type?"
 

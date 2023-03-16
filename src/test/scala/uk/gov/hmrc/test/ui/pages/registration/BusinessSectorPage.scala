@@ -22,7 +22,7 @@ import uk.gov.hmrc.test.ui.pages.{BasePage, SharedActions}
 object BusinessSectorPage extends BasePage {
 
   val url =
-    s"${TestConfiguration.url("economic-crime-levy-registration-frontend")}/register-for-the-economic-crime-levy/what-is-your-business-sector"
+    s"${TestConfiguration.url("economic-crime-levy-registration-frontend")}/register-for-economic-crime-levy/what-is-your-business-sector"
 
   val heading               = "What is your business sector?"
   val cssForSaveAndContinue = "button[class='govuk-button']"

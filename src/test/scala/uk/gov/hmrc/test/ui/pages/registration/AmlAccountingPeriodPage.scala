@@ -22,7 +22,7 @@ import uk.gov.hmrc.test.ui.pages.{BasePage, SharedActions}
 object AmlAccountingPeriodPage extends BasePage {
 
   val url =
-    s"${TestConfiguration.url("economic-crime-levy-registration-frontend")}/register-for-the-economic-crime-levy/how-long-is-your-relevant-accounting-period"
+    s"${TestConfiguration.url("economic-crime-levy-registration-frontend")}/register-for-economic-crime-levy/how-long-is-your-relevant-accounting-period"
 
   val heading = "How long is your relevant accounting period?"
 

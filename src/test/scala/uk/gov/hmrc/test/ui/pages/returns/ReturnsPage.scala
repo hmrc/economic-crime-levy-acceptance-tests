@@ -111,7 +111,12 @@ object ReturnsPage extends BasePage {
     this
   }
 
-  def provideChangeContactDetails(name: String, role:String, emailAddress: String, contactNumber: String): this.type = {
+  def provideChangeContactDetails(
+    name: String,
+    role: String,
+    emailAddress: String,
+    contactNumber: String
+  ): this.type = {
     ChangeContactDetails
       .changeContactName(name)
       .changeContactRole(role)

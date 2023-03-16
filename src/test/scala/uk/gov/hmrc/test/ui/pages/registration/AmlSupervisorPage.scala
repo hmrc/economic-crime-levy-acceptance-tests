@@ -22,7 +22,7 @@ import uk.gov.hmrc.test.ui.pages.{BasePage, SharedActions}
 object AmlSupervisorPage extends BasePage {
 
   val url =
-    s"${TestConfiguration.url("economic-crime-levy-registration-frontend")}/register-for-the-economic-crime-levy/who-is-your-aml-supervisor"
+    s"${TestConfiguration.url("economic-crime-levy-registration-frontend")}/register-for-economic-crime-levy/who-is-your-aml-supervisor"
 
   val heading = "Who is your Anti-Money Laundering (AML) supervisor?"
 

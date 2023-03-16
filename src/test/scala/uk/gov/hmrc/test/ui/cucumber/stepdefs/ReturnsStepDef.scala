@@ -66,10 +66,10 @@ class ReturnsStepDef extends BaseStepDef {
     ContactNamePage
       .navigateTo()
       .provideContactName("Tom")
-      ContactRolePage
-        .provideContactRole("Account Director")
-      ContactEmailAddressPage
-        .provideContactEmailAddress(emailAddress)
+    ContactRolePage
+      .provideContactRole("Account Director")
+    ContactEmailAddressPage
+      .provideContactEmailAddress(emailAddress)
     confirmUrl(ContactEmailAddressPage.url)
   }
 
@@ -78,11 +78,11 @@ class ReturnsStepDef extends BaseStepDef {
       .navigateTo()
       .provideContactName("Paul")
     ContactRolePage
-        .provideContactRole("Account Manager")
+      .provideContactRole("Account Manager")
     ContactEmailAddressPage
-        .provideContactEmailAddress("verify@test.com")
+      .provideContactEmailAddress("verify@test.com")
     ContactTelephonePage
-        .provideContactNumber(contactNumber)
+      .provideContactNumber(contactNumber)
     confirmUrl(ContactTelephonePage.url)
   }
 
@@ -172,10 +172,11 @@ class ReturnsStepDef extends BaseStepDef {
       .selectAmlRegulatedActivity(value)
   }
 
-  And("I go to the return submission check your answers page directly without providing answers for any of the previous page questions") {
-    () =>
-      CheckYourAnswersPage
-        .navigateTo()
+  And(
+    "I go to the return submission check your answers page directly without providing answers for any of the previous page questions"
+  ) { () =>
+    CheckYourAnswersPage
+      .navigateTo()
   }
 
   When("I click on the change link to modify my contact details") { () =>

@@ -23,7 +23,7 @@ import uk.gov.hmrc.test.ui.pages.{BasePage, SharedActions}
 object RegistrationPage extends BasePage {
 
   val url =
-    s"${TestConfiguration.url("economic-crime-levy-registration-frontend")}/register-for-the-economic-crime-levy/"
+    s"${TestConfiguration.url("economic-crime-levy-registration-frontend")}/register-for-economic-crime-levy/"
 
   def navigateTo(): this.type = {
     navigateToClearAllUrl()
