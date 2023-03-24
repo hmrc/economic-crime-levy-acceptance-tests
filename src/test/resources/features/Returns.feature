@@ -32,9 +32,10 @@ Feature: Submit ECL Return
     Then I should see an error that says <Expected content>
 
     Examples:
-      | Email address | Expected content                                                    |
-      |               | Enter an email address                                              |
-      | email-address | Enter an email address in the correct format, like name@example.com |
+      | Email address                                                                                                                         | Expected content                                                    |
+      |                                                                                                                                       | Enter an email address                                              |
+      | ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUV@oc.com | Email address must be 132 characters or less                        |
+      | email-address                                                                                                                         | Enter an email address in the correct format, like name@example.com |
 
   Scenario Outline: User does not provide their contact person's valid contact number for for completing the ECL return
     Given I am signed in to the return journey
@@ -110,9 +111,8 @@ Feature: Submit ECL Return
     Examples:
       | Days  | Expected content                                                |
       |       | Enter the number of days you carried out AML-regulated activity |
-      | 0     | Length must be between 1 and 365 days                           |
-      | -1    | Length must be between 1 and 365 days                           |
-      | 1000  | Length must be between 1 and 365 days                           |
+      | -1    | Length must be between 0 and 365 days                           |
+      | 1000  | Length must be between 0 and 365 days                           |
       | asdwa | Length must be a whole number                                   |
       | 245.0 | Length must be a whole number                                   |
 
@@ -122,7 +122,7 @@ Feature: Submit ECL Return
     Then I should be on the page that says <Expected content>
     Examples:
       | UK Revenue | Expected content                                                        |
-      | 10199999   | The amount of levy you need to pay for this financial year is £0.     |
+      | 10199999   | The amount of levy you need to pay for this financial year is £0.       |
       | 10200000   | The amount of levy you need to pay for this financial year is £10,000.  |
       | 35999999   | The amount of levy you need to pay for this financial year is £10,000.  |
       | 36000000   | The amount of levy you need to pay for this financial year is £36,000.  |
@@ -148,8 +148,8 @@ Feature: Submit ECL Return
     Then I should be see the amount of ECL need to pay <Expected content>
     Examples:
       | UK Revenue | APDays | Expected content                                                        |
-      | 5000000    | 245    | The amount of levy you need to pay for this financial year is £0.      |
-      | 10000000   | 182    | The amount of levy you need to pay for this financial year is £10,000. |
+      | 5000000    | 245    | The amount of levy you need to pay for this financial year is £0.       |
+      | 10000000   | 182    | The amount of levy you need to pay for this financial year is £10,000.  |
       | 8000000    | 73     | The amount of levy you need to pay for this financial year is £36,000.  |
       | 1300000000 | 450    | The amount of levy you need to pay for this financial year is £250,000. |
 
@@ -162,7 +162,7 @@ Feature: Submit ECL Return
     Then I should be see the amount of ECL need to pay <Expected content>
     Examples:
       | UK Revenue | APDays | AMLDays | Expected content                                                           |
-      | 7000000    | 314    | 92      | The amount of levy you need to pay for this financial year is £0.         |
+      | 7000000    | 314    | 92      | The amount of levy you need to pay for this financial year is £0.          |
       | 10000000   | 113    | 198     | The amount of levy you need to pay for this financial year is £5,424.65.   |
       | 31000000   | 284    | 300     | The amount of levy you need to pay for this financial year is £29,589.04.  |
       | 350000000  | 91     | 256     | The amount of levy you need to pay for this financial year is £175,342.46. |
