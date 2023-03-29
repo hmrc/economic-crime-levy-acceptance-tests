@@ -16,7 +16,7 @@
 
 package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
-import uk.gov.hmrc.test.ui.pages.enrolment.EnrolmentPage
+import uk.gov.hmrc.test.ui.pages.enrolment.{EnrolmentPage}
 
 class EnrolmentStepDef extends BaseStepDef {
 
@@ -26,11 +26,36 @@ class EnrolmentStepDef extends BaseStepDef {
       .startAndSignIn()
   }
 
-  Given("""I provide the details of my ECL reference number""") { () =>
+  When("""I provide the details of my ECL reference number""") { () =>
     EnrolmentPage
-      .selectEclReferenceNumber()
+      .selectEclReferenceNumber("Yes")
       .provideEclReferenceNumber("XMECL0000000001")
       .provideEclRegistrationDate(registrationDate = "01", registrationMonth = "03", registrationYear = "2023")
+  }
+
+  When("""I do not select an option for whether or not I have the ECL reference number""") { () =>
+    EnrolmentPage
+      .navigateTo()
+      .submitPage()
+  }
+
+  When("^I select (No|Unknown) option for whether or not I have the ECL reference number$") { (value: String) =>
+    EnrolmentPage
+      .selectEclReferenceNumber(value)
+  }
+
+  When("^I enter the economic crime levey reference number (.*)$") { (eclReferenceNumber: String) =>
+    EnrolmentPage
+      .provideInvalidEclReferenceNumber(eclReferenceNumber)
+  }
+
+  When("^I enter the ECL registration date day as (.*) month as (.*) and year as (.*)$") {
+    (day: String, month: String, year: String) =>
+      EnrolmentPage
+        .selectEclReferenceNumber("Yes")
+        .provideEclReferenceNumber("XMECL0000000001")
+      EnrolmentPage
+        .provideEclRegistrationDate(day, month, year)
   }
 
 }

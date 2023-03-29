@@ -39,19 +39,34 @@ object EnrolmentPage extends BasePage {
     this
   }
 
-  def selectEclReferenceNumber(): this.type = {
-    SharedActions
-      .selectYesOrNo("Yes")
-      .submitPage()
-    onPage(EnrolmentReferenceNumberPage.heading)
+  def selectEclReferenceNumber(value: String = "Unknown"): this.type = {
+    value match {
+      case "Yes"     =>
+        SharedActions
+          .selectYesOrNo("Yes")
+        submitPage()
+        onPage(EnrolmentReferenceNumberPage.heading)
+      case "No"      =>
+        SharedActions
+          .selectYesOrNo("No")
+        submitPage()
+        onPage(EnrolmentRegisterECLPage.heading)
+      case "Unknown" =>
+        SharedActions.clickById("value_2")
+        submitPage()
+        onPage(FindEclReferenceNumberPage.heading)
+    }
     this
   }
+
+  def selectUnknownEclReferenceNumber(): this.type =
+    this
 
   def provideEclReferenceNumber(eclReferenceNumber: String): this.type = {
     SharedActions
       .enterDetails(eclReferenceNumber)
     submitPage()
-    onPage(EnrolmentRegistrationPage.heading)
+    onPage(EnrolmentRegistrationDatePage.heading)
     this
   }
 
@@ -64,7 +79,15 @@ object EnrolmentPage extends BasePage {
     sendKeys(By.id("value.month"), registrationMonth)
     sendKeys(By.id("value.year"), registrationYear)
     submitPage()
-    onPage(EnrolmentSuccessPage.heading)
+    this
+  }
+
+  def provideInvalidEclReferenceNumber(eclReferenceNumber: String): this.type = {
+    EnrolmentReferenceNumberPage
+      .navigateTo()
+    SharedActions
+      .enterDetails(eclReferenceNumber)
+    submitPage()
     this
   }
 

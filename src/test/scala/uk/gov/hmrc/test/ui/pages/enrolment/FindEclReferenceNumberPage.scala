@@ -17,24 +17,13 @@
 package uk.gov.hmrc.test.ui.pages.enrolment
 
 import uk.gov.hmrc.test.ui.conf.TestConfiguration
-import uk.gov.hmrc.test.ui.pages.{BasePage, SharedActions}
+import uk.gov.hmrc.test.ui.pages.BasePage
 
-object EnrolmentReferenceNumberPage extends BasePage {
+object FindEclReferenceNumberPage extends BasePage {
 
   val url =
-    s"${TestConfiguration.url("economic-crime-levy-enrolment-frontend")}/add-economic-crime-levy/your-ecl-reference-number/"
+    s"${TestConfiguration.url("economic-crime-levy-enrolment-frontend")}/add-economic-crime-levy/find-your-ecl-reference-number/"
 
-  val heading = "Your Economic Crime Levy (ECL) reference number"
-
-  def navigateTo(): this.type = {
-    navigateToClearAllUrl()
-    driver.get(url)
-    this
-  }
-
-  def submitPage(): this.type = {
-    SharedActions.clickButton()
-    this
-  }
+  val heading = "How to find your Economic Crime Levy reference number"
 
 }

@@ -19,12 +19,12 @@ package uk.gov.hmrc.test.ui.pages.enrolment
 import uk.gov.hmrc.test.ui.conf.TestConfiguration
 import uk.gov.hmrc.test.ui.pages.{BasePage, SharedActions}
 
-object EnrolmentReferenceNumberPage extends BasePage {
+object EnrolmentRegistrationDatePage extends BasePage {
 
   val url =
-    s"${TestConfiguration.url("economic-crime-levy-enrolment-frontend")}/add-economic-crime-levy/your-ecl-reference-number/"
+    s"${TestConfiguration.url("economic-crime-levy-enrolment-frontend")}/add-economic-crime-levy/ecl-registration-date/"
 
-  val heading = "Your Economic Crime Levy (ECL) reference number"
+  val heading = "Your ECL registration date"
 
   def navigateTo(): this.type = {
     navigateToClearAllUrl()

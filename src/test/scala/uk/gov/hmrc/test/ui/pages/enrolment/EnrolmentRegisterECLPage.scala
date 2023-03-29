@@ -17,13 +17,13 @@
 package uk.gov.hmrc.test.ui.pages.enrolment
 
 import uk.gov.hmrc.test.ui.conf.TestConfiguration
-import uk.gov.hmrc.test.ui.pages.BasePage
+import uk.gov.hmrc.test.ui.pages.{BasePage}
 
-object EnrolmentRegistrationPage extends BasePage {
+object EnrolmentRegisterECLPage extends BasePage {
 
   val url =
-    s"${TestConfiguration.url("economic-crime-levy-enrolment-frontend")}/add-economic-crime-levy/ecl-registration-date/"
+    s"${TestConfiguration.url("economic-crime-levy-enrolment-frontend")}/add-economic-crime-levy/you-need-to-register-ecl/"
 
-  val heading = "Your ECL registration date"
+  val heading = "You need to register for the Economic Crime Levy"
 
 }
