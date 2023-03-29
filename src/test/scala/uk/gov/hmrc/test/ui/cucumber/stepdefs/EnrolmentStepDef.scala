@@ -44,7 +44,7 @@ class EnrolmentStepDef extends BaseStepDef {
       .selectEclReferenceNumber(value)
   }
 
-  When("^I enter the economic crime levey reference number (.*)$") { (eclReferenceNumber: String) =>
+  When("^I enter the economic crime levy reference number (.*)$") { (eclReferenceNumber: String) =>
     EnrolmentPage
       .provideInvalidEclReferenceNumber(eclReferenceNumber)
   }
