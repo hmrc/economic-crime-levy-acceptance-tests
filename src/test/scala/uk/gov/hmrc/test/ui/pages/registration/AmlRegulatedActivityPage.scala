@@ -24,16 +24,18 @@ import uk.gov.hmrc.test.ui.pages.{BasePage, SharedActions}
 object AmlRegulatedActivityPage extends BasePage {
 
   val url =
-    s"${TestConfiguration.url("economic-crime-levy-registration-frontend")}/register-for-economic-crime-levy/did-you-carry-out-aml-regulated-activity"
+    s"${TestConfiguration.url("economic-crime-levy-registration-frontend")}/register-for-economic-crime-levy/aml-regulated-activity-question"
 
   val expectedTaxYearStart = EclTaxYear.currentFyStartYear
   val expectedTaxYearEnd   = EclTaxYear.currentFyEndYear
   val heading              =
-    "Did you carry out AML-regulated activity between 1 April " + expectedTaxYearStart + " and 31 March " + expectedTaxYearEnd + "?"
+    "Did you carry out anti-money laundering (AML) regulated activity between 1 April " + expectedTaxYearStart + " and 31 March " + expectedTaxYearEnd + "?"
 
   def navigateTo(): this.type = {
     navigateToClearAllUrl()
     driver.get(url)
+    RegistrationPage
+      .provideAccessCode("123456")
     this
   }
 

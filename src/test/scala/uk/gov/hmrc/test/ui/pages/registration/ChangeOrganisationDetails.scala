@@ -23,13 +23,13 @@ object ChangeOrganisationDetails extends BasePage {
   val cssForChangeBusinessSector: String       =
     "a[href='/register-for-economic-crime-levy/change-answer/what-is-your-business-sector']"
   val cssForChangeAmlSupervisor: String        =
-    "a[href='/register-for-economic-crime-levy/change-answer/who-is-your-aml-supervisor']"
+    "a[href='/register-for-economic-crime-levy/change-answer/your-aml-supervisor']"
   val cssForChangeUkRevenue: String            =
-    "a[href='/register-for-economic-crime-levy/change-answer/uk-revenue-for-accounting-period']"
+    "a[href='/register-for-economic-crime-levy/change-answer/uk-revenue']"
   val cssForChangeAccountingPeriod: String     =
-    "a[href='/register-for-economic-crime-levy/change-answer/is-relevant-accounting-period-12-months']"
+    "a[href='/register-for-economic-crime-levy/change-answer/accounting-period-question']"
   val cssForChangeAmlRegulatedActivity: String =
-    "a[href='/register-for-economic-crime-levy/change-answer/did-you-carry-out-aml-regulated-activity']"
+    "a[href='/register-for-economic-crime-levy/change-answer/aml-regulated-activity-question']"
   val cssForChangeEntityType: String           =
     "a[href='/register-for-economic-crime-levy/change-answer/what-is-your-entity-type']"
   val cssForSaveAndContinue                    = "button[class='govuk-button']"

@@ -22,13 +22,15 @@ import uk.gov.hmrc.test.ui.pages.{BasePage, SharedActions}
 object AmlAccountingPeriodPage extends BasePage {
 
   val url =
-    s"${TestConfiguration.url("economic-crime-levy-registration-frontend")}/register-for-economic-crime-levy/how-long-is-your-relevant-accounting-period"
+    s"${TestConfiguration.url("economic-crime-levy-registration-frontend")}/register-for-economic-crime-levy/relevant-accounting-period-length-question"
 
   val heading = "How long is your relevant accounting period?"
 
   def navigateTo(): this.type = {
     navigateToClearAllUrl()
     driver.get(url)
+    RegistrationPage
+      .provideAccessCode("123456")
     this
   }
 

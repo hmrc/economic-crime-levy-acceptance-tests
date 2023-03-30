@@ -26,6 +26,7 @@ class RegistrationStepDef extends BaseStepDef {
     RegistrationPage
       .navigateTo()
       .startAndSignIn()
+
   }
 
   When("""I provide details of my limited company that is supervised by HMRC and liable for ECL""") { () =>
@@ -306,6 +307,14 @@ class RegistrationStepDef extends BaseStepDef {
       .navigateTo()
     SharedActions
       .enterDetails(partnershipName)
+    submitPage()
+  }
+
+  When("I enter the invalid access code (.*) to register for the ECl$") { (accessCode: String) =>
+    AccessCodePage
+      .navigateTo()
+    SharedActions
+      .enterDetails(accessCode)
     submitPage()
   }
 

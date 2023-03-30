@@ -22,13 +22,15 @@ import uk.gov.hmrc.test.ui.pages.{BasePage, SharedActions}
 object AmlSupervisorPage extends BasePage {
 
   val url =
-    s"${TestConfiguration.url("economic-crime-levy-registration-frontend")}/register-for-economic-crime-levy/who-is-your-aml-supervisor"
+    s"${TestConfiguration.url("economic-crime-levy-registration-frontend")}/register-for-economic-crime-levy/your-aml-supervisor"
 
-  val heading = "Who is your Anti-Money Laundering (AML) supervisor?"
+  val heading = "Your anti-money laundering (AML) supervisor"
 
   def navigateTo(): this.type = {
     navigateToClearAllUrl()
     driver.get(url)
+    RegistrationPage
+      .provideAccessCode("123456")
     this
   }
 

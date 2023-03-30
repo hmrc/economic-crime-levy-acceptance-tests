@@ -19,24 +19,16 @@ package uk.gov.hmrc.test.ui.pages.registration
 import uk.gov.hmrc.test.ui.conf.TestConfiguration
 import uk.gov.hmrc.test.ui.pages.{BasePage, SharedActions}
 
-object EntityTypePage extends BasePage {
+object AccessCodePage extends BasePage {
 
   val url =
-    s"${TestConfiguration.url("economic-crime-levy-registration-frontend")}/register-for-economic-crime-levy/what-is-your-entity-type"
+    s"${TestConfiguration.url("economic-crime-levy-registration-frontend")}/register-for-economic-crime-levy/ecl-beta-access?continueUrl=http%3A%2F%2Flocalhost%3A14000%2Fregister-for-economic-crime-levy%2Faml-regulated-activity-question"
 
-  val heading = "What is your entity type?"
+  val heading = "Register for the Economic Crime Levy"
 
   def navigateTo(): this.type = {
     navigateToClearAllUrl()
     driver.get(url)
-    RegistrationPage
-      .provideAccessCode("123456")
-    this
-  }
-
-  def otherEntityType(): this.type = {
-    SharedActions.selectLabelByPartialText("Other")
-    submitPage()
     this
   }
 
