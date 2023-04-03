@@ -24,11 +24,13 @@ object UkRevenuePage extends BasePage {
   val url =
     s"${TestConfiguration.url("economic-crime-levy-registration-frontend")}/register-for-economic-crime-levy/uk-revenue-for-accounting-period"
 
-  val heading = "What was your UK revenue for the relevant accounting period?"
+  val heading = "What was your total UK revenue in your accounting period?"
 
   def navigateTo(): this.type = {
     navigateToClearAllUrl()
     driver.get(url)
+    RegistrationPage
+      .provideAccessCode("123456")
     this
   }
 
