@@ -221,6 +221,57 @@ object RegistrationPage extends BasePage {
     this
   }
 
+  def provideAnotherUkRegisteredAddress(value: String): this.type = {
+    SharedActions
+      .selectYesOrNo(value)
+      .submitPage()
+    this
+  }
+
+  def provideNonUkRegisteredAddress(value: String): this.type = {
+    SharedActions
+      .selectYesOrNo(value)
+      .submitPage()
+    this
+  }
+
+  def providePartnershipName(partnershipName: String): this.type = {
+    SharedActions
+      .enterDetails(partnershipName)
+    submitPage()
+    this
+  }
+
+  def provideFirstContactName(contactName: String): this.type = {
+    FirstContactNamePage
+      .navigateTo()
+    SharedActions
+      .enterDetails(contactName)
+    submitPage()
+    this
+  }
+
+  def provideFirstContactRole(contactRole: String): this.type = {
+    SharedActions
+      .enterDetails(contactRole)
+    submitPage()
+    this
+  }
+
+  def provideFirstContactEmail(emailAddress: String): this.type = {
+    SharedActions
+      .enterDetails(emailAddress)
+    submitPage()
+    this
+  }
+
+  def provideFirstContactTelephoneNumber(contactNumber: String): this.type = {
+    SharedActions
+      .enterDetails(contactNumber)
+    submitPage()
+    this
+  }
+
   def submitPage(): this.type = {
     SharedActions.clickButton()
     this
