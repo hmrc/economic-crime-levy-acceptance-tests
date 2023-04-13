@@ -89,53 +89,25 @@ class RegistrationStepDef extends BaseStepDef {
   }
 
   And("^I enter the first contact person's name (.*) for my business$") { (contactName: String) =>
-    FirstContactNamePage
-      .navigateTo()
-    SharedActions
-      .enterDetails(contactName)
-    submitPage()
+    provideFirstContactName(contactName)
   }
 
   When("^I enter the first contact person's role (.*) for my business$") { (contactRole: String) =>
-    FirstContactNamePage
-      .navigateTo()
-    SharedActions
-      .enterDetails("James")
-    submitPage()
-    SharedActions
-      .enterDetails(contactRole)
-    submitPage()
+    provideFirstContactName("James")
+      .provideFirstContactRole(contactRole)
   }
 
   When("^I enter the first contact person's email address (.*) for my business$") { (emailAddress: String) =>
-    FirstContactNamePage
-      .navigateTo()
-    SharedActions
-      .enterDetails("Tom")
-    submitPage()
-    SharedActions
-      .enterDetails("Account Director")
-    submitPage()
-    SharedActions
-      .enterDetails(emailAddress)
-    submitPage()
+    provideFirstContactName("Tom")
+      .provideFirstContactRole("Account Director")
+      .provideFirstContactEmail(emailAddress)
   }
 
   When("^I enter the first contact person's contact number (.*) for my business$") { (contactNumber: String) =>
-    FirstContactNamePage
-      .navigateTo()
-    SharedActions
-      .enterDetails("Paul")
-    submitPage()
-    SharedActions
-      .enterDetails("Account Manager")
-    submitPage()
-    SharedActions
-      .enterDetails("verify@test.com")
-    submitPage()
-    SharedActions
-      .enterDetails(contactNumber)
-    submitPage()
+    provideFirstContactName("Paul")
+      .provideFirstContactRole("Account Manager")
+      .provideFirstContactEmail("verify@test.com")
+      .provideFirstContactTelephoneNumber(contactNumber)
   }
 
   And("I provide the details of another UK address as my main contact address") { () =>
@@ -149,10 +121,8 @@ class RegistrationStepDef extends BaseStepDef {
       .provideFirstContactDetails("Oliver Tom", "Account Manager", "test@test.com", "01632 960 001")
       .provideSecondContactDetails("Mark 1", "Compliance Officer", "verify@verify.com", "+44 808 157 0192")
       .provideRegisteredAddress("No")
-    SharedActions
-      .selectYesOrNo("No")
+      .provideAnotherUkRegisteredAddress("No")
       .submitPage()
-    submitPage()
   }
 
   And("I provide the details of a non UK address as my main contact address") { () =>
@@ -166,10 +136,8 @@ class RegistrationStepDef extends BaseStepDef {
       .provideFirstContactDetails("Oliver Tom", "Account Manager", "test@test.com", "01632 960 001")
       .provideSecondContactDetails("Mark 1", "Compliance Officer", "verify@verify.com", "+44 808 157 0192")
       .provideRegisteredAddress("No")
-    SharedActions
-      .selectYesOrNo("Yes")
+      .provideAnotherUkRegisteredAddress("Yes")
       .submitPage()
-    submitPage()
   }
 
   When("I enter the UK revenue (.*)for the relevant accounting period$") { (revenue: String) =>
@@ -239,10 +207,8 @@ class RegistrationStepDef extends BaseStepDef {
 
   When("I select (.*) on whether or not to use a different UK address as my main contact address$") { (value: String) =>
     provideRegisteredAddress("No")
-    SharedActions
-      .selectYesOrNo("Yes")
+      .provideNonUkRegisteredAddress("Yes")
       .submitPage()
-    submitPage()
   }
 
   When("I click on the change link and edit my organisation details") { () =>
@@ -305,17 +271,13 @@ class RegistrationStepDef extends BaseStepDef {
   When("I enter my (.*)'s name as (.*)$") { (_: String, partnershipName: String) =>
     PartnershipNamePage
       .navigateTo()
-    SharedActions
-      .enterDetails(partnershipName)
-    submitPage()
+    providePartnershipName(partnershipName)
   }
 
   When("I enter the invalid access code (.*) to register for the ECl$") { (accessCode: String) =>
     AccessCodePage
       .navigateTo()
-    SharedActions
-      .enterDetails(accessCode)
-    submitPage()
+    provideAccessCode(accessCode)
   }
 
   Then("^I should be on the page that asks (.*)$") { (value: String) =>
