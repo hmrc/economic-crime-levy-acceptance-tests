@@ -57,13 +57,15 @@ class RegistrationStepDef extends BaseStepDef {
       .navigateTo()
       .provideGcOrFcaAmlSupervisor(value)
   }
+// Commenting this,  "Other" entity for private beta test
 
+  /*
   When("""I say that my entity type is Other""") { () =>
     EntityTypePage
       .navigateTo()
       .otherEntityType()
   }
-
+   */
   When("""I do not select an other professional body when I have selected the Other option""") { () =>
     AmlSupervisorPage
       .navigateTo()
