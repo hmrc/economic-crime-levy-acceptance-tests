@@ -100,10 +100,12 @@ Feature: Register for ECL
     When I do not select an option for my entity type
     Then I should see an error that says Please select your entity type
 
-  Scenario: User's entity type is Other
-    Given I am signed in to the registration journey
-    When I say that my entity type is Other
-    Then I should be on the page that says Sorry, we’re experiencing technical difficulties
+# commenting the below scenario for private beta test
+#
+#  Scenario: User's entity type is Other
+#    Given I am signed in to the registration journey
+#    When I say that my entity type is Other
+#    Then I should be on the page that says Sorry, we’re experiencing technical difficulties
 
   Scenario: User does not select their business sector
     Given I am signed in to the registration journey
