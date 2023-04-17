@@ -57,7 +57,7 @@ Feature: Submit ECL Return
   Scenario: User selects no on whether or not their relevant accounting period 12 is months
     Given I am signed in to the return journey
     When I select No option for my relevant accounting period 12 months
-    Then I should see an error that says How long is your relevant accounting period?
+    Then I should be on the page that says How long is your relevant accounting period?
 
   Scenario: User does not enter how long their relevant accounting period is?
     Given I am signed in to the return journey
@@ -67,7 +67,7 @@ Feature: Submit ECL Return
   Scenario: User enters a valid length for their relevant accounting period
     Given I am signed in to the return journey
     When I enter the length of my relevant accounting period as 364 days
-    Then I should see an error that says What was your UK revenue for the relevant accounting period?
+    Then I should be on the page that says What was your UK revenue for the relevant accounting period?
 
   Scenario Outline: User enters an invalid length for their relevant accounting period
     Given I am signed in to the return journey
@@ -102,7 +102,7 @@ Feature: Submit ECL Return
   Scenario: User selects no for whether or not they carried out AML-regulated activity for the full financial year
     Given I am signed in to the return journey
     When I select No option for my AML-regulated activity for the full financial year
-    Then I should see an error that says How many days of the financial year did you carry out AML-regulated activity?
+    Then I should be on the page that says How many days of the financial year did you carry out AML-regulated activity?
 
   Scenario Outline: User enters an invalid number of days of AML regulated activity in the financial year
     Given I am signed in to the return journey
@@ -122,7 +122,6 @@ Feature: Submit ECL Return
     Then I should be on the page that says <Expected content>
     Examples:
       | UK Revenue | Expected content                                                        |
-      | 10199999   | The amount of levy you need to pay for this financial year is £0.       |
       | 10200000   | The amount of levy you need to pay for this financial year is £10,000.  |
       | 35999999   | The amount of levy you need to pay for this financial year is £10,000.  |
       | 36000000   | The amount of levy you need to pay for this financial year is £36,000.  |
@@ -136,7 +135,6 @@ Feature: Submit ECL Return
     Then I should be see the amount of ECL need to pay <Expected content>
     Examples:
       | UK Revenue | AMLDays | Expected content                                                           |
-      | 10199999   | 120     | The amount of levy you need to pay for this financial year is £0.          |
       | 10200000   | 60      | The amount of levy you need to pay for this financial year is £1,643.83.   |
       | 999999999  | 204     | The amount of levy you need to pay for this financial year is £20,120.54.  |
       | 1000000000 | 330     | The amount of levy you need to pay for this financial year is £226,027.39. |
@@ -148,7 +146,6 @@ Feature: Submit ECL Return
     Then I should be see the amount of ECL need to pay <Expected content>
     Examples:
       | UK Revenue | APDays | Expected content                                                        |
-      | 5000000    | 245    | The amount of levy you need to pay for this financial year is £0.       |
       | 10000000   | 182    | The amount of levy you need to pay for this financial year is £10,000.  |
       | 8000000    | 73     | The amount of levy you need to pay for this financial year is £36,000.  |
       | 1300000000 | 450    | The amount of levy you need to pay for this financial year is £250,000. |
@@ -162,7 +159,6 @@ Feature: Submit ECL Return
     Then I should be see the amount of ECL need to pay <Expected content>
     Examples:
       | UK Revenue | APDays | AMLDays | Expected content                                                           |
-      | 7000000    | 314    | 92      | The amount of levy you need to pay for this financial year is £0.          |
       | 10000000   | 113    | 198     | The amount of levy you need to pay for this financial year is £5,424.65.   |
       | 31000000   | 284    | 300     | The amount of levy you need to pay for this financial year is £29,589.04.  |
       | 350000000  | 91     | 256     | The amount of levy you need to pay for this financial year is £175,342.46. |
@@ -201,3 +197,19 @@ Feature: Submit ECL Return
     Given I am signed in to the return journey
     When I click on the change link to modify my AML-regulated activity length
     Then I should be on the page that says Check your answers
+
+  Scenario: Return submission for users who falls in the small band size (less than 10.2M)
+    Given I am signed in to the return journey
+    When I enter 12 month accounting period revenue is 10199999 that falls in the small band size
+    Then I should be see the amount of ECL need to pay The amount of levy you need to pay for this financial year is £0.
+
+  Scenario: User wants to change their UK revenue (greater than or equal to 10.2M) from amount due page
+    Given I am signed in to the return journey
+    When I click on the change link to edit my uk revenue from amount due page and select Yes for my AML-regulated activity for the full financial year
+    Then I should be see the amount of ECL need to pay The amount of levy you need to pay for this financial year is £10,000.
+
+  Scenario: User wants to change the accounting period from amount due page for their UK revenue less than 10.2M
+    Given I am signed in to the return journey
+    When I click on the change link to edit my accounting period and select Yes for my AML-regulated activity for the full financial year
+    Then I should be see the amount of ECL need to pay The amount of levy you need to pay for this financial year is £10,000.
+

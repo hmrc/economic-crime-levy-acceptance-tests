@@ -197,6 +197,7 @@ class ReturnsStepDef extends BaseStepDef {
       .provideAmountDue()
       .provideContactDetails("Oliver Tom", "Account Manager", "test@test.com", "01632 960 001")
       .provideChangeAccountingPeriod("No")
+      .submitPage()
   }
 
   When("I click on the change link to modify my accounting period length") { () =>
@@ -218,6 +219,7 @@ class ReturnsStepDef extends BaseStepDef {
       .provideAmountDue()
       .provideContactDetails("Oliver Tom", "Account Manager", "test@test.com", "01632 960 001")
       .provideChangeUkRevenue("20200000")
+      .submitPage()
   }
 
   When("I click on the change link to modify my AML-regulated activity for the full financial year") { () =>
@@ -246,4 +248,24 @@ class ReturnsStepDef extends BaseStepDef {
     SharedActions
       .validateLevyAmount(value)
   }
+
+  When("^I enter 12 month accounting period revenue is (.*) that falls in the small band size$") { (ukRevenue: String) =>
+    selectAccountingPeriod("Yes")
+      .provideUkRevenue(ukRevenue)
+  }
+
+  When("I click on the change link to edit my uk revenue from amount due page and select (.*) for my AML-regulated activity for the full financial year$") { (value: String) =>
+    selectAccountingPeriod("Yes")
+      .provideUkRevenue("10199999")
+      .provideChangeUkRevenue("20200000")
+      .selectAmlRegulatedActivity(value)
+  }
+
+  When("I click on the change link to edit my accounting period and select (.*) for my AML-regulated activity for the full financial year$") { (value: String) =>
+    selectAccountingPeriod("Yes")
+      .provideUkRevenue("10199999")
+      .provideChangeAccountingPeriod("No")
+      .selectAmlRegulatedActivity(value)
+  }
+
 }

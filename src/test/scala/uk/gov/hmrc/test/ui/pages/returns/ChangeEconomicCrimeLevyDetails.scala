@@ -36,8 +36,6 @@ object ChangeEconomicCrimeLevyDetails extends BasePage {
     ReturnsPage
       .selectAccountingPeriod(value)
       .provideAccountingPeriod("228")
-    submitPage()
-    onPage(CheckYourAnswersPage.heading)
     this
   }
 
@@ -54,8 +52,6 @@ object ChangeEconomicCrimeLevyDetails extends BasePage {
     clickByCssSelector(cssForChangeUkRevenue)
     ReturnsPage
       .provideUkRevenue(ukRevenue)
-    submitPage()
-    onPage(CheckYourAnswersPage.heading)
     this
   }
 
