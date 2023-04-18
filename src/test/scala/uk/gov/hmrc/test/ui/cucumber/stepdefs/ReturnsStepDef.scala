@@ -31,6 +31,8 @@ class ReturnsStepDef extends BaseStepDef {
         identifierValue = "XMECL0000000001"
       )
       .submitPage()
+    onPage(ReturnsPage.heading)
+    ReturnsPage
       .startAndSignIn()
   }
 
