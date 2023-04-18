@@ -25,6 +25,8 @@ object ReturnsPage extends BasePage {
   val url =
     s"${TestConfiguration.url("economic-crime-levy-returns-frontend")}/submit-economic-crime-levy-return/period/22XY"
 
+  val heading = "Submit your Economic Crime Levy return for 2022-2023"
+
   def navigateTo(): this.type = {
     navigateToClearAllUrl()
     driver.get(url)
