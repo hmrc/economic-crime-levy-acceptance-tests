@@ -23,7 +23,7 @@ import uk.gov.hmrc.test.ui.pages.{BasePage, SharedActions}
 object ReturnsPage extends BasePage {
 
   val url =
-    s"${TestConfiguration.url("economic-crime-levy-returns-frontend")}/submit-economic-crime-levy-return/"
+    s"${TestConfiguration.url("economic-crime-levy-returns-frontend")}/submit-economic-crime-levy-return/period/22XY"
 
   def navigateTo(): this.type = {
     navigateToClearAllUrl()
