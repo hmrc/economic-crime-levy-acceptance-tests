@@ -171,4 +171,21 @@ object ReturnsPage extends BasePage {
     SharedActions.clickButton()
     this
   }
+
+
+  def assertEclReturnNumber(value: String): this.type = {
+    val actual = getText(
+      By.xpath(s"//p[contains(text(),'ECL return number: ')]")
+    )
+    assert(actual.contains(value))
+    this
+  }
+
+  def assertAmountNeedToPay(value: String): this.type = {
+    val actual = getText(
+      By.xpath(s"//p[contains(text(),'Amount you need to pay: £10,000')]")
+    )
+    assert(actual.contains(value))
+    this
+  }
 }

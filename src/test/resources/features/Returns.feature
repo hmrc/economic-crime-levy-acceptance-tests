@@ -5,6 +5,7 @@ Feature: Submit ECL Return
     Given I am signed in to the return journey
     When I provide the details to submit the economic crime levy return
     Then I should be on the page that says Return submitted
+    And I should see my ecl return number is ECL return number: and the amount to pay is Amount you need to pay: £10,000
 
   Scenario Outline: User does not provide their contact person's valid name for completing the ECL return
     Given I am signed in to the return journey
