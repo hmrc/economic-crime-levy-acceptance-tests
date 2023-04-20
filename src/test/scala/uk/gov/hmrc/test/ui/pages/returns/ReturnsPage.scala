@@ -175,7 +175,7 @@ object ReturnsPage extends BasePage {
 
   def assertEclReturnNumber(value: String): this.type = {
     val actual = getText(
-      By.xpath(s"//p[contains(text(),'ECL return number: ')]")
+      By.xpath(s"//p[contains(text(),'ECL return number')]")
     )
     assert(actual.contains(value))
     this
@@ -183,7 +183,7 @@ object ReturnsPage extends BasePage {
 
   def assertAmountNeedToPay(value: String): this.type = {
     val actual = getText(
-      By.xpath(s"//p[contains(text(),'Amount you need to pay: £10,000')]")
+      By.xpath(s"//p[contains(text(),'Amount you need to pay')]")
     )
     assert(actual.contains(value))
     this
