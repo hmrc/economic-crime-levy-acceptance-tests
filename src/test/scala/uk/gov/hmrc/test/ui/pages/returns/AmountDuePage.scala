@@ -23,7 +23,7 @@ object AmountDuePage extends BasePage {
   val url =
     s"${TestConfiguration.url("economic-crime-levy-returns-frontend")}/submit-economic-crime-levy-return/amount-due"
 
-  val heading = "Amount of ECL you need to pay"
+  val heading = "Amount of Economic Crime Levy you need to pay"
 
   def navigateTo(): this.type = {
     navigateToClearAllUrl()

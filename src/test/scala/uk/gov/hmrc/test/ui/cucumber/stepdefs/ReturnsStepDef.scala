@@ -270,4 +270,9 @@ class ReturnsStepDef extends BaseStepDef {
       .selectAmlRegulatedActivity(value)
   }
 
+  Then("^I should see my ecl return number is (.*) and the amount to pay is (.*)$") { (eclReturnNumber: String, amountToPay: String) =>
+    ReturnsPage
+      .assertEclReturnNumber(eclReturnNumber)
+      .assertAmountNeedToPay(amountToPay)
+  }
 }

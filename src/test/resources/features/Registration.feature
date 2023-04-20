@@ -243,4 +243,4 @@ Feature: Register for ECL
       | Access Code | Expected content          |
       |             | Enter an access code      |
       | abcdef      | Enter a valid access code |
-      | 654321      | Enter a valid access code |
+      | 123654      | Enter a valid access code |
