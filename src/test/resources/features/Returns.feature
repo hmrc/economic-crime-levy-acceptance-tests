@@ -214,9 +214,9 @@ Feature: Submit ECL Return
     When I click on the change link to edit my accounting period and select Yes for my AML-regulated activity for the full financial year
     Then I should be on the page that says You need to pay £10,000 for the 2022-2023 financial year.
 
-  Scenario Outline: User wants to see the content details for the amount due page
+  Scenario Outline: User is on the amount due page with content explaining how it was calculated
     Given I am signed in to the return journey
-    When I am on the amount due page to see the content details
+    When I enter the information required to calculate the amount due
     Then I should be on the page that says <Expected content>
     Examples:
       | Expected content                               |

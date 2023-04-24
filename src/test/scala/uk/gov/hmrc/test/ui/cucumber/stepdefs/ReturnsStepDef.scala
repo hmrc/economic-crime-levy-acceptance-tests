@@ -276,7 +276,7 @@ class ReturnsStepDef extends BaseStepDef {
       .assertAmountNeedToPay(amountToPay)
   }
 
-  When("I am on the amount due page to see the content details") { () =>
+  When("I enter the information required to calculate the amount due") { () =>
     selectAccountingPeriod("Yes")
       .provideUkRevenueInAccountingPeriod()
       .selectAmlRegulatedActivity()
