@@ -214,3 +214,15 @@ Feature: Submit ECL Return
     When I click on the change link to edit my accounting period and select Yes for my AML-regulated activity for the full financial year
     Then I should be on the page that says You need to pay £10,000 for the 2022-2023 financial year.
 
+  Scenario Outline: User is on the amount due page with content explaining how it was calculated
+    Given I am signed in to the return journey
+    When I enter the information required to calculate the amount due
+    Then I should be on the page that says <Expected content>
+    Examples:
+      | Expected content                               |
+      | Amount of Economic Crime Levy you need to pay  |
+      | Your band size                                 |
+      | How we worked this out                         |
+      | How the size bands affect what you need to pay |
+      | What you need to do next                       |
+

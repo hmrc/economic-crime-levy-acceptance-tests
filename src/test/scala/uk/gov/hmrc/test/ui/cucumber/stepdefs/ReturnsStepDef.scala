@@ -275,4 +275,10 @@ class ReturnsStepDef extends BaseStepDef {
       .assertEclReturnNumber(eclReturnNumber)
       .assertAmountNeedToPay(amountToPay)
   }
+
+  When("I enter the information required to calculate the amount due") { () =>
+    selectAccountingPeriod("Yes")
+      .provideUkRevenueInAccountingPeriod()
+      .selectAmlRegulatedActivity()
+  }
 }
