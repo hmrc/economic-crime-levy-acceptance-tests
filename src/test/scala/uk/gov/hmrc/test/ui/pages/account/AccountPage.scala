@@ -45,6 +45,10 @@ object AccountPage extends BasePage {
     this
   }
 
+  def provideSubmitAnEclReturn(): this.type = {
+    SharedActions.clickById("submit-return")
+    this
+  }
   def submitPage(): this.type = {
     SharedActions.clickButton()
     this

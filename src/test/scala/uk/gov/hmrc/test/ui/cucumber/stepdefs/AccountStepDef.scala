@@ -17,6 +17,7 @@
 package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
 import uk.gov.hmrc.test.ui.pages.SharedActions.onPage
+import uk.gov.hmrc.test.ui.pages.account.AccountPage._
 import uk.gov.hmrc.test.ui.pages.account._
 
 class AccountStepDef extends BaseStepDef {
@@ -35,4 +36,9 @@ class AccountStepDef extends BaseStepDef {
   When("""I am on the ECL account dashboard""") { () =>
     onPage(AccountPage.heading)
   }
+
+  When("""I click on the Submit an Economic Crime Levy return link""") { () =>
+    provideSubmitAnEclReturn()
+  }
+
 }
