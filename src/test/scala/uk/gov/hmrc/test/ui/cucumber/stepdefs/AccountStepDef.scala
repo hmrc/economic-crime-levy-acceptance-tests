@@ -16,17 +16,23 @@
 
 package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
-import org.scalatest.matchers.should.Matchers
-import org.scalatest.concurrent.Eventually
-import uk.gov.hmrc.test.ui.driver.BrowserDriver
-import io.cucumber.scala.{EN, ScalaDsl}
-import uk.gov.hmrc.webdriver.SingletonDriver
+import uk.gov.hmrc.test.ui.pages.SharedActions.onPage
+import uk.gov.hmrc.test.ui.pages.account._
 
-import scala.util.Try
+class AccountStepDef extends BaseStepDef {
 
-trait BaseStepDef extends ScalaDsl with EN with BrowserDriver with Eventually with Matchers {
+  Given("""I am signed in to the account journey""") { () =>
+    AccountPage
+      .navigateTo()
+      .provideEnrolmentDetails(
+        enrolmentKey = "HMRC-ECL-ORG",
+        identifierName = "EclRegistrationReference",
+        identifierValue = "XMECL0000000001"
+      )
+      .startAndSignIn()
+  }
 
-  sys.addShutdownHook {
-    Try(SingletonDriver.closeInstance())
+  When("""I am on the ECL account dashboard""") { () =>
+    onPage(AccountPage.heading)
   }
 }

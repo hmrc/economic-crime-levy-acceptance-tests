@@ -172,7 +172,6 @@ object ReturnsPage extends BasePage {
     this
   }
 
-
   def assertEclReturnNumber(value: String): this.type = {
     val actual = getText(
       By.xpath(s"//p[contains(text(),'ECL return number')]")
