@@ -14,6 +14,7 @@ Feature: Register for ECL
       | Scottish limited partnership  |
       | General partnership           |
       | Scottish partnership          |
+      | Unlimited company             |
       | Sole trader                   |
 
   Scenario: User does not select whether or not they started AML regulated activity in current FY
