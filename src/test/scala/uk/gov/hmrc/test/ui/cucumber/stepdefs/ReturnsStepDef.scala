@@ -251,29 +251,35 @@ class ReturnsStepDef extends BaseStepDef {
       .validateLevyAmount(value)
   }
 
-  When("^I enter 12 month accounting period revenue is (.*) that falls in the small band size$") { (ukRevenue: String) =>
-    selectAccountingPeriod("Yes")
-      .provideUkRevenue(ukRevenue)
+  When("^I enter 12 month accounting period revenue is (.*) that falls in the small band size$") {
+    (ukRevenue: String) =>
+      selectAccountingPeriod("Yes")
+        .provideUkRevenue(ukRevenue)
   }
 
-  When("I click on the change link to edit my uk revenue from amount due page and select (.*) for my AML-regulated activity for the full financial year$") { (value: String) =>
+  When(
+    "I click on the change link to edit my uk revenue from amount due page and select (.*) for my AML-regulated activity for the full financial year$"
+  ) { (value: String) =>
     selectAccountingPeriod("Yes")
       .provideUkRevenue("10199999")
       .provideChangeUkRevenue("20200000")
       .selectAmlRegulatedActivity(value)
   }
 
-  When("I click on the change link to edit my accounting period and select (.*) for my AML-regulated activity for the full financial year$") { (value: String) =>
+  When(
+    "I click on the change link to edit my accounting period and select (.*) for my AML-regulated activity for the full financial year$"
+  ) { (value: String) =>
     selectAccountingPeriod("Yes")
       .provideUkRevenue("10199999")
       .provideChangeAccountingPeriod("No")
       .selectAmlRegulatedActivity(value)
   }
 
-  Then("^I should see my ecl return number is (.*) and the amount to pay is (.*)$") { (eclReturnNumber: String, amountToPay: String) =>
-    ReturnsPage
-      .assertEclReturnNumber(eclReturnNumber)
-      .assertAmountNeedToPay(amountToPay)
+  Then("^I should see my ecl return number is (.*) and the amount to pay is (.*)$") {
+    (eclReturnNumber: String, amountToPay: String) =>
+      ReturnsPage
+        .assertEclReturnNumber(eclReturnNumber)
+        .assertAmountNeedToPay(amountToPay)
   }
 
   When("I enter the information required to calculate the amount due") { () =>
