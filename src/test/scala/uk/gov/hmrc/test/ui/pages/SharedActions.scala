@@ -68,6 +68,9 @@ object SharedActions extends BasePage {
     Assert.assertEquals(value, actual)
   }
 
+  def assertTextByCssSelector(statusCssSelectorName: String, returnStatus: String): Unit =
+    assert(getText(By.cssSelector(statusCssSelectorName)).contains(returnStatus))
+
   def submitPage(): this.type = {
     SharedActions.clickButton()
     this
