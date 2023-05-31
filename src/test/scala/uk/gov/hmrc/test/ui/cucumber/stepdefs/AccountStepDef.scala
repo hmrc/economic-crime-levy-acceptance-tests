@@ -16,7 +16,6 @@
 
 package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
-import uk.gov.hmrc.test.ui.pages.SharedActions.onPage
 import uk.gov.hmrc.test.ui.pages.account.AccountPage._
 import uk.gov.hmrc.test.ui.pages.account._
 
@@ -28,7 +27,7 @@ class AccountStepDef extends BaseStepDef {
       .provideEnrolmentDetails(
         enrolmentKey = "HMRC-ECL-ORG",
         identifierName = "EclRegistrationReference",
-        identifierValue = "XMECL0000000001"
+        identifierValue = "XMECL0000000005"
       )
       .startAndSignIn()
   }
@@ -39,6 +38,20 @@ class AccountStepDef extends BaseStepDef {
 
   When("""I click on the Submit an Economic Crime Levy return link""") { () =>
     provideSubmitAnEclReturn()
+  }
+
+  When("""I click on the View or amend your returns link to view the (DUE|OVERDUE|SUBMITTED) return details$""") {
+    (returnStatus: String) =>
+      provideViewOrAmendAnEclReturn(returnStatus)
+  }
+
+  When("""I should see the payment status as (.*)$""") { (returnStatus: String) =>
+    validateReturnStatusAndPaymentDueBy(returnStatus)
+  }
+
+  When("""I provide the details to amend the returns through ECL dashboard link$""") { () =>
+    provideViewOrAmendAnEclReturn("DUE")
+      .provideAmendSubmitReturn()
   }
 
 }

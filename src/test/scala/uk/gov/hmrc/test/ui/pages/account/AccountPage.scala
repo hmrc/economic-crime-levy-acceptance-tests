@@ -49,6 +49,33 @@ object AccountPage extends BasePage {
     SharedActions.clickById("submit-return")
     this
   }
+
+  def provideViewOrAmendAnEclReturn(returnStatus: String): this.type = {
+    SharedActions.clickById("view-returns")
+    this
+  }
+
+  def validateReturnStatusAndPaymentDueBy(returnStatus: String): this.type = {
+    returnStatus match {
+      case "DUE"     =>
+        SharedActions
+          .assertTextByCssSelector(".govuk-tag--blue", returnStatus)
+      case "OVERDUE" =>
+        SharedActions
+          .assertTextByCssSelector(".govuk-tag--red", returnStatus)
+      case _         =>
+        SharedActions
+          .assertTextByCssSelector(".govuk-tag--green", returnStatus)
+    }
+    this
+  }
+
+  def provideAmendSubmitReturn(): this.type = {
+    SharedActions
+      .clickLinkByPartialText("Submit return")
+    this
+  }
+
   def submitPage(): this.type = {
     SharedActions.clickButton()
     this
