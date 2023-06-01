@@ -13,9 +13,10 @@ Feature: Submit ECL Return
     Then I should see an error that says <Expected content>
 
     Examples:
-      | Name                                                                                                                                                              | Expected content                         |
-      |                                                                                                                                                                   | Enter a full name                        |
-      | ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyabcdefghijklmnopqrstuvwxyabcdefghijklmnopqrstu1234567890!@£#$%^&*()-+={}[]"';:,.<>/? | Full name must be 160 characters or less |
+      | Name                                                                                                                                                              | Expected content                                                                                           |
+      |                                                                                                                                                                   | Enter a full name                                                                                          |
+      | ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyabcdefghijklmnopqrstuvwxyabcdefghijklmnopqrstu1234567890!@£#$%^&*()-+={}[]"';:,.<>/? | Full name must be 160 characters or less                                                                   |
+      | James@                                                                                                                                                            | Full name must only include letters a to z, and special characters such as hyphens, spaces and apostrophes |
 
   Scenario Outline: User does not provide their contact person's valid role for completing the ECL return
     Given I am signed in to the return journey
@@ -23,9 +24,10 @@ Feature: Submit ECL Return
     Then I should see an error that says <Expected content>
 
     Examples:
-      | Role                                                                                                                                                              | Expected content                    |
-      |                                                                                                                                                                   | Enter a role                        |
-      | ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyabcdefghijklmnopqrstuvwxyabcdefghijklmnopqrstu1234567890!@£#$%^&*()-+={}[]"';:,.<>/? | Role must be 160 characters or less |
+      | Role                                                                                                                                                              | Expected content                                                                                      |
+      |                                                                                                                                                                   | Enter a role                                                                                          |
+      | ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyabcdefghijklmnopqrstuvwxyabcdefghijklmnopqrstu1234567890!@£#$%^&*()-+={}[]"';:,.<>/? | Role must be 160 characters or less                                                                   |
+      | Compliance officer#                                                                                                                                               | Role must only include letters a to z, and special characters such as hyphens, spaces and apostrophes |
 
   Scenario Outline: User does not provide their contact person's valid email address for completing the ECL return
     Given I am signed in to the return journey
