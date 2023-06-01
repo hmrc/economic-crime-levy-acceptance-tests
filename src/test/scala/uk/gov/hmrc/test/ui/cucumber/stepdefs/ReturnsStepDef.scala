@@ -287,4 +287,17 @@ class ReturnsStepDef extends BaseStepDef {
       .provideUkRevenueInAccountingPeriod()
       .selectAmlRegulatedActivity()
   }
+
+  When("""I provide the details for a return submission""") { () =>
+    selectAccountingPeriod("Yes")
+      .provideUkRevenueForNilReturnSubmission()
+      .provideAmountDue()
+      .provideContactDetails("Oliver Tom", "Account Manager", "test@test.com", "01632 960 001")
+      .provideCheckYourAnswers()
+  }
+
+  Then("^I should see the amount to pay is (.*)$") { (amountToPay: String) =>
+    SharedActions
+      .assertTextByCssSelector(".govuk-label--m", amountToPay)
+  }
 }

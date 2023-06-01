@@ -167,6 +167,12 @@ object ReturnsPage extends BasePage {
     this
   }
 
+  def provideUkRevenueForNilReturnSubmission(value: String = "1019999"): this.type = {
+    SharedActions.enterDetails(value)
+    submitPage()
+    this
+  }
+
   def submitPage(): this.type = {
     SharedActions.clickButton()
     this
