@@ -228,3 +228,8 @@ Feature: Submit ECL Return
       | How the size bands affect what you need to pay |
       | What you need to do next                       |
 
+  Scenario: User that is registered for ECL starts for a nil return submission
+    Given I am signed in to the return journey
+    When I provide the details for a return submission
+    Then I should be on the page that says Return submitted
+    And I should see the amount to pay is Amount you need to pay: £0
