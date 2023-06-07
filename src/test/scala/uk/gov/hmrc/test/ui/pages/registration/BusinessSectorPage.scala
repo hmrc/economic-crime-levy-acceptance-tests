@@ -30,8 +30,6 @@ object BusinessSectorPage extends BasePage {
   def navigateTo(): this.type = {
     navigateToClearAllUrl()
     driver.get(url)
-    RegistrationPage
-      .provideAccessCode("123456")
     this
   }
 

@@ -59,13 +59,17 @@ class RegistrationStepDef extends BaseStepDef {
   }
 // Commenting this,  "Other" entity for private beta test
 
-  /*
   When("""I say that my entity type is Other""") { () =>
     EntityTypePage
       .navigateTo()
       .otherEntityType()
   }
-   */
+
+  And("^I do not select an option for my Other entity") { () =>
+    OtherEntityTypePage
+      .navigateTo()
+      .submitPage()
+  }
   When("""I do not select an other professional body when I have selected the Other option""") { () =>
     AmlSupervisorPage
       .navigateTo()
