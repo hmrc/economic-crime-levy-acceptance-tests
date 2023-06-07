@@ -57,7 +57,6 @@ class RegistrationStepDef extends BaseStepDef {
       .navigateTo()
       .provideGcOrFcaAmlSupervisor(value)
   }
-// Commenting this,  "Other" entity for private beta test
 
   When("""I say that my entity type is Other""") { () =>
     EntityTypePage
