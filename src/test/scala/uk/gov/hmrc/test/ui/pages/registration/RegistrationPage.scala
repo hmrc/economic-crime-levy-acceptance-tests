@@ -34,8 +34,6 @@ object RegistrationPage extends BasePage {
   def startAndSignIn(): this.type = {
     submitPage()
     SharedActions.clickById("submit-top")
-    provideAccessCode("123456")
-    onPage(AmlRegulatedActivityPage.heading)
     this
   }
 
