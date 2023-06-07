@@ -22,18 +22,13 @@ import uk.gov.hmrc.test.ui.pages.{BasePage, SharedActions}
 object ViewReturnsPage extends BasePage {
 
   val url =
-    s"${TestConfiguration.url("economic-crime-levy-account-frontend")}/economic-crime-levy-account/account/view-returns"
+    s"${TestConfiguration.url("economic-crime-levy-account-frontend")}/economic-crime-levy-account/your-ecl-returns"
 
   val heading = "Your Economic Crime Levy returns"
 
   def navigateTo(): this.type = {
     navigateToClearAllUrl()
     driver.get(url)
-    this
-  }
-
-  def startAndSignIn(): this.type = {
-    submitPage()
     this
   }
 
