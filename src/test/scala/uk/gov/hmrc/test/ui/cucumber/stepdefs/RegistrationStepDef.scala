@@ -61,7 +61,8 @@ class RegistrationStepDef extends BaseStepDef {
   When("""I say that my entity type is Other""") { () =>
     EntityTypePage
       .navigateTo()
-      .otherEntityType()
+    RegistrationPage
+      .provideOtherEntityType("Other")
   }
 
   And("^I do not select an option for my Other entity") { () =>
@@ -271,6 +272,45 @@ class RegistrationStepDef extends BaseStepDef {
       .provideAddAnotherContactYesOrNo("No")
       .provideRegisteredAddress("Yes")
       .provideCheckYourAnswers()
+  }
+
+  When("I provide details of my other entity is (.*) that is supervised by HMRC and liable for ECL$") {
+    (otherEntityType: String) =>
+      provideAmlRegulated()
+        .provideHmrcOrOtherAmlSupervisor()
+        .provideRelevantAccountingPeriod()
+        .provideUkRevenue()
+        .provideEntityType("Other")
+        .provideOtherEntityType(otherEntityType)
+        .provideRegisteredNameOfYourBusiness("ABC Company")
+        .provideCharityRegistrationNumberOfYourBusiness("1234567")
+        .provideCompanyRegistrationNumberOfYourBusiness("12345678")
+        .provideOtherEntityCheckYourAnswers()
+        .provideBusinessSector("Credit institution")
+        .provideFirstContactDetails("Oliver Tom", "Account Manager", "test@test.com", "01632 960 001")
+        .provideSecondContactDetailsYesOrNo("No")
+        .provideRegisteredAddress("Yes")
+        .provideGrsData()
+  }
+
+  When("I enter my registered name as (.*) for the other entity type business$") { (registeredBusinessName: String) =>
+    BusinessNamePage
+      .navigateTo()
+    provideRegisteredNameOfYourBusiness(registeredBusinessName)
+  }
+
+  When("I enter my charity registration number as (.*) for the other entity type business$") {
+    (charityRegistrationNumber: String) =>
+      CharityRegistrationNumberPage
+        .navigateTo()
+      provideCharityRegistrationNumberOfYourBusiness(charityRegistrationNumber)
+  }
+
+  When("I enter my company registration number as (.*) for the other entity type business$") {
+    (companyRegistrationNumber: String) =>
+      CompanyRegistrationNumberPage
+        .navigateTo()
+      provideCompanyRegistrationNumberOfYourBusiness(companyRegistrationNumber)
   }
 
   When("I enter my (.*)'s name as (.*)$") { (_: String, partnershipName: String) =>

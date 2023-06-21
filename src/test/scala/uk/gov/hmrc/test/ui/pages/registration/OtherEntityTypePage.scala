@@ -32,12 +32,6 @@ object OtherEntityTypePage extends BasePage {
     this
   }
 
-  def otherEntityType(): this.type = {
-    SharedActions.selectLabelByPartialText("Other")
-    submitPage()
-    this
-  }
-
   def submitPage(): this.type = {
     SharedActions.clickButton()
     this

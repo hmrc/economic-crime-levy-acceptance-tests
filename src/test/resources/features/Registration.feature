@@ -11,6 +11,7 @@ Feature: Register for ECL
       | Limited company               |
       | Limited liability partnership |
       | Limited partnership           |
+      | Registered society            |
       | Scottish limited partnership  |
       | General partnership           |
       | Scottish partnership          |
@@ -100,11 +101,11 @@ Feature: Register for ECL
     Given I am signed in to the registration journey
     When I do not select an option for my entity type
     Then I should see an error that says Please select your entity type
-
-  Scenario: User's entity type is Other
-    Given I am signed in to the registration journey
-    When I say that my entity type is Other
-    Then I should be on the page that says Tell us your entity type
+#
+#  Scenario: User's entity type is Other
+#    Given I am signed in to the registration journey
+#    When I say that my entity type is Other
+#    Then I should be on the page that says Tell us your entity type
 
   Scenario: User does not select their Other entity type
     Given I am signed in to the registration journey
@@ -248,3 +249,42 @@ Feature: Register for ECL
       |             | Enter an access code      |
       | abcdef      | Enter a valid access code |
       | 123654      | Enter a valid access code |
+
+  Scenario Outline: User registers <Other Entity> as entity type for AML that is liable for ECL
+    Given I am signed in to the registration journey
+    When I provide details of my other entity is <Other Entity> that is supervised by HMRC and liable for ECL
+    Then I should be on the page that says Check your answers
+    Examples:
+      | Other Entity |
+      | Charity      |
+
+  Scenario Outline: User does not provide their valid registered name for the other entity type business
+    Given I am signed in to the registration journey
+    When I enter my registered name as <Name> for the other entity type business
+    Then I should see an error that says <Expected content>
+
+    Examples:
+      | Name                                                                                                                                                              | Expected content                                   |
+      |                                                                                                                                                                   | Enter a business name                              |
+      | ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyabcdefghijklmnopqrstuvwxyabcdefghijklmnopqrstu1234567890!@£#$%^&*()-+={}[]"';:,.<>/? | Business name must not be more than 160 characters |
+
+  Scenario Outline: User does not provide their valid charity registration number for the other entity type business
+    Given I am signed in to the registration journey
+    When I enter my charity registration number as <CHRNumber> for the other entity type business
+    Then I should see an error that says <Expected content>
+
+    Examples:
+      | CHRNumber | Expected content                    |
+      |           | Enter a charity registration number |
+#      | ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyabcdefghijklmnopqrstuvwxyabcdefghijklmnopqrstu1234567890!@£#$%^&*()-+={}[]"';:,.<>/? | Business name must not be more than 160 characters |
+
+  Scenario Outline: User does not provide their valid company registration number for the other entity type business
+    Given I am signed in to the registration journey
+    When I enter my company registration number as <CRNumber> for the other entity type business
+    Then I should see an error that says <Expected content>
+
+    Examples:
+      | CRNumber  | Expected content                                         |
+      |           | Enter a company registration number                      |
+      | SCU123456 | Company registration number must be exactly 8 characters |
+

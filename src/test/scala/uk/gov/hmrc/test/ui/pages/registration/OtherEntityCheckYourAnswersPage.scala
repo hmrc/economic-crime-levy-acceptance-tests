@@ -19,12 +19,12 @@ package uk.gov.hmrc.test.ui.pages.registration
 import uk.gov.hmrc.test.ui.conf.TestConfiguration
 import uk.gov.hmrc.test.ui.pages.{BasePage, SharedActions}
 
-object EntityTypePage extends BasePage {
+object OtherEntityCheckYourAnswersPage extends BasePage {
 
   val url =
-    s"${TestConfiguration.url("economic-crime-levy-registration-frontend")}/register-for-economic-crime-levy/what-is-your-entity-type"
+    s"${TestConfiguration.url("economic-crime-levy-registration-frontend")}/register-for-economic-crime-levy/other-entity-check-your-answers"
 
-  val heading = "What is your entity type?"
+  val heading = "Check your answers"
 
   def navigateTo(): this.type = {
     navigateToClearAllUrl()
