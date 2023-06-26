@@ -101,11 +101,11 @@ Feature: Register for ECL
     Given I am signed in to the registration journey
     When I do not select an option for my entity type
     Then I should see an error that says Please select your entity type
-#
-#  Scenario: User's entity type is Other
-#    Given I am signed in to the registration journey
-#    When I say that my entity type is Other
-#    Then I should be on the page that says Tell us your entity type
+
+  Scenario: User's entity type is Other
+    Given I am signed in to the registration journey
+    When I say that my entity type is Other
+    Then I should be on the page that says Tell us your entity type
 
   Scenario: User does not select their Other entity type
     Given I am signed in to the registration journey
@@ -274,9 +274,9 @@ Feature: Register for ECL
     Then I should see an error that says <Expected content>
 
     Examples:
-      | CHRNumber | Expected content                    |
-      |           | Enter a charity registration number |
-#      | ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyabcdefghijklmnopqrstuvwxyabcdefghijklmnopqrstu1234567890!@£#$%^&*()-+={}[]"';:,.<>/? | Business name must not be more than 160 characters |
+      | CHRNumber | Expected content                                         |
+      |           | Enter a charity registration number                      |
+      | UKA99999  | Charity registration number must not exceed 7 characters |
 
   Scenario Outline: User does not provide their valid company registration number for the other entity type business
     Given I am signed in to the registration journey
@@ -286,5 +286,5 @@ Feature: Register for ECL
     Examples:
       | CRNumber  | Expected content                                         |
       |           | Enter a company registration number                      |
-      | SCU123456 | Company registration number must be exactly 8 characters |
+      | SCU123456 | Company registration number must not exceed 8 characters |
 
