@@ -75,13 +75,11 @@ object RegistrationPage extends BasePage {
   def provideEntityType(value: String): this.type = {
     SharedActions.selectLabelByPartialText(value)
     submitPage()
-    onPage(StubGRSJourneyDataPage.heading)
     this
   }
 
   def provideGrsData(): this.type = {
     clickByCssSelector(cssForSaveAndContinue)
-    onPage(BusinessSectorPage.heading)
     this
   }
 
@@ -270,6 +268,45 @@ object RegistrationPage extends BasePage {
     this
   }
 
+  def provideOtherEntityType(otherEntityType: String): this.type = {
+    SharedActions
+      .selectLabelByPartialText(otherEntityType)
+    submitPage()
+    this
+  }
+
+  def provideRegisteredNameOfYourBusiness(businessName: String): this.type = {
+    SharedActions
+      .enterDetails(businessName)
+    submitPage()
+    this
+  }
+
+  def provideCharityRegistrationNumberOfYourBusiness(charityRegistrationNumber: String): this.type = {
+    SharedActions
+      .enterDetails(charityRegistrationNumber)
+    submitPage()
+    this
+  }
+
+  def provideCompanyRegistrationNumberOfYourBusiness(companyRegistrationNumber: String): this.type = {
+    SharedActions
+      .enterDetails(companyRegistrationNumber)
+    submitPage()
+    this
+  }
+
+  def provideOtherEntityCheckYourAnswers(): this.type = {
+    submitPage()
+    this
+  }
+
+  def provideSecondContactDetailsYesOrNo(value: String): this.type = {
+    SharedActions
+      .selectYesOrNo(value)
+    submitPage()
+    this
+  }
   def submitPage(): this.type = {
     SharedActions.clickButton()
     this
