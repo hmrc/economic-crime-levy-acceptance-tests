@@ -274,9 +274,9 @@ Feature: Register for ECL
     Then I should see an error that says <Expected content>
 
     Examples:
-      | CHRNumber | Expected content                                         |
-      |           | Enter a charity registration number                      |
-      | UKA99999  | Charity registration number must not exceed 7 characters |
+      | CHRNumber | Expected content                                               |
+      |           | Enter a charity registration number                            |
+      | UKA99999  | Charity registration number must not be more than 7 characters |
 
   Scenario Outline: User does not provide their valid company registration number for the other entity type business
     Given I am signed in to the registration journey
@@ -284,7 +284,7 @@ Feature: Register for ECL
     Then I should see an error that says <Expected content>
 
     Examples:
-      | CRNumber  | Expected content                                         |
-      |           | Enter a company registration number                      |
-      | SCU123456 | Company registration number must not exceed 8 characters |
+      | CRNumber  | Expected content                                                     |
+      |           | Enter a company registration number                                  |
+      | SCU123456 | Company registration number (CRN) must not be more than 8 characters |
 
