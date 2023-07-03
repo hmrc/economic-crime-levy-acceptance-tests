@@ -62,7 +62,7 @@ class RegistrationStepDef extends BaseStepDef {
     EntityTypePage
       .navigateTo()
     RegistrationPage
-      .provideOtherEntityType("Other")
+      .provideEntityType("Other")
   }
 
   And("^I do not select an option for my Other entity") { () =>
@@ -281,10 +281,7 @@ class RegistrationStepDef extends BaseStepDef {
         .provideRelevantAccountingPeriod()
         .provideUkRevenue()
         .provideEntityType("Other")
-        .provideOtherEntityType(otherEntityType)
-        .provideRegisteredNameOfYourBusiness("ABC Company")
-        .provideCharityRegistrationNumberOfYourBusiness("1234567")
-        .provideCompanyRegistrationNumberOfYourBusiness("12345678")
+        .provideOtherEntityBusinessDetails(otherEntityType)
         .provideOtherEntityCheckYourAnswers()
         .provideBusinessSector("Credit institution")
         .provideFirstContactDetails("Oliver Tom", "Account Manager", "test@test.com", "01632 960 001")
@@ -311,6 +308,31 @@ class RegistrationStepDef extends BaseStepDef {
       CompanyRegistrationNumberPage
         .navigateTo()
       provideCompanyRegistrationNumberOfYourBusiness(companyRegistrationNumber)
+  }
+
+  When("I do not select an option for whether or not I have a Corporation Tax Unique Taxpayer Reference") { () =>
+    DoYouHaveCorporationTaxUtrPage
+      .navigateTo()
+    submitPage()
+  }
+
+  When("^I select (.*) on whether or not I have a Corporation Tax Unique Taxpayer Reference$") { (value: String) =>
+    DoYouHaveCorporationTaxUtrPage
+      .navigateTo()
+      .doYouHaveCorporationTaxUniqueTaxpayerReference(value)
+  }
+
+  When("^I enter my Corporation Tax Unique Taxpayer Reference as (.*) for the other entity type business$") {
+    (uniqueTaxpayerReference: String) =>
+      DoYouHaveCorporationTaxUtrPage
+        .navigateTo()
+      provideCorporationTaxUniqueTaxpayerReference(uniqueTaxpayerReference)
+  }
+
+  When("^I enter my company registered postcode as (.*) for the other entity type business$") { (postcode: String) =>
+    OtherEntityPostcodePage
+      .navigateTo()
+    providePostcodeToRegisterCompany(postcode)
   }
 
   When("I enter my (.*)'s name as (.*)$") { (_: String, partnershipName: String) =>

@@ -255,18 +255,21 @@ Feature: Register for ECL
     When I provide details of my other entity is <Other Entity> that is supervised by HMRC and liable for ECL
     Then I should be on the page that says Check your answers
     Examples:
-      | Other Entity |
-      | Charity      |
+      | Other Entity               |
+      | Charity                    |
+      | Unincorporated Association |
 
-  Scenario Outline: User does not provide their valid registered name for the other entity type business
+  Scenario Outline: User does not provide their valid registered name for the other entity type <Other Entity> business
     Given I am signed in to the registration journey
     When I enter my registered name as <Name> for the other entity type business
     Then I should see an error that says <Expected content>
 
     Examples:
-      | Name                                                                                                                                                              | Expected content                                   |
-      |                                                                                                                                                                   | Enter a business name                              |
-      | ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyabcdefghijklmnopqrstuvwxyabcdefghijklmnopqrstu1234567890!@£#$%^&*()-+={}[]"';:,.<>/? | Business name must not be more than 160 characters |
+      | Other Entity               | Name                                                                                                                                                              | Expected content                                   |
+      | Charity                    |                                                                                                                                                                   | Enter a business name                              |
+      | Charity                    | ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyabcdefghijklmnopqrstuvwxyabcdefghijklmnopqrstu1234567890!@£#$%^&*()-+={}[]"';:,.<>/? | Business name must not be more than 160 characters |
+      | Unincorporated Association |                                                                                                                                                                   | Enter a business name                              |
+      | Unincorporated Association | ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyabcdefghijklmnopqrstuvwxyabcdefghijklmnopqrstu1234567890!@£#$%^&*()-+={}[]"';:,.<>/? | Business name must not be more than 160 characters |
 
   Scenario Outline: User does not provide their valid charity registration number for the other entity type business
     Given I am signed in to the registration journey
@@ -287,4 +290,35 @@ Feature: Register for ECL
       | CRNumber  | Expected content                                                     |
       |           | Enter a company registration number                                  |
       | SCU123456 | Company registration number (CRN) must not be more than 8 characters |
+
+  Scenario: User does not select whether or not they have a Corporation Tax Unique Taxpayer Reference?
+    Given I am signed in to the registration journey
+    When I do not select an option for whether or not I have a Corporation Tax Unique Taxpayer Reference
+    Then I should see an error that says Select an answer
+
+  Scenario: User selects no on whether or not they have a Corporation Tax Unique Taxpayer Reference?
+    Given I am signed in to the registration journey
+    When I select No on whether or not I have a Corporation Tax Unique Taxpayer Reference
+    Then I should be on the page that says Check your answers
+
+  Scenario Outline: User does not provide their valid Corporation Tax Unique Taxpayer Reference
+    Given I am signed in to the registration journey
+    When I enter my Corporation Tax Unique Taxpayer Reference as <CT UTR> for the other entity type business
+    Then I should see an error that says <Expected content>
+
+    Examples:
+      | CT UTR     | Expected content                                                       |
+      |            | Enter a Corporation Tax (CT) Unique Taxpayer Reference (UTR)           |
+      | 012345678  | Corporation Tax (CT) Unique Taxpayer Reference (UTR) must be 10 digits |
+      | SC01234567 | Corporation Tax (CT) Unique Taxpayer Reference (UTR) must be 10 digits |
+
+  Scenario Outline: User does not provide their company's valid registered postcode
+    Given I am signed in to the registration journey
+    When I enter my company registered postcode as <Postcode> for the other entity type business
+    Then I should see an error that says <Expected content>
+
+    Examples:
+      | Postcode  | Expected content      |
+      |           | Enter a postcode      |
+      | AB1  2 YZ | Enter a real postcode |
 

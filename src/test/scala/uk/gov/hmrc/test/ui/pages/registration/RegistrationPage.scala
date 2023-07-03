@@ -268,13 +268,30 @@ object RegistrationPage extends BasePage {
     this
   }
 
-  def provideOtherEntityType(otherEntityType: String): this.type = {
-    SharedActions
-      .selectLabelByPartialText(otherEntityType)
-    submitPage()
+  def provideOtherEntityBusinessDetails(otherEntityType: String): this.type = {
+    otherEntityType match {
+      case "Charity" =>
+        RegistrationPage
+          .provideOtherEntityName("Charity")
+          .provideRegisteredNameOfYourBusiness("ABC Company")
+          .provideCharityRegistrationNumberOfYourBusiness("1234567")
+          .provideCompanyRegistrationNumberOfYourBusiness("12345678")
+      case _         =>
+        RegistrationPage
+          .provideOtherEntityName("Unincorporated Association")
+          .provideRegisteredNameOfYourBusiness("OC Limited")
+          .provideCorporationTaxUniqueTaxpayerReference("0123456789")
+          .providePostcodeToRegisterCompany("AB1 2YZ")
+    }
     this
   }
 
+  def provideOtherEntityName(otherEntityName: String): this.type = {
+    SharedActions
+      .selectLabelByPartialText(otherEntityName)
+    submitPage()
+    this
+  }
   def provideRegisteredNameOfYourBusiness(businessName: String): this.type = {
     SharedActions
       .enterDetails(businessName)
@@ -292,6 +309,23 @@ object RegistrationPage extends BasePage {
   def provideCompanyRegistrationNumberOfYourBusiness(companyRegistrationNumber: String): this.type = {
     SharedActions
       .enterDetails(companyRegistrationNumber)
+    submitPage()
+    this
+  }
+
+  def provideCorporationTaxUniqueTaxpayerReference(uniqueTaxpayerReference: String): this.type = {
+    SharedActions
+      .selectYesOrNo("Yes")
+    submitPage()
+    SharedActions
+      .enterDetails(uniqueTaxpayerReference)
+    submitPage()
+    this
+  }
+
+  def providePostcodeToRegisterCompany(postcode: String): this.type = {
+    SharedActions
+      .enterDetails(postcode)
     submitPage()
     this
   }
