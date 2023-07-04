@@ -32,13 +32,6 @@ object DoYouHaveCorporationTaxUtrPage extends BasePage {
     this
   }
 
-  def doYouHaveCorporationTaxUniqueTaxpayerReference(value: String): this.type = {
-    SharedActions.selectYesOrNo(value)
-    submitPage()
-    onPage(OtherEntityCheckYourAnswersPage.heading)
-    this
-  }
-
   def submitPage(): this.type = {
     SharedActions.clickButton()
     this

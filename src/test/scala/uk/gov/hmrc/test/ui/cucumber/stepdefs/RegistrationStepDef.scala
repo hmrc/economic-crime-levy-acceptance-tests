@@ -319,14 +319,23 @@ class RegistrationStepDef extends BaseStepDef {
   When("^I select (.*) on whether or not I have a Corporation Tax Unique Taxpayer Reference$") { (value: String) =>
     DoYouHaveCorporationTaxUtrPage
       .navigateTo()
-      .doYouHaveCorporationTaxUniqueTaxpayerReference(value)
+    doYouHaveCorporationTaxUniqueTaxpayerReference(value)
   }
 
-  When("^I enter my Corporation Tax Unique Taxpayer Reference as (.*) for the other entity type business$") {
-    (uniqueTaxpayerReference: String) =>
-      DoYouHaveCorporationTaxUtrPage
-        .navigateTo()
-      provideCorporationTaxUniqueTaxpayerReference(uniqueTaxpayerReference)
+  When("^I enter my Corporation Tax Unique Taxpayer Reference as (.*) for the other entity type (.*) business$") {
+    (uniqueTaxpayerReference: String, otherEntityType: String) =>
+      otherEntityType match {
+        case "Unincorporated Association" =>
+          DoYouHaveCorporationTaxUtrPage
+            .navigateTo()
+          doYouHaveCorporationTaxUniqueTaxpayerReference("Yes")
+            .provideCorporationTaxUniqueTaxpayerReference(uniqueTaxpayerReference)
+        case _                            =>
+          CorporationTaxUtrPage
+            .navigateTo()
+          provideCorporationTaxUniqueTaxpayerReference(uniqueTaxpayerReference)
+      }
+
   }
 
   When("^I enter my company registered postcode as (.*) for the other entity type business$") { (postcode: String) =>

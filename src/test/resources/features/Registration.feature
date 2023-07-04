@@ -258,6 +258,7 @@ Feature: Register for ECL
       | Other Entity               |
       | Charity                    |
       | Unincorporated Association |
+      | Trust                      |
 
   Scenario Outline: User does not provide their valid registered name for the other entity type <Other Entity> business
     Given I am signed in to the registration journey
@@ -270,6 +271,8 @@ Feature: Register for ECL
       | Charity                    | ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyabcdefghijklmnopqrstuvwxyabcdefghijklmnopqrstu1234567890!@£#$%^&*()-+={}[]"';:,.<>/? | Business name must not be more than 160 characters |
       | Unincorporated Association |                                                                                                                                                                   | Enter a business name                              |
       | Unincorporated Association | ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyabcdefghijklmnopqrstuvwxyabcdefghijklmnopqrstu1234567890!@£#$%^&*()-+={}[]"';:,.<>/? | Business name must not be more than 160 characters |
+      | Trust                      |                                                                                                                                                                   | Enter a business name                              |
+      | Trust                      | ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyabcdefghijklmnopqrstuvwxyabcdefghijklmnopqrstu1234567890!@£#$%^&*()-+={}[]"';:,.<>/? | Business name must not be more than 160 characters |
 
   Scenario Outline: User does not provide their valid charity registration number for the other entity type business
     Given I am signed in to the registration journey
@@ -301,16 +304,19 @@ Feature: Register for ECL
     When I select No on whether or not I have a Corporation Tax Unique Taxpayer Reference
     Then I should be on the page that says Check your answers
 
-  Scenario Outline: User does not provide their valid Corporation Tax Unique Taxpayer Reference
+  Scenario Outline: User does not provide their valid Corporation Tax Unique Taxpayer Reference for the other entity type <Other Entity> business
     Given I am signed in to the registration journey
-    When I enter my Corporation Tax Unique Taxpayer Reference as <CT UTR> for the other entity type business
+    When I enter my Corporation Tax Unique Taxpayer Reference as <CT UTR> for the other entity type <Other Entity> business
     Then I should see an error that says <Expected content>
 
     Examples:
-      | CT UTR     | Expected content                                                       |
-      |            | Enter a Corporation Tax (CT) Unique Taxpayer Reference (UTR)           |
-      | 012345678  | Corporation Tax (CT) Unique Taxpayer Reference (UTR) must be 10 digits |
-      | SC01234567 | Corporation Tax (CT) Unique Taxpayer Reference (UTR) must be 10 digits |
+      | Other Entity               | CT UTR     | Expected content                                                       |
+      | Unincorporated Association |            | Enter a Corporation Tax (CT) Unique Taxpayer Reference (UTR)           |
+      | Unincorporated Association | 012345678  | Corporation Tax (CT) Unique Taxpayer Reference (UTR) must be 10 digits |
+      | Unincorporated Association | SC01234567 | Corporation Tax (CT) Unique Taxpayer Reference (UTR) must be 10 digits |
+      | Trust                      |            | Enter a Corporation Tax (CT) Unique Taxpayer Reference (UTR)           |
+      | Trust                      | 012345678  | Corporation Tax (CT) Unique Taxpayer Reference (UTR) must be 10 digits |
+      | Trust                      | SC01234567 | Corporation Tax (CT) Unique Taxpayer Reference (UTR) must be 10 digits |
 
   Scenario Outline: User does not provide their company's valid registered postcode
     Given I am signed in to the registration journey

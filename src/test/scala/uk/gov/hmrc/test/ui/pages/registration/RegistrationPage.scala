@@ -270,18 +270,24 @@ object RegistrationPage extends BasePage {
 
   def provideOtherEntityBusinessDetails(otherEntityType: String): this.type = {
     otherEntityType match {
-      case "Charity" =>
+      case "Charity"                    =>
         RegistrationPage
           .provideOtherEntityName("Charity")
           .provideRegisteredNameOfYourBusiness("ABC Company")
           .provideCharityRegistrationNumberOfYourBusiness("1234567")
           .provideCompanyRegistrationNumberOfYourBusiness("12345678")
-      case _         =>
+      case "Unincorporated Association" =>
         RegistrationPage
           .provideOtherEntityName("Unincorporated Association")
           .provideRegisteredNameOfYourBusiness("OC Limited")
+          .doYouHaveCorporationTaxUniqueTaxpayerReference("Yes")
           .provideCorporationTaxUniqueTaxpayerReference("0123456789")
           .providePostcodeToRegisterCompany("AB1 2YZ")
+      case _                            =>
+        RegistrationPage
+          .provideOtherEntityName("Trust")
+          .provideRegisteredNameOfYourBusiness("St Johns MTC Trust")
+          .provideCorporationTaxUniqueTaxpayerReference("0123456789")
     }
     this
   }
@@ -315,10 +321,13 @@ object RegistrationPage extends BasePage {
 
   def provideCorporationTaxUniqueTaxpayerReference(uniqueTaxpayerReference: String): this.type = {
     SharedActions
-      .selectYesOrNo("Yes")
-    submitPage()
-    SharedActions
       .enterDetails(uniqueTaxpayerReference)
+    submitPage()
+    this
+  }
+
+  def doYouHaveCorporationTaxUniqueTaxpayerReference(value: String): this.type = {
+    SharedActions.selectYesOrNo(value)
     submitPage()
     this
   }
