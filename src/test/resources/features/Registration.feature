@@ -253,7 +253,7 @@ Feature: Register for ECL
   Scenario Outline: User registers <Other Entity> as entity type for AML that is liable for ECL
     Given I am signed in to the registration journey
     When I provide details of my other entity is <Other Entity> that is supervised by HMRC and liable for ECL
-    Then I should be on the page that says Check your answers
+    Then I should be on the page that says Registration received
     Examples:
       | Other Entity               |
       | Charity                    |
