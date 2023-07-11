@@ -288,6 +288,7 @@ class RegistrationStepDef extends BaseStepDef {
         .provideSecondContactDetailsYesOrNo("No")
         .provideRegisteredAddress("Yes")
         .provideGrsData()
+        .provideCheckYourAnswers()
   }
 
   When("I enter my registered name as (.*) for the other entity type business$") { (registeredBusinessName: String) =>
