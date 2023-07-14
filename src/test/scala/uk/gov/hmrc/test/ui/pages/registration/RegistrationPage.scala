@@ -283,11 +283,18 @@ object RegistrationPage extends BasePage {
           .doYouHaveCorporationTaxUniqueTaxpayerReference("Yes")
           .provideCorporationTaxUniqueTaxpayerReference("0123456789")
           .providePostcodeToRegisterCompany("AB1 2YZ")
-      case _                            =>
+      case "Trust"                      =>
         RegistrationPage
           .provideOtherEntityName("Trust")
           .provideRegisteredNameOfYourBusiness("St Johns MTC Trust")
           .provideCorporationTaxUniqueTaxpayerReference("0123456789")
+      case _                            =>
+        RegistrationPage
+          .provideOtherEntityName("Non-UK Establishment")
+          .provideRegisteredNameOfYourBusiness("Non UK Company")
+          .provideCompanyRegistrationNumberOfYourBusiness("12345678")
+          .provideUkUniqueTaxpayerReference()
+          .provideOverseasTaxIdentifier("VAT123456")
     }
     this
   }
@@ -339,6 +346,33 @@ object RegistrationPage extends BasePage {
     this
   }
 
+  def provideUkUniqueTaxpayerReference(
+    value: String = "Self Assessment (SA) Unique Taxpayer Reference (UTR)"
+  ): this.type = {
+    value match {
+      case "Company Tax (CT) Unique Taxpayer Reference (UTR)" =>
+        SharedActions.selectLabelByPartialText("Company Tax (CT) Unique Taxpayer Reference (UTR)")
+        submitPage()
+        provideCorporationTaxUniqueTaxpayerReference("1234567890")
+      case _                                                  =>
+        SharedActions.selectLabelByPartialText(value)
+        submitPage()
+        provideSelfAssessmentTaxpayerReference("0123456789")
+    }
+    this
+  }
+
+  def provideSelfAssessmentTaxpayerReference(uniqueTaxpayerReference: String): this.type = {
+    SharedActions
+      .enterDetails(uniqueTaxpayerReference)
+    submitPage()
+    this
+  }
+  def provideOverseasTaxIdentifier(overseasTaxIdentifier: String): this.type = {
+    SharedActions.enterDetails(overseasTaxIdentifier)
+    submitPage()
+    this
+  }
   def provideOtherEntityCheckYourAnswers(): this.type = {
     submitPage()
     this

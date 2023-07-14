@@ -345,6 +345,19 @@ class RegistrationStepDef extends BaseStepDef {
     providePostcodeToRegisterCompany(postcode)
   }
 
+  When("^I do not select an option for my UK unique taxpayer reference") { () =>
+    UkUniqueTaxpayerPage
+      .navigateTo()
+      .submitPage()
+  }
+
+  When("^I enter my overseas tax identifier as (.*) for the Non-UK Establishment business$") {
+    (overseasTaxIdentifier: String) =>
+      OverseasTaxIdentifierPage
+        .navigateTo()
+      provideOverseasTaxIdentifier(overseasTaxIdentifier)
+  }
+
   When("I enter my (.*)'s name as (.*)$") { (_: String, partnershipName: String) =>
     PartnershipNamePage
       .navigateTo()
