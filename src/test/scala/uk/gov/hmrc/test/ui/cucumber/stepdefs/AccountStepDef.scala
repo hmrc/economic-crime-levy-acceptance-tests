@@ -21,13 +21,13 @@ import uk.gov.hmrc.test.ui.pages.account._
 
 class AccountStepDef extends BaseStepDef {
 
-  Given("""I am signed in to the account journey""") { () =>
+  Given("I am signed in to the account journey with my ECL reference as (.*)$") { (eclReference: String) =>
     AccountPage
       .navigateTo()
       .provideEnrolmentDetails(
         enrolmentKey = "HMRC-ECL-ORG",
         identifierName = "EclRegistrationReference",
-        identifierValue = "XMECL0000000005"
+        identifierValue = eclReference
       )
       .startAndSignIn()
   }
