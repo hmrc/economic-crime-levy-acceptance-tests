@@ -36,7 +36,7 @@ Feature: ECL Dashboard details
       |XMECL0000000003|You have a payment of £10,000 due on 30 September 2023 for 1 April 2022 to 31 March 2023.|
       |XMECL0000000005|You have no payments due.|
 
-  Scenario: User that is registered for ECL can view their overdue and completed payments
+  Scenario: User that is registered for ECL can view their overdue payments
     Given I am signed in to the account journey with my ECL reference as XMECL0000000004
     When I am on the ECL account dashboard
     Then I should be on the page that says You have an overdue payment for 1 April 2021 to 31 March 2022.
