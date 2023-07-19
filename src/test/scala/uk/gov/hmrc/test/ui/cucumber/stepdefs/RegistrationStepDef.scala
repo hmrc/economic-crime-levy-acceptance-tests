@@ -331,8 +331,12 @@ class RegistrationStepDef extends BaseStepDef {
             .navigateTo()
           doYouHaveCorporationTaxUniqueTaxpayerReference("Yes")
             .provideCorporationTaxUniqueTaxpayerReference(uniqueTaxpayerReference)
-        case _                            =>
+        case "Trust"                      =>
           CorporationTaxUtrPage
+            .navigateTo()
+          provideCorporationTaxUniqueTaxpayerReference(uniqueTaxpayerReference)
+        case _                            =>
+          SelfAssessmentUtrPage
             .navigateTo()
           provideCorporationTaxUniqueTaxpayerReference(uniqueTaxpayerReference)
       }
