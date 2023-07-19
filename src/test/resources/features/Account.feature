@@ -41,3 +41,15 @@ Feature: ECL Dashboard details
     When I am on the ECL account dashboard
     Then I should be on the page that says You have an overdue payment for 1 April 2021 to 31 March 2022.
     And I should be on the page that says We are charging you interest on this payment. You owe £28,000.
+
+  Scenario Outline: User is able to see their payment details for the previous and current financial years
+    Given I am signed in to the account journey with my ECL reference as <ECL Reference Number>
+    When I click on the View your payments link to view the <payment status> payment details
+    Then I should be on the page that says Your Economic Crime Levy payments
+    And I should see the payment status as <payment status>
+    Examples:
+    | ECL Reference Number | payment status |
+    | XMECL0000000003 | DUE           |
+     | XMECL0000000007| OVERDUE       |
+    | XMECL0000000007 |PARTIALLY PAID |
+     |XMECL0000000003 | PAID     |
