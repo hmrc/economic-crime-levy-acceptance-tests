@@ -19,12 +19,12 @@ package uk.gov.hmrc.test.ui.pages.registration
 import uk.gov.hmrc.test.ui.conf.TestConfiguration
 import uk.gov.hmrc.test.ui.pages.{BasePage, SharedActions}
 
-object CorporationTaxUtrPage extends BasePage {
+object SelfAssessmentUtrPage extends BasePage {
 
   val url =
-    s"${TestConfiguration.url("economic-crime-levy-registration-frontend")}/register-for-economic-crime-levy/what-is-your-corporation-tax-utr"
+    s"${TestConfiguration.url("economic-crime-levy-registration-frontend")}/register-for-economic-crime-levy/what-is-your-self-assessment-utr"
 
-  val heading = "What is your corporation tax unique taxpayer reference?"
+  val heading = "What is your self assessment unique taxpayer reference?"
 
   def navigateTo(): this.type = {
     navigateToClearAllUrl()

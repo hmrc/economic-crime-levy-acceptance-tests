@@ -259,6 +259,7 @@ Feature: Register for ECL
       | Charity                    |
       | Unincorporated Association |
       | Trust                      |
+      | Non-UK Establishment       |
 
   Scenario Outline: User does not provide their valid registered name for the other entity type <Other Entity> business
     Given I am signed in to the registration journey
@@ -310,13 +311,14 @@ Feature: Register for ECL
     Then I should see an error that says <Expected content>
 
     Examples:
-      | Other Entity               | CT UTR     | Expected content                                                       |
-      | Unincorporated Association |            | Enter a Corporation Tax (CT) Unique Taxpayer Reference (UTR)           |
-      | Unincorporated Association | 012345678  | Corporation Tax (CT) Unique Taxpayer Reference (UTR) must be 10 digits |
-      | Unincorporated Association | SC01234567 | Corporation Tax (CT) Unique Taxpayer Reference (UTR) must be 10 digits |
-      | Trust                      |            | Enter a Corporation Tax (CT) Unique Taxpayer Reference (UTR)           |
-      | Trust                      | 012345678  | Corporation Tax (CT) Unique Taxpayer Reference (UTR) must be 10 digits |
-      | Trust                      | SC01234567 | Corporation Tax (CT) Unique Taxpayer Reference (UTR) must be 10 digits |
+      | Other Entity               | CT UTR     | Expected content                                                        |
+      | Unincorporated Association |            | Enter a Corporation Tax (CT) Unique Taxpayer Reference (UTR)            |
+      | Unincorporated Association | 012345678  | Corporation Tax (CT) Unique Taxpayer Reference (UTR) must be 10 numbers |
+      | Unincorporated Association | SC01234567 | Corporation Tax (CT) Unique Taxpayer Reference (UTR) must be 10 numbers |
+      | Trust                      |            | Enter a Corporation Tax (CT) Unique Taxpayer Reference (UTR)            |
+      | Trust                      | 012345678  | Corporation Tax (CT) Unique Taxpayer Reference (UTR) must be 10 numbers |
+      | Non-UK Establishment       |            | Enter a Self Assessment (SA) Unique Taxpayer Reference (UTR)            |
+      | Non-UK Establishment       | SC01234567 | Self Assessment (SA) Unique Taxpayer Reference (UTR) must be 10 numbers |
 
   Scenario Outline: User does not provide their company's valid registered postcode
     Given I am signed in to the registration journey
@@ -328,3 +330,16 @@ Feature: Register for ECL
       |           | Enter a postcode      |
       | AB1  2 YZ | Enter a real postcode |
 
+  Scenario: User does not select their UK unique taxpayer reference
+    Given I am signed in to the registration journey
+    When I do not select an option for my UK unique taxpayer reference
+    Then I should see an error that says Select your UK Unique Taxpayer Reference type
+
+  Scenario Outline: User does not provide their valid overseas tax identifier
+    Given I am signed in to the registration journey
+    When I enter my overseas tax identifier as <Overseas Tax Identifier> for the Non-UK Establishment business
+    Then I should see an error that says <Expected content>
+    Examples:
+      | Overseas Tax Identifier                                             | Expected content                                            |
+      |                                                                     | Enter an overseas tax identifier                            |
+      | email-ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz123456789 | Overseas tax identifier must not be more than 60 characters |
