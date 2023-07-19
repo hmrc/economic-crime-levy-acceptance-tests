@@ -311,13 +311,14 @@ Feature: Register for ECL
     Then I should see an error that says <Expected content>
 
     Examples:
-      | Other Entity               | CT UTR     | Expected content                                                       |
-      | Unincorporated Association |            | Enter a Corporation Tax (CT) Unique Taxpayer Reference (UTR)           |
-      | Unincorporated Association | 012345678  | Corporation Tax (CT) Unique Taxpayer Reference (UTR) must be 10 digits |
-      | Unincorporated Association | SC01234567 | Corporation Tax (CT) Unique Taxpayer Reference (UTR) must be 10 digits |
-      | Trust                      |            | Enter a Corporation Tax (CT) Unique Taxpayer Reference (UTR)           |
-      | Trust                      | 012345678  | Corporation Tax (CT) Unique Taxpayer Reference (UTR) must be 10 digits |
-      | Trust                      | SC01234567 | Corporation Tax (CT) Unique Taxpayer Reference (UTR) must be 10 digits |
+      | Other Entity               | CT UTR     | Expected content                                                        |
+      | Unincorporated Association |            | Enter a Corporation Tax (CT) Unique Taxpayer Reference (UTR)            |
+      | Unincorporated Association | 012345678  | Corporation Tax (CT) Unique Taxpayer Reference (UTR) must be 10 numbers |
+      | Unincorporated Association | SC01234567 | Corporation Tax (CT) Unique Taxpayer Reference (UTR) must be 10 numbers |
+      | Trust                      |            | Enter a Corporation Tax (CT) Unique Taxpayer Reference (UTR)            |
+      | Trust                      | 012345678  | Corporation Tax (CT) Unique Taxpayer Reference (UTR) must be 10 numbers |
+      | Non-UK Establishment       |            | Enter a Self Assessment (SA) Unique Taxpayer Reference (UTR)            |
+      | Non-UK Establishment       | SC01234567 | Self Assessment (SA) Unique Taxpayer Reference (UTR) must be 10 numbers |
 
   Scenario Outline: User does not provide their company's valid registered postcode
     Given I am signed in to the registration journey
