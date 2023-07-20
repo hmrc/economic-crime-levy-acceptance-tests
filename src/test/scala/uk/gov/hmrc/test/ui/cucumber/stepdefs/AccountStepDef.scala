@@ -45,8 +45,8 @@ class AccountStepDef extends BaseStepDef {
       provideViewOrAmendAnEclReturn(returnStatus)
   }
 
-  When("""I should see the payment status as (.*)$""") { (returnStatus: String) =>
-    validateReturnStatusAndPaymentDueBy(returnStatus)
+  When("""I should see the return status as (.*)$""") { (returnStatus: String) =>
+    validateReturnStatusDueBy(returnStatus)
   }
 
   When("""I provide the details to amend the returns through ECL dashboard link$""") { () =>
@@ -54,4 +54,12 @@ class AccountStepDef extends BaseStepDef {
       .provideAmendSubmitReturn()
   }
 
+  When("""I click on the View your payments link to view the (DUE|OVERDUE|PARTIALLY PAID|PAID) payment details$""") {
+    (paymentStatus: String) =>
+      provideViewEclPayment(paymentStatus)
+  }
+
+  When("""I should see the payment status as (.*)$""") { (returnStatus: String) =>
+    validatePaymentStatusDueBy(returnStatus)
+  }
 }

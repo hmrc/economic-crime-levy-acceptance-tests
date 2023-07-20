@@ -15,7 +15,7 @@ Feature: ECL Dashboard details
     Given I am signed in to the account journey with my ECL reference as XMECL0000000005
     When I click on the View or amend your returns link to view the <return status> return details
     Then I should be on the page that says Your Economic Crime Levy returns
-    And I should see the payment status as <return status>
+    And I should see the return status as <return status>
     Examples:
       | return status |
       | DUE           |
@@ -48,8 +48,8 @@ Feature: ECL Dashboard details
     Then I should be on the page that says Your Economic Crime Levy payments
     And I should see the payment status as <payment status>
     Examples:
-    | ECL Reference Number | payment status |
-    | XMECL0000000003 | DUE           |
-     | XMECL0000000007| OVERDUE       |
-    | XMECL0000000007 |PARTIALLY PAID |
-     |XMECL0000000003 | PAID     |
+      | ECL Reference Number | payment status |
+      | XMECL0000000003      | DUE            |
+      | XMECL0000000007      | OVERDUE        |
+      | XMECL0000000007      | PARTIALLY PAID |
+      | XMECL0000000005      | PAID           |

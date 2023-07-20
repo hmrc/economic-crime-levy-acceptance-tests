@@ -55,7 +55,7 @@ object AccountPage extends BasePage {
     this
   }
 
-  def validateReturnStatusAndPaymentDueBy(returnStatus: String): this.type = {
+  def validateReturnStatusDueBy(returnStatus: String): this.type = {
     returnStatus match {
       case "DUE"     =>
         SharedActions
@@ -66,6 +66,29 @@ object AccountPage extends BasePage {
       case _         =>
         SharedActions
           .assertTextByCssSelector(".govuk-tag--green", returnStatus)
+    }
+    this
+  }
+
+  def provideViewEclPayment(paymentStatus: String): this.type = {
+    SharedActions.clickById("view-payment-history")
+    this
+  }
+
+  def validatePaymentStatusDueBy(paymentStatus: String): this.type = {
+    paymentStatus match {
+      case "DUE"            =>
+        SharedActions
+          .assertTextByCssSelector(".govuk-tag--blue", paymentStatus)
+      case "OVERDUE"        =>
+        SharedActions
+          .assertTextByCssSelector(".govuk-tag--red", paymentStatus)
+      case "PARTIALLY PAID" =>
+        SharedActions
+          .assertTextByCssSelector(".govuk-tag--yellow", paymentStatus)
+      case _                =>
+        SharedActions
+          .assertTextByCssSelector(".govuk-tag--green", paymentStatus)
     }
     this
   }
