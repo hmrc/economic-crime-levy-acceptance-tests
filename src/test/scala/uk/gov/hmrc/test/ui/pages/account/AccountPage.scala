@@ -18,6 +18,7 @@ package uk.gov.hmrc.test.ui.pages.account
 
 import org.openqa.selenium.By
 import uk.gov.hmrc.test.ui.conf.TestConfiguration
+import uk.gov.hmrc.test.ui.pages.SharedActions.{assert, getText}
 import uk.gov.hmrc.test.ui.pages.{BasePage, SharedActions}
 
 object AccountPage extends BasePage {
@@ -93,6 +94,30 @@ object AccountPage extends BasePage {
     this
   }
 
+  def assertPayAmountValue(paymentStatus: String, amount: String): this.type = {
+    var actual = ""
+    paymentStatus match {
+      case "DUE"            =>
+        actual = getText(By.cssSelector("td:nth-child(4)"))
+      case "OVERDUE"        =>
+        actual = getText(By.xpath("//td[contains(text(),'£20,500')]"))
+      case "PARTIALLY PAID" =>
+        actual = getText(By.xpath("//td[contains(text(),'£2,400')]"))
+      case _                =>
+        actual = getText(By.xpath("//td[contains(text(),'£14,000')]"))
+    }
+
+    val regex        = """([\d\.\,]+)""".r
+    val actualAmount = BigDecimal(
+      regex
+        .findFirstMatchIn(actual)
+        .get
+        .group(1)
+        .replaceAll(",", "")
+    )
+    assert(actualAmount.toString() == amount)
+    this
+  }
   def provideAmendSubmitReturn(): this.type = {
     SharedActions
       .clickLinkByPartialText("Submit return")

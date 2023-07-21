@@ -16,6 +16,7 @@
 
 package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
+import uk.gov.hmrc.test.ui.pages.SharedActions
 import uk.gov.hmrc.test.ui.pages.account.AccountPage._
 import uk.gov.hmrc.test.ui.pages.account._
 
@@ -59,7 +60,12 @@ class AccountStepDef extends BaseStepDef {
       provideViewEclPayment(paymentStatus)
   }
 
-  When("""I should see the payment status as (.*)$""") { (returnStatus: String) =>
-    validatePaymentStatusDueBy(returnStatus)
+  When("""I should see the payment status as (.*)$""") { (paymentStatus: String) =>
+    validatePaymentStatusDueBy(paymentStatus)
   }
+
+  And("""I should see the (.*) payment amount (.*)$""") { (paymentStatus: String, amount: String) =>
+    assertPayAmountValue(paymentStatus, amount)
+  }
+
 }

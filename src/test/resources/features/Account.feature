@@ -46,10 +46,11 @@ Feature: ECL Dashboard details
     Given I am signed in to the account journey with my ECL reference as <ECL Reference Number>
     When I click on the View your payments link to view the <payment status> payment details
     Then I should be on the page that says Your Economic Crime Levy payments
+    And I should see the <payment status> payment amount <Amount>
     And I should see the payment status as <payment status>
     Examples:
-      | ECL Reference Number | payment status |
-      | XMECL0000000003      | DUE            |
-      | XMECL0000000007      | OVERDUE        |
-      | XMECL0000000007      | PARTIALLY PAID |
-      | XMECL0000000005      | PAID           |
+      | ECL Reference Number | payment status |Amount|
+      | XMECL0000000003      | DUE            |10000|
+      | XMECL0000000007      | OVERDUE        |20500|
+      | XMECL0000000007      | PARTIALLY PAID |2400|
+      | XMECL0000000005      | PAID           |14000|
