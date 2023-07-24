@@ -18,7 +18,6 @@ package uk.gov.hmrc.test.ui.pages.account
 
 import org.openqa.selenium.By
 import uk.gov.hmrc.test.ui.conf.TestConfiguration
-import uk.gov.hmrc.test.ui.pages.SharedActions.{assert, getText}
 import uk.gov.hmrc.test.ui.pages.{BasePage, SharedActions}
 
 object AccountPage extends BasePage {
