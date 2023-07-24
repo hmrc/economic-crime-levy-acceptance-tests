@@ -117,6 +117,12 @@ object AccountPage extends BasePage {
     assert(actualAmount.toString() == amount)
     this
   }
+
+  def provideMakeAnEclPayment(paymentStatus: String): this.type = {
+    SharedActions.clickById("make-payment")
+    this
+  }
+
   def provideAmendSubmitReturn(): this.type = {
     SharedActions
       .clickLinkByPartialText("Submit return")
