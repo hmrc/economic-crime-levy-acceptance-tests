@@ -32,9 +32,9 @@ Feature: ECL Dashboard details
     When I am on the ECL account dashboard
     Then I should be on the page that says <Expected content>
     Examples:
-      | ECL Reference |Expected content|
-      |XMECL0000000003|You have a payment of £10,000 due on 30 September 2023 for 1 April 2022 to 31 March 2023.|
-      |XMECL0000000005|You have no payments due.|
+      | ECL Reference   | Expected content                                                                          |
+      | XMECL0000000003 | You have a payment of £10,000 due on 30 September 2023 for 1 April 2022 to 31 March 2023. |
+      | XMECL0000000005 | You have no payments due.                                                                 |
 
   Scenario: User that is registered for ECL can view their overdue payments
     Given I am signed in to the account journey with my ECL reference as XMECL0000000004
@@ -49,8 +49,17 @@ Feature: ECL Dashboard details
     And I should see the <payment status> payment amount <Amount>
     And I should see the payment status as <payment status>
     Examples:
-      | ECL Reference Number | payment status |Amount|
-      | XMECL0000000003      | DUE            |10000|
-      | XMECL0000000007      | OVERDUE        |20500|
-      | XMECL0000000007      | PARTIALLY PAID |2400|
-      | XMECL0000000005      | PAID           |14000|
+      | ECL Reference Number | payment status | Amount |
+      | XMECL0000000003      | DUE            | 10000  |
+      | XMECL0000000007      | OVERDUE        | 20500  |
+      | XMECL0000000007      | PARTIALLY PAID | 2400   |
+      | XMECL0000000005      | PAID           | 14000  |
+
+  Scenario Outline: User is able to see the payment service page for make an ECL payment
+    Given I am signed in to the account journey with my ECL reference as <ECL Reference>
+    When I click on the Make an ECL payment link to pay the <payment status> payment
+    Then I should be on the page that says <Expected content>
+    Examples:
+      | ECL Reference   | payment status | Expected content         |
+      | XMECL0000000003 | DUE            | When do you want to pay? |
+      | XMECL0000000004 | OVERDUE        | Select an amount to pay  |

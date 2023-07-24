@@ -68,4 +68,7 @@ class AccountStepDef extends BaseStepDef {
     assertPayAmountValue(paymentStatus, amount)
   }
 
+  When("""I click on the Make an ECL payment link to pay the (DUE|OVERDUE) payment$""") { (paymentStatus: String) =>
+    provideMakeAnEclPayment(paymentStatus)
+  }
 }
