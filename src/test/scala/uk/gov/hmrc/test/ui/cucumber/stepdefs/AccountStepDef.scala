@@ -16,6 +16,7 @@
 
 package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
+import uk.gov.hmrc.test.ui.pages.SharedActions
 import uk.gov.hmrc.test.ui.pages.account.AccountPage._
 import uk.gov.hmrc.test.ui.pages.account._
 
@@ -45,13 +46,26 @@ class AccountStepDef extends BaseStepDef {
       provideViewOrAmendAnEclReturn(returnStatus)
   }
 
-  When("""I should see the payment status as (.*)$""") { (returnStatus: String) =>
-    validateReturnStatusAndPaymentDueBy(returnStatus)
+  When("""I should see the return status as (.*)$""") { (returnStatus: String) =>
+    validateReturnStatusDueBy(returnStatus)
   }
 
   When("""I provide the details to amend the returns through ECL dashboard link$""") { () =>
     provideViewOrAmendAnEclReturn("DUE")
       .provideAmendSubmitReturn()
+  }
+
+  When("""I click on the View your payments link to view the (DUE|OVERDUE|PARTIALLY PAID|PAID) payment details$""") {
+    (paymentStatus: String) =>
+      provideViewEclPayment(paymentStatus)
+  }
+
+  When("""I should see the payment status as (.*)$""") { (paymentStatus: String) =>
+    validatePaymentStatusDueBy(paymentStatus)
+  }
+
+  And("""I should see the (.*) payment amount (.*)$""") { (paymentStatus: String, amount: String) =>
+    assertPayAmountValue(paymentStatus, amount)
   }
 
 }

@@ -55,7 +55,7 @@ object AccountPage extends BasePage {
     this
   }
 
-  def validateReturnStatusAndPaymentDueBy(returnStatus: String): this.type = {
+  def validateReturnStatusDueBy(returnStatus: String): this.type = {
     returnStatus match {
       case "DUE"     =>
         SharedActions
@@ -70,6 +70,53 @@ object AccountPage extends BasePage {
     this
   }
 
+  def provideViewEclPayment(paymentStatus: String): this.type = {
+    SharedActions.clickById("view-payment-history")
+    this
+  }
+
+  def validatePaymentStatusDueBy(paymentStatus: String): this.type = {
+    paymentStatus match {
+      case "DUE"            =>
+        SharedActions
+          .assertTextByCssSelector(".govuk-tag--blue", paymentStatus)
+      case "OVERDUE"        =>
+        SharedActions
+          .assertTextByCssSelector(".govuk-tag--red", paymentStatus)
+      case "PARTIALLY PAID" =>
+        SharedActions
+          .assertTextByCssSelector(".govuk-tag--yellow", paymentStatus)
+      case _                =>
+        SharedActions
+          .assertTextByCssSelector(".govuk-tag--green", paymentStatus)
+    }
+    this
+  }
+
+  def assertPayAmountValue(paymentStatus: String, amount: String): this.type = {
+    var actual = ""
+    paymentStatus match {
+      case "DUE"            =>
+        actual = getText(By.cssSelector("td:nth-child(4)"))
+      case "OVERDUE"        =>
+        actual = getText(By.xpath("//td[contains(text(),'£20,500')]"))
+      case "PARTIALLY PAID" =>
+        actual = getText(By.xpath("//td[contains(text(),'£2,400')]"))
+      case _                =>
+        actual = getText(By.xpath("//td[contains(text(),'£14,000')]"))
+    }
+
+    val regex        = """([\d\.\,]+)""".r
+    val actualAmount = BigDecimal(
+      regex
+        .findFirstMatchIn(actual)
+        .get
+        .group(1)
+        .replaceAll(",", "")
+    )
+    assert(actualAmount.toString() == amount)
+    this
+  }
   def provideAmendSubmitReturn(): this.type = {
     SharedActions
       .clickLinkByPartialText("Submit return")
