@@ -25,7 +25,7 @@ object ChangeOrganisationDetails extends BasePage {
   val cssForChangeAmlSupervisor: String        =
     "a[href='/register-for-economic-crime-levy/change-answer/your-aml-supervisor']"
   val cssForChangeUkRevenue: String            =
-    "a[href='/register-for-economic-crime-levy/change-answer/uk-revenue']"
+    "a[href='/register-for-economic-crime-levy/change-answer/uk-revenue-in-accounting-period']"
   val cssForChangeAccountingPeriod: String     =
     "a[href='/register-for-economic-crime-levy/change-answer/accounting-period-question']"
   val cssForChangeAmlRegulatedActivity: String =
