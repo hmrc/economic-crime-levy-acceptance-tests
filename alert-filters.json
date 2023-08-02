@@ -3,7 +3,7 @@
     {
       "contextId": 1,
       "reason": "Test only endpoints not enabled in production",
-      "url": " http:\\/\\/localhost:14000\\/register-for-economic-crime-levy\\/test-only\\/.*",
+      "url": "http:\/\/localhost:14000\/register-for-economic-crime-levy\/test-only\/.*",
       "ruleId": 90022,
       "urlIsRegex": "true",
       "newLevel": -1
