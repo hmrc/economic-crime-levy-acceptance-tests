@@ -18,6 +18,7 @@ package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
 import uk.gov.hmrc.test.ui.pages.account.AccountPage._
 import uk.gov.hmrc.test.ui.pages.account._
+import uk.gov.hmrc.test.ui.pages.returns.ReturnsPage
 
 class AccountStepDef extends BaseStepDef {
 
@@ -49,9 +50,9 @@ class AccountStepDef extends BaseStepDef {
     validateReturnStatusDueBy(returnStatus)
   }
 
-  When("""I provide the details to amend the returns through ECL dashboard link$""") { () =>
+  When("""I provide the registration details to submit a return through ECL dashboard link$""") { () =>
     provideViewOrAmendAnEclReturn("DUE")
-      .provideAmendSubmitReturn()
+      .provideSubmitReturn()
   }
 
   When("""I click on the View your payments link to view the (DUE|OVERDUE|PARTIALLY PAID|PAID) payment details$""") {
@@ -69,5 +70,17 @@ class AccountStepDef extends BaseStepDef {
 
   When("""I click on the Make an ECL payment link to pay the (DUE|OVERDUE) payment$""") { (paymentStatus: String) =>
     provideMakeAnEclPayment(paymentStatus)
+  }
+
+  When("""I provide the details to amend the submitted economic crime levy return""") { () =>
+    provideViewOrAmendAnEclReturn("amend")
+      .provideAmendSubmitReturn()
+    ReturnsPage
+      .selectAccountingPeriod("Yes")
+      .provideUkRevenueInAccountingPeriod()
+      .selectAmlRegulatedActivity()
+      .provideAmountDue()
+      .provideContactDetails("Oliver Tom", "Account Manager", "test@test.com", "01632 960 001")
+      .provideCheckYourAnswers()
   }
 }

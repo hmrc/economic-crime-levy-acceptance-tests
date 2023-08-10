@@ -123,12 +123,18 @@ object AccountPage extends BasePage {
     this
   }
 
-  def provideAmendSubmitReturn(): this.type = {
+  def provideSubmitReturn(): this.type = {
     SharedActions
       .clickLinkByPartialText("Submit return")
     this
   }
 
+  def provideAmendSubmitReturn(): this.type = {
+    SharedActions
+      .clickLinkByPartialText("Amend return")
+    submitPage()
+    this
+  }
   def submitPage(): this.type = {
     SharedActions.clickButton()
     this
