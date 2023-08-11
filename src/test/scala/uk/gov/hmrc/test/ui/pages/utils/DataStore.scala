@@ -14,26 +14,18 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.test.ui.pages.returns
+package uk.gov.hmrc.test.ui.pages.utils
 
-import uk.gov.hmrc.test.ui.conf.TestConfiguration
-import uk.gov.hmrc.test.ui.pages.{BasePage, SharedActions}
+object DataStore {
 
-object UkRevenuePage extends BasePage {
-  val url =
-    s"${TestConfiguration.url("economic-crime-levy-returns-frontend")}/submit-economic-crime-levy-return/uk-revenue-in-accounting-period"
+  var eclReference: String = "XMECL0000000001"
 
-  val heading = "What was your total UK revenue in your relevant accounting period?"
-
-  def navigateTo(): this.type = {
-    navigateToClearAllUrl()
-    driver.get(url)
+  def setEclReference(value: String): this.type = {
+    eclReference = value
     this
   }
 
-  def submitPage(): this.type = {
-    SharedActions.clickButton()
-    this
-  }
+  def getEclReference: String =
+    eclReference
 
 }

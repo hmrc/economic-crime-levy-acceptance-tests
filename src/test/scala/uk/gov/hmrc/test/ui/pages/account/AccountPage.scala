@@ -128,11 +128,18 @@ object AccountPage extends BasePage {
       .clickLinkByPartialText("Submit return")
     this
   }
-
   def provideAmendSubmitReturn(): this.type = {
     SharedActions
       .clickLinkByPartialText("Amend return")
-    submitPage()
+//    submitPage()
+    this
+  }
+
+  def validateAmendReturnNumber(amendReturnNumber: String): this.type = {
+    println(amendReturnNumber)
+    val returnNumber = getText(By.cssSelector(".govuk-table__cell.govuk-body"))
+    assert(returnNumber.equals(amendReturnNumber))
+    println(returnNumber)
     this
   }
   def submitPage(): this.type = {

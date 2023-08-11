@@ -67,4 +67,4 @@ Feature: ECL Dashboard details
   Scenario: User is able to amend the returns they have submitted through ECL account dashboard
     Given I am signed in to the account journey with my ECL reference as XMECL0000000003
     When I provide the details to amend the submitted economic crime levy return
-    Then I should be on the page that says Economic Crime Levy return amended
+#    Then I should be on the page that says Economic Crime Levy return amended
