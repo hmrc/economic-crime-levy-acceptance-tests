@@ -85,7 +85,7 @@ class AccountStepDef extends BaseStepDef {
       .provideUkRevenueInAccountingPeriod()
       .selectAmlRegulatedActivity()
       .provideAmountDue()
-      .provideContactDetails("Oliver Tom", "Account Manager", "test@test.com", "01632 960 001")
+      .provideContactDetails("Peter Hazell", "Director", "test@test.com", "01432 960 001")
       .provideCheckYourAnswers()
   }
 }
