@@ -131,7 +131,6 @@ object AccountPage extends BasePage {
   def provideAmendSubmitReturn(): this.type = {
     SharedActions
       .clickLinkByPartialText("Amend return")
-//    submitPage()
     this
   }
 
