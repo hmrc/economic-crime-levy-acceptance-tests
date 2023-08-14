@@ -24,7 +24,7 @@ object UkRevenuePage extends BasePage {
   val url =
     s"${TestConfiguration.url("economic-crime-levy-registration-frontend")}/register-for-economic-crime-levy/uk-revenue-in-accounting-period"
 
-  val heading = "What was your total UK revenue in your accounting period?"
+  val heading = "What was your total UK revenue in your relevant accounting period?"
 
   def navigateTo(): this.type = {
     navigateToClearAllUrl()

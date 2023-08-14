@@ -70,7 +70,7 @@ Feature: Submit ECL Return
   Scenario: User enters a valid length for their relevant accounting period
     Given I am signed in to the return journey
     When I enter the length of my relevant accounting period as 364 days
-    Then I should be on the page that says What was your UK revenue for the relevant accounting period?
+    Then I should be on the page that says What was your total UK revenue in your relevant accounting period?
 
   Scenario Outline: User enters an invalid length for their relevant accounting period
     Given I am signed in to the return journey

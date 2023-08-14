@@ -24,7 +24,7 @@ Feature: ECL Dashboard details
 
   Scenario: User that is registered for ECL can make a returns submission through ECL dashboard
     Given I am signed in to the account journey with my ECL reference as XMECL0000000005
-    When I provide the details to amend the returns through ECL dashboard link
+    When I provide the registration details to submit a return through ECL dashboard link
     Then I should be on the page that says ECL registration details
 
   Scenario Outline: User that is registered for ECL can view their due and completed payments
@@ -63,3 +63,8 @@ Feature: ECL Dashboard details
       | ECL Reference   | payment status | Expected content         |
       | XMECL0000000003 | DUE            | When do you want to pay? |
       | XMECL0000000004 | OVERDUE        | Select an amount to pay  |
+
+  Scenario: User is able to amend the returns they have submitted through ECL account dashboard
+    Given I am signed in to the account journey with my ECL reference as XMECL0000000003
+    When I provide the details to amend the submitted economic crime levy return
+#    Then I should be on the page that says Economic Crime Levy return amended

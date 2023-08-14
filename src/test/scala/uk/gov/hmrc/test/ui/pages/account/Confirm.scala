@@ -14,26 +14,23 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.test.ui.pages.returns
+package uk.gov.hmrc.test.ui.pages.account
 
-import uk.gov.hmrc.test.ui.conf.TestConfiguration
-import uk.gov.hmrc.test.ui.pages.{BasePage, SharedActions}
+import org.openqa.selenium.By
+import uk.gov.hmrc.test.ui.pages.BasePage
 
-object UkRevenuePage extends BasePage {
-  val url =
-    s"${TestConfiguration.url("economic-crime-levy-returns-frontend")}/submit-economic-crime-levy-return/uk-revenue-in-accounting-period"
+object Confirm extends BasePage {
 
-  val heading = "What was your total UK revenue in your relevant accounting period?"
+//  private val pattern = ".*(XMECL[0-9]+)".r
 
-  def navigateTo(): this.type = {
-    navigateToClearAllUrl()
-    driver.get(url)
-    this
-  }
+  def copyReferenceNumber(): String = {
+    val panelText = getText(By.cssSelector("td:nth-child(3)"))
+    println(panelText)
+    return panelText
 
-  def submitPage(): this.type = {
-    SharedActions.clickButton()
-    this
+//    for (patternMatch <- pattern.findAllMatchIn(panelText))
+//      return patternMatch.matched
+//    throw new IllegalStateException("No ECL reference number found")
   }
 
 }
