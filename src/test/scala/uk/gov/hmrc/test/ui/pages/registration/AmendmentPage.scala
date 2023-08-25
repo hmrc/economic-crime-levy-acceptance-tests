@@ -14,21 +14,26 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.test.ui.pages.account
+package uk.gov.hmrc.test.ui.pages.registration
 
-import org.openqa.selenium.By
-import uk.gov.hmrc.test.ui.pages.BasePage
+import uk.gov.hmrc.test.ui.conf.TestConfiguration
+import uk.gov.hmrc.test.ui.pages.{BasePage, SharedActions}
 
-object Confirm extends BasePage {
-  def copyEclReturnNumber(): String = {
-    val panelText = getText(By.cssSelector("td:nth-child(3)"))
-    println(panelText)
-    return panelText
+object AmendmentPage extends BasePage {
+
+  val url     =
+    s"${TestConfiguration.url("economic-crime-levy-registration-frontend")}/register-for-economic-crime-levy/your-aml-supervisor/Amendment"
+  val heading = "Your anti-money laundering (AML) supervisor"
+
+  def navigateTo(): this.type = {
+    navigateToClearAllUrl()
+    driver.get(url)
+    this
   }
 
-  def copyEclReferenceNumber(): String = {
-    val panelText = getText(By.cssSelector(".govuk-caption-m")).stripPrefix("ECL reference number: ")
-    println(panelText)
-    return panelText
+  def submitPage(): this.type = {
+    SharedActions.clickButton()
+    this
   }
+
 }
