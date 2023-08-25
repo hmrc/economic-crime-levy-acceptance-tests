@@ -61,7 +61,6 @@ object RegistrationPage extends BasePage {
     }
 
     submitPage()
-    onPage(AmlAccountingActivityPage.heading)
     this
   }
 
@@ -384,6 +383,14 @@ object RegistrationPage extends BasePage {
     submitPage()
     this
   }
+
+  def provideSelectYesOrNo(value: String): this.type = {
+    SharedActions
+      .selectYesOrNo(value)
+      .submitPage()
+    this
+  }
+
   def submitPage(): this.type = {
     SharedActions.clickButton()
     this

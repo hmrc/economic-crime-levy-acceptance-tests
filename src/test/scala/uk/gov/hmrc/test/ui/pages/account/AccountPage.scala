@@ -135,10 +135,19 @@ object AccountPage extends BasePage {
   }
 
   def validateAmendReturnNumber(amendReturnNumber: String): this.type = {
-    println(amendReturnNumber)
     val returnNumber = getText(By.cssSelector(".govuk-table__cell.govuk-body"))
     assert(returnNumber.equals(amendReturnNumber))
-    println(returnNumber)
+    this
+  }
+
+  def provideAmendAnEclRegistration(registrationStatus: String): this.type = {
+    SharedActions.clickById("amend-registration")
+    this
+  }
+
+  def validateAmendRegistrationNumber(amendRegistrationNumber: String): this.type = {
+    val registrationNumber = getText(By.cssSelector(".govuk-table__cell.govuk-body"))
+    assert(registrationNumber.equals(amendRegistrationNumber))
     this
   }
   def submitPage(): this.type = {
