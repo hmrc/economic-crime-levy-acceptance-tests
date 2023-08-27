@@ -22,13 +22,11 @@ import uk.gov.hmrc.test.ui.pages.BasePage
 object Confirm extends BasePage {
   def copyEclReturnNumber(): String = {
     val panelText = getText(By.cssSelector("td:nth-child(3)"))
-    println(panelText)
     return panelText
   }
 
   def copyEclReferenceNumber(): String = {
     val panelText = getText(By.cssSelector(".govuk-caption-m")).stripPrefix("ECL reference number: ")
-    println(panelText)
     return panelText
   }
 }
