@@ -59,7 +59,6 @@ object RegistrationPage extends BasePage {
       case _       =>
         SharedActions.selectLabelByPartialText(value)
     }
-
     submitPage()
     this
   }

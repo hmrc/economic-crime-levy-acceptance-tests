@@ -102,6 +102,7 @@ class AccountStepDef extends BaseStepDef {
       .provideFirstContactDetails("Oliver Tom", "Account Manager", "test@test.com", "01632 960 001")
       .provideSelectYesOrNo("No")
       .provideRegisteredAddress("Yes")
+      .submitPage()
       .provideCheckYourAnswers()
   }
 }
