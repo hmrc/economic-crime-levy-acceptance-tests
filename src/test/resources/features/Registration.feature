@@ -36,7 +36,7 @@ Feature: Register for ECL
   Scenario: User selects AML supervisor as other but does not select the professional body
     Given I am signed in to the registration journey
     When I do not select an other professional body when I have selected the Other option
-    Then I should see an error that says Enter the name of your professional body or select from the list
+    Then I should see an error that says Select a professional body from the list
 
   Scenario Outline: User's AML supervisor is GC or FCA
     Given I am signed in to the registration journey
@@ -334,12 +334,3 @@ Feature: Register for ECL
     Given I am signed in to the registration journey
     When I do not select an option for my UK unique taxpayer reference
     Then I should see an error that says Select your UK Unique Taxpayer Reference type
-
-  Scenario Outline: User does not provide their valid overseas tax identifier
-    Given I am signed in to the registration journey
-    When I enter my overseas tax identifier as <Overseas Tax Identifier> for the Non-UK Establishment business
-    Then I should see an error that says <Expected content>
-    Examples:
-      | Overseas Tax Identifier                                             | Expected content                                            |
-      |                                                                     | Enter an overseas tax identifier                            |
-      | email-ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz123456789 | Overseas tax identifier must not be more than 60 characters |

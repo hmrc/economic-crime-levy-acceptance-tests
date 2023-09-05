@@ -292,7 +292,6 @@ object RegistrationPage extends BasePage {
           .provideRegisteredNameOfYourBusiness("Non UK Company")
           .provideCompanyRegistrationNumberOfYourBusiness("12345678")
           .provideUkUniqueTaxpayerReference()
-          .provideOverseasTaxIdentifier("VAT123456")
     }
     this
   }
@@ -372,13 +371,6 @@ object RegistrationPage extends BasePage {
     this
   }
   def provideOtherEntityCheckYourAnswers(): this.type = {
-    submitPage()
-    this
-  }
-
-  def provideSecondContactDetailsYesOrNo(value: String): this.type = {
-    SharedActions
-      .selectYesOrNo(value)
     submitPage()
     this
   }
