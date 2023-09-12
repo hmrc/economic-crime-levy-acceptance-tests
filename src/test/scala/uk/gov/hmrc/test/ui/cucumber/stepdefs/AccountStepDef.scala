@@ -91,10 +91,7 @@ class AccountStepDef extends BaseStepDef {
   }
 
   When("""I provide the details to amend the submitted economic crime levy registration""") { () =>
-    DataStore
-      .setEclReference(Confirm.copyEclReferenceNumber())
     provideAmendAnEclRegistration("amend")
-      .validateAmendRegistrationNumber(DataStore.getEclReference)
       .submitPage()
     RegistrationPage
       .provideHmrcOrOtherAmlSupervisor()
