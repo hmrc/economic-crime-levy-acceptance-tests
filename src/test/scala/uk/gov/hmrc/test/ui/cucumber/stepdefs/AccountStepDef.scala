@@ -94,7 +94,7 @@ class AccountStepDef extends BaseStepDef {
     provideAmendAnEclRegistration("amend")
       .submitPage()
     RegistrationPage
-      .provideHmrcOrOtherAmlSupervisor()
+      .provideAmendHmrcOrOtherAmlSupervisor()
       .provideBusinessSector("External accountant")
       .provideFirstContactDetails("Oliver Tom", "Account Manager", "test@test.com", "01632 960 001")
       .provideSelectYesOrNo("No")
