@@ -382,6 +382,13 @@ object RegistrationPage extends BasePage {
     this
   }
 
+  def provideAmendHmrcOrOtherAmlSupervisor(): this.type = {
+    onPage(AmendmentPage.heading)
+    SharedActions.clickById("value_0")
+    submitPage()
+    this
+  }
+
   def submitPage(): this.type = {
     SharedActions.clickButton()
     this
