@@ -20,7 +20,6 @@ import uk.gov.hmrc.test.ui.pages.account.AccountPage._
 import uk.gov.hmrc.test.ui.pages.account._
 import uk.gov.hmrc.test.ui.pages.registration.RegistrationPage
 import uk.gov.hmrc.test.ui.pages.returns.ReturnsPage
-import uk.gov.hmrc.test.ui.pages.utils.DataStore
 
 class AccountStepDef extends BaseStepDef {
 
@@ -76,10 +75,7 @@ class AccountStepDef extends BaseStepDef {
 
   When("""I provide the details to amend the submitted economic crime levy return""") { () =>
     provideViewOrAmendAnEclReturn("amend")
-    DataStore
-      .setEclReference(Confirm.copyEclReturnNumber())
-    provideAmendSubmitReturn()
-      .validateAmendReturnNumber(DataStore.getEclReference)
+      .provideAmendSubmitReturn()
       .submitPage()
     ReturnsPage
       .selectAccountingPeriod("Yes")
