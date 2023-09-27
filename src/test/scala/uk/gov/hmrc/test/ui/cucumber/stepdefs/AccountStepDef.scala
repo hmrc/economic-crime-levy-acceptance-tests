@@ -16,6 +16,7 @@
 
 package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
+import io.cucumber.datatable.DataTable
 import uk.gov.hmrc.test.ui.pages.account.AccountPage._
 import uk.gov.hmrc.test.ui.pages.account._
 import uk.gov.hmrc.test.ui.pages.registration.RegistrationPage
@@ -97,5 +98,21 @@ class AccountStepDef extends BaseStepDef {
       .provideRegisteredAddress("Yes")
       .submitPage()
       .provideCheckYourAnswers()
+  }
+
+  When("I click on the View your payments link to view an interest accrued on the (.*)$") { (paymentStatus: String) =>
+    provideViewEclPayment(paymentStatus)
+  }
+
+  And("""I should see the interest amount (.*) and Financial year (.*)$""") { (amount: String, financialYear: String) =>
+    assertAmountOfInterestOwed(amount, financialYear)
+  }
+
+  When("I click on the View your payments link to view a (.*)$") { (paymentStatus: String) =>
+    provideViewEclPayment(paymentStatus)
+  }
+
+  Then("""the interest row should display the following information under Payment History$""") { (arg: DataTable) =>
+    assertPaymentHistoryForInterestPaid(arg)
   }
 }
