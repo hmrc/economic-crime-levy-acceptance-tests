@@ -108,11 +108,23 @@ class AccountStepDef extends BaseStepDef {
     assertAmountOfInterestOwed(amount, financialYear)
   }
 
-  When("I click on the View your payments link to view a (.*)$") { (paymentStatus: String) =>
+  When("I click on the View your payments link to view my (.*)$") { (paymentStatus: String) =>
     provideViewEclPayment(paymentStatus)
   }
 
-  Then("""the interest row should display the following information under Payment History$""") { (arg: DataTable) =>
-    assertPaymentHistoryForInterestPaid(arg)
+  Then("""the interest row should display the partial interest payment information under Payment History$""") {
+    (arg: DataTable) =>
+      assertPaymentHistoryForPartialyPaidInterest(arg)
   }
+
+  Then("""the interest row should display the fully paid interest payment information under Payment History$""") {
+    (arg: DataTable) =>
+      assertPaymentHistoryForFullyPaidInterest(arg)
+  }
+
+  Then("""the overdue row should display the overdue payment information under Payment you owe$""") {
+    (arg: DataTable) =>
+      assertPaymentYouOweForOverdue(arg)
+  }
+
 }
