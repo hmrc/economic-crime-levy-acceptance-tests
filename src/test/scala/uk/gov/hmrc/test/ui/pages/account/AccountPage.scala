@@ -16,6 +16,7 @@
 
 package uk.gov.hmrc.test.ui.pages.account
 
+import io.cucumber.datatable.DataTable
 import org.openqa.selenium.By
 import uk.gov.hmrc.test.ui.conf.TestConfiguration
 import uk.gov.hmrc.test.ui.pages.{BasePage, SharedActions}
@@ -150,6 +151,108 @@ object AccountPage extends BasePage {
     assert(registrationNumber.equals(amendRegistrationNumber))
     this
   }
+
+  def assertAmountOfInterestOwed(interest: String, financialYear: String): this.type = {
+    val amount                = getText(By.xpath("//td[contains(text(),'£4.84')]"))
+    val expectedFinancialYear = getText(
+      By.cssSelector("table:nth-child(2) > tbody:nth-child(3) > tr:nth-child(1) > td:nth-child(3)")
+    )
+
+    assert(amount == interest)
+    assert(expectedFinancialYear == financialYear)
+    this
+  }
+
+  def assertPaymentHistoryForPartialyPaidInterest(data: DataTable): this.type = {
+    val paymentDate   = data.column(1).get(0)
+    val paymentType   = data.column(1).get(1)
+    val paymentPeriod = data.column(1).get(2)
+    val amountPaid    = data.column(1).get(3)
+    val paymentStatus = data.column(1).get(4)
+
+    val actualPaymentDate = getText(
+      By.cssSelector("table:nth-child(3) > tbody:nth-child(3) > tr:nth-child(1) > th:nth-child(1)")
+    )
+    actualPaymentDate should be(paymentDate)
+    val actualPaymentType = getText(
+      By.cssSelector(" table:nth-child(3) > tbody:nth-child(3) > tr:nth-child(1) > td:nth-child(2)")
+    )
+    actualPaymentType should be(paymentType)
+    val actualPaymentPeriod = getText(
+      By.cssSelector(" table:nth-child(3) > tbody:nth-child(3) > tr:nth-child(1) > td:nth-child(3)")
+    )
+    actualPaymentPeriod should be(paymentPeriod)
+    val actualAmountPaid = getText(
+      By.cssSelector(" table:nth-child(3) > tbody:nth-child(3) > tr:nth-child(1) > td:nth-child(4)")
+    )
+    actualAmountPaid should be(amountPaid)
+    val actualPaymentStatus = getText(
+      By.cssSelector(" table:nth-child(3) > tbody:nth-child(3) > tr:nth-child(1) > td:nth-child(5)")
+    )
+    actualPaymentStatus should be(paymentStatus)
+    this
+  }
+
+  def assertPaymentHistoryForFullyPaidInterest(data: DataTable): this.type = {
+    val paymentDate   = data.column(1).get(0)
+    val paymentType   = data.column(1).get(1)
+    val paymentPeriod = data.column(1).get(2)
+    val youPaidHmrc   = data.column(1).get(3)
+    val paymentStatus = data.column(1).get(4)
+
+    val actualPaymentDate = getText(
+      By.cssSelector("tbody tr:nth-child(1) th:nth-child(1)")
+    )
+    actualPaymentDate should be(paymentDate)
+    val actualPaymentType = getText(
+      By.cssSelector("  tr:nth-child(1) > td:nth-child(2)")
+    )
+    actualPaymentType should be(paymentType)
+    val actualPaymentPeriod = getText(
+      By.cssSelector("  tr:nth-child(1) > td:nth-child(3)")
+    )
+    actualPaymentPeriod should be(paymentPeriod)
+    val actualYouPaidHmrc = getText(
+      By.cssSelector("  tr:nth-child(1) > td:nth-child(4)")
+    )
+    actualYouPaidHmrc should be(youPaidHmrc)
+    val actualPaymentStatus = getText(
+      By.cssSelector(" tr:nth-child(1) > td:nth-child(5)")
+    )
+    actualPaymentStatus should be(paymentStatus)
+    this
+  }
+
+  def assertPaymentYouOweForOverdue(data: DataTable): this.type = {
+    val paymentDate   = data.column(1).get(0)
+    val paymentType   = data.column(1).get(1)
+    val paymentPeriod = data.column(1).get(2)
+    val youPaidHmrc   = data.column(1).get(3)
+    val paymentStatus = data.column(1).get(4)
+
+    val actualPaymentDate = getText(
+      By.cssSelector("th[class='govuk-table__header govuk-table__header']")
+    )
+    actualPaymentDate should be(paymentDate)
+    val actualPaymentType = getText(
+      By.cssSelector(" table:nth-child(2) > tbody:nth-child(3) > tr:nth-child(1) > td:nth-child(2)")
+    )
+    actualPaymentType should be(paymentType)
+    val actualPaymentPeriod = getText(
+      By.cssSelector(" table:nth-child(2) > tbody:nth-child(3) > tr:nth-child(1) > td:nth-child(3)")
+    )
+    actualPaymentPeriod should be(paymentPeriod)
+    val actualYouPaidHmrc = getText(
+      By.cssSelector("  table:nth-child(2) > tbody:nth-child(3) > tr:nth-child(1) > td:nth-child(4)")
+    )
+    actualYouPaidHmrc should be(youPaidHmrc)
+    val actualPaymentStatus = getText(
+      By.cssSelector(" table:nth-child(2) > tbody:nth-child(3) > tr:nth-child(1) > td:nth-child(5)")
+    )
+    actualPaymentStatus should be(paymentStatus)
+    this
+  }
+
   def submitPage(): this.type = {
     SharedActions.clickButton()
     this

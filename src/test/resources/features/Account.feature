@@ -73,3 +73,48 @@ Feature: ECL Dashboard details
     Given I am signed in to the account journey with my ECL reference as XMECL0000000001
     When I provide the details to amend the submitted economic crime levy registration
     Then I should be on the page that says Economic Crime Levy registration amendment requested
+
+  Scenario: User has an overdue payment with accrued interest
+    Given I am signed in to the account journey with my ECL reference as XMECL00000000010
+    When I click on the View your payments link to view an interest accrued on the overdue payment
+    And I should be on the page that says Interest charge XB001286323438 for ECL return number XMECL0000000005
+    And I should see the interest amount £4.84 and Financial year 1 April 2021 to 31 March 2022
+
+  Scenario: User without overdue payment views their ECL dashboard and see the interest payment as the most urgent payment to be made
+    Given I am signed in to the account journey with my ECL reference as XMECL00000000010
+    When I am on the ECL account dashboard
+    And I should be on the page that says You owe an interest payment. Interest will continue to be accrued if not paid.
+
+  Scenario: User clicks "View Payment" for partially-paid interest
+    Given I am signed in to the account journey with my ECL reference as XMECL00000000010
+    When I click on the View your payments link to view my partially-paid interest
+    Then the interest row should display the partial interest payment information under Payment History
+      | Payment Date   | 9 February 2021                                       |
+      | Payment Type   | Interest charge for ECL return number XMECL0000000005 |
+      | Payment Period | 1 April 2021 to 31 March 2022                         |
+      | Amount Paid    | £100                                                  |
+      | Payment Status | PARTIALLY PAID                                        |
+
+  Scenario: User clicks "View Payment" for fully paid interest
+    Given I am signed in to the account journey with my ECL reference as XMECL00000000011
+    When I am on the ECL account dashboard
+    And I should be on the page that says You have no payments due.
+    When I click on the View your payments link to view my fully paid interest
+    Then the interest row should display the fully paid interest payment information under Payment History
+      | Payment Date   | 9 February 2021                                       |
+      | Payment Type   | Interest charge for ECL return number XMECL0000000005 |
+      | Payment Period | 1 April 2021 to 31 March 2022                         |
+      | You paid HMRC  | £114.84                                               |
+      | Payment Status | PAID                                                  |
+
+  Scenario: User clicks "View Payment" to see the overdue payment information
+    Given I am signed in to the account journey with my ECL reference as XMECL00000000012
+    When I am on the ECL account dashboard
+    And I should be on the page that says You have an overdue payment for 1 April 2021 to 31 March 2022.
+    When I click on the View your payments link to view my overdue
+    Then the overdue row should display the overdue payment information under Payment you owe
+      | Payment Date   | 30 September 2022                          |
+      | Payment Type   | Levy for ECL return number XMECL0000000005 |
+      | Payment Period | 1 April 2021 to 31 March 2022              |
+      | You paid HMRC  | £4,000                                     |
+      | Payment Status | OVERDUE                                    |
