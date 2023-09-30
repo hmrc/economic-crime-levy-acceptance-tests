@@ -29,18 +29,21 @@ class RegistrationStepDef extends BaseStepDef {
 
   }
 
-  When("""I provide details of my limited company that is supervised by HMRC and liable for ECL""") { () =>
-    provideAmlRegulated()
-      .provideHmrcOrOtherAmlSupervisor()
-      .provideRelevantAccountingPeriod()
-      .provideUkRevenue()
-      .provideEntityType("Limited company")
-      .provideGrsData()
-      .provideBusinessSector("Credit institution")
-      .provideFirstContactDetails("Oliver Tom", "Account Manager", "test@test.com", "01632 960 001")
-      .provideSecondContactDetails("Mark 1", "Compliance Officer", "verify@verify.com", "+44 808 157 0192")
-      .provideRegisteredAddress("Yes")
-      .provideCheckYourAnswers()
+  When("""I provide details of my (.*) that is supervised by HMRC and liable for current ECL$""") {
+    (entityType: String) =>
+      provideAmlRegulated()
+        .provideHmrcOrOtherAmlSupervisor()
+        .provideRelevantAccountingPeriod()
+        .provideUkRevenue()
+        .provideEclLiableForPreviousFinancialYear("Yes")
+        .provideEntityType(entityType)
+        .provideGrsData()
+        .provideBusinessSector("Credit institution")
+        .provideFirstContactDetails("Oliver Tom", "Account Manager", "test@test.com", "01632 960 001")
+//      .provideSecondContactDetails("Mark 1", "Compliance Officer", "verify@verify.com", "+44 808 157 0192")
+        .provideAddAnotherContactYesOrNo("No")
+        .provideRegisteredAddress("Yes")
+        .provideCheckYourAnswers()
   }
 
   When(
@@ -121,11 +124,12 @@ class RegistrationStepDef extends BaseStepDef {
       .provideHmrcOrOtherAmlSupervisor()
       .provideRelevantAccountingPeriod()
       .provideUkRevenue()
+      .provideEclLiableForPreviousFinancialYear("Yes")
       .provideEntityType("Limited company")
       .provideGrsData()
       .provideBusinessSector("Credit institution")
       .provideFirstContactDetails("Oliver Tom", "Account Manager", "test@test.com", "01632 960 001")
-      .provideAddAnotherContactYesOrNo("No")
+      .provideSecondContactDetails("Mark 1", "Compliance Officer", "verify@verify.com", "+44 808 157 0192")
       .provideRegisteredAddress("No")
       .provideAnotherUkRegisteredAddress("No")
       .submitPage()
@@ -136,6 +140,7 @@ class RegistrationStepDef extends BaseStepDef {
       .provideHmrcOrOtherAmlSupervisor()
       .provideRelevantAccountingPeriod()
       .provideUkRevenue()
+      .provideEclLiableForPreviousFinancialYear("Yes")
       .provideEntityType("Limited company")
       .provideGrsData()
       .provideBusinessSector("Credit institution")
@@ -165,6 +170,7 @@ class RegistrationStepDef extends BaseStepDef {
       .provideHmrcOrOtherAmlSupervisor()
       .provideRelevantAccountingPeriod()
       .provideUkRevenue()
+      .provideEclLiableForPreviousFinancialYear("Yes")
       .provideEntityType("Limited company")
       .provideGrsData()
       .provideBusinessSector("Credit institution")
@@ -180,6 +186,7 @@ class RegistrationStepDef extends BaseStepDef {
       .provideHmrcOrOtherAmlSupervisor()
       .provideRelevantAccountingPeriod()
       .provideUkRevenue()
+      .provideEclLiableForPreviousFinancialYear("Yes")
       .provideEntityType("Limited company")
       .provideGrsData()
       .provideBusinessSector("Credit institution")
@@ -202,6 +209,7 @@ class RegistrationStepDef extends BaseStepDef {
       .provideHmrcOrOtherAmlSupervisor()
       .provideRelevantAccountingPeriod()
       .provideUkRevenue()
+      .provideEclLiableForPreviousFinancialYear("Yes")
       .provideEntityType("Limited company")
       .provideGrsData()
       .provideBusinessSector("Credit institution")
@@ -222,6 +230,7 @@ class RegistrationStepDef extends BaseStepDef {
       .provideHmrcOrOtherAmlSupervisor()
       .provideRelevantAccountingPeriod()
       .provideUkRevenue()
+      .provideEclLiableForPreviousFinancialYear("Yes")
       .provideEntityType("Limited company")
       .provideGrsData()
       .provideBusinessSector("Credit institution")
@@ -238,6 +247,7 @@ class RegistrationStepDef extends BaseStepDef {
       .provideHmrcOrOtherAmlSupervisor()
       .provideRelevantAccountingPeriod()
       .provideUkRevenue()
+      .provideEclLiableForPreviousFinancialYear("Yes")
       .provideEntityType("Limited company")
       .provideGrsData()
       .provideBusinessSector("Credit institution")
@@ -252,6 +262,7 @@ class RegistrationStepDef extends BaseStepDef {
       .provideHmrcOrOtherAmlSupervisor()
       .provideRelevantAccountingPeriod()
       .provideUkRevenue()
+      .provideEclLiableForPreviousFinancialYear("Yes")
       .provideEntityType("Limited company")
       .provideGrsData()
       .provideBusinessSector("Credit institution")
@@ -266,6 +277,7 @@ class RegistrationStepDef extends BaseStepDef {
       .provideHmrcOrOtherAmlSupervisor()
       .provideRelevantAccountingPeriod()
       .provideUkRevenue()
+      .provideEclLiableForPreviousFinancialYear("Yes")
       .provideEntityTypeDetailsForGeneralOrScottishPartnership(entityType)
       .provideBusinessSector("Credit institution")
       .provideFirstContactDetails("Oliver Tom", "Account Manager", "test@test.com", "01632 960 001")
@@ -280,6 +292,7 @@ class RegistrationStepDef extends BaseStepDef {
         .provideHmrcOrOtherAmlSupervisor()
         .provideRelevantAccountingPeriod()
         .provideUkRevenue()
+        .provideEclLiableForPreviousFinancialYear("Yes")
         .provideEntityType("Other")
         .provideOtherEntityBusinessDetails(otherEntityType)
         .provideOtherEntityCheckYourAnswers()
@@ -388,6 +401,69 @@ class RegistrationStepDef extends BaseStepDef {
 
   Then("^I should be on the placeholder page that says (.*)$") { (value: String) =>
     SharedActions.assertHtmlContains(value)
+  }
+
+  When("""I provide details of my limited company and indicate liability for previous year ECL""") { () =>
+    provideAmlRegulated("No")
+      .provideEclLiableForPreviousFinancialYear("Yes")
+      .provideEntityType("Limited company")
+      .provideGrsData()
+      .provideBusinessSector("Credit institution")
+      .provideFirstContactDetails("Oliver Tom", "Account Manager", "test@test.com", "01632 960 001")
+      .provideAddAnotherContactYesOrNo("No")
+      .provideRegisteredAddress("Yes")
+      .provideCheckYourAnswers()
+  }
+
+  When("""I provide Yes to AML question and the turnover is £10.2m and above and (.*) liable for previous FY$""") {
+    (value: String) =>
+      provideAmlRegulated()
+        .provideHmrcOrOtherAmlSupervisor()
+        .provideRelevantAccountingPeriod()
+        .provideUkRevenue()
+        .provideEclLiableForPreviousFinancialYear(value)
+        .provideEntityType("Limited company")
+        .provideGrsData()
+        .provideBusinessSector("Credit institution")
+        .provideFirstContactDetails("Oliver Tom", "Account Manager", "test@test.com", "01632 960 001")
+        .provideAddAnotherContactYesOrNo("No")
+        .provideRegisteredAddress("Yes")
+        .provideCheckYourAnswers()
+  }
+
+  When(
+    """I provide Yes to AML question and the turnover is below £10.2m threshold and (.*) liable for previous FY$"""
+  ) { (value: String) =>
+    provideAmlRegulated()
+      .provideHmrcOrOtherAmlSupervisor()
+      .provideRelevantAccountingPeriod()
+      .provideUkRevenue("1020000")
+      .provideEclLiableForPreviousFinancialYear(value)
+      .provideEntityType("Limited company")
+      .provideGrsData()
+      .provideBusinessSector("Credit institution")
+      .provideFirstContactDetails("Oliver Tom", "Account Manager", "test@test.com", "01632 960 001")
+      .provideAddAnotherContactYesOrNo("No")
+      .provideRegisteredAddress("Yes")
+      .provideCheckYourAnswers()
+  }
+
+  When(
+    """I provide Yes to AML question and the turnover is below £10.2m threshold but (.*) liability for previous year ECL$"""
+  ) { (value: String) =>
+    provideAmlRegulated()
+      .provideHmrcOrOtherAmlSupervisor()
+      .provideRelevantAccountingPeriod()
+      .provideUkRevenue("1020000")
+      .provideEclLiableForPreviousFinancialYear(value)
+  }
+
+  When(
+    "^I do not select an option for whether or not I liable to pay the ECL from 1 April 2022 to 31 March 2023"
+  ) { () =>
+    EclLiableForPreviousFinancialYearPage
+      .navigateTo()
+      .submitPage()
   }
 
 }
