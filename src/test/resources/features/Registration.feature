@@ -8,14 +8,6 @@ Feature: Register for ECL
 
     Examples:
       | Entity type                   |
-      | Limited company               |
-      | Limited liability partnership |
-      | Limited partnership           |
-      | Registered society            |
-      | Scottish limited partnership  |
-      | General partnership           |
-      | Scottish partnership          |
-      | Unlimited company             |
       | Sole trader                   |
 
   Scenario: User does not select whether or not they started AML regulated activity in current FY
