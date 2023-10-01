@@ -39,6 +39,19 @@ class AmlActivityStepDef extends BaseStepDef {
   }
 
   When(
+    "^I select (.*) on whether or not I carried out AML-regulated activity in current FY and in previous FY$"
+  ) { (value: String) =>
+    AmlRegulatedActivityPage
+      .navigateTo()
+    SharedActions
+      .selectYesOrNo(value)
+      .submitPage()
+    SharedActions
+      .selectYesOrNo(value)
+      .submitPage()
+  }
+
+  When(
     "^I do not select an option for whether or not my relevant accounting period 12 months"
   ) { () =>
     AmlAccountingActivityPage

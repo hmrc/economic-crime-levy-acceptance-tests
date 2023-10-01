@@ -44,9 +44,14 @@ object RegistrationPage extends BasePage {
   }
 
   def provideUkRevenue(value: String = "10200000"): this.type = {
-    SharedActions.enterDetails(value)
+    value match {
+      case "1020000" =>
+        SharedActions.enterDetails(value)
+      case _         =>
+        SharedActions.enterDetails(value)
+    }
     submitPage()
-    onPage(EntityTypePage.heading)
+    onPage(EclLiableForPreviousFinancialYearPage.heading)
     this
   }
 
@@ -70,6 +75,20 @@ object RegistrationPage extends BasePage {
     onPage(UkRevenuePage.heading)
     this
   }
+
+  def provideEclLiableForPreviousFinancialYear(value: String = "Yes"): this.type = {
+    value match {
+      case "No" =>
+        SharedActions
+          .selectYesOrNo(value)
+      case _    =>
+        SharedActions
+          .selectYesOrNo(value)
+    }
+    submitPage()
+    this
+  }
+
   def provideEntityType(value: String): this.type = {
     SharedActions.selectLabelByPartialText(value)
     submitPage()
@@ -81,11 +100,19 @@ object RegistrationPage extends BasePage {
     this
   }
 
-  def provideAmlRegulated(): this.type = {
-    SharedActions
-      .selectYesOrNo("Yes")
-      .submitPage()
-    onPage(AmlSupervisorPage.heading)
+  def provideAmlRegulated(value: String = "Yes"): this.type = {
+    value match {
+      case "No" =>
+        SharedActions
+          .selectYesOrNo("No")
+          .submitPage()
+        onPage(EclLiableForPreviousFinancialYearPage.heading)
+      case _    =>
+        SharedActions
+          .selectYesOrNo(value)
+          .submitPage()
+        onPage(AmlSupervisorPage.heading)
+    }
     this
   }
 

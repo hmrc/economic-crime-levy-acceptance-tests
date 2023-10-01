@@ -3,19 +3,11 @@ Feature: Register for ECL
 
   Scenario Outline: User registers a <Entity type> supervised by HMRC for AML that is liable for ECL
     Given I am signed in to the registration journey
-    When I provide details of my limited company that is supervised by HMRC and liable for ECL
+    When I provide details of my <Entity type> that is supervised by HMRC and liable for current ECL
     Then I should be on the page that says Registration submitted
 
     Examples:
       | Entity type                   |
-      | Limited company               |
-      | Limited liability partnership |
-      | Limited partnership           |
-      | Registered society            |
-      | Scottish limited partnership  |
-      | General partnership           |
-      | Scottish partnership          |
-      | Unlimited company             |
       | Sole trader                   |
 
   Scenario: User does not select whether or not they started AML regulated activity in current FY
@@ -23,10 +15,10 @@ Feature: Register for ECL
     When I do not select an option for whether or not I started AML regulated activity in current FY
     Then I should see an error that says Select an answer
 
-  Scenario: User does not select whether or not they started AML regulated activity in current FY
+  Scenario: Users who answer "No" whether or not they started AML regulated activity in current FY
     Given I am signed in to the registration journey
     When I select No on whether or not I carried out AML-regulated activity in current FY
-    Then I should be on the page that says You do not need to register for the Economic Crime Levy
+    Then I should be on the page that says Were you liable to pay the ECL from 1 April 2022 to 31 March 2023?
 
   Scenario: User does not select their AML supervisor
     Given I am signed in to the registration journey
@@ -91,7 +83,7 @@ Feature: Register for ECL
   Scenario Outline: User enters an valid amount for UK revenue but less than 10.2M for their relevant accounting period
     Given I am signed in to the registration journey
     When I enter the UK revenue <UK Revenue> for the relevant accounting period
-    Then I should be on the page that says You do not need to register for the Economic Crime Levy
+    Then I should be on the page that says Were you liable to pay the ECL from 1 April 2022 to 31 March 2023?
     Examples:
       | UK Revenue |
       | 0          |
@@ -173,7 +165,7 @@ Feature: Register for ECL
   Scenario: User wants to go to check your answers page directly without providing any of the previous pages details
     Given I am signed in to the registration journey
     When I go to check your answers page directly without providing answers for any of the previous page questions
-    Then I should be on the page that says The answers you provided are not valid
+    Then I should be on the page that says Sorry, there is a problem with the service
 
   Scenario: User wants to change the contact details before submitting the registration
     Given I am signed in to the registration journey
@@ -200,7 +192,7 @@ Feature: Register for ECL
   Scenario: User wants to change the AML regulated activity of the organisation before submitting the registration
     Given I am signed in to the registration journey
     When I click on the change link and select No on whether or not I carried out AML-regulated activity in current FY
-    Then I should be on the page that says You do not need to register for the Economic Crime Levy
+    Then I should be on the page that says Check your answers
 
   Scenario: User wants to change the entity type of the organisation before submitting the registration
     Given I am signed in to the registration journey
@@ -334,3 +326,38 @@ Feature: Register for ECL
     Given I am signed in to the registration journey
     When I do not select an option for my UK unique taxpayer reference
     Then I should see an error that says Select your UK Unique Taxpayer Reference type
+
+  Scenario: Users who answer "NO" to AML question for the current FY but "YES" to previous FY
+    Given I am signed in to the registration journey
+    When I provide details of my limited company and indicate liability for previous year ECL
+    Then I should be on the page that says Registration submitted
+
+  Scenario: Users who answer "No" whether or not they started AML regulated activity in current FY and "No" to previous FY
+    Given I am signed in to the registration journey
+    When I select No on whether or not I carried out AML-regulated activity in current FY and in previous FY
+    Then I should be on the page that says You do not need to register for the Economic Crime Levy
+
+  Scenario: User registers a limited company supervised by HMRC for AML who have turnover of £10.2m and above that is liable for previous FY
+    Given I am signed in to the registration journey
+    When I provide Yes to AML question and the turnover is £10.2m and above and Yes liable for previous FY
+    Then I should be on the page that says Registration submitted
+
+  Scenario: User registers a limited company supervised by HMRC for AML who have turnover of £10.2m and above that is not liable for previous FY
+    Given I am signed in to the registration journey
+    When I provide Yes to AML question and the turnover is £10.2m and above and No liable for previous FY
+    Then I should be on the page that says Registration submitted
+#  @wip
+#  Scenario: User registers a limited company supervised by HMRC for AML who have turnover of below £10.2m and that is liable for previous FY
+#    Given I am signed in to the registration journey
+#    When I provide Yes to AML question and the turnover is below £10.2m threshold and Yes liable for previous FY
+#    Then I should be on the page that says Registration submitted
+
+  Scenario: User registers a limited company supervised by HMRC for AML who have turnover of below £10.2m and that is not liable for previous FY
+    Given I am signed in to the registration journey
+    When I provide Yes to AML question and the turnover is below £10.2m threshold but No liability for previous year ECL
+    Then I should be on the page that says You do not need to register for the Economic Crime Levy
+
+  Scenario: User does not select whether or not they were liable to pay the ECL from 1 April 2022 to 31 March 2023
+    Given I am signed in to the registration journey
+    When I do not select an option for whether or not I liable to pay the ECL from 1 April 2022 to 31 March 2023
+    Then I should see an error that says Select an option
