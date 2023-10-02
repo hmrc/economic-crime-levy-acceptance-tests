@@ -346,11 +346,11 @@ Feature: Register for ECL
     Given I am signed in to the registration journey
     When I provide Yes to AML question and the turnover is £10.2m and above and No liable for previous FY
     Then I should be on the page that says Registration submitted
-#  @wip
-#  Scenario: User registers a limited company supervised by HMRC for AML who have turnover of below £10.2m and that is liable for previous FY
-#    Given I am signed in to the registration journey
-#    When I provide Yes to AML question and the turnover is below £10.2m threshold and Yes liable for previous FY
-#    Then I should be on the page that says Registration submitted
+
+  Scenario: User registers a limited company supervised by HMRC for AML who have turnover of below £10.2m and that is liable for previous FY
+    Given I am signed in to the registration journey
+    When I provide Yes to AML question and the turnover is below £10.2m threshold and Yes liable for previous FY
+    Then I should be on the page that says Registration submitted
 
   Scenario: User registers a limited company supervised by HMRC for AML who have turnover of below £10.2m and that is not liable for previous FY
     Given I am signed in to the registration journey

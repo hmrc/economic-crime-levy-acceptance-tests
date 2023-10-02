@@ -25,8 +25,8 @@ object EclLiableForPreviousFinancialYearPage extends BasePage {
   val url =
     s"${TestConfiguration.url("economic-crime-levy-registration-frontend")}/register-for-economic-crime-levy/previous-financial-year"
 
-  val expectedTaxYearStart = EclTaxYear.currentFyStartYear
-  val expectedTaxYearEnd   = EclTaxYear.currentFyEndYear
+  val expectedTaxYearStart = (EclTaxYear.currentFyStartYear.toInt - 1).toString
+  val expectedTaxYearEnd   = (EclTaxYear.currentFyEndYear.toInt - 1).toString
 
   val heading =
     "Were you liable to pay the ECL from 1 April " + expectedTaxYearStart + " to 31 March " + expectedTaxYearEnd + "?"
