@@ -18,14 +18,18 @@ package uk.gov.hmrc.test.ui.pages.returns
 
 import org.openqa.selenium.By
 import uk.gov.hmrc.test.ui.conf.TestConfiguration
+import uk.gov.hmrc.test.ui.pages.utils.EclTaxYear
 import uk.gov.hmrc.test.ui.pages.{BasePage, SharedActions}
 
 object ReturnsPage extends BasePage {
 
   val url =
-    s"${TestConfiguration.url("economic-crime-levy-returns-frontend")}/submit-economic-crime-levy-return/period/22XY"
+    s"${TestConfiguration.url("economic-crime-levy-returns-frontend")}/submit-economic-crime-levy-return/period/23XY"
 
-  val heading = "Submit your Economic Crime Levy return for 2022-2023"
+  val expectedTaxYearStart = EclTaxYear.currentFyStartYear
+  val expectedTaxYearEnd   = EclTaxYear.currentFyEndYear
+
+  val heading = "Submit your Economic Crime Levy return for " + expectedTaxYearStart + "-" + expectedTaxYearEnd
 
   def navigateTo(): this.type = {
     navigateToClearAllUrl()
