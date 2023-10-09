@@ -7,6 +7,62 @@
       "ruleId": 90022,
       "urlIsRegex": "true",
       "newLevel": -1
+    },
+    {
+      "contextId": 2,
+      "reason": "Ignore stub alerts",
+      "url": "http:\/\/localhost:9949\/auth-login-stub\/.*",
+      "ruleId": 10202,
+      "urlIsRegex": "true",
+      "newLevel": -1
+    },
+    {
+      "contextId": 3,
+      "reason": "Ignore optimizationguide alerts [X-Content-Type-Options]",
+      "url": "http:\/\/optimizationguide-pa.googleapis.com\/.*",
+      "ruleId": 10021,
+      "urlIsRegex": "true",
+      "newLevel": -1
+    },
+    {
+      "contextId": 4,
+      "reason": "Ignore optimizationguide alerts [Cache-control]",
+      "url": "http:\/\/optimizationguide-pa.googleapis.com\/.*",
+      "ruleId": 10015,
+      "urlIsRegex": "true",
+      "newLevel": -1
+    },
+    {
+      "contextId": 5,
+      "reason": "Ignore optimizationguide alerts [Anti-clickjacking Header]",
+      "url": "http:\/\/optimizationguide-pa.googleapis.com\/.*",
+      "ruleId": 10020,
+      "urlIsRegex": "true",
+      "newLevel": -1
+    },
+    {
+      "contextId": 6,
+      "reason": "Ignore google-analytics alerts",
+      "url": "http:\/\/.*.google-analytics.com\/.*",
+      "ruleId": 3,
+      "urlIsRegex": "true",
+      "newLevel": -1
+    },
+    {
+      "contextId": 7,
+      "reason": "Ignore information disclosure found in javascript files",
+      "url": "*.js",
+      "ruleId": 10027,
+      "urlIsRegex": "true",
+      "newLevel": -1
+    },
+    {
+      "contextId": 8,
+      "reason": "Ignore googletagmanager alerts",
+      "url": "http:\/\/www.googletagmanager.com\/.*",
+      "ruleId": 10098,
+      "urlIsRegex": "true",
+      "newLevel": -1
     }
   ]
 }
