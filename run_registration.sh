@@ -1,6 +1,6 @@
 #!/bin/bash -e
 
-BROWSER=firefox
+BROWSER=chrome
 BROWSER_TYPE=$1
 ENV=$2
 
