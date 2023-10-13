@@ -19,10 +19,10 @@ package uk.gov.hmrc.test.ui.pages.registration
 import uk.gov.hmrc.test.ui.conf.TestConfiguration
 import uk.gov.hmrc.test.ui.pages.{BasePage, SharedActions}
 
-object AmlSupervisorPage extends BasePage {
+object AmlSupervisorForPreviousFinancialYearPage extends BasePage {
 
   val url =
-    s"${TestConfiguration.url("economic-crime-levy-registration-frontend")}/register-for-economic-crime-levy/your-aml-supervisor/Initial?fromLiableBeforeCurrentYearPage=false"
+    s"${TestConfiguration.url("economic-crime-levy-registration-frontend")}/register-for-economic-crime-levy/your-aml-supervisor/Initial?fromLiableBeforeCurrentYearPage=true"
 
   val heading = "Your anti-money laundering (AML) supervisor"
 
@@ -30,17 +30,6 @@ object AmlSupervisorPage extends BasePage {
     navigateToClearAllUrl()
     driver.get(url)
     this
-  }
-
-  def provideGcOrFcaAmlSupervisor(value: String): this.type = {
-    SharedActions.selectLabelByPartialText(value)
-    submitPage()
-    this
-  }
-
-  def selectOtherWithNoProfessionalBodyAndSubmit: this.type = {
-    SharedActions.selectLabelByPartialText("Other")
-    submitPage()
   }
 
   def submitPage(): this.type = {

@@ -406,6 +406,7 @@ class RegistrationStepDef extends BaseStepDef {
   When("""I provide details of my limited company and indicate liability for previous year ECL""") { () =>
     provideAmlRegulated("No")
       .provideEclLiableForPreviousFinancialYear("Yes")
+      .provideHmrcOrOtherAmlSupervisor()
       .provideEntityType("Limited company")
       .provideGrsData()
       .provideBusinessSector("Credit institution")
