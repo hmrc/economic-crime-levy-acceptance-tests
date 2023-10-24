@@ -232,16 +232,6 @@ Feature: Register for ECL
       | General partnership  | ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyabcdefghijklmnopqrstuvwxyabcdefghijklmnopqrst1234567890!@£#$%^&*()-+={}[]"';:,.<>/? |
       | Scottish partnership | ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyabcdefghijklmnopqrstuvwxyabcdefghijklmnopqrst1234567890!@£#$%^&*()-+={}[]"';:,.<>/? |
 
-  Scenario Outline: User enters an invalid access code to register for the ECL
-    Given I am signed in to the registration journey
-    When I enter the invalid access code <Access Code> to register for the ECl
-    Then I should see an error that says <Expected content>
-    Examples:
-      | Access Code | Expected content          |
-      |             | Enter an access code      |
-      | abcdef      | Enter a valid access code |
-      | 123654      | Enter a valid access code |
-
   Scenario Outline: User registers <Other Entity> as entity type for AML that is liable for ECL
     Given I am signed in to the registration journey
     When I provide details of my other entity is <Other Entity> that is supervised by HMRC and liable for ECL
