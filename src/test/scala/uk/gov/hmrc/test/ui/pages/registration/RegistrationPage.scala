@@ -37,12 +37,6 @@ object RegistrationPage extends BasePage {
     this
   }
 
-  def provideAccessCode(accessCode: String): this.type = {
-    SharedActions.enterDetails(accessCode)
-    submitPage()
-    this
-  }
-
   def provideUkRevenue(value: String = "10200000"): this.type = {
     value match {
       case "1020000" =>

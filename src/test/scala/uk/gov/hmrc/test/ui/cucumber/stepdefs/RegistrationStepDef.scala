@@ -381,12 +381,6 @@ class RegistrationStepDef extends BaseStepDef {
     providePartnershipName(partnershipName)
   }
 
-  When("I enter the invalid access code (.*) to register for the ECl$") { (accessCode: String) =>
-    AccessCodePage
-      .navigateTo()
-    provideAccessCode(accessCode)
-  }
-
   Then("^I should be on the page that asks (.*)$") { (value: String) =>
     SharedActions.assertPartialTextIsDisplayed(value)
   }
