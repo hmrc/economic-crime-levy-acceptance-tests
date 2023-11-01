@@ -13,7 +13,7 @@ Feature: Register for ECL
   Scenario: User does not select whether or not they started AML regulated activity in current FY
     Given I am signed in to the registration journey
     When I do not select an option for whether or not I started AML regulated activity in current FY
-    Then I should see an error that says Select an answer
+    Then I should see an error that says Select yes if you carried out anti-money laundering (AML) regulated activity
 
   Scenario: Users who answer "No" whether or not they started AML regulated activity in current FY
     Given I am signed in to the registration journey
@@ -43,7 +43,7 @@ Feature: Register for ECL
   Scenario: User does not select whether or not their relevant accounting period 12 months
     Given I am signed in to the registration journey
     When I do not select an option for whether or not my relevant accounting period 12 months
-    Then I should see an error that says Select an answer
+    Then I should see an error that says Select yes if you have a relevant accounting period that ends in the financial year
 
   Scenario: User selects no on whether or not their relevant accounting period 12 months
     Given I am signed in to the registration journey
@@ -310,7 +310,7 @@ Feature: Register for ECL
     Examples:
       | Postcode  | Expected content      |
       |           | Enter a postcode      |
-      | AB1  2 YZ | Enter a real postcode |
+      | AB11 322YZ | Enter a real postcode |
 
   Scenario: User does not select their UK unique taxpayer reference
     Given I am signed in to the registration journey
