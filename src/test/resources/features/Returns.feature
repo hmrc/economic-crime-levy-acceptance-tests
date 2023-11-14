@@ -55,7 +55,7 @@ Feature: Submit ECL Return
   Scenario: User does not select whether or not their relevant accounting period is 12 months
     Given I am signed in to the return journey
     When I do not select an option for my relevant accounting period 12 months
-    Then I should see an error that says Select an answer
+    Then I should see an error that says Select yes if you have a relevant accounting period that ends in the financial year
 
   Scenario: User selects no on whether or not their relevant accounting period 12 is months
     Given I am signed in to the return journey
@@ -100,7 +100,7 @@ Feature: Submit ECL Return
   Scenario: User does not select whether or not they carried out AML-regulated activity for the full financial year
     Given I am signed in to the return journey
     When I do not select an option for whether or not I carry out AML-regulated activity for the full financial year?
-    Then I should see an error that says Select if you carried out AML-regulated activity in the financial year
+    Then I should see an error that says Select yes if you have a relevant accounting period that ends in the financial year
 
   Scenario: User selects no for whether or not they carried out AML-regulated activity for the full financial year
     Given I am signed in to the return journey
