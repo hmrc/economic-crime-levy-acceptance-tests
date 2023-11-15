@@ -94,16 +94,6 @@ Feature: Register for ECL
     When I do not select an option for my entity type
     Then I should see an error that says Please select your entity type
 
-  Scenario: User's entity type is Other
-    Given I am signed in to the registration journey
-    When I say that my entity type is Other
-    Then I should be on the page that says Tell us your entity type
-
-  Scenario: User does not select their Other entity type
-    Given I am signed in to the registration journey
-    When I do not select an option for my Other entity
-    Then I should see an error that says Please select your entity type
-
   Scenario: User does not select their business sector
     Given I am signed in to the registration journey
     When I do not select an option for my business sector
@@ -285,7 +275,7 @@ Feature: Register for ECL
   Scenario: User selects no on whether or not they have a Corporation Tax Unique Taxpayer Reference?
     Given I am signed in to the registration journey
     When I select No on whether or not I have a Corporation Tax Unique Taxpayer Reference
-    Then I should be on the page that says Check your answers
+    Then I should be on the page that says What is your business sector?
 
   Scenario Outline: User does not provide their valid Corporation Tax Unique Taxpayer Reference for the other entity type <Other Entity> business
     Given I am signed in to the registration journey
