@@ -61,18 +61,6 @@ class RegistrationStepDef extends BaseStepDef {
       .provideGcOrFcaAmlSupervisor(value)
   }
 
-  When("""I say that my entity type is Other""") { () =>
-    EntityTypePage
-      .navigateTo()
-    RegistrationPage
-      .provideEntityType("Other")
-  }
-
-  And("^I do not select an option for my Other entity") { () =>
-    OtherEntityTypePage
-      .navigateTo()
-      .submitPage()
-  }
   When("""I do not select an other professional body when I have selected the Other option""") { () =>
     AmlSupervisorPage
       .navigateTo()
@@ -293,7 +281,6 @@ class RegistrationStepDef extends BaseStepDef {
         .provideRelevantAccountingPeriod()
         .provideUkRevenue()
         .provideEclLiableForPreviousFinancialYear("Yes")
-        .provideEntityType("Other")
         .provideOtherEntityBusinessDetails(otherEntityType)
         .provideOtherEntityCheckYourAnswers()
         .provideBusinessSector("Credit institution")
