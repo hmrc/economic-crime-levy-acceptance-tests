@@ -270,7 +270,7 @@ Feature: Register for ECL
   Scenario: User does not select whether or not they have a Corporation Tax Unique Taxpayer Reference?
     Given I am signed in to the registration journey
     When I do not select an option for whether or not I have a Corporation Tax Unique Taxpayer Reference
-    Then I should see an error that says Select an answer
+    Then I should see an error that says Select yes if you have a Corporation Tax Unique Taxpayer Reference
 
   Scenario: User selects no on whether or not they have a Corporation Tax Unique Taxpayer Reference?
     Given I am signed in to the registration journey
