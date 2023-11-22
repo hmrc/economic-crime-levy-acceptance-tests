@@ -340,4 +340,4 @@ Feature: Register for ECL
   Scenario: User does not select whether or not they were liable to pay the ECL from 1 April 2022 to 31 March 2023
     Given I am signed in to the registration journey
     When I do not select an option for whether or not I liable to pay the ECL from 1 April 2022 to 31 March 2023
-    Then I should see an error that says Select an option
+    Then I should see an error that says Select yes if you were liable to pay the Economic Crime Levy
