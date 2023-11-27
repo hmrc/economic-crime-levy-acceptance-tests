@@ -415,4 +415,8 @@ object RegistrationPage extends BasePage {
     this
   }
 
+  def provideGrsDataForIdentifiersDoNotMatch(): this.type = {
+    SharedActions.clickById("registrationNotCalledIdentifierMismatch")
+    this
+  }
 }

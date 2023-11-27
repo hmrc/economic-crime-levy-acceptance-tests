@@ -341,3 +341,14 @@ Feature: Register for ECL
     Given I am signed in to the registration journey
     When I do not select an option for whether or not I liable to pay the ECL from 1 April 2022 to 31 March 2023
     Then I should see an error that says Select yes if you were liable to pay the Economic Crime Levy
+
+  Scenario Outline: User registers a <Entity type> failed GRS identifiers and tries again
+    Given I am signed in to the registration journey
+    When I provide details of my <Entity type> and fail the GRS journey
+    Then I should be on the page that says The details you have entered do not match our records
+    And I click on the try again button
+    Then I should be on the page that says What is your entity type?
+
+    Examples:
+      | Entity type                   |
+      | Limited company               |

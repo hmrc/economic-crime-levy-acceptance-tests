@@ -71,6 +71,9 @@ object SharedActions extends BasePage {
   def assertTextByCssSelector(statusCssSelectorName: String, value: String): Unit =
     assert(getText(By.cssSelector(statusCssSelectorName)).contains(value))
 
+  def clickTryAgainButton(): Unit =
+    click(By.partialLinkText("Try aga"))
+
   def submitPage(): this.type = {
     SharedActions.clickButton()
     this
