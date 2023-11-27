@@ -448,4 +448,19 @@ class RegistrationStepDef extends BaseStepDef {
       .submitPage()
   }
 
+  When("""I provide details of my (.*) and fail the GRS journey$""") { (entityType: String) =>
+    provideAmlRegulated()
+      .provideHmrcOrOtherAmlSupervisor()
+      .provideRelevantAccountingPeriod()
+      .provideUkRevenue()
+      .provideEclLiableForPreviousFinancialYear("Yes")
+      .provideEntityType(entityType)
+      .provideGrsDataForIdentifiersDoNotMatch()
+      .provideGrsData()
+  }
+
+  And("^I click on the try again button") { () =>
+    SharedActions.clickTryAgainButton()
+  }
+
 }
