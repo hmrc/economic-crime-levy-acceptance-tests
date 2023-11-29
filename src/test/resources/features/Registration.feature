@@ -352,3 +352,8 @@ Feature: Register for ECL
     Examples:
       | Entity type                   |
       | Limited company               |
+
+  Scenario: Error message display when the user does not select their option in UK Company Registration Number page
+    Given I am signed in to the registration journey
+    When I do not select an option for my UK company registration number
+    Then I should see an error that says Select yes if you have a UK company registration number

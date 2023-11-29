@@ -355,6 +355,12 @@ class RegistrationStepDef extends BaseStepDef {
       .submitPage()
   }
 
+  When("^I do not select an option for my UK company registration number") { () =>
+    DoYouHaveCrnPage
+      .navigateTo()
+      .submitPage()
+  }
+
   When("^I enter my overseas tax identifier as (.*) for the Non-UK Establishment business$") {
     (overseasTaxIdentifier: String) =>
       OverseasTaxIdentifierPage

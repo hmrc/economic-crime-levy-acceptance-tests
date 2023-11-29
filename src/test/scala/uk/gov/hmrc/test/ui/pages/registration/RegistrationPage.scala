@@ -311,7 +311,7 @@ object RegistrationPage extends BasePage {
         RegistrationPage
           .provideOtherEntityName("Non-UK Establishment")
           .provideRegisteredNameOfYourBusiness("Non UK Company")
-          .provideCompanyRegistrationNumberOfYourBusiness("12345678")
+          .doYouHaveUkCompanyRegistrationNumber("Yes")
           .provideUkUniqueTaxpayerReference()
     }
     this
@@ -354,6 +354,19 @@ object RegistrationPage extends BasePage {
   def doYouHaveCorporationTaxUniqueTaxpayerReference(value: String): this.type = {
     SharedActions.selectYesOrNo(value)
     submitPage()
+    this
+  }
+
+  def doYouHaveUkCompanyRegistrationNumber(value: String = "Yes"): this.type = {
+    value match {
+      case "No" =>
+        SharedActions.selectYesOrNo(value)
+        submitPage()
+      case _    =>
+        SharedActions.selectYesOrNo(value)
+        submitPage()
+          .provideCompanyRegistrationNumberOfYourBusiness("12345678")
+    }
     this
   }
 
