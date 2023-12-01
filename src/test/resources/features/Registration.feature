@@ -74,11 +74,10 @@ Feature: Register for ECL
     Then I should see an error that says <Expected content>
     Examples:
       | UK Revenue | Expected content                                              |
-      |            | Enter the UK revenue                                          |
-      | -1         | UK revenue must be between 0 and 99,999,999,999               |
-      | asdfg      | UK revenue must be a number rounded down to the nearest pound |
-      | 99.999     | UK revenue must be a number rounded down to the nearest pound |
-      | 1019999.99 | UK revenue must be a number rounded down to the nearest pound |
+      |            | Enter the total UK revenue                                    |
+      | -1         | UK revenue must be between 0 and 99,999,999,999.99            |
+      | asdfg      | The total UK revenue can only include pounds and pence        |
+      | 99.999     | The total UK revenue can only include pounds and pence        |
 
   Scenario Outline: User enters an valid amount for UK revenue but less than 10.2M for their relevant accounting period
     Given I am signed in to the registration journey
