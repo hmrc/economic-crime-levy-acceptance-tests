@@ -112,9 +112,9 @@ class AccountStepDef extends BaseStepDef {
     provideViewEclPayment(paymentStatus)
   }
 
-  Then("""the interest row should display the partial interest payment information under Payment History$""") {
+  Then("""the interest row should display the partial interest payment information under Payments you owe$""") {
     (arg: DataTable) =>
-      assertPaymentHistoryForPartialyPaidInterest(arg)
+      assertPaymentHistoryForPartiallyPaidInterest(arg)
   }
 
   Then("""the interest row should display the fully paid interest payment information under Payment History$""") {
@@ -125,6 +125,10 @@ class AccountStepDef extends BaseStepDef {
   Then("""the overdue row should display the overdue payment information under Payment you owe$""") {
     (arg: DataTable) =>
       assertPaymentYouOweForOverdue(arg)
+  }
+
+  And("I click make a payment link to pay the overdue payment") { () =>
+    provideMakeAPayment()
   }
 
 }
