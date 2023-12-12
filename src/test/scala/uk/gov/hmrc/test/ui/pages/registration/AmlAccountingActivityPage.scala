@@ -24,7 +24,7 @@ object AmlAccountingActivityPage extends BasePage {
   val url =
     s"${TestConfiguration.url("economic-crime-levy-registration-frontend")}/register-for-economic-crime-levy/accounting-period-question"
 
-  val heading = "Is your relevant accounting period 12 months?"
+  val heading = "Relevant accounting period"
 
   def navigateTo(): this.type = {
     navigateToClearAllUrl()

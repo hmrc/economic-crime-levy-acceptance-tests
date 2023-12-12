@@ -23,7 +23,7 @@ object AccountingActivityPage extends BasePage {
   val url =
     s"${TestConfiguration.url("economic-crime-levy-returns-frontend")}/submit-economic-crime-levy-return/is-relevant-accounting-period-12-months"
 
-  val heading = "Is your relevant accounting period 12 months?"
+  val heading = "Relevant accounting period"
 
   def navigateTo(): this.type = {
     navigateToClearAllUrl()

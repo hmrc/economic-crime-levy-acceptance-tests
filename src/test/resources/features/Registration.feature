@@ -50,9 +50,9 @@ Feature: Register for ECL
     When I select No on whether or not my relevant accounting period 12 months
     Then I should see an error that says How long is your relevant accounting period?
 
-  Scenario: User does not select how long is their relevant accounting period?
+  Scenario: User does not select how long is their relevant accounting period in days?
     Given I am signed in to the registration journey
-    When I do not enter the length of my accounting period in days
+    When I do not enter the my relevant accounting period in days
     Then I should see an error that says Enter the length
 
   Scenario Outline: User enters an invalid length for their relevant accounting period
