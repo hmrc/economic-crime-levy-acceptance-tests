@@ -69,7 +69,7 @@ class AmlActivityStepDef extends BaseStepDef {
       .submitPage()
   }
 
-  When("^I do not enter the length of my accounting period in days") { () =>
+  When("^I do not enter the my relevant accounting period in days") { () =>
     AmlAccountingPeriodPage
       .navigateTo()
       .submitPage()
