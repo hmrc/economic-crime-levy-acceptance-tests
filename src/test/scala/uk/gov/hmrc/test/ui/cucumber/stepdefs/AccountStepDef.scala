@@ -19,7 +19,7 @@ package uk.gov.hmrc.test.ui.cucumber.stepdefs
 import io.cucumber.datatable.DataTable
 import uk.gov.hmrc.test.ui.pages.account.AccountPage._
 import uk.gov.hmrc.test.ui.pages.account._
-import uk.gov.hmrc.test.ui.pages.registration.RegistrationPage
+import uk.gov.hmrc.test.ui.pages.registration.{EclLiableForPreviousFinancialYearPage, RegistrationPage}
 import uk.gov.hmrc.test.ui.pages.returns.ReturnsPage
 
 class AccountStepDef extends BaseStepDef {
@@ -129,6 +129,10 @@ class AccountStepDef extends BaseStepDef {
 
   And("I click make a payment link to pay the overdue payment") { () =>
     provideMakeAPayment()
+  }
+
+  Then("""I should be on the most recent returns due page for submit the ECL""") { () =>
+    onPage(ReturnsPage.recentDueHeading)
   }
 
 }

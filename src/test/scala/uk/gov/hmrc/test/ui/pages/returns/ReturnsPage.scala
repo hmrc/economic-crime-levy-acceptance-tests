@@ -30,6 +30,7 @@ object ReturnsPage extends BasePage {
   val expectedTaxYearEnd   = EclTaxYear.currentFyEndYear
 
   val heading = "Submit your Economic Crime Levy return for " + expectedTaxYearStart + "-" + expectedTaxYearEnd
+  val recentDueHeading = "Submit your Economic Crime Levy return for " + (EclTaxYear.currentFyStartYear.toInt - 1).toString + "-" + (EclTaxYear.currentFyEndYear.toInt - 1).toString
 
   def navigateTo(): this.type = {
     navigateToClearAllUrl()
