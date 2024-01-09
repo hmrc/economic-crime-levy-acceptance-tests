@@ -304,7 +304,7 @@ Feature: Register for ECL
   Scenario: User does not select their UK unique taxpayer reference
     Given I am signed in to the registration journey
     When I do not select an option for my UK unique taxpayer reference
-    Then I should see an error that says Select your UK Unique Taxpayer Reference type
+    Then I should see an error that says Select yes if you have a UTR
 
   Scenario: Users who answer "NO" to AML question for the current FY but "YES" to previous FY
     Given I am signed in to the registration journey

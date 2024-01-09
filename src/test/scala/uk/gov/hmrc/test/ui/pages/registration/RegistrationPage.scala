@@ -294,6 +294,7 @@ object RegistrationPage extends BasePage {
           .provideOtherEntityName("Charity")
           .provideRegisteredNameOfYourBusiness("ABC Company")
           .provideCharityRegistrationNumberOfYourBusiness("1234567")
+          .doYouHaveUniqueTaxpayerReference("Yes")
           .provideCompanyRegistrationNumberOfYourBusiness("12345678")
       case "Unincorporated Association" =>
         RegistrationPage
@@ -430,6 +431,26 @@ object RegistrationPage extends BasePage {
 
   def provideGrsDataForIdentifiersDoNotMatch(): this.type = {
     SharedActions.clickById("registrationNotCalledIdentifierMismatch")
+    this
+  }
+
+  def doYouHaveUniqueTaxpayerReference(value: String): this.type = {
+    value match {
+      case "No" =>
+        SharedActions.selectYesOrNo(value)
+        submitPage()
+      case _    =>
+        SharedActions.selectYesOrNo(value)
+        submitPage()
+          .provideUtrReference("0123456789")
+    }
+    this
+  }
+
+  def provideUtrReference(companyRegistrationNumber: String): this.type = {
+    SharedActions
+      .enterDetails(companyRegistrationNumber)
+    submitPage()
     this
   }
 }
