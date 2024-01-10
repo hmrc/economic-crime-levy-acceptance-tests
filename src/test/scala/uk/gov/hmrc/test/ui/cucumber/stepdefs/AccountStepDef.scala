@@ -94,6 +94,9 @@ class AccountStepDef extends BaseStepDef {
   When("""I provide the details to amend the submitted economic crime levy registration""") { () =>
     provideAmendAnEclRegistration("amend")
       .submitPage()
+    SharedActions
+      .enterDetails("Amending registration details")
+    submitPage()
     RegistrationPage
       .provideAmendHmrcOrOtherAmlSupervisor()
       .provideBusinessSector("External accountant")
