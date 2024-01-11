@@ -350,7 +350,7 @@ class RegistrationStepDef extends BaseStepDef {
   }
 
   When("^I do not select an option for my UK unique taxpayer reference") { () =>
-    UkUniqueTaxpayerPage
+    DoYouHaveUtrPage
       .navigateTo()
       .submitPage()
   }
