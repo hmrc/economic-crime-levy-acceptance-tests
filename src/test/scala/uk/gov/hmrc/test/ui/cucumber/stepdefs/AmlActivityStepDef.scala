@@ -35,7 +35,6 @@ class AmlActivityStepDef extends BaseStepDef {
       .navigateTo()
     SharedActions
       .selectYesOrNo(value)
-      .submitPage()
   }
 
   When(
@@ -45,10 +44,8 @@ class AmlActivityStepDef extends BaseStepDef {
       .navigateTo()
     SharedActions
       .selectYesOrNo(value)
-      .submitPage()
     SharedActions
       .selectYesOrNo(value)
-      .submitPage()
   }
 
   When(
@@ -66,7 +63,6 @@ class AmlActivityStepDef extends BaseStepDef {
       .navigateTo()
     SharedActions
       .selectYesOrNo(value)
-      .submitPage()
   }
 
   When("^I do not enter the my relevant accounting period in days") { () =>
@@ -80,6 +76,5 @@ class AmlActivityStepDef extends BaseStepDef {
       .navigateTo()
     SharedActions
       .enterDetails(accountingPeriod)
-    submitPage()
   }
 }

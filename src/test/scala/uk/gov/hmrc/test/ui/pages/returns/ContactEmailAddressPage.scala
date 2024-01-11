@@ -32,7 +32,6 @@ object ContactEmailAddressPage extends BasePage {
   def provideContactEmailAddress(emailAddress: String): this.type = {
     SharedActions
       .enterDetails(emailAddress)
-    submitPage()
     this
   }
 

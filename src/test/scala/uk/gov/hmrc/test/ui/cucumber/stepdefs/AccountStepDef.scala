@@ -81,7 +81,6 @@ class AccountStepDef extends BaseStepDef {
       .submitPage()
     SharedActions
       .enterDetails("Revenue Changed in the current FY ")
-    submitPage()
     ReturnsPage
       .selectAccountingPeriod("Yes")
       .provideUkRevenueInAccountingPeriod()
@@ -96,7 +95,6 @@ class AccountStepDef extends BaseStepDef {
       .submitPage()
     SharedActions
       .enterDetails("Amending registration details")
-    submitPage()
     RegistrationPage
       .provideAmendHmrcOrOtherAmlSupervisor()
       .provideBusinessSector("External accountant")

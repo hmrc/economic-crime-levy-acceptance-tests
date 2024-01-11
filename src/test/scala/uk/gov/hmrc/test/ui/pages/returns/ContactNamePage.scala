@@ -35,7 +35,6 @@ object ContactNamePage extends BasePage {
   def provideContactName(contactName: String): this.type = {
     SharedActions
       .enterDetails(contactName)
-    submitPage()
     this
   }
 

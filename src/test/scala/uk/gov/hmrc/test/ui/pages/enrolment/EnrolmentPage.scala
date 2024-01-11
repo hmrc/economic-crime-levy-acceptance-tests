@@ -44,12 +44,10 @@ object EnrolmentPage extends BasePage {
       case "Yes"     =>
         SharedActions
           .selectYesOrNo("Yes")
-        submitPage()
         onPage(EnrolmentReferenceNumberPage.heading)
       case "No"      =>
         SharedActions
           .selectYesOrNo("No")
-        submitPage()
         onPage(EnrolmentRegisterECLPage.heading)
       case "Unknown" =>
         SharedActions.clickById("value_2")
@@ -65,7 +63,6 @@ object EnrolmentPage extends BasePage {
   def provideEclReferenceNumber(eclReferenceNumber: String): this.type = {
     SharedActions
       .enterDetails(eclReferenceNumber)
-    submitPage()
     onPage(EnrolmentRegistrationDatePage.heading)
     this
   }
@@ -87,7 +84,6 @@ object EnrolmentPage extends BasePage {
       .navigateTo()
     SharedActions
       .enterDetails(eclReferenceNumber)
-    submitPage()
     this
   }
 

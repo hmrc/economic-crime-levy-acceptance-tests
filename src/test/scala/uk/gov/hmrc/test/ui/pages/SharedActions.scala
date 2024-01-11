@@ -39,7 +39,7 @@ object SharedActions extends BasePage {
   def clickButton(): Unit =
     click(By.className("govuk-button"))
 
-  def clickBackButton(): Unit          =
+  def clickBackButton(): Unit =
     click(By.partialLinkText("Back"))
 
   def selectYesOrNo(value: String = "No"): this.type = {
@@ -49,15 +49,17 @@ object SharedActions extends BasePage {
       case _     =>
         SharedActions.selectLabelByPartialText("No")
     }
+    submitPage()
     this
   }
-  def enterDetails(name: String): Unit =
+  def enterDetails(name: String): Unit = {
     sendKeys(By.id("value"), name.trim())
+    submitPage()
+  }
 
   def confirmRegisteredAddress(value: String): this.type = {
     SharedActions
       .selectYesOrNo(value)
-      .submitPage()
     this
   }
 
