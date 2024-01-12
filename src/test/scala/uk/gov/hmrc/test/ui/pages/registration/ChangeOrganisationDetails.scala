@@ -58,7 +58,6 @@ object ChangeOrganisationDetails extends BasePage {
     clickByCssSelector(cssForChangeUkRevenue)
     SharedActions
       .enterDetails("30200000")
-    submitPage()
     this
   }
 
@@ -66,12 +65,9 @@ object ChangeOrganisationDetails extends BasePage {
     clickByCssSelector(cssForChangeAccountingPeriod)
     SharedActions
       .selectYesOrNo()
-      .submitPage()
       .enterDetails("123")
-    submitPage()
     SharedActions
       .enterDetails("20200000")
-    submitPage()
     this
   }
 
@@ -79,7 +75,6 @@ object ChangeOrganisationDetails extends BasePage {
     clickByCssSelector(cssForChangeAmlRegulatedActivity)
     SharedActions
       .selectYesOrNo()
-      .submitPage()
     this
   }
 
@@ -89,7 +84,6 @@ object ChangeOrganisationDetails extends BasePage {
       .selectLabelByPartialText("Scottish limited partnership")
     submitPage()
     clickByCssSelector(cssForSaveAndContinue)
-//      .submitPage()
     this
   }
 

@@ -145,7 +145,6 @@ class RegistrationStepDef extends BaseStepDef {
       .provideRelevantAccountingPeriod()
     SharedActions
       .enterDetails(revenue)
-    submitPage()
   }
   And("I go to check your answers page directly without providing answers for any of the previous page questions") {
     () =>
@@ -189,7 +188,6 @@ class RegistrationStepDef extends BaseStepDef {
   When("I select (.*) on whether or not to add a secondary contact details$") { (value: String) =>
     SharedActions
       .selectYesOrNo(value)
-    submitPage()
   }
 
   When("I click on the change link to modify the registered address") { () =>

@@ -29,8 +29,9 @@ object ReturnsPage extends BasePage {
   val expectedTaxYearStart = EclTaxYear.currentFyStartYear
   val expectedTaxYearEnd   = EclTaxYear.currentFyEndYear
 
-  val heading = "Submit your Economic Crime Levy return for " + expectedTaxYearStart + "-" + expectedTaxYearEnd
-  val recentDueHeading = "Submit your Economic Crime Levy return for " + (EclTaxYear.currentFyStartYear.toInt - 1).toString + "-" + (EclTaxYear.currentFyEndYear.toInt - 1).toString
+  val heading          = "Submit your Economic Crime Levy return for " + expectedTaxYearStart + "-" + expectedTaxYearEnd
+  val recentDueHeading =
+    "Submit your Economic Crime Levy return for " + (EclTaxYear.currentFyStartYear.toInt - 1).toString + "-" + (EclTaxYear.currentFyEndYear.toInt - 1).toString
 
   def navigateTo(): this.type = {
     navigateToClearAllUrl()
@@ -58,27 +59,21 @@ object ReturnsPage extends BasePage {
     contactNumber: String
   ): this.type = {
     SharedActions.enterDetails(contactName)
-    submitPage()
     SharedActions.enterDetails(contactRole)
-    submitPage()
     SharedActions.enterDetails(emailAddress)
-    submitPage()
     SharedActions.enterDetails(contactNumber)
-    submitPage()
     onPage(CheckYourAnswersPage.heading)
     this
   }
 
   def provideUkRevenueInAccountingPeriod(value: String = "10200000"): this.type = {
     SharedActions.enterDetails(value)
-    submitPage()
     onPage(AmlRegulatedActivityPage.heading)
     this
   }
   def selectAmlRegulatedActivity(): this.type = {
     SharedActions
       .selectYesOrNo("Yes")
-      .submitPage()
     onPage(AmountDuePage.heading)
     this
   }
@@ -86,35 +81,30 @@ object ReturnsPage extends BasePage {
   def selectAccountingPeriod(value: String): this.type = {
     SharedActions
       .selectYesOrNo(value)
-      .submitPage()
     this
   }
 
   def provideAccountingPeriod(accountingPeriod: String): this.type = {
     SharedActions
       .enterDetails(accountingPeriod)
-    submitPage()
     this
   }
 
   def provideUkRevenue(ukRevenue: String): this.type = {
     SharedActions
       .enterDetails(ukRevenue)
-    submitPage()
     this
   }
 
   def selectAmlRegulatedActivity(value: String): this.type = {
     SharedActions
       .selectYesOrNo(value)
-      .submitPage()
     this
   }
 
   def provideAmlRegulatedActivityDays(days: String): this.type = {
     SharedActions
       .enterDetails(days)
-    submitPage()
     this
   }
 
@@ -174,7 +164,6 @@ object ReturnsPage extends BasePage {
 
   def provideUkRevenueForNilReturnSubmission(value: String = "1019999"): this.type = {
     SharedActions.enterDetails(value)
-    submitPage()
     this
   }
 

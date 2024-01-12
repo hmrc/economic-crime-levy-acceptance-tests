@@ -32,7 +32,6 @@ object ContactRolePage extends BasePage {
   def provideContactRole(contactRole: String): this.type = {
     SharedActions
       .enterDetails(contactRole)
-    submitPage()
     this
   }
 

@@ -33,7 +33,6 @@ object ContactTelephonePage extends BasePage {
   def provideContactNumber(contactNumber: String): this.type = {
     SharedActions
       .enterDetails(contactNumber)
-    submitPage()
     this
   }
 

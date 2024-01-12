@@ -44,7 +44,6 @@ object RegistrationPage extends BasePage {
       case _         =>
         SharedActions.enterDetails(value)
     }
-    submitPage()
     onPage(EclLiableForPreviousFinancialYearPage.heading)
     this
   }
@@ -65,7 +64,6 @@ object RegistrationPage extends BasePage {
   def provideRelevantAccountingPeriod(): this.type = {
     SharedActions
       .selectYesOrNo("Yes")
-      .submitPage()
     onPage(UkRevenuePage.heading)
     this
   }
@@ -79,7 +77,6 @@ object RegistrationPage extends BasePage {
         SharedActions
           .selectYesOrNo(value)
     }
-    submitPage()
     this
   }
 
@@ -99,12 +96,10 @@ object RegistrationPage extends BasePage {
       case "No" =>
         SharedActions
           .selectYesOrNo("No")
-          .submitPage()
         onPage(EclLiableForPreviousFinancialYearPage.heading)
       case _    =>
         SharedActions
           .selectYesOrNo(value)
-          .submitPage()
         onPage(AmlSupervisorPage.heading)
     }
     this
@@ -124,13 +119,9 @@ object RegistrationPage extends BasePage {
     contactNumber: String
   ): this.type = {
     SharedActions.enterDetails(contactName)
-    submitPage()
     SharedActions.enterDetails(contactRole)
-    submitPage()
     SharedActions.enterDetails(emailAddress)
-    submitPage()
     SharedActions.enterDetails(contactNumber)
-    submitPage()
     onPage(SecondContactNamePage.heading)
     this
   }
@@ -143,15 +134,10 @@ object RegistrationPage extends BasePage {
   ): this.type = {
     SharedActions
       .selectYesOrNo("Yes")
-      .submitPage()
     SharedActions.enterDetails(contactName)
-    submitPage()
     SharedActions.enterDetails(contactRole)
-    submitPage()
     SharedActions.enterDetails(emailAddress)
-    submitPage()
     SharedActions.enterDetails(contactNumber)
-    submitPage()
     onPage(ContactAddressPage.heading)
     this
   }
@@ -159,7 +145,6 @@ object RegistrationPage extends BasePage {
   def provideRegisteredAddress(value: String): this.type = {
     SharedActions
       .selectYesOrNo(value)
-      .submitPage()
     this
   }
 
@@ -224,7 +209,6 @@ object RegistrationPage extends BasePage {
     clickByCssSelector(cssForSaveAndContinue)
     SharedActions
       .enterDetails("A & J Company12")
-    submitPage()
     onPage(BusinessSectorPage.heading)
     this
   }
@@ -232,28 +216,24 @@ object RegistrationPage extends BasePage {
   def provideAddAnotherContactYesOrNo(value: String): this.type = {
     SharedActions
       .selectYesOrNo(value)
-      .submitPage()
     this
   }
 
   def provideAnotherUkRegisteredAddress(value: String): this.type = {
     SharedActions
       .selectYesOrNo(value)
-      .submitPage()
     this
   }
 
   def provideNonUkRegisteredAddress(value: String): this.type = {
     SharedActions
       .selectYesOrNo(value)
-      .submitPage()
     this
   }
 
   def providePartnershipName(partnershipName: String): this.type = {
     SharedActions
       .enterDetails(partnershipName)
-    submitPage()
     this
   }
 
@@ -262,28 +242,24 @@ object RegistrationPage extends BasePage {
       .navigateTo()
     SharedActions
       .enterDetails(contactName)
-    submitPage()
     this
   }
 
   def provideFirstContactRole(contactRole: String): this.type = {
     SharedActions
       .enterDetails(contactRole)
-    submitPage()
     this
   }
 
   def provideFirstContactEmail(emailAddress: String): this.type = {
     SharedActions
       .enterDetails(emailAddress)
-    submitPage()
     this
   }
 
   def provideFirstContactTelephoneNumber(contactNumber: String): this.type = {
     SharedActions
       .enterDetails(contactNumber)
-    submitPage()
     this
   }
 
@@ -327,46 +303,42 @@ object RegistrationPage extends BasePage {
   def provideRegisteredNameOfYourBusiness(businessName: String): this.type = {
     SharedActions
       .enterDetails(businessName)
-    submitPage()
     this
   }
 
   def provideCharityRegistrationNumberOfYourBusiness(charityRegistrationNumber: String): this.type = {
     SharedActions
       .enterDetails(charityRegistrationNumber)
-    submitPage()
     this
   }
 
   def provideCompanyRegistrationNumberOfYourBusiness(companyRegistrationNumber: String): this.type = {
     SharedActions
       .enterDetails(companyRegistrationNumber)
-    submitPage()
     this
   }
 
   def provideCorporationTaxUniqueTaxpayerReference(uniqueTaxpayerReference: String): this.type = {
     SharedActions
       .enterDetails(uniqueTaxpayerReference)
-    submitPage()
     this
   }
 
   def doYouHaveCorporationTaxUniqueTaxpayerReference(value: String): this.type = {
-    SharedActions.selectYesOrNo(value)
-    submitPage()
+    SharedActions
+      .selectYesOrNo(value)
     this
   }
 
   def doYouHaveUkCompanyRegistrationNumber(value: String = "Yes"): this.type = {
     value match {
       case "No" =>
-        SharedActions.selectYesOrNo(value)
-        submitPage()
+        SharedActions
+          .selectYesOrNo(value)
       case _    =>
-        SharedActions.selectYesOrNo(value)
-        submitPage()
-          .provideCompanyRegistrationNumberOfYourBusiness("12345678")
+        SharedActions
+          .selectYesOrNo(value)
+        provideCompanyRegistrationNumberOfYourBusiness("12345678")
     }
     this
   }
@@ -374,7 +346,6 @@ object RegistrationPage extends BasePage {
   def providePostcodeToRegisterCompany(postcode: String): this.type = {
     SharedActions
       .enterDetails(postcode)
-    submitPage()
     this
   }
 
@@ -397,12 +368,11 @@ object RegistrationPage extends BasePage {
   def provideSelfAssessmentTaxpayerReference(uniqueTaxpayerReference: String): this.type = {
     SharedActions
       .enterDetails(uniqueTaxpayerReference)
-    submitPage()
     this
   }
   def provideOverseasTaxIdentifier(overseasTaxIdentifier: String): this.type = {
-    SharedActions.enterDetails(overseasTaxIdentifier)
-    submitPage()
+    SharedActions
+      .enterDetails(overseasTaxIdentifier)
     this
   }
   def provideOtherEntityCheckYourAnswers(): this.type = {
@@ -413,7 +383,6 @@ object RegistrationPage extends BasePage {
   def provideSelectYesOrNo(value: String): this.type = {
     SharedActions
       .selectYesOrNo(value)
-      .submitPage()
     this
   }
 
@@ -437,12 +406,12 @@ object RegistrationPage extends BasePage {
   def doYouHaveUniqueTaxpayerReference(value: String): this.type = {
     value match {
       case "No" =>
-        SharedActions.selectYesOrNo(value)
-        submitPage()
+        SharedActions
+          .selectYesOrNo(value)
       case _    =>
-        SharedActions.selectYesOrNo(value)
-        submitPage()
-          .provideUtrReference("0123456789")
+        SharedActions
+          .selectYesOrNo(value)
+        provideUtrReference("0123456789")
     }
     this
   }
@@ -450,7 +419,6 @@ object RegistrationPage extends BasePage {
   def provideUtrReference(companyRegistrationNumber: String): this.type = {
     SharedActions
       .enterDetails(companyRegistrationNumber)
-    submitPage()
     this
   }
 }

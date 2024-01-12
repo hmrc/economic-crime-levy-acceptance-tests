@@ -48,7 +48,6 @@ object ChangeContactDetailsPage extends BasePage {
     clickByCssSelector(cssForChangeFirstContactName)
     SharedActions
       .enterDetails("James Bond")
-    submitPage()
     this
   }
 
@@ -56,7 +55,6 @@ object ChangeContactDetailsPage extends BasePage {
     clickByCssSelector(cssForChangeFirstContactRole)
     SharedActions
       .enterDetails("Director")
-    submitPage()
     this
   }
 
@@ -64,7 +62,6 @@ object ChangeContactDetailsPage extends BasePage {
     clickByCssSelector(cssForChangeFirstContactEmail)
     SharedActions
       .enterDetails("confirm@test.com")
-    submitPage()
     this
   }
 
@@ -72,7 +69,6 @@ object ChangeContactDetailsPage extends BasePage {
     clickByCssSelector(cssForChangeFirstContactTelephoneNumber)
     SharedActions
       .enterDetails("01475344272")
-    submitPage()
     this
   }
 
@@ -80,7 +76,6 @@ object ChangeContactDetailsPage extends BasePage {
     clickByCssSelector(cssForChangeSecondContactName)
     SharedActions
       .enterDetails("Alexander")
-    submitPage()
     this
   }
 
@@ -88,7 +83,6 @@ object ChangeContactDetailsPage extends BasePage {
     clickByCssSelector(cssForChangeSecondContactRole)
     SharedActions
       .enterDetails("Accountant Manager")
-    submitPage()
     this
   }
 
@@ -96,7 +90,6 @@ object ChangeContactDetailsPage extends BasePage {
     clickByCssSelector(cssForChangeSecondContactEmail)
     SharedActions
       .enterDetails("test@verify.com")
-    submitPage()
     this
   }
 
@@ -104,7 +97,6 @@ object ChangeContactDetailsPage extends BasePage {
     clickByCssSelector(cssForChangeSecondContactTelephoneNumber)
     SharedActions
       .enterDetails("07401733122")
-    submitPage()
     this
   }
 
