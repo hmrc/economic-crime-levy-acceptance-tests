@@ -42,6 +42,7 @@ class AccountStepDef extends BaseStepDef {
 
   When("""I click on the Submit an Economic Crime Levy return link""") { () =>
     provideSubmitAnEclReturn()
+      .submitPage()
   }
 
   When("""I click on the View or amend your returns link to view the (DUE|OVERDUE|SUBMITTED) return details$""") {
@@ -73,36 +74,6 @@ class AccountStepDef extends BaseStepDef {
 
   When("""I click on the Make an ECL payment link to pay the (DUE|OVERDUE) payment$""") { (paymentStatus: String) =>
     provideMakeAnEclPayment(paymentStatus)
-  }
-
-  When("""I provide the details to amend the submitted economic crime levy return""") { () =>
-    provideViewOrAmendAnEclReturn("amend")
-      .provideAmendSubmitReturn()
-      .submitPage()
-    SharedActions
-      .enterDetails("Revenue Changed in the current FY ")
-    ReturnsPage
-      .selectAccountingPeriod("Yes")
-      .provideUkRevenueInAccountingPeriod()
-      .selectAmlRegulatedActivity()
-      .provideAmountDue()
-      .provideContactDetails("Peter Hazell", "Director", "test@test.com", "01432 960 001")
-      .provideCheckYourAnswers()
-  }
-
-  When("""I provide the details to amend the submitted economic crime levy registration""") { () =>
-    provideAmendAnEclRegistration("amend")
-      .submitPage()
-    SharedActions
-      .enterDetails("Amending registration details")
-    RegistrationPage
-      .provideAmendHmrcOrOtherAmlSupervisor()
-      .provideBusinessSector("External accountant")
-      .provideFirstContactDetails("Oliver Tom", "Account Manager", "test@test.com", "01632 960 001")
-      .provideSelectYesOrNo("No")
-      .provideRegisteredAddress("Yes")
-      .submitPage()
-      .provideCheckYourAnswers()
   }
 
   When("I click on the View your payments link to view an interest accrued on the (.*)$") { (paymentStatus: String) =>

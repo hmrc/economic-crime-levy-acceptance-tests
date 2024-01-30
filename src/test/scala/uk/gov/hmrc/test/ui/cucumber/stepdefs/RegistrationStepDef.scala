@@ -17,6 +17,7 @@
 package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
 import uk.gov.hmrc.test.ui.pages.SharedActions
+import uk.gov.hmrc.test.ui.pages.account.AccountPage
 import uk.gov.hmrc.test.ui.pages.registration.RegistrationPage._
 import uk.gov.hmrc.test.ui.pages.registration._
 
@@ -463,6 +464,14 @@ class RegistrationStepDef extends BaseStepDef {
       .provideGrsData()
   }
 
+  When("""I provide the details to amend the submitted economic crime levy registration""") { () =>
+    AccountPage
+      .provideAmendAnEclRegistration("amend")
+    SharedActions
+      .enterDetails("Amending registration details")
+    RegistrationPage
+      .provideCheckYourAnswers()
+  }
   And("^I click on the try again button") { () =>
     SharedActions.clickTryAgainButton()
   }
