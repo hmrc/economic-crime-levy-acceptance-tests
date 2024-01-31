@@ -6,10 +6,11 @@ Feature: ECL Dashboard details
     When I am on the ECL account dashboard
     Then I should be on the page that says Your Economic Crime Levy account
 
-  Scenario: User is able to see most recent returns due
+  Scenario: User is able to submit most recent returns
     Given I am signed in to the account journey with my ECL reference as XMECL0000000005
     When I click on the Submit an Economic Crime Levy return link
-    Then I should be on the most recent returns due page for submit the ECL
+    And I provide the details to submit the economic crime levy return
+    Then I should be on the page that says Return submitted
 
   Scenario Outline: User is able to see their returns details for the previous and current financial years
     Given I am signed in to the account journey with my ECL reference as XMECL0000000005
@@ -18,23 +19,18 @@ Feature: ECL Dashboard details
     And I should see the return status as <return status>
     Examples:
       | return status |
-#      | DUE           |
       | OVERDUE       |
       | SUBMITTED     |
-
+@validations
   Scenario: User that is registered for ECL can make a returns submission through ECL dashboard
     Given I am signed in to the account journey with my ECL reference as XMECL0000000005
     When I provide the registration details to submit a return through ECL dashboard link
     Then I should be on the page that says ECL registration details
 
-  Scenario Outline: User that is registered for ECL can view their due and completed payments
-    Given I am signed in to the account journey with my ECL reference as <ECL Reference>
+  Scenario: User that is registered for ECL can view their completed payments
+    Given I am signed in to the account journey with my ECL reference as XMECL0000000005
     When I am on the ECL account dashboard
-    Then I should be on the page that says <Expected content>
-    Examples:
-      | ECL Reference   | Expected content                                                                          |
-#      | XMECL0000000006 | You have a payment of £23,100 due on 30 September 2023 for 1 April 2022 to 31 March 2023. |
-      | XMECL0000000005 | You have no payments due.                                                                 |
+    Then I should be on the page that says You have no payments due.
 
   Scenario: User that is registered for ECL can view their overdue payments
     Given I am signed in to the account journey with my ECL reference as XMECL0000000007
@@ -50,7 +46,6 @@ Feature: ECL Dashboard details
     And I should see the payment status as <payment status>
     Examples:
       | ECL Reference Number | payment status | Amount |
-#      | XMECL0000000007      | DUE            | 14600  |
       | XMECL0000000007      | OVERDUE        | 20500  |
       | XMECL0000000007      | PARTIALLY PAID | 2400   |
       | XMECL0000000005      | PAID           | 14000  |
@@ -61,18 +56,7 @@ Feature: ECL Dashboard details
     Then I should be on the page that says <Expected content>
     Examples:
       | ECL Reference   | payment status | Expected content         |
-#      | XMECL0000000006 | DUE            | When do you want to pay? |
       | XMECL0000000007 | OVERDUE        | Select an amount to pay  |
-
-  Scenario: User is able to amend the returns they have submitted through ECL account dashboard
-    Given I am signed in to the account journey with my ECL reference as XMECL0000000007
-    When I provide the details to amend the submitted economic crime levy return
-    Then I should be on the page that says Economic Crime Levy return amended
-
-  Scenario: User is able to amend the registrations they have submitted through ECL account dashboard
-    Given I am signed in to the account journey with my ECL reference as XMECL0000000001
-    When I provide the details to amend the submitted economic crime levy registration
-    Then I should be on the page that says Economic Crime Levy registration amendment requested
 
   Scenario: User has an overdue payment with accrued interest
     Given I am signed in to the account journey with my ECL reference as XMECL00000000010

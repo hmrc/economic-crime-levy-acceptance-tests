@@ -17,6 +17,7 @@
 package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
 import uk.gov.hmrc.test.ui.pages.SharedActions
+import uk.gov.hmrc.test.ui.pages.account.AccountPage
 import uk.gov.hmrc.test.ui.pages.returns.ReturnsPage._
 import uk.gov.hmrc.test.ui.pages.returns._
 
@@ -299,5 +300,15 @@ class ReturnsStepDef extends BaseStepDef {
   Then("^I should see the amount to pay is (.*)$") { (amountToPay: String) =>
     SharedActions
       .assertTextByCssSelector(".govuk-label--m", amountToPay)
+  }
+
+  When("""I provide the details to amend the submitted economic crime levy return""") { () =>
+    AccountPage
+      .provideViewOrAmendAnEclReturn("amend")
+      .provideAmendSubmitReturn()
+    SharedActions
+      .enterDetails("Revenue Changed in the current FY ")
+    ReturnsPage
+      .provideCheckYourAnswers()
   }
 }

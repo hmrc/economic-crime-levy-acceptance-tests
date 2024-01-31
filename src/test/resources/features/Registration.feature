@@ -9,7 +9,7 @@ Feature: Register for ECL
     Examples:
       | Entity type                   |
       | Sole trader                   |
-
+@validations
   Scenario: User does not select whether or not they started AML regulated activity in current FY
     Given I am signed in to the registration journey
     When I do not select an option for whether or not I started AML regulated activity in current FY
@@ -19,7 +19,7 @@ Feature: Register for ECL
     Given I am signed in to the registration journey
     When I select No on whether or not I carried out AML-regulated activity in current FY
     Then I should be on the page that says Were you liable to pay the ECL from 1 April 2022 to 31 March 2023?
-
+@validations
   Scenario: User does not select their AML supervisor
     Given I am signed in to the registration journey
     When I do not select an option for my AML supervisor
@@ -39,7 +39,7 @@ Feature: Register for ECL
       | AML supervisor              | Expected content                                                                |
       | Gambling Commission         | You need to register with the Gambling Commission (GC) to pay the levy          |
       | Financial Conduct Authority | You need to register with the Financial Conduct Authority (FCA) to pay the levy |
-
+@validations
   Scenario: User does not select whether or not their relevant accounting period 12 months
     Given I am signed in to the registration journey
     When I do not select an option for whether or not my relevant accounting period 12 months
@@ -48,13 +48,13 @@ Feature: Register for ECL
   Scenario: User selects no on whether or not their relevant accounting period 12 months
     Given I am signed in to the registration journey
     When I select No on whether or not my relevant accounting period 12 months
-    Then I should see an error that says How long is your relevant accounting period?
-
+    Then I should be on the page that says How long is your relevant accounting period?
+@validations
   Scenario: User does not select how long is their relevant accounting period in days?
     Given I am signed in to the registration journey
     When I do not enter the my relevant accounting period in days
     Then I should see an error that says Enter the length
-
+@validations
   Scenario Outline: User enters an invalid length for their relevant accounting period
     Given I am signed in to the registration journey
     When I enter the length of my accounting period in days <Days>
@@ -67,7 +67,7 @@ Feature: Register for ECL
       | 1000  | Length must be between 1 and 999 days |
       | asdwa | Length must be a whole number         |
       | 245.0 | Length must be a whole number         |
-
+@validations
   Scenario Outline: User enters an invalid amount for UK revenue for their relevant accounting period
     Given I am signed in to the registration journey
     When I enter the UK revenue <UK Revenue> for the relevant accounting period
@@ -78,7 +78,7 @@ Feature: Register for ECL
       | -1         | UK revenue must be between 0 and 99,999,999,999.99            |
       | asdfg      | The total UK revenue can only include pounds and pence        |
       | 99.999     | The total UK revenue can only include pounds and pence        |
-
+@validations
   Scenario Outline: User enters an valid amount for UK revenue but less than 10.2M for their relevant accounting period
     Given I am signed in to the registration journey
     When I enter the UK revenue <UK Revenue> for the relevant accounting period
@@ -87,17 +87,17 @@ Feature: Register for ECL
       | UK Revenue |
       | 0          |
       | 10199999   |
-
+@validations
   Scenario: User does not select their entity type
     Given I am signed in to the registration journey
     When I do not select an option for my entity type
     Then I should see an error that says Please select your entity type
-
+@validations
   Scenario: User does not select their business sector
     Given I am signed in to the registration journey
     When I do not select an option for my business sector
     Then I should see an error that says Select a business sector
-
+@validations
   Scenario Outline: User does not provide their first contact person's valid name for the business sector page
     Given I am signed in to the registration journey
     When I enter the first contact person's name <Name> for my business
@@ -107,7 +107,7 @@ Feature: Register for ECL
       | Name                                                                                                                                                              | Expected content                         |
       |                                                                                                                                                                   | Enter a full name                        |
       | ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyabcdefghijklmnopqrstuvwxyabcdefghijklmnopqrstu1234567890!@£#$%^&*()-+={}[]"';:,.<>/? | Full name must be 160 characters or less |
-
+@validations
   Scenario Outline: User does not provide their first contact person's valid role for the business sector page
     Given I am signed in to the registration journey
     When I enter the first contact person's role <Role> for my business
@@ -117,7 +117,7 @@ Feature: Register for ECL
       | Role                                                                                                                                                              | Expected content                    |
       |                                                                                                                                                                   | Enter a role                        |
       | ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyabcdefghijklmnopqrstuvwxyabcdefghijklmnopqrstu1234567890!@£#$%^&*()-+={}[]"';:,.<>/? | Role must be 160 characters or less |
-
+@validations
   Scenario Outline: User does not provide their first contact person's valid email address for the business sector page
     Given I am signed in to the registration journey
     When I enter the first contact person's email address <Email address> for my business
@@ -128,7 +128,7 @@ Feature: Register for ECL
       |               | Enter an email address                                              |
       | email-address | Enter an email address in the correct format, like name@example.com |
 
-
+@validations
   Scenario Outline: User does not provide their first contact person's valid contact number for the business sector page
     Given I am signed in to the registration journey
     When I enter the first contact person's contact number <Contact number> for my business
@@ -196,7 +196,7 @@ Feature: Register for ECL
       | Entity type          |
       | General partnership  |
       | Scottish partnership |
-
+@validations
   Scenario Outline: User does not provide a valid entity name for their General or Scottish Partnership
     Given I am signed in to the registration journey
     When I enter my <Entity type>'s name as <Partnership Name>
@@ -208,7 +208,7 @@ Feature: Register for ECL
       | Scottish partnership |                                                                                                                                                                   | Enter a partnership name                        |
       | General partnership  | ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyabcdefghijklmnopqrstuvwxyabcdefghijklmnopqrstu1234567890!@£#$%^&*()-+={}[]"';:,.<>/? | Partnership name must be 160 characters or less |
       | Scottish partnership | ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyabcdefghijklmnopqrstuvwxyabcdefghijklmnopqrstu1234567890!@£#$%^&*()-+={}[]"';:,.<>/? | Partnership name must be 160 characters or less |
-
+@validations
   Scenario Outline: User provides a valid entity name for their General or Scottish Partnership
     Given I am signed in to the registration journey
     When I enter my <Entity type>'s name as <Partnership Name>
@@ -231,7 +231,7 @@ Feature: Register for ECL
       | Unincorporated Association |
       | Trust                      |
       | Non-UK Establishment       |
-
+@validations
   Scenario Outline: User does not provide their valid registered name for the other entity type <Other Entity> business
     Given I am signed in to the registration journey
     When I enter my registered name as <Name> for the other entity type business
@@ -245,7 +245,7 @@ Feature: Register for ECL
       | Unincorporated Association | ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyabcdefghijklmnopqrstuvwxyabcdefghijklmnopqrstu1234567890!@£#$%^&*()-+={}[]"';:,.<>/? | Business name must not be more than 160 characters |
       | Trust                      |                                                                                                                                                                   | Enter a business name                              |
       | Trust                      | ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyabcdefghijklmnopqrstuvwxyabcdefghijklmnopqrstu1234567890!@£#$%^&*()-+={}[]"';:,.<>/? | Business name must not be more than 160 characters |
-
+@validations
   Scenario Outline: User does not provide their valid charity registration number for the other entity type business
     Given I am signed in to the registration journey
     When I enter my charity registration number as <CHRNumber> for the other entity type business
@@ -255,7 +255,7 @@ Feature: Register for ECL
       | CHRNumber | Expected content                                               |
       |           | Enter a charity registration number                            |
       | UKA99999  | Charity registration number must not be more than 7 characters |
-
+@validations
   Scenario Outline: User does not provide their valid company registration number for the other entity type business
     Given I am signed in to the registration journey
     When I enter my company registration number as <CRNumber> for the other entity type business
@@ -265,7 +265,7 @@ Feature: Register for ECL
       | CRNumber  | Expected content                                                     |
       |           | Enter a company registration number                                  |
       | SCU123456 | Company registration number (CRN) must not be more than 8 characters |
-
+@validations
   Scenario: User does not select whether or not they have a Corporation Tax Unique Taxpayer Reference?
     Given I am signed in to the registration journey
     When I do not select an option for whether or not I have a Corporation Tax Unique Taxpayer Reference
@@ -275,7 +275,7 @@ Feature: Register for ECL
     Given I am signed in to the registration journey
     When I select No on whether or not I have a Corporation Tax Unique Taxpayer Reference
     Then I should be on the page that says What is your business sector?
-
+@validations
   Scenario Outline: User does not provide their valid Corporation Tax Unique Taxpayer Reference for the other entity type <Other Entity> business
     Given I am signed in to the registration journey
     When I enter my Corporation Tax Unique Taxpayer Reference as <CT UTR> for the other entity type <Other Entity> business
@@ -290,7 +290,7 @@ Feature: Register for ECL
       | Trust                      | 012345678  | Corporation Tax (CT) Unique Taxpayer Reference (UTR) must be 10 numbers |
       | Non-UK Establishment       |            | Enter a Self Assessment (SA) Unique Taxpayer Reference (UTR)            |
       | Non-UK Establishment       | SC01234567 | Self Assessment (SA) Unique Taxpayer Reference (UTR) must be 10 numbers |
-
+@validations
   Scenario Outline: User does not provide their company's valid registered postcode
     Given I am signed in to the registration journey
     When I enter my company registered postcode as <Postcode> for the other entity type business
@@ -300,7 +300,7 @@ Feature: Register for ECL
       | Postcode  | Expected content      |
       |           | Enter a postcode      |
       | AB11 322YZ | Enter a real postcode |
-
+@validations
   Scenario: User does not select their UK unique taxpayer reference
     Given I am signed in to the registration journey
     When I do not select an option for my UK unique taxpayer reference
@@ -335,7 +335,7 @@ Feature: Register for ECL
     Given I am signed in to the registration journey
     When I provide Yes to AML question and the turnover is below £10.2m threshold but No liability for previous year ECL
     Then I should be on the page that says You do not need to register for the Economic Crime Levy
-
+@validations
   Scenario: User does not select whether or not they were liable to pay the ECL from 1 April 2022 to 31 March 2023
     Given I am signed in to the registration journey
     When I do not select an option for whether or not I liable to pay the ECL from 1 April 2022 to 31 March 2023
@@ -351,8 +351,13 @@ Feature: Register for ECL
     Examples:
       | Entity type                   |
       | Limited company               |
-
+@validations
   Scenario: Error message display when the user does not select their option in UK Company Registration Number page
     Given I am signed in to the registration journey
     When I do not select an option for my UK company registration number
     Then I should see an error that says Select yes if you have a UK company registration number
+
+  Scenario: User is able to amend the registrations they have submitted through ECL account dashboard
+    Given I am signed in to the account journey with my ECL reference as XMECL0000000001
+    When I provide the details to amend the submitted economic crime levy registration
+    Then I should be on the page that says Economic Crime Levy registration amendment requested

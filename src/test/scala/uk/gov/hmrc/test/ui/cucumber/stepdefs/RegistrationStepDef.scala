@@ -17,6 +17,7 @@
 package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
 import uk.gov.hmrc.test.ui.pages.SharedActions
+import uk.gov.hmrc.test.ui.pages.account.AccountPage
 import uk.gov.hmrc.test.ui.pages.registration.RegistrationPage._
 import uk.gov.hmrc.test.ui.pages.registration._
 
@@ -35,7 +36,7 @@ class RegistrationStepDef extends BaseStepDef {
         .provideHmrcOrOtherAmlSupervisor()
         .provideRelevantAccountingPeriod()
         .provideUkRevenue()
-        .provideEclLiableForPreviousFinancialYear("Yes")
+        .provideEclLiableForPreviousFinancialYear()
         .provideEntityType(entityType)
         .provideGrsData()
         .provideBusinessSector("Credit institution")
@@ -49,7 +50,7 @@ class RegistrationStepDef extends BaseStepDef {
   When(
     """I provide details of my limited company that is supervised by an other professional body and liable for ECL"""
   ) { () =>
-    provideUkRevenue("10200000")
+    provideUkRevenue()
       .provideHmrcOrOtherAmlSupervisor("Other")
       .provideEntityType("Limited company")
       .provideGrsData()
@@ -112,7 +113,7 @@ class RegistrationStepDef extends BaseStepDef {
       .provideHmrcOrOtherAmlSupervisor()
       .provideRelevantAccountingPeriod()
       .provideUkRevenue()
-      .provideEclLiableForPreviousFinancialYear("Yes")
+      .provideEclLiableForPreviousFinancialYear()
       .provideEntityType("Limited liability partnership")
       .provideGrsData()
       .provideBusinessSector("Credit institution")
@@ -128,7 +129,7 @@ class RegistrationStepDef extends BaseStepDef {
       .provideHmrcOrOtherAmlSupervisor()
       .provideRelevantAccountingPeriod()
       .provideUkRevenue()
-      .provideEclLiableForPreviousFinancialYear("Yes")
+      .provideEclLiableForPreviousFinancialYear()
       .provideEntityType("Limited partnership")
       .provideGrsData()
       .provideBusinessSector("Credit institution")
@@ -157,7 +158,7 @@ class RegistrationStepDef extends BaseStepDef {
       .provideHmrcOrOtherAmlSupervisor()
       .provideRelevantAccountingPeriod()
       .provideUkRevenue()
-      .provideEclLiableForPreviousFinancialYear("Yes")
+      .provideEclLiableForPreviousFinancialYear()
       .provideEntityType("Registered society")
       .provideGrsData()
       .provideBusinessSector("Credit institution")
@@ -173,7 +174,7 @@ class RegistrationStepDef extends BaseStepDef {
       .provideHmrcOrOtherAmlSupervisor()
       .provideRelevantAccountingPeriod()
       .provideUkRevenue()
-      .provideEclLiableForPreviousFinancialYear("Yes")
+      .provideEclLiableForPreviousFinancialYear()
       .provideEntityType("Scottish limited partnership")
       .provideGrsData()
       .provideBusinessSector("Credit institution")
@@ -195,7 +196,7 @@ class RegistrationStepDef extends BaseStepDef {
       .provideHmrcOrOtherAmlSupervisor()
       .provideRelevantAccountingPeriod()
       .provideUkRevenue()
-      .provideEclLiableForPreviousFinancialYear("Yes")
+      .provideEclLiableForPreviousFinancialYear()
       .provideEntityType("Unlimited company")
       .provideGrsData()
       .provideBusinessSector("Credit institution")
@@ -216,7 +217,7 @@ class RegistrationStepDef extends BaseStepDef {
       .provideHmrcOrOtherAmlSupervisor()
       .provideRelevantAccountingPeriod()
       .provideUkRevenue()
-      .provideEclLiableForPreviousFinancialYear("Yes")
+      .provideEclLiableForPreviousFinancialYear()
       .provideEntityType("Limited company")
       .provideGrsData()
       .provideBusinessSector("Credit institution")
@@ -233,7 +234,7 @@ class RegistrationStepDef extends BaseStepDef {
       .provideHmrcOrOtherAmlSupervisor()
       .provideRelevantAccountingPeriod()
       .provideUkRevenue()
-      .provideEclLiableForPreviousFinancialYear("Yes")
+      .provideEclLiableForPreviousFinancialYear()
       .provideEntityType("Limited company")
       .provideGrsData()
       .provideBusinessSector("Credit institution")
@@ -248,7 +249,7 @@ class RegistrationStepDef extends BaseStepDef {
       .provideHmrcOrOtherAmlSupervisor()
       .provideRelevantAccountingPeriod()
       .provideUkRevenue()
-      .provideEclLiableForPreviousFinancialYear("Yes")
+      .provideEclLiableForPreviousFinancialYear()
       .provideEntityType("Limited company")
       .provideGrsData()
       .provideBusinessSector("Credit institution")
@@ -263,7 +264,7 @@ class RegistrationStepDef extends BaseStepDef {
       .provideHmrcOrOtherAmlSupervisor()
       .provideRelevantAccountingPeriod()
       .provideUkRevenue()
-      .provideEclLiableForPreviousFinancialYear("Yes")
+      .provideEclLiableForPreviousFinancialYear()
       .provideEntityTypeDetailsForGeneralOrScottishPartnership(entityType)
       .provideBusinessSector("Credit institution")
       .provideFirstContactDetails("Oliver Tom", "Account Manager", "test@test.com", "01632 960 001")
@@ -278,7 +279,7 @@ class RegistrationStepDef extends BaseStepDef {
         .provideHmrcOrOtherAmlSupervisor()
         .provideRelevantAccountingPeriod()
         .provideUkRevenue()
-        .provideEclLiableForPreviousFinancialYear("Yes")
+        .provideEclLiableForPreviousFinancialYear()
         .provideOtherEntityBusinessDetails(otherEntityType)
         .provideOtherEntityCheckYourAnswers()
         .provideBusinessSector("Credit institution")
@@ -390,7 +391,7 @@ class RegistrationStepDef extends BaseStepDef {
 
   When("""I provide details of my limited company and indicate liability for previous year ECL""") { () =>
     provideAmlRegulated("No")
-      .provideEclLiableForPreviousFinancialYear("Yes")
+      .provideEclLiableForPreviousFinancialYear()
       .provideHmrcOrOtherAmlSupervisor()
       .provideEntityType("Limited company")
       .provideGrsData()
@@ -457,12 +458,20 @@ class RegistrationStepDef extends BaseStepDef {
       .provideHmrcOrOtherAmlSupervisor()
       .provideRelevantAccountingPeriod()
       .provideUkRevenue()
-      .provideEclLiableForPreviousFinancialYear("Yes")
+      .provideEclLiableForPreviousFinancialYear()
       .provideEntityType(entityType)
       .provideGrsDataForIdentifiersDoNotMatch()
       .provideGrsData()
   }
 
+  When("""I provide the details to amend the submitted economic crime levy registration""") { () =>
+    AccountPage
+      .provideAmendAnEclRegistration("amend")
+    SharedActions
+      .enterDetails("Amending registration details")
+    RegistrationPage
+      .provideCheckYourAnswers()
+  }
   And("^I click on the try again button") { () =>
     SharedActions.clickTryAgainButton()
   }
