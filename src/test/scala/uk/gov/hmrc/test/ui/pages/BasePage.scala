@@ -17,7 +17,7 @@
 package uk.gov.hmrc.test.ui.pages
 
 import org.junit.Assert
-import org.openqa.selenium.support.ui.{ExpectedConditions, FluentWait, Wait}
+import org.openqa.selenium.support.ui.{ExpectedConditions, FluentWait, Wait, WebDriverWait}
 import org.openqa.selenium.{By, WebDriver, WebElement}
 import org.scalatest.matchers.should.Matchers
 import uk.gov.hmrc.test.ui.conf.TestConfiguration
@@ -25,12 +25,12 @@ import uk.gov.hmrc.test.ui.driver.BrowserDriver
 
 import java.util
 import java.time.Duration
-import java.time.temporal.ChronoUnit
 
 trait BasePage extends BrowserDriver with Matchers {
 
-  val WAIT_POLLING_INTERVAL: Duration = Duration.of(250, ChronoUnit.MILLIS)
-  val WAIT_TIME_OUT: Duration         = Duration.of(20, ChronoUnit.SECONDS)
+  var WAIT_POLLING_INTERVAL: WebDriverWait = new WebDriverWait(driver,Duration.ofMillis(250))
+  var WAIT_TIME_OUT: WebDriverWait         = new WebDriverWait(driver,Duration.ofSeconds(20))
+
 
   val clearAllUrl =
     s"${TestConfiguration.url("economic-crime-levy-registration-frontend")}/register-for-economic-crime-levy/test-only/clear-all"
@@ -42,8 +42,8 @@ trait BasePage extends BrowserDriver with Matchers {
     driver.get(url)
 
   private val fluentWait: Wait[WebDriver] = new FluentWait[WebDriver](driver)
-    .withTimeout(WAIT_POLLING_INTERVAL)
-    .pollingEvery(WAIT_TIME_OUT)
+    .withTimeout(Duration.ofSeconds(250))
+    .pollingEvery(Duration.ofSeconds(20))
 
   def clickElement(locator: By): Unit = {
     waitForElementToBeClickable(locator)
