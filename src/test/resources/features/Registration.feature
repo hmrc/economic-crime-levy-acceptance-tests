@@ -357,7 +357,9 @@ Feature: Register for ECL
     When I do not select an option for my UK company registration number
     Then I should see an error that says Select yes if you have a UK company registration number
 
-  Scenario: User is able to amend the registrations they have submitted through ECL account dashboard
+  Scenario: User is able to cancel the amend registrations they have submitted through ECL account dashboard
     Given I am signed in to the account journey with my ECL reference as XMECL0000000001
     When I provide the details to amend the submitted economic crime levy registration
-    Then I should be on the page that says Economic Crime Levy registration amendment requested
+    And I decide to cancel this amendments
+    Then I should be on the page that says Your Economic Crime Levy account
+

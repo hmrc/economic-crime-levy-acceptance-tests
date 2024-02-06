@@ -38,6 +38,9 @@ trait BasePage extends BrowserDriver with Matchers {
   protected def navigateToClearAllUrl(): Unit =
     driver.get(clearAllUrl)
 
+  protected def get(url: String): Unit =
+    driver.get(url)
+
   private val fluentWait: Wait[WebDriver] = new FluentWait[WebDriver](driver)
     .withTimeout(WAIT_POLLING_INTERVAL)
     .pollingEvery(WAIT_TIME_OUT)

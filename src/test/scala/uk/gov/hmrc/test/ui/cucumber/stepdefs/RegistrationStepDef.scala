@@ -470,8 +470,15 @@ class RegistrationStepDef extends BaseStepDef {
     SharedActions
       .enterDetails("Amending registration details")
     RegistrationPage
-      .provideCheckYourAnswers()
+      .provideChangeFirstContactDetails()
   }
+
+  And("^I decide to cancel this amendments") { () =>
+    AmendmentPage
+      .provideCancelAmendment()
+      .provideSelectYesOrNo()
+  }
+
   And("^I click on the try again button") { () =>
     SharedActions.clickTryAgainButton()
   }

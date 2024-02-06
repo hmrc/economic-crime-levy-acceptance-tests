@@ -16,7 +16,6 @@
 
 package uk.gov.hmrc.test.ui.cucumber.stepdefs
 import uk.gov.hmrc.test.ui.pages.SharedActions
-import uk.gov.hmrc.test.ui.pages.SharedActions.submitPage
 import uk.gov.hmrc.test.ui.pages.registration._
 class AmlActivityStepDef extends BaseStepDef {
 
