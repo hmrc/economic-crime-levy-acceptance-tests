@@ -23,7 +23,7 @@ import uk.gov.hmrc.test.ui.pages.{BasePage, SharedActions}
 object EclLiableForPreviousFinancialYearPage extends BasePage {
 
   val url =
-    s"${TestConfiguration.url("economic-crime-levy-registration-frontend")}/register-for-economic-crime-levy/previous-financial-year?fromRevenuePage=false"
+    s"${TestConfiguration.url("economic-crime-levy-registration-frontend")}/register-for-economic-crime-levy/previous-financial-year"
 
   val expectedTaxYearStart = (EclTaxYear.currentFyStartYear.toInt - 1).toString
   val expectedTaxYearEnd   = (EclTaxYear.currentFyEndYear.toInt - 1).toString

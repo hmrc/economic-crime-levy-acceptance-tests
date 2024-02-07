@@ -23,7 +23,7 @@ object ChangeOrganisationDetails extends BasePage {
   val cssForChangeBusinessSector: String       =
     "a[href='/register-for-economic-crime-levy/change-answer/what-is-your-business-sector']"
   val cssForChangeAmlSupervisor: String        =
-    "a[href='/register-for-economic-crime-levy/change-answer/your-aml-supervisor/Initial?fromLiableBeforeCurrentYearPage=false']"
+    "a[href='/register-for-economic-crime-levy/change-answer/your-aml-supervisor/Initial']"
   val cssForChangeUkRevenue: String            =
     "a[href='/register-for-economic-crime-levy/change-answer/uk-revenue-in-accounting-period']"
   val cssForChangeAccountingPeriod: String     =
