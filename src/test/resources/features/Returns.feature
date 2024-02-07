@@ -233,9 +233,19 @@ Feature: Submit ECL Return
     Then I should be on the page that says Return submitted
     And I should see the amount to pay is Amount you need to pay: £0
 
-  Scenario: User is able to amend the returns they have submitted through ECL account dashboard
+  Scenario: User cancels amendments to the submitted economic crime levy return
     Given I am signed in to the account journey with my ECL reference as XMECL0000000007
     When I provide the details to amend the submitted economic crime levy return
     And I decide to cancel this amendments
     Then I should be on the page that says Your Economic Crime Levy account
+
+Scenario: User amends the submitted returns via ECL account dashboard
+  Given I am signed in to the account journey with my ECL reference as XMECL0000000007
+  When I provide the details to amend the submitted economic crime levy return
+  And the amended information should display under Amended answers on the Check your answers page
+    | Return completed by | James Bond 007     |
+    | Role                | Compliance Officer |
+    | Email address       | verify@oc.com      |
+    | Telephone number    | 014753777777       |
+  And I should be on the page that says Economic Crime Levy return amended
 
