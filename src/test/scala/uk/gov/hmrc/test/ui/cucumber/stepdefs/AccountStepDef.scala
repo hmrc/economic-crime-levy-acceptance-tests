@@ -17,10 +17,8 @@
 package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
 import io.cucumber.datatable.DataTable
-import uk.gov.hmrc.test.ui.pages.SharedActions
 import uk.gov.hmrc.test.ui.pages.account.AccountPage._
 import uk.gov.hmrc.test.ui.pages.account._
-import uk.gov.hmrc.test.ui.pages.registration.{EclLiableForPreviousFinancialYearPage, RegistrationPage}
 import uk.gov.hmrc.test.ui.pages.returns.ReturnsPage
 
 class AccountStepDef extends BaseStepDef {

@@ -27,7 +27,7 @@ object AmendmentPage extends BasePage {
 
   def navigateTo(): this.type = {
     navigateToClearAllUrl()
-    driver.get(url)
+    get(url)
     this
   }
 
@@ -36,4 +36,21 @@ object AmendmentPage extends BasePage {
     this
   }
 
+  def provideCancelAmendment(): this.type = {
+    SharedActions
+      .clickLinkByPartialText("Cancel this amendment")
+    this
+  }
+
+  def provideSelectYesOrNo(value: String = "Yes"): this.type = {
+    value match {
+      case "No" =>
+        SharedActions
+          .selectYesOrNo(value)
+      case _    =>
+        SharedActions
+          .selectYesOrNo(value)
+    }
+    this
+  }
 }

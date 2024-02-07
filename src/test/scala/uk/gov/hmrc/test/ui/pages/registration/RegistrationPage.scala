@@ -27,7 +27,7 @@ object RegistrationPage extends BasePage {
 
   def navigateTo(): this.type = {
     navigateToClearAllUrl()
-    driver.get(url)
+    get(url)
     this
   }
 
@@ -419,6 +419,18 @@ object RegistrationPage extends BasePage {
   def provideUtrReference(companyRegistrationNumber: String): this.type = {
     SharedActions
       .enterDetails(companyRegistrationNumber)
+    this
+  }
+
+  def provideAnswerToCancelAmendment(value: String = "Yes"): this.type = {
+    value match {
+      case "No" =>
+        SharedActions
+          .selectYesOrNo(value)
+      case _    =>
+        SharedActions
+          .selectYesOrNo(value)
+    }
     this
   }
 }

@@ -309,6 +309,7 @@ class ReturnsStepDef extends BaseStepDef {
     SharedActions
       .enterDetails("Revenue Changed in the current FY ")
     ReturnsPage
-      .provideCheckYourAnswers()
+      .provideChangeContactDetails("James Bond 007", "Compliance Officer", "verify@oc.com", "014753777777")
   }
+
 }

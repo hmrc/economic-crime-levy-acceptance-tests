@@ -28,7 +28,7 @@ object DoYouHaveCrnPage extends BasePage {
 
   def navigateTo(): this.type = {
     navigateToClearAllUrl()
-    driver.get(url)
+    get(url)
     this
   }
 

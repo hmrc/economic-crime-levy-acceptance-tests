@@ -236,4 +236,6 @@ Feature: Submit ECL Return
   Scenario: User is able to amend the returns they have submitted through ECL account dashboard
     Given I am signed in to the account journey with my ECL reference as XMECL0000000007
     When I provide the details to amend the submitted economic crime levy return
-    Then I should be on the page that says Economic Crime Levy return amended
+    And I decide to cancel this amendments
+    Then I should be on the page that says Your Economic Crime Levy account
+
