@@ -16,6 +16,7 @@
 
 package uk.gov.hmrc.test.ui.pages.returns
 
+import io.cucumber.datatable.DataTable
 import org.openqa.selenium.By
 import uk.gov.hmrc.test.ui.conf.TestConfiguration
 import uk.gov.hmrc.test.ui.pages.utils.EclTaxYear
@@ -185,6 +186,35 @@ object ReturnsPage extends BasePage {
       By.xpath(s"//p[contains(text(),'Amount you need to pay')]")
     )
     assert(actual.contains(value))
+    this
+  }
+
+  def assertAmendedAnswers(data: DataTable): this.type = {
+    val returnCompletedBy = data.column(1).get(0)
+    val role = data.column(1).get(1)
+    val emailAddress = data.column(1).get(2)
+    val telephoneNumber = data.column(1).get(3)
+
+    val actualReturnCompletedBy = getText(
+      By.cssSelector("dl:nth-child(8) > div:nth-child(1) > dd:nth-child(2)")
+    )
+    actualReturnCompletedBy should be(returnCompletedBy)
+
+    val actualRole = getText(
+      By.cssSelector("dl:nth-child(8) > div:nth-child(2) > dd:nth-child(2)")
+    )
+    actualRole should be(role)
+
+    val actualEmailAddress = getText(
+      By.cssSelector("dl:nth-child(8) > div:nth-child(3) > dd:nth-child(2)")
+    )
+    actualEmailAddress should be(emailAddress)
+
+    val actualTelephoneNumber = getText(
+      By.cssSelector("dl:nth-child(8) > div:nth-child(4) > dd:nth-child(2)")
+    )
+    actualTelephoneNumber should be(telephoneNumber)
+
     this
   }
 }

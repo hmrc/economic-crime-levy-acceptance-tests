@@ -16,6 +16,7 @@
 
 package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
+import io.cucumber.datatable.DataTable
 import uk.gov.hmrc.test.ui.pages.SharedActions
 import uk.gov.hmrc.test.ui.pages.account.AccountPage
 import uk.gov.hmrc.test.ui.pages.returns.ReturnsPage._
@@ -310,6 +311,10 @@ class ReturnsStepDef extends BaseStepDef {
       .enterDetails("Revenue Changed in the current FY ")
     ReturnsPage
       .provideChangeContactDetails("James Bond 007", "Compliance Officer", "verify@oc.com", "014753777777")
+  }
+  And("""the amended information should display under Amended answers on the Check your answers page$""") {
+    (arg: DataTable) => assertAmendedAnswers(arg)
+      .submitPage()
   }
 
 }
