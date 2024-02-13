@@ -42,7 +42,7 @@ object ChangeContactDetailsPage extends BasePage {
     "a[href='/register-for-economic-crime-levy/change-answer/second-contact-telephone']"
 
   val cssForChangeRegisteredAddress: String =
-    "a[href='/register-for-economic-crime-levy/change-answer/contact-address']"
+    "a[href='/register-for-economic-crime-levy/change-answer/uk-address']"
 
   def changeFirstContactName(): this.type = {
     clickByCssSelector(cssForChangeFirstContactName)

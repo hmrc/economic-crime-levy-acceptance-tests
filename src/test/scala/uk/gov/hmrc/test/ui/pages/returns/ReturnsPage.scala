@@ -189,7 +189,7 @@ object ReturnsPage extends BasePage {
     this
   }
 
-  def assertAmendedAnswers(data: DataTable): this.type = {
+  def assertAmendedReturnAnswers(data: DataTable): this.type = {
     val returnCompletedBy = data.column(1).get(0)
     val role = data.column(1).get(1)
     val emailAddress = data.column(1).get(2)
