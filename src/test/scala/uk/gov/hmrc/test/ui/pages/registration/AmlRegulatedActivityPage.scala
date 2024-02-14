@@ -32,7 +32,6 @@ object AmlRegulatedActivityPage extends BasePage {
     "Did you carry out anti-money laundering (AML) regulated activity between 1 April " + expectedTaxYearStart + " and 31 March " + expectedTaxYearEnd + "?"
 
   def navigateTo(): this.type = {
-    navigateToClearAllUrl()
     get(url)
     this
   }

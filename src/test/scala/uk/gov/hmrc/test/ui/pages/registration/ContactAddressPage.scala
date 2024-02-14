@@ -27,7 +27,6 @@ object ContactAddressPage extends BasePage {
   val heading = "Do you want to use this registered address as the main contact address?"
 
   def navigateTo(): this.type = {
-    navigateToClearAllUrl()
     get(url)
     this
   }

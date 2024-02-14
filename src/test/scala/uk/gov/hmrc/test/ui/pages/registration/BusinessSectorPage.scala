@@ -28,7 +28,6 @@ object BusinessSectorPage extends BasePage {
   val cssForSaveAndContinue = "button[class='govuk-button']"
 
   def navigateTo(): this.type = {
-    navigateToClearAllUrl()
     get(url)
     this
   }

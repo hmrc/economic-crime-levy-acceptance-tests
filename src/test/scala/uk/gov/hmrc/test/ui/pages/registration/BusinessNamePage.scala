@@ -27,7 +27,6 @@ object BusinessNamePage extends BasePage {
   val heading = "What is the name of your business?"
 
   def navigateTo(): this.type = {
-    navigateToClearAllUrl()
     get(url)
     this
   }

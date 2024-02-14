@@ -27,7 +27,6 @@ object OverseasTaxIdentifierPage extends BasePage {
   val heading = "What is your overseas tax identifier?"
 
   def navigateTo(): this.type = {
-    navigateToClearAllUrl()
     get(url)
     this
   }

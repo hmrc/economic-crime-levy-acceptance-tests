@@ -27,7 +27,6 @@ object PartnershipNamePage extends BasePage {
   val heading = "What is the partnership name?"
 
   def navigateTo(): this.type = {
-    navigateToClearAllUrl()
     get(url)
     this
   }

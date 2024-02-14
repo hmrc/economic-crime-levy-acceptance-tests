@@ -27,7 +27,6 @@ object AmlAccountingActivityPage extends BasePage {
   val heading = "Relevant accounting period"
 
   def navigateTo(): this.type = {
-    navigateToClearAllUrl()
     get(url)
     this
   }

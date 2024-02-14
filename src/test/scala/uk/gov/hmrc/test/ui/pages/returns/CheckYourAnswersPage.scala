@@ -27,7 +27,6 @@ object CheckYourAnswersPage extends BasePage {
   val heading = "Check your answers"
 
   def navigateTo(): this.type = {
-    navigateToClearAllUrl()
     get(url)
     this
   }

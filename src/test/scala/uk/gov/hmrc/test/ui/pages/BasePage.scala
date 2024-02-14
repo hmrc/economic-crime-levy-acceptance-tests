@@ -31,12 +31,6 @@ trait BasePage extends BrowserDriver with Matchers {
   var WAIT_POLLING_INTERVAL: WebDriverWait = new WebDriverWait(driver, Duration.ofMillis(250))
   var WAIT_TIME_OUT: WebDriverWait         = new WebDriverWait(driver, Duration.ofSeconds(20))
 
-  val clearAllUrl =
-    s"${TestConfiguration.url("economic-crime-levy-registration-frontend")}/register-for-economic-crime-levy/test-only/clear-all"
-
-  protected def navigateToClearAllUrl(): Unit =
-    driver.get(clearAllUrl)
-
   protected def get(url: String): Unit =
     driver.get(url)
 

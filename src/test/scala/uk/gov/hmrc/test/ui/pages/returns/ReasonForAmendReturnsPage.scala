@@ -26,7 +26,6 @@ object ReasonForAmendReturnsPage extends BasePage {
   val heading = "Why are you requesting to amend your return?"
 
   def navigateTo(): this.type = {
-    navigateToClearAllUrl()
     get(url)
     this
   }

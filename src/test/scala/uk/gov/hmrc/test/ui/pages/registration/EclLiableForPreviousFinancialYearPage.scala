@@ -32,7 +32,6 @@ object EclLiableForPreviousFinancialYearPage extends BasePage {
     "Were you liable to pay the ECL from 1 April " + expectedTaxYearStart + " to 31 March " + expectedTaxYearEnd + "?"
 
   def navigateTo(): this.type = {
-    navigateToClearAllUrl()
     get(url)
     this
   }

@@ -27,7 +27,6 @@ object FirstContactNamePage extends BasePage {
   val heading = "Provide a contact name"
 
   def navigateTo(): this.type = {
-    navigateToClearAllUrl()
     get(url)
     this
   }

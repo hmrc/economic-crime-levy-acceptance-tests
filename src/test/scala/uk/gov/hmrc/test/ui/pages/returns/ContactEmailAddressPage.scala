@@ -24,7 +24,6 @@ object ContactEmailAddressPage extends BasePage {
     s"${TestConfiguration.url("economic-crime-levy-returns-frontend")}/submit-economic-crime-levy-return/contact-email-address"
 
   def navigateTo(): this.type = {
-    navigateToClearAllUrl()
     get(url)
     this
   }

@@ -27,7 +27,6 @@ object SelfAssessmentUtrPage extends BasePage {
   val heading = "What is your self assessment unique taxpayer reference?"
 
   def navigateTo(): this.type = {
-    navigateToClearAllUrl()
     get(url)
     this
   }

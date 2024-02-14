@@ -27,7 +27,6 @@ object UkRevenuePage extends BasePage {
   val heading = "Total UK revenue"
 
   def navigateTo(): this.type = {
-    navigateToClearAllUrl()
     get(url)
     this
   }

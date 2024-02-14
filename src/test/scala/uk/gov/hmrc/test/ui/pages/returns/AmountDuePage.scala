@@ -26,7 +26,6 @@ object AmountDuePage extends BasePage {
   val heading = "Amount of Economic Crime Levy you need to pay"
 
   def navigateTo(): this.type = {
-    navigateToClearAllUrl()
     get(url)
     this
   }

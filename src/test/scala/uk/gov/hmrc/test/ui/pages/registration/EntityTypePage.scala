@@ -27,7 +27,6 @@ object EntityTypePage extends BasePage {
   val heading = "What is your entity type?"
 
   def navigateTo(): this.type = {
-    navigateToClearAllUrl()
     get(url)
     this
   }

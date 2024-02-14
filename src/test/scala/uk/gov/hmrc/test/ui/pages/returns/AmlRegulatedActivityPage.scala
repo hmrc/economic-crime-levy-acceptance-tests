@@ -26,7 +26,6 @@ object AmlRegulatedActivityPage extends BasePage {
   val heading = "Did you carry out AML-regulated activity for the full financial year?"
 
   def navigateTo(): this.type = {
-    navigateToClearAllUrl()
     get(url)
     this
   }
