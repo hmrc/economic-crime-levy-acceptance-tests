@@ -30,7 +30,6 @@ object AccountPage extends BasePage {
   val heading = "Your Economic Crime Levy account"
 
   def navigateTo(): this.type = {
-    navigateToClearAllUrl()
     get(url)
     this
   }

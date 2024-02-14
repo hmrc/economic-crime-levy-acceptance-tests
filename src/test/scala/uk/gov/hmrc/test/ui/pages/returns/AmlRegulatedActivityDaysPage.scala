@@ -26,7 +26,6 @@ object AmlRegulatedActivityDaysPage extends BasePage {
   val heading = "How many days of the financial year did you carry out AML-regulated activity?"
 
   def navigateTo(): this.type = {
-    navigateToClearAllUrl()
     get(url)
     this
   }

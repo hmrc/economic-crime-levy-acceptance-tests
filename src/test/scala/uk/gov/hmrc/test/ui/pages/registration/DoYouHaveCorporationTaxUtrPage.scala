@@ -27,7 +27,6 @@ object DoYouHaveCorporationTaxUtrPage extends BasePage {
   val heading = "Do you have a Corporation Tax Unique Taxpayer Reference?"
 
   def navigateTo(): this.type = {
-    navigateToClearAllUrl()
     get(url)
     this
   }

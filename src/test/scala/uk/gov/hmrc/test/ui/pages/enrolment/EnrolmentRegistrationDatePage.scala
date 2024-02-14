@@ -27,7 +27,6 @@ object EnrolmentRegistrationDatePage extends BasePage {
   val heading = "Your ECL registration date"
 
   def navigateTo(): this.type = {
-    navigateToClearAllUrl()
     get(url)
     this
   }

@@ -27,7 +27,6 @@ object DoYouHaveCrnPage extends BasePage {
   val heading = "Do you have a UK company registration number?"
 
   def navigateTo(): this.type = {
-    navigateToClearAllUrl()
     get(url)
     this
   }

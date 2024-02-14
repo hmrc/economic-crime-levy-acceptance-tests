@@ -28,7 +28,6 @@ object RegistrationPage extends BasePage {
     s"${TestConfiguration.url("economic-crime-levy-registration-frontend")}/register-for-economic-crime-levy/"
 
   def navigateTo(): this.type = {
-    navigateToClearAllUrl()
     get(url)
     this
   }

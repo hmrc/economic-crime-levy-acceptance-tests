@@ -27,7 +27,6 @@ object CharityRegistrationNumberPage extends BasePage {
   val heading = "What is your charity registration number (CHRN)?"
 
   def navigateTo(): this.type = {
-    navigateToClearAllUrl()
     get(url)
     this
   }

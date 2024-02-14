@@ -27,7 +27,6 @@ object OtherEntityPostcodePage extends BasePage {
   val heading = "What is the postcode you used to register your association?"
 
   def navigateTo(): this.type = {
-    navigateToClearAllUrl()
     get(url)
     this
   }

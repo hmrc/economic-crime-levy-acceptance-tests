@@ -27,7 +27,6 @@ object ViewReturnsPage extends BasePage {
   val heading = "Your Economic Crime Levy returns"
 
   def navigateTo(): this.type = {
-    navigateToClearAllUrl()
     get(url)
     this
   }

@@ -27,7 +27,6 @@ object AmlSupervisorForPreviousFinancialYearPage extends BasePage {
   val heading = "Your anti-money laundering (AML) supervisor"
 
   def navigateTo(): this.type = {
-    navigateToClearAllUrl()
     get(url)
     this
   }

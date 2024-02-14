@@ -35,7 +35,6 @@ object ReturnsPage extends BasePage {
     "Submit your Economic Crime Levy return for " + (EclTaxYear.currentFyStartYear.toInt - 1).toString + "-" + (EclTaxYear.currentFyEndYear.toInt - 1).toString
 
   def navigateTo(): this.type = {
-    navigateToClearAllUrl()
     get(url)
     this
   }

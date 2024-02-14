@@ -28,7 +28,6 @@ object EnrolmentPage extends BasePage {
   val heading = "Do you have an Economic Crime Levy (ECL) reference number?"
 
   def navigateTo(): this.type = {
-    navigateToClearAllUrl()
     get(url)
     this
   }

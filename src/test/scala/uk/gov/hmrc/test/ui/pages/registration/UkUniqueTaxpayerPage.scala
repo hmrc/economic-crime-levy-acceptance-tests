@@ -27,7 +27,6 @@ object UkUniqueTaxpayerPage extends BasePage {
   val heading = "What is your UK unique taxpayer reference?"
 
   def navigateTo(): this.type = {
-    navigateToClearAllUrl()
     get(url)
     this
   }
