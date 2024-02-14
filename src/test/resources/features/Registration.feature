@@ -363,3 +363,12 @@ Feature: Register for ECL
     And I decide to cancel this amendments
     Then I should be on the page that says Your Economic Crime Levy account
 
+  Scenario: User amends the submitted registration via ECL account dashboard
+    Given I am signed in to the account journey with my ECL reference as XMECL0000000001
+    When I provide the details to amend the submitted economic crime levy registration
+    And the amended registration information should display under Amended answers on the Check your answers page
+      | Return completed by | James Bond       |
+      | Role                | Director         |
+      | Email address       | confirm@test.com |
+      | Telephone number    | 01475344272      |
+    And I should be on the page that says Economic Crime Levy registration amendment requested

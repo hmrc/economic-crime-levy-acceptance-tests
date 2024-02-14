@@ -312,8 +312,8 @@ class ReturnsStepDef extends BaseStepDef {
     ReturnsPage
       .provideChangeContactDetails("James Bond 007", "Compliance Officer", "verify@oc.com", "014753777777")
   }
-  And("""the amended information should display under Amended answers on the Check your answers page$""") {
-    (arg: DataTable) => assertAmendedAnswers(arg)
+  And("""the amended return information should display under Amended answers on the Check your answers page$""") {
+    (arg: DataTable) => assertAmendedReturnAnswers(arg)
       .submitPage()
   }
 

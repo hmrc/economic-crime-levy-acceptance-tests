@@ -242,7 +242,7 @@ Feature: Submit ECL Return
 Scenario: User amends the submitted returns via ECL account dashboard
   Given I am signed in to the account journey with my ECL reference as XMECL0000000007
   When I provide the details to amend the submitted economic crime levy return
-  And the amended information should display under Amended answers on the Check your answers page
+  And the amended return information should display under Amended answers on the Check your answers page
     | Return completed by | James Bond 007     |
     | Role                | Compliance Officer |
     | Email address       | verify@oc.com      |

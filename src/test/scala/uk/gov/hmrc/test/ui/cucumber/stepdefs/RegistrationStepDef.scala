@@ -16,6 +16,7 @@
 
 package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
+import io.cucumber.datatable.DataTable
 import uk.gov.hmrc.test.ui.pages.SharedActions
 import uk.gov.hmrc.test.ui.pages.account.AccountPage
 import uk.gov.hmrc.test.ui.pages.registration.RegistrationPage._
@@ -202,13 +203,15 @@ class RegistrationStepDef extends BaseStepDef {
       .provideBusinessSector("Credit institution")
       .provideFirstContactDetails("Oliver Tom", "Account Manager", "test@test.com", "01632 960 001")
       .provideAddAnotherContactYesOrNo("No")
-      .provideRegisteredAddress("Yes")
+      .provideRegisteredAddress("No")
+      .provideAnotherUkRegisteredAddress("Yes")
+      .submitPage()
       .provideChangeRegisteredAddress()
   }
 
   When("I select (.*) on whether or not to use a different UK address as my main contact address$") { (value: String) =>
-    provideRegisteredAddress("No")
-      .provideNonUkRegisteredAddress("Yes")
+//    provideRegisteredAddress("No")
+      provideNonUkRegisteredAddress(value)
       .submitPage()
   }
 
@@ -481,6 +484,12 @@ class RegistrationStepDef extends BaseStepDef {
 
   And("^I click on the try again button") { () =>
     SharedActions.clickTryAgainButton()
+  }
+
+  And("""the amended registration information should display under Amended answers on the Check your answers page$""") {
+    (arg: DataTable) =>
+      assertAmendedRegistrationAnswers(arg)
+        .submitPage()
   }
 
 }

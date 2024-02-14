@@ -201,27 +201,27 @@ object AccountPage extends BasePage {
     val actions       = data.column(1).get(5)
 
     val actualPaymentDate = getText(
-      By.cssSelector("tbody tr:nth-child(1) th:nth-child(1)")
+      By.cssSelector("tr:nth-child(1) td:nth-child(1)")
     )
     actualPaymentDate should be(paymentDate)
     val actualPaymentType = getText(
-      By.cssSelector("  tr:nth-child(1) > td:nth-child(2)")
+      By.cssSelector("tr:nth-child(1) td:nth-child(2)")
     )
     actualPaymentType should be(paymentType)
     val actualPaymentPeriod = getText(
-      By.cssSelector("  tr:nth-child(1) > td:nth-child(3)")
+      By.cssSelector("tr:nth-child(1) td:nth-child(3)")
     )
     actualPaymentPeriod should be(paymentPeriod)
     val actualYouPaidHmrc = getText(
-      By.cssSelector("  tr:nth-child(1) > td:nth-child(4)")
+      By.cssSelector("tr:nth-child(1) td:nth-child(4)")
     )
     actualYouPaidHmrc should be(youPaidHmrc)
     val actualPaymentStatus = getText(
-      By.cssSelector(" tr:nth-child(1) > td:nth-child(5)")
+      By.cssSelector("tr:nth-child(1) td:nth-child(5)")
     )
     actualPaymentStatus should be(paymentStatus)
     val actualActions = getText(
-      By.cssSelector(" tr:nth-child(1) > td:nth-child(6)")
+      By.cssSelector("tr:nth-child(1) td:nth-child(6)")
     )
     actualActions should be(actions)
     this
@@ -236,7 +236,7 @@ object AccountPage extends BasePage {
     val actions       = data.column(1).get(5)
 
     val actualPaymentDate = getText(
-      By.cssSelector("th[class='govuk-table__header govuk-table__header']")
+      By.cssSelector(".govuk-table__cell.govuk-table__header")
     )
     actualPaymentDate should be(paymentDate)
     val actualPaymentType = getText(
