@@ -20,7 +20,6 @@ import org.junit.Assert
 import org.openqa.selenium.support.ui.{ExpectedConditions, FluentWait, Wait, WebDriverWait}
 import org.openqa.selenium.{By, WebDriver, WebElement}
 import org.scalatest.matchers.should.Matchers
-import uk.gov.hmrc.test.ui.conf.TestConfiguration
 import uk.gov.hmrc.test.ui.driver.BrowserDriver
 
 import java.util
@@ -57,8 +56,12 @@ trait BasePage extends BrowserDriver with Matchers {
   private def waitForElementToBePresent(locator: By): WebElement =
     fluentWait.until(ExpectedConditions.presenceOfElementLocated(locator))
 
+  def waitforTextBoxToBeAvailable(locator: By) =
+    new WebDriverWait(driver, Duration.ofSeconds(20))
+      .until(ExpectedConditions.visibilityOfElementLocated(locator))
+
   private def clear(locator: By): Unit = {
-    waitForElementToBePresent(locator)
+    waitforTextBoxToBeAvailable(locator)
     findElement(locator).clear()
   }
   protected def sendKeys(locator: By, value: String): Unit = {
