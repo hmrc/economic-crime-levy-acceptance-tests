@@ -80,4 +80,12 @@ object SharedActions extends BasePage {
     SharedActions.clickButton()
     this
   }
+
+  def assertEclReferenceNumber(referenceNumber: String): this.type = {
+    val actualReferenceNumber = getText(
+      By.cssSelector(".govuk-caption-m")
+    )
+    actualReferenceNumber should be(referenceNumber)
+    this
+  }
 }

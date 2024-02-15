@@ -210,7 +210,6 @@ class RegistrationStepDef extends BaseStepDef {
   }
 
   When("I select (.*) on whether or not to use a different UK address as my main contact address$") { (value: String) =>
-//    provideRegisteredAddress("No")
       provideNonUkRegisteredAddress(value)
       .submitPage()
   }
@@ -374,10 +373,6 @@ class RegistrationStepDef extends BaseStepDef {
     PartnershipNamePage
       .navigateTo()
     providePartnershipName(partnershipName)
-  }
-
-  Then("^I should be on the page that asks (.*)$") { (value: String) =>
-    SharedActions.assertPartialTextIsDisplayed(value)
   }
 
   Then("^I should see an error that says (.*)$") { (value: String) =>
