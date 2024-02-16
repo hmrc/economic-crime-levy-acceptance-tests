@@ -247,5 +247,5 @@ Scenario: User amends the submitted returns via ECL account dashboard
     | Role                | Compliance Officer |
     | Email address       | verify@oc.com      |
     | Telephone number    | 014753777777       |
-  And I should be on the page that says Economic Crime Levy return amended
+  And I should be on the page that says Economic Crime Levy return amendment requested
 
