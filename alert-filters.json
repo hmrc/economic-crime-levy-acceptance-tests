@@ -23,6 +23,14 @@
       "ruleId": 90022,
       "urlIsRegex": "true",
       "newLevel": -1
+    },
+    {
+      "contextId": 4,
+      "reason": "The response contains Personally Identifiable Information, such as CC number, SSN and similar sensitive data.",
+      "url": "http:\/\/localhost:14000\/register-for-economic-crime-levy\/contact-name",
+      "ruleId": 10062,
+      "urlIsRegex": "true",
+      "newLevel": -1
     }
   ]
 }
