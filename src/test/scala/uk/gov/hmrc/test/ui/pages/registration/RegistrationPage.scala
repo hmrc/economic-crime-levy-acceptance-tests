@@ -441,22 +441,22 @@ object RegistrationPage extends BasePage {
     val telephoneNumber = data.column(1).get(3)
 
     val actualReturnCompletedBy = getText(
-      By.cssSelector("dl:nth-child(12) > div:nth-child(1) > dd:nth-child(2)")
+      By.cssSelector("dl:nth-child(14) > div:nth-child(1) > dd:nth-child(2)")
     )
     actualReturnCompletedBy should be(returnCompletedBy)
 
     val actualRole = getText(
-      By.cssSelector("dl:nth-child(12) > div:nth-child(2) > dd:nth-child(2)")
+      By.cssSelector("dl:nth-child(14) > div:nth-child(2) > dd:nth-child(2)")
     )
     actualRole should be(role)
 
     val actualEmailAddress = getText(
-      By.cssSelector("dl:nth-child(12) > div:nth-child(3) > dd:nth-child(2)")
+      By.cssSelector("dl:nth-child(14) > div:nth-child(3) > dd:nth-child(2)")
     )
     actualEmailAddress should be(emailAddress)
 
     val actualTelephoneNumber = getText(
-      By.cssSelector("dl:nth-child(12) > div:nth-child(4) > dd:nth-child(2)")
+      By.cssSelector("dl:nth-child(14) > div:nth-child(4) > dd:nth-child(2)")
     )
     actualTelephoneNumber should be(telephoneNumber)
     this
