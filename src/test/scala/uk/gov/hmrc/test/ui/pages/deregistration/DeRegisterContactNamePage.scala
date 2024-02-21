@@ -14,22 +14,25 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.test.ui.cucumber.runner
+package uk.gov.hmrc.test.ui.pages.deregistration
 
-import io.cucumber.junit.Cucumber
-import io.cucumber.junit.CucumberOptions
-import org.junit.runner.RunWith
+import uk.gov.hmrc.test.ui.conf.TestConfiguration
+import uk.gov.hmrc.test.ui.pages.{BasePage, SharedActions}
 
-@RunWith(classOf[Cucumber])
-@CucumberOptions(
-  features = Array("src/test/resources/features"),
-  glue = Array("uk.gov.hmrc.test.ui.cucumber.stepdefs"),
-  plugin = Array(
-    "pretty",
-    "html:target/cucumber",
-    "json:target/cucumber.json",
-    "junit:target/test-reports/RunRegistration.xml"
-  ),
-  tags = "@wip"
-)
-class RunRegistration {}
+object DeRegisterContactNamePage extends BasePage {
+
+  val url =
+    s"${TestConfiguration.url("economic-crime-levy-registration-frontend")}/register-for-economic-crime-levy/deregister-contact-name"
+
+  val heading = "Provide a contact name"
+
+  def navigateTo(): this.type = {
+    get(url)
+    this
+  }
+
+  def submitPage(): this.type = {
+    SharedActions.clickButton()
+    this
+  }
+}

@@ -17,6 +17,7 @@
 package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
 import uk.gov.hmrc.test.ui.pages.SharedActions
+import uk.gov.hmrc.test.ui.pages.deregistration.DeRegistrationPage
 import uk.gov.hmrc.test.ui.pages.deregistration.DeRegistrationPage._
 
 
@@ -32,5 +33,15 @@ class DeRegistrationStepDef extends BaseStepDef {
 
   When("the links (.*) under the Action column should be completely hidden from the page$") { (linkName: String) =>
     getPaymentAndReturnLinks(linkName)
+  }
+
+  When("""I provide the details to de register the ECL account from the system""") { () =>
+    DeRegistrationPage
+      .provideEclDeRegistration()
+      .submitPage()
+      .provideReasonForDeRegistering()
+      .provideEclDeRegistrationDate(deRegistrationDate = now.getDayOfMonth.toString, deRegistrationMonth = now.getMonthValue.toString, deRegistrationYear = now.getYear.toString)
+      .provideDeRegistrationFirstContactDetails("Tom Oliver", "Director", "verify@oc.com", "01632 000 001")
+      .submitPage()
   }
 }

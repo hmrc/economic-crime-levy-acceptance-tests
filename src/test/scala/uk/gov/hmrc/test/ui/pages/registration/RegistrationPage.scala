@@ -277,9 +277,8 @@ object RegistrationPage extends BasePage {
         RegistrationPage
           .provideOtherEntityName("Unincorporated Association")
           .provideRegisteredNameOfYourBusiness("OC Limited")
-          .doYouHaveCorporationTaxUniqueTaxpayerReference("Yes")
-          .provideCorporationTaxUniqueTaxpayerReference("0123456789")
-          .providePostcodeToRegisterCompany("AB1 2YZ")
+          .doYouHaveUkCompanyRegistrationNumber("Yes")
+          .doYouHaveUtrForUnIncorporatedAssociation("Yes")
       case "Trust"                      =>
         RegistrationPage
           .provideOtherEntityName("Trust")
@@ -460,6 +459,16 @@ object RegistrationPage extends BasePage {
       By.cssSelector("dl:nth-child(12) > div:nth-child(4) > dd:nth-child(2)")
     )
     actualTelephoneNumber should be(telephoneNumber)
+    this
+  }
+  def doYouHaveUtrForUnIncorporatedAssociation(value: String): this.type = {
+    value match {
+      case "No" =>
+        SharedActions.selectYesOrNo(value)
+      case _ =>
+        SharedActions.selectYesOrNo(value)
+        provideUkUniqueTaxpayerReference()
+    }
     this
   }
 }
