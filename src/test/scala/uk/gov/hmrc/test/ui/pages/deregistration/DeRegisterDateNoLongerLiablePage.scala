@@ -14,15 +14,25 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.test.ui.cucumber.stepdefs
+package uk.gov.hmrc.test.ui.pages.deregistration
 
-import org.scalatest.matchers.should.Matchers
-import org.scalatest.concurrent.Eventually
-import uk.gov.hmrc.test.ui.driver.BrowserDriver
-import io.cucumber.scala.{EN, ScalaDsl}
+import uk.gov.hmrc.test.ui.conf.TestConfiguration
+import uk.gov.hmrc.test.ui.pages.{BasePage, SharedActions}
 
-import java.time.LocalDate
-trait BaseStepDef extends ScalaDsl with EN with BrowserDriver with Eventually with Matchers {
+object DeRegisterDateNoLongerLiablePage extends BasePage {
 
-  val now = LocalDate.now()
+  val url     =
+    s"${TestConfiguration.url("economic-crime-levy-registration-frontend")}/register-for-economic-crime-levy/deregister-date-no-longer-liable"
+  val heading = "Enter the date you were no longer liable"
+
+  def navigateTo(): this.type = {
+    get(url)
+    this
+  }
+
+  def submitPage(): this.type = {
+    SharedActions.clickButton()
+    this
+  }
+
 }

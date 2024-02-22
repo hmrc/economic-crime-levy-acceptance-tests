@@ -18,11 +18,20 @@ package uk.gov.hmrc.test.ui.pages.deregistration
 
 import org.junit.Assert
 import org.openqa.selenium.By
+import uk.gov.hmrc.test.ui.conf.TestConfiguration
 import uk.gov.hmrc.test.ui.pages.{BasePage, SharedActions}
 
 import scala.jdk.CollectionConverters.CollectionHasAsScala
 
 object DeRegistrationPage extends BasePage {
+
+  val url =
+    s"${TestConfiguration.url("economic-crime-levy-registration-frontend")}/register-for-economic-crime-levy/deregister-start"
+  val heading = "Request to deregister from HMRC for the Economic Crime Levy"
+  def navigateTo(): this.type = {
+    get(url)
+    this
+  }
 
   def ProvideViewEclAccountAfterDeRegistration(linkName: String = "Payments"): this.type = {
     linkName match {
@@ -36,7 +45,7 @@ object DeRegistrationPage extends BasePage {
     this
   }
 
-  def paymentAndReturnLinkName : List[String] =
+  def paymentAndReturnLinkName: List[String] =
     List(
       s"Amend Return",
       s"Make a payment"
@@ -56,6 +65,52 @@ object DeRegistrationPage extends BasePage {
     this
   }
 
+  def provideEclDeRegistration(): this.type = {
+    SharedActions.clickById("deregister")
+    onPage(DeRegistrationPage.heading)
+    this
+  }
+
+  def provideReasonForDeRegistering(value: String = "value_0"): this.type = {
+    value match {
+      case "value_1" =>
+        SharedActions
+          .clickById("value_1")
+      case "value_2" =>
+        SharedActions
+          .clickById("value_2")
+      case _ =>
+        SharedActions
+          .clickById("value_0")
+    }
+    onPage(ReasonForDeRegistrationPage.heading)
+    submitPage()
+    this
+  }
+
+  def provideEclDeRegistrationDate(
+    deRegistrationDate: String,
+    deRegistrationMonth: String,
+    deRegistrationYear: String ): this.type = {
+    onPage(DeRegisterDateNoLongerLiablePage.heading)
+    sendKeys(By.id("value.day"), deRegistrationDate)
+    sendKeys(By.id("value.month"), deRegistrationMonth)
+    sendKeys(By.id("value.year"), deRegistrationYear)
+    submitPage()
+    this
+  }
+
+  def provideDeRegistrationFirstContactDetails(
+    contactName: String,
+    contactRole: String,
+    emailAddress: String,
+    contactNumber: String): this.type = {
+    SharedActions.enterDetails(contactName)
+    SharedActions.enterDetails(contactRole)
+    SharedActions.enterDetails(emailAddress)
+    SharedActions.enterDetails(contactNumber)
+    this
+  }
   def submitPage(): this.type = {
     SharedActions.clickButton()
     this

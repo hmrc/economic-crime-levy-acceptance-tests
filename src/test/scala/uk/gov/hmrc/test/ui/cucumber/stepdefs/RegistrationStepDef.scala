@@ -283,7 +283,6 @@ class RegistrationStepDef extends BaseStepDef {
         .provideUkRevenue()
         .provideEclLiableForPreviousFinancialYear()
         .provideOtherEntityBusinessDetails(otherEntityType)
-        .provideOtherEntityCheckYourAnswers()
         .provideBusinessSector("Credit institution")
         .provideFirstContactDetails("Oliver Tom", "Account Manager", "test@test.com", "01632 960 001")
         .provideAddAnotherContactYesOrNo("No")
@@ -464,7 +463,7 @@ class RegistrationStepDef extends BaseStepDef {
 
   When("""I provide the details to amend the submitted economic crime levy registration""") { () =>
     AccountPage
-      .provideAmendAnEclRegistration("amend")
+      .provideAmendAnEclRegistration()
     SharedActions
       .enterDetails("Amending registration details")
     RegistrationPage

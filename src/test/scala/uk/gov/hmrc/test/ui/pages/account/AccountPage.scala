@@ -141,7 +141,7 @@ object AccountPage extends BasePage {
     this
   }
 
-  def provideAmendAnEclRegistration(registrationStatus: String): this.type = {
+  def provideAmendAnEclRegistration(): this.type = {
     SharedActions.clickById("amend-registration")
     this
   }
