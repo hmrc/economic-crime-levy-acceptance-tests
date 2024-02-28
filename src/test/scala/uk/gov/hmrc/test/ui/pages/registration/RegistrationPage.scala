@@ -496,9 +496,7 @@ object RegistrationPage extends BasePage {
       case "No" =>
         SharedActions
           .selectYesOrNo(value)
-//        RegistrationPage
-//          .provideEclLiabilityDate(liabilityStartDate = now.getDayOfMonth.toString, liabilityStartMonth = now.getMonthValue.toString, liabilityStartYear = now.getYear.toString)
-      case _ =>
+     case _ =>
         SharedActions
           .selectYesOrNo(value)
         RegistrationPage
