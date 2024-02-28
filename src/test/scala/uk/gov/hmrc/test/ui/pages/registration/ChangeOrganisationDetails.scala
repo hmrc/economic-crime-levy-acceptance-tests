@@ -17,7 +17,6 @@
 package uk.gov.hmrc.test.ui.pages.registration
 
 import uk.gov.hmrc.test.ui.cucumber.stepdefs.BaseStepDef
-import uk.gov.hmrc.test.ui.pages.deregistration.DeRegistrationPage
 import uk.gov.hmrc.test.ui.pages.{BasePage, SharedActions}
 
 
