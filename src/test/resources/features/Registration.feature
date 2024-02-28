@@ -18,7 +18,7 @@ Feature: Register for ECL
   Scenario: Users who answer "No" whether or not they started AML regulated activity in current FY
     Given I am signed in to the registration journey
     When I select No on whether or not I carried out AML-regulated activity in current FY
-    Then I should be on the page that says Were you liable to pay the ECL from 1 April 2022 to 31 March 2023?
+    Then I should be on the page that says Are you liable for any previous financial years?
 @validations
   Scenario: User does not select their AML supervisor
     Given I am signed in to the registration journey
@@ -82,7 +82,7 @@ Feature: Register for ECL
   Scenario Outline: User enters an valid amount for UK revenue but less than 10.2M for their relevant accounting period
     Given I am signed in to the registration journey
     When I enter the UK revenue <UK Revenue> for the relevant accounting period
-    Then I should be on the page that says Were you liable to pay the ECL from 1 April 2022 to 31 March 2023?
+    Then I should be on the page that says Are you liable for any previous financial years?
     Examples:
       | UK Revenue |
       | 0          |
@@ -181,7 +181,7 @@ Feature: Register for ECL
   Scenario: User wants to change the AML regulated activity of the organisation before submitting the registration
     Given I am signed in to the registration journey
     When I click on the change link and select No on whether or not I carried out AML-regulated activity in current FY
-    Then I should be on the page that says Check your answers
+    Then I should be on the page that says Are you liable for any previous financial years?
 
   Scenario: User wants to change the entity type of the organisation before submitting the registration
     Given I am signed in to the registration journey
@@ -339,7 +339,7 @@ Feature: Register for ECL
   Scenario: User does not select whether or not they were liable to pay the ECL from 1 April 2022 to 31 March 2023
     Given I am signed in to the registration journey
     When I do not select an option for whether or not I liable to pay the ECL from 1 April 2022 to 31 March 2023
-    Then I should see an error that says Select yes if you were liable to pay the Economic Crime Levy
+    Then I should see an error that says Are you liable for any previous financial years?
 
   Scenario Outline: User registers a <Entity type> failed GRS identifiers and tries again
     Given I am signed in to the registration journey
@@ -372,3 +372,8 @@ Feature: Register for ECL
       | First contact email address       | confirm@test.com |
       | First contact telephone number    | 01475344272      |
     And I should be on the page that says Economic Crime Levy registration amendment requested
+
+  Scenario: User is amend the liability start date for registrations to previous FY through ECL account dashboard
+    Given I am signed in to the account journey with my ECL reference as XMECL0000000001
+    When I provide the details to amend the liability start date for registration
+    Then I should be on the page that says Economic Crime Levy registration amendment requested

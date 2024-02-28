@@ -17,14 +17,19 @@
 package uk.gov.hmrc.test.ui.pages.registration
 
 import uk.gov.hmrc.test.ui.conf.TestConfiguration
+import uk.gov.hmrc.test.ui.pages.utils.EclTaxYear
 import uk.gov.hmrc.test.ui.pages.{BasePage, SharedActions}
 
-object AmlSupervisorForPreviousFinancialYearPage extends BasePage {
+object RegisterForCurrentFinancialYearPage extends BasePage {
 
   val url =
-    s"${TestConfiguration.url("economic-crime-levy-registration-frontend")}/register-for-economic-crime-levy/your-aml-supervisor/Initial"
+    s"${TestConfiguration.url("economic-crime-levy-registration-frontend")}/register-for-economic-crime-levy/register-for-current-financial-year"
 
-  val heading = "Your anti-money laundering (AML) supervisor"
+
+  val expectedTaxYearStart = EclTaxYear.currentFyStartYear
+  val expectedTaxYearEnd   = EclTaxYear.currentFyEndYear
+  val heading              = "Are you registering for the 1 April " + expectedTaxYearStart + " and 31 March " + expectedTaxYearEnd + "financial year?"
+
 
   def navigateTo(): this.type = {
     get(url)
