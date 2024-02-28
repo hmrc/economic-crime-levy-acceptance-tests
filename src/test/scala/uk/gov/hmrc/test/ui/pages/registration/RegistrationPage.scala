@@ -22,6 +22,8 @@ import uk.gov.hmrc.test.ui.conf.TestConfiguration
 import uk.gov.hmrc.test.ui.pages.registration.BusinessSectorPage.cssForSaveAndContinue
 import uk.gov.hmrc.test.ui.pages.{BasePage, SharedActions}
 
+import java.time.LocalDate.now
+
 object RegistrationPage extends BasePage {
 
   val url =
@@ -468,6 +470,67 @@ object RegistrationPage extends BasePage {
       case _ =>
         SharedActions.selectYesOrNo(value)
         provideUkUniqueTaxpayerReference()
+    }
+    this
+  }
+
+  def provideChangeLiabilityStartDate(): this.type = {
+    ChangeOrganisationDetails
+      .changeLiabilityStartDate()
+    this
+  }
+
+  def provideEclLiabilityDate(
+     liabilityStartDate: String,
+     liabilityStartMonth: String,
+     liabilityStartYear: String): this.type = {
+    sendKeys(By.id("value.day"), liabilityStartDate)
+    sendKeys(By.id("value.month"), liabilityStartMonth)
+    sendKeys(By.id("value.year"), liabilityStartYear)
+    submitPage()
+    this
+  }
+
+  def provideEclLiableForCurrentFinancialYear(value: String = "Yes"): this.type = {
+    value match {
+      case "No" =>
+        SharedActions
+          .selectYesOrNo(value)
+     case _ =>
+        SharedActions
+          .selectYesOrNo(value)
+        RegistrationPage
+          .provideAmlRegulated()
+          .provideHmrcOrOtherAmlSupervisor()
+          .provideRelevantAccountingPeriod()
+          .provideUkRevenue()
+          .provideEclLiableForPreviousFinancialYear()
+    }
+    this
+  }
+
+  def areYouRegisteringForCurrentFinancialYear(value: String = "Yes"): this.type = {
+    value match {
+      case "No" =>
+        SharedActions
+          .selectYesOrNo(value)
+      case _ =>
+        SharedActions
+          .selectYesOrNo(value)
+    }
+    this
+  }
+
+  def areYouLiableForPreviousFinancialYear(value: String = "Yes"): this.type = {
+    value match {
+      case "No" =>
+        SharedActions
+          .selectYesOrNo(value)
+      case _ =>
+        SharedActions
+          .selectYesOrNo(value)
+        RegistrationPage
+          .provideEclLiabilityDate(liabilityStartDate = now.getDayOfMonth.toString, liabilityStartMonth = now.getMonthValue.toString, liabilityStartYear = now.getYear.toString)
     }
     this
   }

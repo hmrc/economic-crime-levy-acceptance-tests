@@ -19,12 +19,12 @@ package uk.gov.hmrc.test.ui.pages.registration
 import uk.gov.hmrc.test.ui.conf.TestConfiguration
 import uk.gov.hmrc.test.ui.pages.{BasePage, SharedActions}
 
-object AmlSupervisorForPreviousFinancialYearPage extends BasePage {
+object LiabilityStartDatePage extends BasePage {
 
   val url =
-    s"${TestConfiguration.url("economic-crime-levy-registration-frontend")}/register-for-economic-crime-levy/your-aml-supervisor/Initial"
+    s"${TestConfiguration.url("economic-crime-levy-registration-frontend")}/register-for-economic-crime-levy/liability-start-date"
 
-  val heading = "Your anti-money laundering (AML) supervisor"
+  val heading = "Enter the date you became liable for ECL"
 
   def navigateTo(): this.type = {
     get(url)

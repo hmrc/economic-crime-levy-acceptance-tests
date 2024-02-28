@@ -17,7 +17,6 @@
 package uk.gov.hmrc.test.ui.pages.registration
 
 import uk.gov.hmrc.test.ui.conf.TestConfiguration
-import uk.gov.hmrc.test.ui.pages.utils.EclTaxYear
 import uk.gov.hmrc.test.ui.pages.{BasePage, SharedActions}
 
 object EclLiableForPreviousFinancialYearPage extends BasePage {
@@ -25,11 +24,8 @@ object EclLiableForPreviousFinancialYearPage extends BasePage {
   val url =
     s"${TestConfiguration.url("economic-crime-levy-registration-frontend")}/register-for-economic-crime-levy/previous-financial-year"
 
-  val expectedTaxYearStart = (EclTaxYear.currentFyStartYear.toInt - 1).toString
-  val expectedTaxYearEnd   = (EclTaxYear.currentFyEndYear.toInt - 1).toString
+  val heading = "Are you liable for any previous financial years?"
 
-  val heading =
-    "Were you liable to pay the ECL from 1 April " + expectedTaxYearStart + " to 31 March " + expectedTaxYearEnd + "?"
 
   def navigateTo(): this.type = {
     get(url)
