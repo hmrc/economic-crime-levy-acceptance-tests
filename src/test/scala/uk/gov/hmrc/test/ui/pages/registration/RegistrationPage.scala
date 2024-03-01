@@ -534,4 +534,10 @@ object RegistrationPage extends BasePage {
     }
     this
   }
+
+  def provideRegistrationSubmissionAfterTimeout(): this.type = {
+    SharedActions
+      .clickLinkByPartialText("Register for the Economic Crime Levy")
+    this
+  }
 }

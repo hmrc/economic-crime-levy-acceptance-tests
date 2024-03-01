@@ -216,4 +216,10 @@ object ReturnsPage extends BasePage {
 
     this
   }
+
+  def provideReturnSubmissionAfterTimeout(): this.type = {
+    SharedActions
+      .clickLinkByPartialText("Submit your Economic Crime Levy return")
+    this
+  }
 }

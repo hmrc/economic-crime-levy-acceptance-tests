@@ -88,4 +88,11 @@ object SharedActions extends BasePage {
     actualReferenceNumber should be(referenceNumber)
     this
   }
+
+  def selectContinueWithSavedAnswers(): this.type = {
+    SharedActions
+      .clickById("yes")
+    submitPage()
+    this
+  }
 }

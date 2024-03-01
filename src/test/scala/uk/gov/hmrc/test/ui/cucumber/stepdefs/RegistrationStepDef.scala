@@ -21,6 +21,7 @@ import uk.gov.hmrc.test.ui.pages.SharedActions
 import uk.gov.hmrc.test.ui.pages.account.AccountPage
 import uk.gov.hmrc.test.ui.pages.registration.RegistrationPage._
 import uk.gov.hmrc.test.ui.pages.registration._
+import uk.gov.hmrc.test.ui.pages.returns.ReturnsPage
 
 class RegistrationStepDef extends BaseStepDef {
 
@@ -466,6 +467,28 @@ class RegistrationStepDef extends BaseStepDef {
       .enterDetails("Amending the liability start date to previous FY")
     RegistrationPage
       .provideChangeLiabilityStartDate()
+      .submitPage()
+  }
+
+  When("""I provide some details for the economic crime levy registration and experience a system timeout""") { () =>
+    provideEclLiableForCurrentFinancialYear("Yes")
+      .provideEclLiabilityDate(liabilityStartDate = now.getDayOfMonth.toString, liabilityStartMonth = now.getMonthValue.toString, liabilityStartYear = now.getYear.toString)
+      .provideEntityType("Limited company")
+      .provideGrsData()
+      .provideBusinessSector("Credit institution")
+      .provideFirstContactDetails("Oliver Tom", "Account Manager", "test@test.com", "01632 960 001")
+      .provideAddAnotherContactYesOrNo("No")
+      .provideRegisteredAddress("Yes")
+  }
+
+  And("""I return to the service to complete the registration""") { () =>
+    provideRegistrationSubmissionAfterTimeout()
+      .submitPage()
+  }
+
+  And("""I should be able to resume the registration from where I left off""") { () =>
+    SharedActions
+      .selectContinueWithSavedAnswers()
       .submitPage()
   }
 }

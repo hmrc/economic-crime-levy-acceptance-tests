@@ -317,4 +317,25 @@ class ReturnsStepDef extends BaseStepDef {
       .submitPage()
   }
 
+  When("""I provide some details for the economic crime levy return submission and experience a system timeout""") { () =>
+    selectAccountingPeriod("Yes")
+    onPage(UkRevenuePage.heading)
+    ReturnsPage
+      .provideUkRevenueInAccountingPeriod()
+      .selectAmlRegulatedActivity()
+      .provideAmountDue()
+      .provideContactDetails("Oliver Tom", "Account Manager", "test@test.com", "01632 960 001")
+  }
+
+  And("""I return to the service to complete the the return submission""") { () =>
+      provideReturnSubmissionAfterTimeout()
+        .submitPage()
+  }
+
+  And("""I should be able to resume the submission from where I left off""") { () =>
+    SharedActions
+        .selectContinueWithSavedAnswers()
+        .submitPage()
+  }
+
 }
