@@ -377,3 +377,11 @@ Feature: Register for ECL
     Given I am signed in to the account journey with my ECL reference as XMECL0000000001
     When I provide the details to amend the liability start date for registration
     Then I should be on the page that says Economic Crime Levy registration amendment requested
+
+  Scenario: User is able to save progress in the registration journey and resume later
+    Given I am signed in to the registration journey
+    When I provide some details for the economic crime levy registration and experience a system timeout
+    And I return to the service to complete the registration
+    Then I should be on the page that says Your answers have been saved
+    And I should be able to resume the registration from where I left off
+    Then I should be on the page that says Registration submitted

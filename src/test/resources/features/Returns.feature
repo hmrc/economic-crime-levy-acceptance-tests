@@ -249,3 +249,11 @@ Scenario: User amends the submitted returns via ECL account dashboard
     | Telephone number    | 014753777777       |
   And I should be on the page that says Economic Crime Levy return amendment requested
 
+  Scenario: User can save progress in the return submission journey and resume later
+    Given I am signed in to the return journey
+    When I provide some details for the economic crime levy return submission and experience a system timeout
+    And I return to the service to complete the the return submission
+    Then I should be on the page that says Your answers have been saved
+    And I should be able to resume the submission from where I left off
+    Then I should be on the page that says Return submitted
+

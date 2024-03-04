@@ -18,7 +18,7 @@ Feature: ECL account Dashboard after De-registration
       | Returns  |
       | Payments |
 
-  Scenario: User views payments after successful de-registration
+  Scenario: User able to request ECL de-registration
     Given I am signed in to the account journey with my ECL reference as XMECL00000000002
     When I provide the details to de register the ECL account from the system
     Then I should be on the page that says Deregistration requested
