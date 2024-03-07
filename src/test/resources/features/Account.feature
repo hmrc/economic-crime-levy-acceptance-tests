@@ -21,7 +21,7 @@ Feature: ECL Dashboard details
       | return status |
       | OVERDUE       |
       | SUBMITTED     |
-@validations
+
   Scenario: User that is registered for ECL can make a returns submission through ECL dashboard
     Given I am signed in to the account journey with my ECL reference as XMECL0000000005
     When I provide the registration details to submit a return through ECL dashboard link
