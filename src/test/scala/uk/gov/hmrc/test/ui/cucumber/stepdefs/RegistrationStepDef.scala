@@ -21,7 +21,6 @@ import uk.gov.hmrc.test.ui.pages.SharedActions
 import uk.gov.hmrc.test.ui.pages.account.AccountPage
 import uk.gov.hmrc.test.ui.pages.registration.RegistrationPage._
 import uk.gov.hmrc.test.ui.pages.registration._
-import uk.gov.hmrc.test.ui.pages.returns.ReturnsPage
 
 class RegistrationStepDef extends BaseStepDef {
 
@@ -67,45 +66,6 @@ class RegistrationStepDef extends BaseStepDef {
       .selectOtherWithNoProfessionalBodyAndSubmit
   }
 
-  And("^I do not select an option for my AML supervisor") { () =>
-    AmlSupervisorPage
-      .navigateTo()
-      .submitPage()
-  }
-
-  And("^I do not select an option for my entity type") { () =>
-    EntityTypePage
-      .navigateTo()
-      .submitPage()
-  }
-
-  And("^I do not select an option for my business sector") { () =>
-    BusinessSectorPage
-      .navigateTo()
-      .submitPage()
-  }
-
-  And("^I enter the first contact person's name (.*) for my business$") { (contactName: String) =>
-    provideFirstContactName(contactName)
-  }
-
-  When("^I enter the first contact person's role (.*) for my business$") { (contactRole: String) =>
-    provideFirstContactName("James")
-      .provideFirstContactRole(contactRole)
-  }
-
-  When("^I enter the first contact person's email address (.*) for my business$") { (emailAddress: String) =>
-    provideFirstContactName("Tom")
-      .provideFirstContactRole("Account Director")
-      .provideFirstContactEmail(emailAddress)
-  }
-
-  When("^I enter the first contact person's contact number (.*) for my business$") { (contactNumber: String) =>
-    provideFirstContactName("Paul")
-      .provideFirstContactRole("Account Manager")
-      .provideFirstContactEmail("verify@test.com")
-      .provideFirstContactTelephoneNumber(contactNumber)
-  }
 
   And("I provide the details of another UK address as my main contact address") { () =>
     provideEclLiableForCurrentFinancialYear("No")
@@ -260,74 +220,10 @@ class RegistrationStepDef extends BaseStepDef {
         .provideCheckYourAnswers()
   }
 
-  When("I enter my registered name as (.*) for the other entity type business$") { (registeredBusinessName: String) =>
-    BusinessNamePage
-      .navigateTo()
-    provideRegisteredNameOfYourBusiness(registeredBusinessName)
-  }
-
-  When("I enter my charity registration number as (.*) for the other entity type business$") {
-    (charityRegistrationNumber: String) =>
-      CharityRegistrationNumberPage
-        .navigateTo()
-      provideCharityRegistrationNumberOfYourBusiness(charityRegistrationNumber)
-  }
-
-  When("I enter my company registration number as (.*) for the other entity type business$") {
-    (companyRegistrationNumber: String) =>
-      CompanyRegistrationNumberPage
-        .navigateTo()
-      provideCompanyRegistrationNumberOfYourBusiness(companyRegistrationNumber)
-  }
-
-  When("I do not select an option for whether or not I have a Corporation Tax Unique Taxpayer Reference") { () =>
-    DoYouHaveCorporationTaxUtrPage
-      .navigateTo()
-    submitPage()
-  }
-
   When("^I select (.*) on whether or not I have a Corporation Tax Unique Taxpayer Reference$") { (value: String) =>
     DoYouHaveCorporationTaxUtrPage
       .navigateTo()
     doYouHaveCorporationTaxUniqueTaxpayerReference(value)
-  }
-
-  When("^I enter my Corporation Tax Unique Taxpayer Reference as (.*) for the other entity type (.*) business$") {
-    (uniqueTaxpayerReference: String, otherEntityType: String) =>
-      otherEntityType match {
-        case "Unincorporated Association" =>
-          DoYouHaveCorporationTaxUtrPage
-            .navigateTo()
-          doYouHaveCorporationTaxUniqueTaxpayerReference("Yes")
-            .provideCorporationTaxUniqueTaxpayerReference(uniqueTaxpayerReference)
-        case "Trust"                      =>
-          CorporationTaxUtrPage
-            .navigateTo()
-          provideCorporationTaxUniqueTaxpayerReference(uniqueTaxpayerReference)
-        case _                            =>
-          SelfAssessmentUtrPage
-            .navigateTo()
-          provideCorporationTaxUniqueTaxpayerReference(uniqueTaxpayerReference)
-      }
-
-  }
-
-  When("^I enter my company registered postcode as (.*) for the other entity type business$") { (postcode: String) =>
-    OtherEntityPostcodePage
-      .navigateTo()
-    providePostcodeToRegisterCompany(postcode)
-  }
-
-  When("^I do not select an option for my UK unique taxpayer reference") { () =>
-    DoYouHaveUtrPage
-      .navigateTo()
-      .submitPage()
-  }
-
-  When("^I do not select an option for my UK company registration number") { () =>
-    DoYouHaveCrnPage
-      .navigateTo()
-      .submitPage()
   }
 
   When("^I enter my overseas tax identifier as (.*) for the Non-UK Establishment business$") {
@@ -335,12 +231,6 @@ class RegistrationStepDef extends BaseStepDef {
       OverseasTaxIdentifierPage
         .navigateTo()
       provideOverseasTaxIdentifier(overseasTaxIdentifier)
-  }
-
-  When("I enter my (.*)'s name as (.*)$") { (_: String, partnershipName: String) =>
-    PartnershipNamePage
-      .navigateTo()
-    providePartnershipName(partnershipName)
   }
 
   Then("^I should see an error that says (.*)$") { (value: String) =>
@@ -413,14 +303,6 @@ class RegistrationStepDef extends BaseStepDef {
       .provideRelevantAccountingPeriod()
       .provideUkRevenue("1020000")
       .provideEclLiableForPreviousFinancialYear(value)
-  }
-
-  When(
-    "^I do not select an option for whether or not I liable to pay the ECL from 1 April 2022 to 31 March 2023"
-  ) { () =>
-    EclLiableForPreviousFinancialYearPage
-      .navigateTo()
-      .submitPage()
   }
 
   When("""I provide details of my (.*) and fail the GRS journey$""") { (entityType: String) =>

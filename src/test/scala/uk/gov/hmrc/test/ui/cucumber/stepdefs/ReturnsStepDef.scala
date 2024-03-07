@@ -49,47 +49,6 @@ class ReturnsStepDef extends BaseStepDef {
       .provideCheckYourAnswers()
   }
 
-  And("^I enter the contact person's name (.*) for completing my ECL return$") { (contactName: String) =>
-    ContactNamePage
-      .navigateTo()
-      .provideContactName(contactName)
-    confirmUrl(ContactNamePage.url)
-
-  }
-
-  And("^I enter the contact person's role (.*) for completing my ECL return$") { (contactRole: String) =>
-    ContactNamePage
-      .navigateTo()
-      .provideContactName("James")
-    ContactRolePage
-      .provideContactRole(contactRole)
-    confirmUrl(ContactRolePage.url)
-  }
-
-  And("^I enter the contact person's email address (.*) for completing my ECL return$") { (emailAddress: String) =>
-    ContactNamePage
-      .navigateTo()
-      .provideContactName("Tom")
-    ContactRolePage
-      .provideContactRole("Account Director")
-    ContactEmailAddressPage
-      .provideContactEmailAddress(emailAddress)
-    confirmUrl(ContactEmailAddressPage.url)
-  }
-
-  When("^I enter the contact person's contact number (.*) for completing my ECL return$") { (contactNumber: String) =>
-    ContactNamePage
-      .navigateTo()
-      .provideContactName("Paul")
-    ContactRolePage
-      .provideContactRole("Account Manager")
-    ContactEmailAddressPage
-      .provideContactEmailAddress("verify@test.com")
-    ContactTelephonePage
-      .provideContactNumber(contactNumber)
-    confirmUrl(ContactTelephonePage.url)
-  }
-
   When("^I do not select an option for my relevant accounting period 12 months") { () =>
     AccountingActivityPage
       .navigateTo()
@@ -100,23 +59,6 @@ class ReturnsStepDef extends BaseStepDef {
       .navigateTo()
     selectAccountingPeriod(value)
     onPage(AccountingPeriodPage.heading)
-  }
-
-  When("^I do not enter the length of my accounting period") { () =>
-    AccountingPeriodPage
-      .navigateTo()
-      .submitPage()
-  }
-
-  When("^I enter the length of my relevant accounting period as (.*) days$") { (accountingPeriod: String) =>
-    AccountingPeriodPage
-      .navigateTo()
-    provideAccountingPeriod(accountingPeriod)
-  }
-  When("^I enter the UK revenue (.*) for my relevant accounting period$") { (ukRevenue: String) =>
-    UkRevenuePage
-      .navigateTo()
-    provideUkRevenue(ukRevenue)
   }
 
   When(
@@ -132,12 +74,6 @@ class ReturnsStepDef extends BaseStepDef {
       .navigateTo()
     selectAmlRegulatedActivity(value)
     onPage(AmlRegulatedActivityDaysPage.heading)
-  }
-
-  When("^I enter the total number of days (.*) I carried out AML regulated activity$") { (days: String) =>
-    AmlRegulatedActivityDaysPage
-      .navigateTo()
-    provideAmlRegulatedActivityDays(days)
   }
 
   When(
