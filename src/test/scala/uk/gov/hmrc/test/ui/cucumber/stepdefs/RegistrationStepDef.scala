@@ -33,7 +33,7 @@ class RegistrationStepDef extends BaseStepDef {
 
   When("""I provide details of my (.*) that is supervised by HMRC and liable for current ECL$""") {
     (entityType: String) =>
-      provideEclLiableForCurrentFinancialYear("Yes")
+      provideEclLiableForCurrentFinancialYear()
         .provideEclLiabilityDate(liabilityStartDate = now.getDayOfMonth.toString, liabilityStartMonth = now.getMonthValue.toString, liabilityStartYear = now.getYear.toString)
         .provideEntityType(entityType)
         .provideGrsData()
@@ -94,7 +94,7 @@ class RegistrationStepDef extends BaseStepDef {
   }
 
   When("I enter the UK revenue (.*)for the relevant accounting period$") { (revenue: String) =>
-    areYouRegisteringForCurrentFinancialYear("Yes")
+    areYouRegisteringForCurrentFinancialYear()
       .provideAmlRegulated()
       .provideHmrcOrOtherAmlSupervisor()
       .provideRelevantAccountingPeriod()
@@ -108,7 +108,7 @@ class RegistrationStepDef extends BaseStepDef {
   }
 
   When("I click on the change link and edit my contact details") { () =>
-    provideEclLiableForCurrentFinancialYear("Yes")
+    provideEclLiableForCurrentFinancialYear()
       .provideEclLiabilityDate(liabilityStartDate = now.getDayOfMonth.toString, liabilityStartMonth = now.getMonthValue.toString, liabilityStartYear = now.getYear.toString)
       .provideEntityType("Registered society")
       .provideGrsData()
@@ -121,7 +121,7 @@ class RegistrationStepDef extends BaseStepDef {
   }
 
   When("I click on the change link to modify my secondary contact") { () =>
-    provideEclLiableForCurrentFinancialYear("Yes")
+    provideEclLiableForCurrentFinancialYear()
       .provideEclLiabilityDate(liabilityStartDate = now.getDayOfMonth.toString, liabilityStartMonth = now.getMonthValue.toString, liabilityStartYear = now.getYear.toString)
       .provideEntityType("Scottish limited partnership")
       .provideGrsData()
@@ -140,7 +140,7 @@ class RegistrationStepDef extends BaseStepDef {
   }
 
   When("I click on the change link to modify the registered address") { () =>
-    provideEclLiableForCurrentFinancialYear("Yes")
+    provideEclLiableForCurrentFinancialYear()
       .provideEclLiabilityDate(liabilityStartDate = now.getDayOfMonth.toString, liabilityStartMonth = now.getMonthValue.toString, liabilityStartYear = now.getYear.toString)
       .provideEntityType("Unlimited company")
       .provideGrsData()
@@ -159,7 +159,7 @@ class RegistrationStepDef extends BaseStepDef {
   }
 
   When("I click on the change link and edit my organisation details") { () =>
-    provideEclLiableForCurrentFinancialYear("Yes")
+    provideEclLiableForCurrentFinancialYear()
       .provideEclLiabilityDate(liabilityStartDate = now.getDayOfMonth.toString, liabilityStartMonth = now.getMonthValue.toString, liabilityStartYear = now.getYear.toString)
       .provideEntityType("Limited company")
       .provideGrsData()
@@ -173,7 +173,7 @@ class RegistrationStepDef extends BaseStepDef {
   When(
     "I click on the change link and select (.*) on whether or not I carried out AML-regulated activity in current FY$"
   ) { (value: String) =>
-    provideEclLiableForCurrentFinancialYear("Yes")
+    provideEclLiableForCurrentFinancialYear()
       .provideEclLiabilityDate(liabilityStartDate = now.getDayOfMonth.toString, liabilityStartMonth = now.getMonthValue.toString, liabilityStartYear = now.getYear.toString)
       .provideEntityType("Limited company")
       .provideGrsData()
@@ -185,7 +185,7 @@ class RegistrationStepDef extends BaseStepDef {
   }
 
   When("I click on the change link and select the new entity type") { () =>
-    provideEclLiableForCurrentFinancialYear("Yes")
+    provideEclLiableForCurrentFinancialYear()
       .provideEclLiabilityDate(liabilityStartDate = now.getDayOfMonth.toString, liabilityStartMonth = now.getMonthValue.toString, liabilityStartYear = now.getYear.toString)
       .provideEntityType("Limited company")
       .provideGrsData()
@@ -197,7 +197,7 @@ class RegistrationStepDef extends BaseStepDef {
   }
 
   When("I select my entity type as (.*) and provide the registration details$") { (entityType: String) =>
-    provideEclLiableForCurrentFinancialYear("Yes")
+    provideEclLiableForCurrentFinancialYear()
       .provideEclLiabilityDate(liabilityStartDate = now.getDayOfMonth.toString, liabilityStartMonth = now.getMonthValue.toString, liabilityStartYear = now.getYear.toString)
       .provideEntityTypeDetailsForGeneralOrScottishPartnership(entityType)
       .provideBusinessSector("Credit institution")
@@ -209,7 +209,7 @@ class RegistrationStepDef extends BaseStepDef {
 
   When("I provide details of my other entity is (.*) that is supervised by HMRC and liable for ECL$") {
     (otherEntityType: String) =>
-      provideEclLiableForCurrentFinancialYear("Yes")
+      provideEclLiableForCurrentFinancialYear()
         .provideEclLiabilityDate(liabilityStartDate = now.getDayOfMonth.toString, liabilityStartMonth = now.getMonthValue.toString, liabilityStartYear = now.getYear.toString)
         .provideOtherEntityBusinessDetails(otherEntityType)
         .provideBusinessSector("Credit institution")
@@ -246,9 +246,9 @@ class RegistrationStepDef extends BaseStepDef {
   }
 
   When("""I provide details of my limited company and indicate liability for previous year ECL""") { () =>
-    areYouRegisteringForCurrentFinancialYear("Yes")
+    areYouRegisteringForCurrentFinancialYear()
       .provideAmlRegulated("No")
-      .provideEclLiableForPreviousFinancialYear("Yes")
+      .provideEclLiableForPreviousFinancialYear()
       .provideEclLiabilityDate(liabilityStartDate = now.getDayOfMonth.toString, liabilityStartMonth = now.getMonthValue.toString, liabilityStartYear = now.getYear.toString)
       .provideEntityType("Limited company")
       .provideGrsData()
@@ -261,7 +261,7 @@ class RegistrationStepDef extends BaseStepDef {
 
   When("""I provide Yes to AML question and the turnover is £10.2m and above and (.*) liable for previous FY$""") {
     (value: String) =>
-      areYouRegisteringForCurrentFinancialYear("Yes")
+      areYouRegisteringForCurrentFinancialYear()
         .provideAmlRegulated()
         .provideHmrcOrOtherAmlSupervisor()
         .provideRelevantAccountingPeriod()
@@ -279,7 +279,7 @@ class RegistrationStepDef extends BaseStepDef {
   When(
     """I provide Yes to AML question and the turnover is below £10.2m threshold and (.*) liable for previous FY$"""
   ) { (value: String) =>
-    areYouRegisteringForCurrentFinancialYear("Yes")
+    areYouRegisteringForCurrentFinancialYear()
       .provideAmlRegulated()
       .provideHmrcOrOtherAmlSupervisor()
       .provideRelevantAccountingPeriod()
@@ -297,7 +297,7 @@ class RegistrationStepDef extends BaseStepDef {
   When(
     """I provide Yes to AML question and the turnover is below £10.2m threshold but (.*) liability for previous year ECL$"""
   ) { (value: String) =>
-    areYouRegisteringForCurrentFinancialYear("Yes")
+    areYouRegisteringForCurrentFinancialYear()
       .provideAmlRegulated()
       .provideHmrcOrOtherAmlSupervisor()
       .provideRelevantAccountingPeriod()
@@ -306,7 +306,7 @@ class RegistrationStepDef extends BaseStepDef {
   }
 
   When("""I provide details of my (.*) and fail the GRS journey$""") { (entityType: String) =>
-    areYouRegisteringForCurrentFinancialYear("Yes")
+    areYouRegisteringForCurrentFinancialYear()
       .provideAmlRegulated()
       .provideHmrcOrOtherAmlSupervisor()
       .provideRelevantAccountingPeriod()
@@ -353,7 +353,7 @@ class RegistrationStepDef extends BaseStepDef {
   }
 
   When("""I provide some details for the economic crime levy registration and experience a system timeout""") { () =>
-    provideEclLiableForCurrentFinancialYear("Yes")
+    provideEclLiableForCurrentFinancialYear()
       .provideEclLiabilityDate(liabilityStartDate = now.getDayOfMonth.toString, liabilityStartMonth = now.getMonthValue.toString, liabilityStartYear = now.getYear.toString)
       .provideEntityType("Limited company")
       .provideGrsData()
