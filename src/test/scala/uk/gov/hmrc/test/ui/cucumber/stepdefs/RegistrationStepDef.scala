@@ -140,7 +140,7 @@ class RegistrationStepDef extends BaseStepDef {
   }
 
   When("I click on the change link to modify the registered address") { () =>
-    provideEclLiableForCurrentFinancialYear()
+    provideEclLiableForCurrentFinancialYear("No")
       .provideEclLiabilityDate(liabilityStartDate = now.getDayOfMonth.toString, liabilityStartMonth = now.getMonthValue.toString, liabilityStartYear = now.getYear.toString)
       .provideEntityType("Unlimited company")
       .provideGrsData()
@@ -209,7 +209,7 @@ class RegistrationStepDef extends BaseStepDef {
 
   When("I provide details of my other entity is (.*) that is supervised by HMRC and liable for ECL$") {
     (otherEntityType: String) =>
-      provideEclLiableForCurrentFinancialYear()
+      provideEclLiableForCurrentFinancialYear("No")
         .provideEclLiabilityDate(liabilityStartDate = now.getDayOfMonth.toString, liabilityStartMonth = now.getMonthValue.toString, liabilityStartYear = now.getYear.toString)
         .provideOtherEntityBusinessDetails(otherEntityType)
         .provideBusinessSector("Credit institution")
