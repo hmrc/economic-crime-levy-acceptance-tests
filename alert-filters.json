@@ -31,6 +31,14 @@
       "ruleId": 10062,
       "urlIsRegex": "true",
       "newLevel": -1
+    },
+    {
+      "contextId": 5,
+      "reason": "The response contains Personally Identifiable Information, such as CC number, SSN and similar sensitive data.",
+      "url": "http:\/\/localhost:14002\/submit-economic-crime-levy-return\/uk-revenue-in-accounting-period",
+      "ruleId": 10062,
+      "urlIsRegex": "true",
+      "newLevel": -1
     }
   ]
 }
