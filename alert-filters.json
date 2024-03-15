@@ -39,6 +39,46 @@
       "ruleId": 10062,
       "urlIsRegex": "true",
       "newLevel": -1
+    },
+    {
+      "contextId": 6,
+      "reason": "The response contains Personally Identifiable Information, such as CC number, SSN and similar sensitive data.",
+      "url": "http:\/\/localhost:14002\/submit-economic-crime-levy-return\/aml-regulated-activity",
+      "ruleId": 10062,
+      "urlIsRegex": "true",
+      "newLevel": -1
+    },
+    {
+      "contextId": 7,
+      "reason": "The response contains Personally Identifiable Information, such as CC number, SSN and similar sensitive data.",
+      "url": "http:\/\/localhost:14002\/submit-economic-crime-levy-return\/aml-regulated-activity-days",
+      "ruleId": 10062,
+      "urlIsRegex": "true",
+      "newLevel": -1
+    },
+    {
+      "contextId": 8,
+      "reason": "The response contains Personally Identifiable Information, such as CC number, SSN and similar sensitive data.",
+      "url": "http:\/\/localhost:14002\/submit-economic-crime-levy-return\/amount-due",
+      "ruleId": 10062,
+      "urlIsRegex": "true",
+      "newLevel": -1
+    },
+    {
+      "contextId": 9,
+      "reason": "The response contains Personally Identifiable Information, such as CC number, SSN and similar sensitive data.",
+      "url": "http:\/\/localhost:14002\/submit-economic-crime-levy-return\/is-relevant-accounting-period-12-months",
+      "ruleId": 10062,
+      "urlIsRegex": "true",
+      "newLevel": -1
+    },
+    {
+      "contextId": 10,
+      "reason": "The response contains Personally Identifiable Information, such as CC number, SSN and similar sensitive data.",
+      "url": "http:\/\/localhost:14002\/submit-economic-crime-levy-return\/period/23XY",
+      "ruleId": 10062,
+      "urlIsRegex": "true",
+      "newLevel": -1
     }
   ]
 }
