@@ -49,33 +49,6 @@ class ReturnsStepDef extends BaseStepDef {
       .provideCheckYourAnswers()
   }
 
-  When("^I do not select an option for my relevant accounting period 12 months") { () =>
-    AccountingActivityPage
-      .navigateTo()
-      .submitPage()
-  }
-  When("^I select (.*) option for my relevant accounting period 12 months$") { (value: String) =>
-    AccountingActivityPage
-      .navigateTo()
-    selectAccountingPeriod(value)
-    onPage(AccountingPeriodPage.heading)
-  }
-
-  When(
-    """I do not select an option for whether or not I carry out AML-regulated activity for the full financial year?"""
-  ) { () =>
-    AmlRegulatedActivityPage
-      .navigateTo()
-      .submitPage()
-  }
-
-  When("^I select (.*) option for my AML-regulated activity for the full financial year$") { (value: String) =>
-    AmlRegulatedActivityPage
-      .navigateTo()
-    selectAmlRegulatedActivity(value)
-    onPage(AmlRegulatedActivityDaysPage.heading)
-  }
-
   When(
     "^I enter 12 month accounting period revenue (.*) and select (.*) for my AML-regulated activity for the full financial year$"
   ) { (ukRevenue: String, value: String) =>

@@ -60,13 +60,6 @@ class RegistrationStepDef extends BaseStepDef {
       .provideGcOrFcaAmlSupervisor(value)
   }
 
-  When("""I do not select an other professional body when I have selected the Other option""") { () =>
-    AmlSupervisorPage
-      .navigateTo()
-      .selectOtherWithNoProfessionalBodyAndSubmit
-  }
-
-
   And("I provide the details of another UK address as my main contact address") { () =>
     provideEclLiableForCurrentFinancialYear("No")
       .provideEclLiabilityDate(liabilityStartDate = now.getDayOfMonth.toString, liabilityStartMonth = now.getMonthValue.toString, liabilityStartYear = now.getYear.toString)
@@ -93,14 +86,6 @@ class RegistrationStepDef extends BaseStepDef {
       .submitPage()
   }
 
-  When("I enter the UK revenue (.*)for the relevant accounting period$") { (revenue: String) =>
-    areYouRegisteringForCurrentFinancialYear()
-      .provideAmlRegulated()
-      .provideHmrcOrOtherAmlSupervisor()
-      .provideRelevantAccountingPeriod()
-    SharedActions
-      .enterDetails(revenue)
-  }
   And("I go to check your answers page directly without providing answers for any of the previous page questions") {
     () =>
       CheckYourAnswersPage
@@ -218,12 +203,6 @@ class RegistrationStepDef extends BaseStepDef {
         .provideRegisteredAddress("Yes")
         .provideGrsData()
         .provideCheckYourAnswers()
-  }
-
-  When("^I select (.*) on whether or not I have a Corporation Tax Unique Taxpayer Reference$") { (value: String) =>
-    DoYouHaveCorporationTaxUtrPage
-      .navigateTo()
-    doYouHaveCorporationTaxUniqueTaxpayerReference(value)
   }
 
   When("^I enter my overseas tax identifier as (.*) for the Non-UK Establishment business$") {
@@ -372,5 +351,14 @@ class RegistrationStepDef extends BaseStepDef {
     SharedActions
       .selectContinueWithSavedAnswers()
       .submitPage()
+  }
+
+  When("^I select (.*) on whether or not I carried out AML-regulated activity in current FY and in previous FY$") { (value: String) =>
+    AmlRegulatedActivityPage
+      .navigateTo()
+    SharedActions
+      .selectYesOrNo(value)
+    SharedActions
+      .selectYesOrNo(value)
   }
 }

@@ -19,6 +19,7 @@ Feature: ECL Dashboard details
     And I should see the return status as <return status>
     Examples:
       | return status |
+      | DUE           |
       | OVERDUE       |
       | SUBMITTED     |
 
