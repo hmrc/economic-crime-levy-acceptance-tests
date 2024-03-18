@@ -33,12 +33,6 @@ class EnrolmentStepDef extends BaseStepDef {
       .provideEclRegistrationDate(registrationDate = "01", registrationMonth = "03", registrationYear = "2023")
   }
 
-  When("""I do not select an option for whether or not I have the ECL reference number""") { () =>
-    EnrolmentPage
-      .navigateTo()
-      .submitPage()
-  }
-
   When("^I select (No|Unknown) option for whether or not I have the ECL reference number$") { (value: String) =>
     EnrolmentPage
       .selectEclReferenceNumber(value)

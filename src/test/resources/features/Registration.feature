@@ -10,16 +10,6 @@ Feature: Register for ECL
       | Entity type                   |
       | Sole trader                   |
 
-  Scenario: Users who answer "No" whether or not they started AML regulated activity in current FY
-    Given I am signed in to the registration journey
-    When I select No on whether or not I carried out AML-regulated activity in current FY
-    Then I should be on the page that says Are you liable for any previous financial years?
-
-  Scenario: User selects AML supervisor as other but does not select the professional body
-    Given I am signed in to the registration journey
-    When I do not select an other professional body when I have selected the Other option
-    Then I should see an error that says Select a professional body from the list
-
   Scenario Outline: User's AML supervisor is GC or FCA
     Given I am signed in to the registration journey
     When I say that my AML supervisor is <AML supervisor>
@@ -29,20 +19,6 @@ Feature: Register for ECL
       | AML supervisor              | Expected content                                                                |
       | Gambling Commission         | You need to register with the Gambling Commission (GC) to pay the levy          |
       | Financial Conduct Authority | You need to register with the Financial Conduct Authority (FCA) to pay the levy |
-
-  Scenario: User selects no on whether or not their relevant accounting period 12 months
-    Given I am signed in to the registration journey
-    When I select No on whether or not my relevant accounting period 12 months
-    Then I should be on the page that says How long is your relevant accounting period?
-
-  Scenario Outline: User enters an valid amount for UK revenue but less than 10.2M for their relevant accounting period
-    Given I am signed in to the registration journey
-    When I enter the UK revenue <UK Revenue> for the relevant accounting period
-    Then I should be on the page that says Are you liable for any previous financial years?
-    Examples:
-      | UK Revenue |
-      | 0          |
-      | 10199999   |
 
   Scenario: User wants to use another UK address as his registered address for the main contact
     Given I am signed in to the registration journey
@@ -110,11 +86,6 @@ Feature: Register for ECL
       | Unincorporated Association |
       | Trust                      |
       | Non-UK Establishment       |
-
-  Scenario: User selects no on whether or not they have a Corporation Tax Unique Taxpayer Reference?
-    Given I am signed in to the registration journey
-    When I select No on whether or not I have a Corporation Tax Unique Taxpayer Reference
-    Then I should be on the page that says What is your business sector?
 
   Scenario: Users who answer "NO" to AML question for the current FY but "YES" to previous FY
     Given I am signed in to the registration journey

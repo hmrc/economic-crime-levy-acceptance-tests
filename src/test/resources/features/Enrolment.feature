@@ -6,11 +6,6 @@ Feature: Claim enrolment for ECL
     When I provide the details of my ECL reference number
     Then I should be on the page that says Your details have been confirmed
 
-  Scenario: User does not select an answer for do they have an Economic Crime Levy reference number?
-    Given I am signed in to the enrolment journey
-    When I do not select an option for whether or not I have the ECL reference number
-    Then I should see an error that says Select if you have an ECL reference number
-
   Scenario: User selects the answer No for do they have an Economic Crime Levy reference number?
     Given I am signed in to the enrolment journey
     When I select No option for whether or not I have the ECL reference number

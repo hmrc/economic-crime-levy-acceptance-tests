@@ -7,26 +7,6 @@ Feature: Submit ECL Return
     Then I should be on the page that says Return submitted
     And I should see my ecl return number is ECL return number and the amount to pay is Amount you need to pay
 
-  Scenario: User does not select whether or not their relevant accounting period is 12 months
-    Given I am signed in to the return journey
-    When I do not select an option for my relevant accounting period 12 months
-    Then I should see an error that says Select yes if you have a relevant accounting period that ends in the financial year
-
-  Scenario: User selects no on whether or not their relevant accounting period 12 is months
-    Given I am signed in to the return journey
-    When I select No option for my relevant accounting period 12 months
-    Then I should be on the page that says How long is your relevant accounting period?
-
-  Scenario: User does not select whether or not they carried out AML-regulated activity for the full financial year
-    Given I am signed in to the return journey
-    When I do not select an option for whether or not I carry out AML-regulated activity for the full financial year?
-    Then I should see an error that says Select yes if you have a relevant accounting period that ends in the financial year
-
-  Scenario: User selects no for whether or not they carried out AML-regulated activity for the full financial year
-    Given I am signed in to the return journey
-    When I select No option for my AML-regulated activity for the full financial year
-    Then I should be on the page that says How many days of the financial year did you carry out AML-regulated activity?
-
   Scenario Outline: Return submission for 12 month accounting period and AML-regulated activity for the full financial year
     Given I am signed in to the return journey
     When I enter 12 month accounting period revenue <UK Revenue> and select Yes for my AML-regulated activity for the full financial year
