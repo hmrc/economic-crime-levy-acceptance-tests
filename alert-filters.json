@@ -79,6 +79,110 @@
       "ruleId": 10062,
       "urlIsRegex": "true",
       "newLevel": -1
+    },
+    {
+      "contextId": 11,
+      "reason": "The response contains Personally Identifiable Information, such as CC number, SSN and similar sensitive data.",
+      "url": " http:\/\/localhost:14000\/register-for-economic-crime-levy\/aml-regulated-activity-question",
+      "ruleId": 10062,
+      "urlIsRegex": "true",
+      "newLevel": -1
+    },
+    {
+      "contextId": 12,
+      "reason": "The response contains Personally Identifiable Information, such as CC number, SSN and similar sensitive data.",
+      "url": "http:\/\/localhost:14000\/register-for-economic-crime-levy\/check-your-answers",
+      "ruleId": 10062,
+      "urlIsRegex": "true",
+      "newLevel": -1
+    },
+    {
+      "contextId": 13,
+      "reason": "The response contains Personally Identifiable Information, such as CC number, SSN and similar sensitive data.",
+      "url": "http:\/\/localhost:14000\/register-for-economic-crime-levy\/contact-address",
+      "ruleId": 10062,
+      "urlIsRegex": "true",
+      "newLevel": -1
+    },
+    {
+      "contextId": 14,
+      "reason": "The response contains Personally Identifiable Information, such as CC number, SSN and similar sensitive data.",
+      "url": "http:\/\/localhost:14000\/register-for-economic-crime-levy\/contact-email-address",
+      "ruleId": 10062,
+      "urlIsRegex": "true",
+      "newLevel": -1
+    },
+    {
+      "contextId": 15,
+      "reason": "The response contains Personally Identifiable Information, such as CC number, SSN and similar sensitive data.",
+      "url": "http:\/\/localhost:14000\/register-for-economic-crime-levy\/contact-role",
+      "ruleId": 10062,
+      "urlIsRegex": "true",
+      "newLevel": -1
+    },
+    {
+      "contextId": 16,
+      "reason": "The response contains Personally Identifiable Information, such as CC number, SSN and similar sensitive data.",
+      "url": "http:\/\/localhost:14000\/register-for-economic-crime-levy\/contact-telephone",
+      "ruleId": 10062,
+      "urlIsRegex": "true",
+      "newLevel": -1
+    },
+    {
+      "contextId": 17,
+      "reason": "The response contains Personally Identifiable Information, such as CC number, SSN and similar sensitive data.",
+      "url": "http:\/\/localhost:14000\/register-for-economic-crime-levy\/liability-start-date",
+      "ruleId": 10062,
+      "urlIsRegex": "true",
+      "newLevel": -1
+    },
+    {
+      "contextId": 18,
+      "reason": "The response contains Personally Identifiable Information, such as CC number, SSN and similar sensitive data.",
+      "url": "http:\/\/localhost:14000\/register-for-economic-crime-levy\/previous-financial-year",
+      "ruleId": 10062,
+      "urlIsRegex": "true",
+      "newLevel": -1
+    },
+    {
+      "contextId": 19,
+      "reason": "The response contains Personally Identifiable Information, such as CC number, SSN and similar sensitive data.",
+      "url": "http:\/\/localhost:14000\/register-for-economic-crime-levy\/register-for-current-financial-year",
+      "ruleId": 10062,
+      "urlIsRegex": "true",
+      "newLevel": -1
+    },
+    {
+      "contextId": 20,
+      "reason": "The response contains Personally Identifiable Information, such as CC number, SSN and similar sensitive data.",
+      "url": "http:\/\/localhost:14000\/register-for-economic-crime-levy\/second-contact",
+      "ruleId": 10062,
+      "urlIsRegex": "true",
+      "newLevel": -1
+    },
+    {
+      "contextId": 21,
+      "reason": "The response contains Personally Identifiable Information, such as CC number, SSN and similar sensitive data.",
+      "url": "http:\/\/localhost:14000\/register-for-economic-crime-levy\/test-only\/stub-grs-journey-data?continueUrl=normalmode&entityType=UkLimitedCompany",
+      "ruleId": 10062,
+      "urlIsRegex": "true",
+      "newLevel": -1
+    },
+    {
+      "contextId": 22,
+      "reason": "The response contains Personally Identifiable Information, such as CC number, SSN and similar sensitive data.",
+      "url": " http:\/\/localhost:14000\/register-for-economic-crime-levy\/what-is-your-business-sector",
+      "ruleId": 10062,
+      "urlIsRegex": "true",
+      "newLevel": -1
+    },
+    {
+      "contextId": 23,
+      "reason": "The response contains Personally Identifiable Information, such as CC number, SSN and similar sensitive data.",
+      "url": "http:\/\/localhost:14000\/register-for-economic-crime-levy\/what-is-your-entity-type",
+      "ruleId": 10062,
+      "urlIsRegex": "true",
+      "newLevel": -1
     }
   ]
 }
