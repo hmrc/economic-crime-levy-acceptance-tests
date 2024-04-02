@@ -10,16 +10,6 @@ Feature: Register for ECL
       | Entity type                   |
       | Sole trader                   |
 
-  Scenario Outline: User's AML supervisor is GC or FCA
-    Given I am signed in to the registration journey
-    When I say that my AML supervisor is <AML supervisor>
-    Then I should be on the page that says <Expected content>
-
-    Examples:
-      | AML supervisor              | Expected content                                                                |
-      | Gambling Commission         | You need to register with the Gambling Commission (GC) to pay the levy          |
-      | Financial Conduct Authority | You need to register with the Financial Conduct Authority (FCA) to pay the levy |
-
   Scenario: User wants to use another UK address as his registered address for the main contact
     Given I am signed in to the registration journey
     When I provide the details of another UK address as my main contact address
