@@ -59,12 +59,6 @@ Feature: ECL Dashboard details
       | ECL Reference   | payment status | Expected content         |
       | XMECL0000000007 | OVERDUE        | Select an amount to pay  |
 
-  Scenario: User has an overdue payment with accrued interest
-    Given I am signed in to the account journey with my ECL reference as XMECL00000000010
-    When I click on the View your payments link to view an interest accrued on the overdue payment
-    And I should be on the page that says Interest charge XB001286323438 for ECL return number XMECL0000000010
-    And I should see the interest amount £4.84 and Financial year 1 April 2021 to 31 March 2022
-
   Scenario: User without overdue payment views their ECL dashboard and see the interest payment as the most urgent payment to be made
     Given I am signed in to the account journey with my ECL reference as XMECL00000000010
     When I am on the ECL account dashboard

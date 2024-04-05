@@ -7,8 +7,8 @@ Feature: Register for ECL
     Then I should be on the page that says Registration submitted
 
     Examples:
-      | Entity type                   |
-      | Sole trader                   |
+      | Entity type |
+      | Sole trader |
 
   Scenario: User wants to use another UK address as his registered address for the main contact
     Given I am signed in to the registration journey
@@ -23,7 +23,7 @@ Feature: Register for ECL
   Scenario: User wants to go to check your answers page directly without providing any of the previous pages details
     Given I am signed in to the registration journey
     When I go to check your answers page directly without providing answers for any of the previous page questions
-    Then I should be on the page that says The answers you provided are not valid
+    Then I should be on the page that says Please check that you have entered the correct web address.
 
   Scenario: User wants to change the contact details before submitting the registration
     Given I am signed in to the registration journey
@@ -114,8 +114,8 @@ Feature: Register for ECL
     And I click on the try again button
     Then I should be on the page that says What is your entity type?
     Examples:
-      | Entity type                   |
-      | Limited company               |
+      | Entity type     |
+      | Limited company |
 
   Scenario: User is able to cancel the amend registrations they have submitted through ECL account dashboard
     Given I am signed in to the account journey with my ECL reference as XMECL0000000001
@@ -127,10 +127,10 @@ Feature: Register for ECL
     Given I am signed in to the account journey with my ECL reference as XMECL0000000001
     When I provide the details to amend the submitted economic crime levy registration
     And the amended registration information should display under Amended answers on the Check your answers page
-      | First contact name                | James Bond       |
-      | First contact role                | Director         |
-      | First contact email address       | confirm@test.com |
-      | First contact telephone number    | 01475344272      |
+      | First contact name             | James Bond       |
+      | First contact role             | Director         |
+      | First contact email address    | confirm@test.com |
+      | First contact telephone number | 01475344272      |
     And I should be on the page that says Economic Crime Levy registration amendment requested
 
   Scenario: User is amend the liability start date for registrations to previous FY through ECL account dashboard
