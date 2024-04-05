@@ -74,14 +74,6 @@ class AccountStepDef extends BaseStepDef {
     provideMakeAnEclPayment(paymentStatus)
   }
 
-  When("I click on the View your payments link to view an interest accrued on the (.*)$") { (paymentStatus: String) =>
-    provideViewEclPayment(paymentStatus)
-  }
-
-  And("""I should see the interest amount (.*) and Financial year (.*)$""") { (amount: String, financialYear: String) =>
-    assertAmountOfInterestOwed(amount, financialYear)
-  }
-
   When("I click on the View your payments link to view my (.*)$") { (paymentStatus: String) =>
     provideViewEclPayment(paymentStatus)
   }
