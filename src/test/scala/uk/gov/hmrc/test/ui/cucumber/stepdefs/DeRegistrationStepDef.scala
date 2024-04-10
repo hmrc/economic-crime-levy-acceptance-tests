@@ -27,11 +27,11 @@ class DeRegistrationStepDef extends BaseStepDef {
     SharedActions.assertEclReferenceNumber(value)
   }
 
-  When("I click on the View your returns or View your payments link to view the deregistered (.*) details$") { (linkName: String) =>
+  When("I click on the View or amend your returns or View your payments link to view the deregistered (.*) details$") { (linkName: String) =>
     ProvideViewEclAccountAfterDeRegistration(linkName)
   }
 
-  When("the links (.*) under the Action column should be completely hidden from the page$") { (linkName: String) =>
+  When("the links (.*) under the Action column should be visible on the the page$") { (linkName: String) =>
     getPaymentAndReturnLinks(linkName)
   }
 

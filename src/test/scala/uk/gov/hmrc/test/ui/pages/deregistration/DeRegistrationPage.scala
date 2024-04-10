@@ -21,8 +21,6 @@ import org.openqa.selenium.By
 import uk.gov.hmrc.test.ui.conf.TestConfiguration
 import uk.gov.hmrc.test.ui.pages.{BasePage, SharedActions}
 
-import scala.jdk.CollectionConverters.CollectionHasAsScala
-
 object DeRegistrationPage extends BasePage {
 
   val url =
@@ -45,22 +43,17 @@ object DeRegistrationPage extends BasePage {
     this
   }
 
-  def paymentAndReturnLinkName: List[String] =
-    List(
-      s"Amend Return",
-      s"Make a payment"
-    )
-
   def getPaymentAndReturnLinks(linkName: String = "Returns"): this.type = {
     linkName match {
       case "Payments" =>
-        lazy val textElements = driver.findElements(By.cssSelector("td:nth-child(6)"))
-        paymentAndReturnLinkName.foreach(linkName =>
-          Assert.assertFalse(textElements.asScala.exists(_.getText.contentEquals(linkName))))
+        val paymentElements = driver.findElements(By.linkText("Make a payment"))
+        Assert.assertTrue(paymentElements. size() > 0)
+
+        val elements = driver.findElements(By.linkText("Request a refund"))
+        Assert.assertTrue(elements. size() > 0)
       case _ =>
-        lazy val textElements = driver.findElements(By.cssSelector("td:nth-child(4)"))
-        paymentAndReturnLinkName.foreach(linkName =>
-          Assert.assertFalse(textElements.asScala.exists(_.getText.contentEquals(linkName))))
+        val amendElements = driver.findElements(By.linkText("Amend return"))
+        Assert.assertTrue(amendElements. size() > 0)
     }
     this
   }
