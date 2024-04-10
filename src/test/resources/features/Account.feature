@@ -36,7 +36,7 @@ Feature: ECL Dashboard details
   Scenario: User that is registered for ECL can view their overdue payments
     Given I am signed in to the account journey with my ECL reference as XMECL0000000007
     When I am on the ECL account dashboard
-    Then I should be on the page that says You have an overdue payment for 1 April 2021 to 31 March 2022.
+    Then I should be on the page that says You have an overdue payment for 1 April 2022 to 31 March 2023.
     And I should be on the page that says We are charging you interest on this payment. You owe £20,500.
 
   Scenario Outline: User is able to see their payment details for the previous and current financial years
@@ -69,9 +69,9 @@ Feature: ECL Dashboard details
     When I click on the View your payments link to view my interest charge
     Then the interest row should display the partial interest payment information under Payments you owe
       | Payment Type   | Interest charge for ECL return number XMECL0000000014 |
-      | Financial year | 1 April 2022 to 31 March 2023                        |
-      | Amount Paid    | £12.73                                               |
-      | Payment Status |                                                      |
+      | Financial year | 1 April 2023 to 31 March 2024                         |
+      | Amount Paid    | £12.73                                                |
+      | Payment Status |                                                       |
       | Actions        |                                                       |
 
   Scenario: User clicks "View Payment" for fully paid interest
@@ -80,9 +80,9 @@ Feature: ECL Dashboard details
     And I should be on the page that says You have no payments due.
     When I click on the View your payments link to view my fully paid interest
     Then the interest row should display the fully paid interest payment information under Payment History
-      | Payment Date   | 9 February 2021                                       |
+      | Payment Date   | 9 February 2022                                       |
       | Payment Type   | Interest charge for ECL return number XMECL0000000011 |
-      | Payment Period | 1 April 2021 to 31 March 2022                         |
+      | Payment Period | 1 April 2022 to 31 March 2023                         |
       | You paid HMRC  | £114.84                                               |
       | Payment Status | PAID                                                  |
       | Actions        | Request a refund                                      |
@@ -90,12 +90,12 @@ Feature: ECL Dashboard details
   Scenario: User clicks "View Payment" to see the overdue payment information
     Given I am signed in to the account journey with my ECL reference as XMECL00000000012
     When I am on the ECL account dashboard
-    And I should be on the page that says You have an overdue payment for 1 April 2021 to 31 March 2022.
+    And I should be on the page that says You have an overdue payment for 1 April 2022 to 31 March 2023.
     When I click on the View your payments link to view my overdue
     Then the overdue row should display the overdue payment information under Payment you owe
-      | Payment Date   | 30 September 2022                          |
+      | Payment Date   | 30 September 2023                          |
       | Payment Type   | Levy for ECL return number XMECL0000000012 |
-      | Financial year | 1 April 2021 to 31 March 2022              |
+      | Financial year | 1 April 2022 to 31 March 2023              |
       | You paid HMRC  | £4,000                                     |
       | Payment Status | OVERDUE                                    |
       | Actions        | Make a payment                             |
