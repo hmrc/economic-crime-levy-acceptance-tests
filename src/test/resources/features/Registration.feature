@@ -23,7 +23,7 @@ Feature: Register for ECL
   Scenario: User wants to go to check your answers page directly without providing any of the previous pages details
     Given I am signed in to the registration journey
     When I go to check your answers page directly without providing answers for any of the previous page questions
-    Then I should be on the page that says Please check that you have entered the correct web address.
+    Then I should be on the page that says The answers you provided are not valid.
 
   Scenario: User wants to change the contact details before submitting the registration
     Given I am signed in to the registration journey
