@@ -20,6 +20,7 @@ import io.cucumber.datatable.DataTable
 import org.junit.Assert
 import org.openqa.selenium.By
 import uk.gov.hmrc.test.ui.conf.TestConfiguration
+import uk.gov.hmrc.test.ui.pages.returns.ReturnsPage
 import uk.gov.hmrc.test.ui.pages.{BasePage, SharedActions}
 
 object AccountPage extends BasePage {
@@ -48,6 +49,7 @@ object AccountPage extends BasePage {
 
   def provideSubmitAnEclReturn(): this.type = {
     SharedActions.clickById("submit-return")
+    onPage(ReturnsPage.recentDueHeading)
     this
   }
 

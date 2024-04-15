@@ -58,6 +58,7 @@ object ReturnsPage extends BasePage {
     emailAddress: String,
     contactNumber: String
   ): this.type = {
+    onPage(ContactNamePage.heading)
     SharedActions.enterDetails(contactName)
     SharedActions.enterDetails(contactRole)
     SharedActions.enterDetails(emailAddress)
@@ -153,6 +154,7 @@ object ReturnsPage extends BasePage {
   }
 
   def provideAmountDue(): this.type = {
+    onPage(AmountDuePage.heading)
     submitPage()
     this
   }
