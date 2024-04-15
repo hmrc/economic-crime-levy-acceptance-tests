@@ -24,7 +24,7 @@ object AmlAccountingPeriodPage extends BasePage {
   val url =
     s"${TestConfiguration.url("economic-crime-levy-registration-frontend")}/register-for-economic-crime-levy/relevant-accounting-period-length-question"
 
-  val heading = "How long is your relevant accounting period?"
+  val heading = "Your relevant accounting period"
 
   def navigateTo(): this.type = {
     get(url)

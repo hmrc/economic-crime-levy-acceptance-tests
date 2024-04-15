@@ -28,7 +28,7 @@ object RegisterForCurrentFinancialYearPage extends BasePage {
 
   val expectedTaxYearStart = EclTaxYear.currentFyStartYear
   val expectedTaxYearEnd   = EclTaxYear.currentFyEndYear
-  val heading              = "Are you registering for the 1 April " + expectedTaxYearStart + " and 31 March " + expectedTaxYearEnd + "financial year?"
+  val heading              = "Are you registering for the 1 April " + (expectedTaxYearStart.toInt + 1).toString + " to 31 March " + (expectedTaxYearEnd.toInt + 1).toString + " financial year?"
 
 
   def navigateTo(): this.type = {

@@ -27,9 +27,6 @@ import java.time.Duration
 
 trait BasePage extends BrowserDriver with Matchers {
 
-  var WAIT_POLLING_INTERVAL: WebDriverWait = new WebDriverWait(driver, Duration.ofMillis(250))
-  var WAIT_TIME_OUT: WebDriverWait         = new WebDriverWait(driver, Duration.ofSeconds(20))
-
   protected def get(url: String): Unit =
     driver.get(url)
 
@@ -61,7 +58,6 @@ trait BasePage extends BrowserDriver with Matchers {
       .until(ExpectedConditions.visibilityOfElementLocated(locator))
 
   private def clear(locator: By): Unit = {
-    waitforTextBoxToBeAvailable(locator)
     findElement(locator).clear()
   }
   protected def sendKeys(locator: By, value: String): Unit = {

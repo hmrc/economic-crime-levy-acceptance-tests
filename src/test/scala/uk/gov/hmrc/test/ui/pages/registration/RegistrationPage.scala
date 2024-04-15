@@ -60,11 +60,13 @@ object RegistrationPage extends BasePage {
       case _       =>
         SharedActions.selectLabelByPartialText(value)
     }
+    onPage(AmlSupervisorPage.heading)
     submitPage()
     this
   }
 
   def provideRelevantAccountingPeriod(): this.type = {
+    onPage(AmlAccountingActivityPage.heading)
     SharedActions
       .selectYesOrNo("Yes")
     onPage(UkRevenuePage.heading)
@@ -79,6 +81,7 @@ object RegistrationPage extends BasePage {
       case _    =>
         SharedActions
           .selectYesOrNo(value)
+        onPage(LiabilityStartDatePage.heading)
     }
     this
   }
@@ -497,6 +500,7 @@ object RegistrationPage extends BasePage {
         SharedActions
           .selectYesOrNo(value)
      case _ =>
+       onPage(RegisterForCurrentFinancialYearPage.heading)
         SharedActions
           .selectYesOrNo(value)
         RegistrationPage
