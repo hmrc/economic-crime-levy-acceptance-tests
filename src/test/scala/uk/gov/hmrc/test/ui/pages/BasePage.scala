@@ -57,9 +57,8 @@ trait BasePage extends BrowserDriver with Matchers {
     new WebDriverWait(driver, Duration.ofSeconds(20))
       .until(ExpectedConditions.visibilityOfElementLocated(locator))
 
-  private def clear(locator: By): Unit = {
+  private def clear(locator: By): Unit =
     findElement(locator).clear()
-  }
   protected def sendKeys(locator: By, value: String): Unit = {
     clear(locator)
     findElement(locator).sendKeys(value)

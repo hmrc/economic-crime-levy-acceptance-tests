@@ -20,16 +20,16 @@ import uk.gov.hmrc.test.ui.conf.TestConfiguration
 import uk.gov.hmrc.test.ui.pages.utils.EclTaxYear
 import uk.gov.hmrc.test.ui.pages.{BasePage, SharedActions}
 
+import java.time.LocalDate
+
 object RegisterForCurrentFinancialYearPage extends BasePage {
 
   val url =
     s"${TestConfiguration.url("economic-crime-levy-registration-frontend")}/register-for-economic-crime-levy/register-for-current-financial-year"
 
-
-  val expectedTaxYearStart = EclTaxYear.currentFyStartYear
-  val expectedTaxYearEnd   = EclTaxYear.currentFyEndYear
-  val heading              = "Are you registering for the 1 April " + (expectedTaxYearStart.toInt + 1).toString + " to 31 March " + (expectedTaxYearEnd.toInt + 1).toString + " financial year?"
-
+  val eclTaxYear: EclTaxYear = EclTaxYear.fromCurrentDate(LocalDate.now())
+  val heading: String        =
+    "Are you registering for the 1 April " + eclTaxYear.startYear.toString + " to 31 March " + eclTaxYear.finishYear.toString + " financial year?"
 
   def navigateTo(): this.type = {
     get(url)

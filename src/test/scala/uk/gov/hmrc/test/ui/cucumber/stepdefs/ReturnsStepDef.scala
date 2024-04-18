@@ -222,29 +222,31 @@ class ReturnsStepDef extends BaseStepDef {
       .provideChangeContactDetails("James Bond 007", "Compliance Officer", "verify@oc.com", "014753777777")
   }
   And("""the amended return information should display under Amended answers on the Check your answers page$""") {
-    (arg: DataTable) => assertAmendedReturnAnswers(arg)
-      .submitPage()
+    (arg: DataTable) =>
+      assertAmendedReturnAnswers(arg)
+        .submitPage()
   }
 
-  When("""I provide some details for the economic crime levy return submission and experience a system timeout""") { () =>
-    selectAccountingPeriod("Yes")
-    onPage(UkRevenuePage.heading)
-    ReturnsPage
-      .provideUkRevenueInAccountingPeriod()
-      .selectAmlRegulatedActivity()
-      .provideAmountDue()
-      .provideContactDetails("Oliver Tom", "Account Manager", "test@test.com", "01632 960 001")
+  When("""I provide some details for the economic crime levy return submission and experience a system timeout""") {
+    () =>
+      selectAccountingPeriod("Yes")
+      onPage(UkRevenuePage.heading)
+      ReturnsPage
+        .provideUkRevenueInAccountingPeriod()
+        .selectAmlRegulatedActivity()
+        .provideAmountDue()
+        .provideContactDetails("Oliver Tom", "Account Manager", "test@test.com", "01632 960 001")
   }
 
   And("""I return to the service to complete the the return submission""") { () =>
-      provideReturnSubmissionAfterTimeout()
-        .submitPage()
+    provideReturnSubmissionAfterTimeout()
+      .submitPage()
   }
 
   And("""I should be able to resume the submission from where I left off""") { () =>
     SharedActions
-        .selectContinueWithSavedAnswers()
-        .submitPage()
+      .selectContinueWithSavedAnswers()
+      .submitPage()
   }
 
 }

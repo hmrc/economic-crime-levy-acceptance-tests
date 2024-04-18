@@ -16,37 +16,62 @@
 
 package uk.gov.hmrc.test.ui.pages.utils
 
-import java.time.LocalDate
-import scala.annotation.tailrec
+import java.time.{LocalDate, MonthDay}
+
+case class EclTaxYear(startYear: Int) {
+
+  private val dayDue: Int   = 30
+  private val monthDue: Int = 9
+
+  lazy val finishYear: Int = startYear + 1
+
+  lazy val dateDue: LocalDate = LocalDate.of(finishYear, monthDue, dayDue)
+
+  lazy val previous: EclTaxYear = EclTaxYear(startYear - 1)
+
+  lazy val startDate: LocalDate  = LocalDate.of(startYear, EclTaxYear.eclStartMonth, EclTaxYear.eclStartDay)
+  lazy val finishDate: LocalDate = LocalDate.of(finishYear, EclTaxYear.eclFinishMonth, EclTaxYear.eclFinishDay)
+
+  def isBetweenStartDateAndPreviousDateDue(date: LocalDate): Boolean = {
+    val startDateMinusOne = startDate.minusDays(1)
+    val dateDuePlusOne    = previous.dateDue.plusDays(1)
+
+    date.isAfter(startDateMinusOne) && date.isBefore(dateDuePlusOne)
+  }
+
+}
 
 object EclTaxYear {
+  private val postEclDateDueStartDay   = 1
+  private val postEclDateDueStartMonth = 10
 
-  private val startYear       = LocalDate.now().getYear
-  private val monthDue        = 9
-  private val dayDue          = 30
-  private val eclFyEndMonth   = 3
-  private val eclFyStartMonth = 4
-  private val eclFyEndDay     = 31
-  private val eclFyStartDay   = 1
+  val eclFinishDay: Int   = 31
+  val eclFinishMonth: Int = 3
+  val eclInitialYear: Int = 2022
+  val eclStartMonth: Int  = 4
+  val eclStartDay: Int    = 1
+  val yearInDays: Int     = 365
 
-  val yearDue: String                      = calculateYearDue().toString
-  private val currentFinancialYear: String = (yearDue.toInt - 1).toString
-  val yearInDays                           = 365
-
-  @tailrec
-  def calculateYearDue(yearDue: Int = startYear, currentDate: LocalDate = LocalDate.now()): Int =
-    if (currentDate.isAfter(LocalDate.of(yearDue, monthDue, dayDue))) {
-      calculateYearDue(yearDue + 1, currentDate)
+  private def calculateTaxYear(date: LocalDate, startMonth: Int, startDay: Int): EclTaxYear = {
+    val startOfTaxYear = MonthDay.of(startMonth, startDay)
+    if (date isBefore startOfTaxYear.atYear(date.getYear)) {
+      EclTaxYear(startYear = date.getYear - 1)
     } else {
-      yearDue
+      EclTaxYear(startYear = date.getYear)
     }
+  }
 
-  private val currentFinancialYearStartDate: LocalDate =
-    LocalDate.of(currentFinancialYear.toInt, eclFyStartMonth, eclFyStartDay)
-  private val currentFinancialYearEndDate: LocalDate   =
-    LocalDate.of(currentFinancialYear.toInt + 1, eclFyEndMonth, eclFyEndDay)
+  def fromCurrentDate(currentDate: LocalDate = LocalDate.now()): EclTaxYear = {
+    val startMonth: Int = postEclDateDueStartMonth
+    val startDay: Int   = postEclDateDueStartDay
+    calculateTaxYear(currentDate, startMonth, startDay)
+  }
 
-  val currentFyStartYear: String = currentFinancialYearStartDate.getYear.toString
-  val currentFyEndYear: String   = currentFinancialYearEndDate.getYear.toString
+  def fromDate(date: LocalDate): EclTaxYear = {
+    val startMonth: Int = eclStartMonth
+    val startDay: Int   = eclStartDay
+    calculateTaxYear(date, startMonth, startDay)
+  }
 
+  def fromStartYear(startYear: Int): EclTaxYear = EclTaxYear(startYear)
 }

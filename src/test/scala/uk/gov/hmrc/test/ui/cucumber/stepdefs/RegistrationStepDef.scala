@@ -34,7 +34,11 @@ class RegistrationStepDef extends BaseStepDef {
   When("""I provide details of my (.*) that is supervised by HMRC and liable for current ECL$""") {
     (entityType: String) =>
       provideEclLiableForCurrentFinancialYear()
-        .provideEclLiabilityDate(liabilityStartDate = now.getDayOfMonth.toString, liabilityStartMonth = now.getMonthValue.toString, liabilityStartYear = now.getYear.toString)
+        .provideEclLiabilityDate(
+          liabilityStartDate = now.getDayOfMonth.toString,
+          liabilityStartMonth = now.getMonthValue.toString,
+          liabilityStartYear = now.getYear.toString
+        )
         .provideEntityType(entityType)
         .provideGrsData()
         .provideBusinessSector("Credit institution")
@@ -56,7 +60,11 @@ class RegistrationStepDef extends BaseStepDef {
 
   And("I provide the details of another UK address as my main contact address") { () =>
     provideEclLiableForCurrentFinancialYear("No")
-      .provideEclLiabilityDate(liabilityStartDate = now.getDayOfMonth.toString, liabilityStartMonth = now.getMonthValue.toString, liabilityStartYear = now.getYear.toString)
+      .provideEclLiabilityDate(
+        liabilityStartDate = now.getDayOfMonth.toString,
+        liabilityStartMonth = now.getMonthValue.toString,
+        liabilityStartYear = now.getYear.toString
+      )
       .provideHmrcOrOtherAmlSupervisor()
       .provideEntityType("Limited liability partnership")
       .provideGrsData()
@@ -70,7 +78,11 @@ class RegistrationStepDef extends BaseStepDef {
 
   And("I provide the details of a non UK address as my main contact address") { () =>
     provideEclLiableForCurrentFinancialYear("No")
-      .provideEclLiabilityDate(liabilityStartDate = now.getDayOfMonth.toString, liabilityStartMonth = now.getMonthValue.toString, liabilityStartYear = now.getYear.toString)
+      .provideEclLiabilityDate(
+        liabilityStartDate = now.getDayOfMonth.toString,
+        liabilityStartMonth = now.getMonthValue.toString,
+        liabilityStartYear = now.getYear.toString
+      )
       .provideHmrcOrOtherAmlSupervisor()
       .provideEntityType("Limited partnership")
       .provideGrsData()
@@ -90,7 +102,11 @@ class RegistrationStepDef extends BaseStepDef {
 
   When("I click on the change link and edit my contact details") { () =>
     provideEclLiableForCurrentFinancialYear()
-      .provideEclLiabilityDate(liabilityStartDate = now.getDayOfMonth.toString, liabilityStartMonth = now.getMonthValue.toString, liabilityStartYear = now.getYear.toString)
+      .provideEclLiabilityDate(
+        liabilityStartDate = now.getDayOfMonth.toString,
+        liabilityStartMonth = now.getMonthValue.toString,
+        liabilityStartYear = now.getYear.toString
+      )
       .provideEntityType("Registered society")
       .provideGrsData()
       .provideBusinessSector("Credit institution")
@@ -103,7 +119,11 @@ class RegistrationStepDef extends BaseStepDef {
 
   When("I click on the change link to modify my secondary contact") { () =>
     provideEclLiableForCurrentFinancialYear()
-      .provideEclLiabilityDate(liabilityStartDate = now.getDayOfMonth.toString, liabilityStartMonth = now.getMonthValue.toString, liabilityStartYear = now.getYear.toString)
+      .provideEclLiabilityDate(
+        liabilityStartDate = now.getDayOfMonth.toString,
+        liabilityStartMonth = now.getMonthValue.toString,
+        liabilityStartYear = now.getYear.toString
+      )
       .provideEntityType("Scottish limited partnership")
       .provideGrsData()
       .provideBusinessSector("Credit institution")
@@ -122,7 +142,11 @@ class RegistrationStepDef extends BaseStepDef {
 
   When("I click on the change link to modify the registered address") { () =>
     provideEclLiableForCurrentFinancialYear("No")
-      .provideEclLiabilityDate(liabilityStartDate = now.getDayOfMonth.toString, liabilityStartMonth = now.getMonthValue.toString, liabilityStartYear = now.getYear.toString)
+      .provideEclLiabilityDate(
+        liabilityStartDate = now.getDayOfMonth.toString,
+        liabilityStartMonth = now.getMonthValue.toString,
+        liabilityStartYear = now.getYear.toString
+      )
       .provideHmrcOrOtherAmlSupervisor()
       .provideEntityType("Unlimited company")
       .provideGrsData()
@@ -136,13 +160,17 @@ class RegistrationStepDef extends BaseStepDef {
   }
 
   When("I select (.*) on whether or not to use a different UK address as my main contact address$") { (value: String) =>
-      provideNonUkRegisteredAddress(value)
+    provideNonUkRegisteredAddress(value)
       .submitPage()
   }
 
   When("I click on the change link and edit my organisation details") { () =>
     provideEclLiableForCurrentFinancialYear()
-      .provideEclLiabilityDate(liabilityStartDate = now.getDayOfMonth.toString, liabilityStartMonth = now.getMonthValue.toString, liabilityStartYear = now.getYear.toString)
+      .provideEclLiabilityDate(
+        liabilityStartDate = now.getDayOfMonth.toString,
+        liabilityStartMonth = now.getMonthValue.toString,
+        liabilityStartYear = now.getYear.toString
+      )
       .provideEntityType("Limited company")
       .provideGrsData()
       .provideBusinessSector("Credit institution")
@@ -156,7 +184,11 @@ class RegistrationStepDef extends BaseStepDef {
     "I click on the change link and select (.*) on whether or not I carried out AML-regulated activity in current FY$"
   ) { (value: String) =>
     provideEclLiableForCurrentFinancialYear()
-      .provideEclLiabilityDate(liabilityStartDate = now.getDayOfMonth.toString, liabilityStartMonth = now.getMonthValue.toString, liabilityStartYear = now.getYear.toString)
+      .provideEclLiabilityDate(
+        liabilityStartDate = now.getDayOfMonth.toString,
+        liabilityStartMonth = now.getMonthValue.toString,
+        liabilityStartYear = now.getYear.toString
+      )
       .provideEntityType("Limited company")
       .provideGrsData()
       .provideBusinessSector("Credit institution")
@@ -168,7 +200,11 @@ class RegistrationStepDef extends BaseStepDef {
 
   When("I click on the change link and select the new entity type") { () =>
     provideEclLiableForCurrentFinancialYear()
-      .provideEclLiabilityDate(liabilityStartDate = now.getDayOfMonth.toString, liabilityStartMonth = now.getMonthValue.toString, liabilityStartYear = now.getYear.toString)
+      .provideEclLiabilityDate(
+        liabilityStartDate = now.getDayOfMonth.toString,
+        liabilityStartMonth = now.getMonthValue.toString,
+        liabilityStartYear = now.getYear.toString
+      )
       .provideEntityType("Limited company")
       .provideGrsData()
       .provideBusinessSector("Credit institution")
@@ -180,7 +216,11 @@ class RegistrationStepDef extends BaseStepDef {
 
   When("I select my entity type as (.*) and provide the registration details$") { (entityType: String) =>
     provideEclLiableForCurrentFinancialYear()
-      .provideEclLiabilityDate(liabilityStartDate = now.getDayOfMonth.toString, liabilityStartMonth = now.getMonthValue.toString, liabilityStartYear = now.getYear.toString)
+      .provideEclLiabilityDate(
+        liabilityStartDate = now.getDayOfMonth.toString,
+        liabilityStartMonth = now.getMonthValue.toString,
+        liabilityStartYear = now.getYear.toString
+      )
       .provideEntityTypeDetailsForGeneralOrScottishPartnership(entityType)
       .provideBusinessSector("Credit institution")
       .provideFirstContactDetails("Oliver Tom", "Account Manager", "test@test.com", "01632 960 001")
@@ -192,7 +232,11 @@ class RegistrationStepDef extends BaseStepDef {
   When("I provide details of my other entity is (.*) that is supervised by HMRC and liable for ECL$") {
     (otherEntityType: String) =>
       provideEclLiableForCurrentFinancialYear("No")
-        .provideEclLiabilityDate(liabilityStartDate = now.getDayOfMonth.toString, liabilityStartMonth = now.getMonthValue.toString, liabilityStartYear = now.getYear.toString)
+        .provideEclLiabilityDate(
+          liabilityStartDate = now.getDayOfMonth.toString,
+          liabilityStartMonth = now.getMonthValue.toString,
+          liabilityStartYear = now.getYear.toString
+        )
         .provideHmrcOrOtherAmlSupervisor()
         .provideOtherEntityBusinessDetails(otherEntityType)
         .provideBusinessSector("Credit institution")
@@ -226,7 +270,11 @@ class RegistrationStepDef extends BaseStepDef {
     areYouRegisteringForCurrentFinancialYear()
       .provideAmlRegulated("No")
       .provideEclLiableForPreviousFinancialYear()
-      .provideEclLiabilityDate(liabilityStartDate = now.getDayOfMonth.toString, liabilityStartMonth = now.getMonthValue.toString, liabilityStartYear = now.getYear.toString)
+      .provideEclLiabilityDate(
+        liabilityStartDate = now.getDayOfMonth.toString,
+        liabilityStartMonth = now.getMonthValue.toString,
+        liabilityStartYear = now.getYear.toString
+      )
       .provideHmrcOrOtherAmlSupervisor()
       .provideEntityType("Limited company")
       .provideGrsData()
@@ -332,7 +380,11 @@ class RegistrationStepDef extends BaseStepDef {
 
   When("""I provide some details for the economic crime levy registration and experience a system timeout""") { () =>
     provideEclLiableForCurrentFinancialYear()
-      .provideEclLiabilityDate(liabilityStartDate = now.getDayOfMonth.toString, liabilityStartMonth = now.getMonthValue.toString, liabilityStartYear = now.getYear.toString)
+      .provideEclLiabilityDate(
+        liabilityStartDate = now.getDayOfMonth.toString,
+        liabilityStartMonth = now.getMonthValue.toString,
+        liabilityStartYear = now.getYear.toString
+      )
       .provideEntityType("Limited company")
       .provideGrsData()
       .provideBusinessSector("Credit institution")
@@ -352,12 +404,13 @@ class RegistrationStepDef extends BaseStepDef {
       .submitPage()
   }
 
-  When("^I select (.*) on whether or not I carried out AML-regulated activity in current FY and in previous FY$") { (value: String) =>
-    AmlRegulatedActivityPage
-      .navigateTo()
-    SharedActions
-      .selectYesOrNo(value)
-    SharedActions
-      .selectYesOrNo(value)
+  When("^I select (.*) on whether or not I carried out AML-regulated activity in current FY and in previous FY$") {
+    (value: String) =>
+      AmlRegulatedActivityPage
+        .navigateTo()
+      SharedActions
+        .selectYesOrNo(value)
+      SharedActions
+        .selectYesOrNo(value)
   }
 }

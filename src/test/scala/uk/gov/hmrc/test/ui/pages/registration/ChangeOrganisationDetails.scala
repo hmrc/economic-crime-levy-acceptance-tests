@@ -19,8 +19,6 @@ package uk.gov.hmrc.test.ui.pages.registration
 import uk.gov.hmrc.test.ui.cucumber.stepdefs.BaseStepDef
 import uk.gov.hmrc.test.ui.pages.{BasePage, SharedActions}
 
-
-
 object ChangeOrganisationDetails extends BasePage with BaseStepDef {
 
   val cssForChangeBusinessSector: String       =
@@ -35,7 +33,7 @@ object ChangeOrganisationDetails extends BasePage with BaseStepDef {
     "a[href='/register-for-economic-crime-levy/change-answer/aml-regulated-activity-question']"
   val cssForChangeEntityType: String           =
     "a[href='/register-for-economic-crime-levy/change-answer/what-is-your-entity-type']"
-  val cssForChangeLiabilityStartDate: String =
+  val cssForChangeLiabilityStartDate: String   =
     "a[href='/register-for-economic-crime-levy/change-answer/liability-start-date']"
   val cssForSaveAndContinue                    = "button[class='govuk-button']"
 
@@ -95,7 +93,11 @@ object ChangeOrganisationDetails extends BasePage with BaseStepDef {
   def changeLiabilityStartDate(): this.type = {
     clickByCssSelector(cssForChangeLiabilityStartDate)
     RegistrationPage
-      .provideEclLiabilityDate(liabilityStartDate = now.getDayOfMonth.toString, liabilityStartMonth = now.getMonthValue.toString, liabilityStartYear = now.getYear.toString)
+      .provideEclLiabilityDate(
+        liabilityStartDate = now.getDayOfMonth.toString,
+        liabilityStartMonth = now.getMonthValue.toString,
+        liabilityStartYear = now.getYear.toString
+      )
 //    submitPage()
     this
   }

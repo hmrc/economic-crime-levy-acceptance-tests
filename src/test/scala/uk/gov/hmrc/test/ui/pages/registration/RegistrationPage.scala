@@ -441,9 +441,9 @@ object RegistrationPage extends BasePage {
 
   def assertAmendedRegistrationAnswers(data: DataTable): this.type = {
     val returnCompletedBy = data.column(1).get(0)
-    val role = data.column(1).get(1)
-    val emailAddress = data.column(1).get(2)
-    val telephoneNumber = data.column(1).get(3)
+    val role              = data.column(1).get(1)
+    val emailAddress      = data.column(1).get(2)
+    val telephoneNumber   = data.column(1).get(3)
 
     val actualReturnCompletedBy = getText(
       By.cssSelector("dl:nth-child(14) > div:nth-child(1) > dd:nth-child(2)")
@@ -470,7 +470,7 @@ object RegistrationPage extends BasePage {
     value match {
       case "No" =>
         SharedActions.selectYesOrNo(value)
-      case _ =>
+      case _    =>
         SharedActions.selectYesOrNo(value)
         provideUkUniqueTaxpayerReference()
     }
@@ -484,9 +484,10 @@ object RegistrationPage extends BasePage {
   }
 
   def provideEclLiabilityDate(
-     liabilityStartDate: String,
-     liabilityStartMonth: String,
-     liabilityStartYear: String): this.type = {
+    liabilityStartDate: String,
+    liabilityStartMonth: String,
+    liabilityStartYear: String
+  ): this.type = {
     sendKeys(By.id("value.day"), liabilityStartDate)
     sendKeys(By.id("value.month"), liabilityStartMonth)
     sendKeys(By.id("value.year"), liabilityStartYear)
@@ -499,8 +500,8 @@ object RegistrationPage extends BasePage {
       case "No" =>
         SharedActions
           .selectYesOrNo(value)
-     case _ =>
-       onPage(RegisterForCurrentFinancialYearPage.heading)
+      case _    =>
+        onPage(RegisterForCurrentFinancialYearPage.heading)
         SharedActions
           .selectYesOrNo(value)
         RegistrationPage
@@ -518,7 +519,7 @@ object RegistrationPage extends BasePage {
       case "No" =>
         SharedActions
           .selectYesOrNo(value)
-      case _ =>
+      case _    =>
         SharedActions
           .selectYesOrNo(value)
     }
@@ -530,11 +531,15 @@ object RegistrationPage extends BasePage {
       case "No" =>
         SharedActions
           .selectYesOrNo(value)
-      case _ =>
+      case _    =>
         SharedActions
           .selectYesOrNo(value)
         RegistrationPage
-          .provideEclLiabilityDate(liabilityStartDate = now.getDayOfMonth.toString, liabilityStartMonth = now.getMonthValue.toString, liabilityStartYear = now.getYear.toString)
+          .provideEclLiabilityDate(
+            liabilityStartDate = now.getDayOfMonth.toString,
+            liabilityStartMonth = now.getMonthValue.toString,
+            liabilityStartYear = now.getYear.toString
+          )
     }
     this
   }
