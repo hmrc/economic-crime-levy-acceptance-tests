@@ -22,8 +22,8 @@ import org.openqa.selenium.{By, WebDriver, WebElement}
 import org.scalatest.matchers.should.Matchers
 import uk.gov.hmrc.test.ui.driver.BrowserDriver
 
-import java.util
 import java.time.Duration
+import java.util
 
 trait BasePage extends BrowserDriver with Matchers {
 

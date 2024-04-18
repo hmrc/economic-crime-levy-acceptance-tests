@@ -21,10 +21,9 @@ import org.openqa.selenium.By
 import uk.gov.hmrc.test.ui.conf.TestConfiguration
 import uk.gov.hmrc.test.ui.pages.registration.BusinessSectorPage.cssForSaveAndContinue
 import uk.gov.hmrc.test.ui.pages.{BasePage, SharedActions}
+import uk.gov.hmrc.test.ui.utils.DateUtil
 
-import java.time.LocalDate.now
-
-object RegistrationPage extends BasePage {
+object RegistrationPage extends BasePage with DateUtil {
 
   val url =
     s"${TestConfiguration.url("economic-crime-levy-registration-frontend")}/register-for-economic-crime-levy/"
@@ -536,9 +535,9 @@ object RegistrationPage extends BasePage {
           .selectYesOrNo(value)
         RegistrationPage
           .provideEclLiabilityDate(
-            liabilityStartDate = now.getDayOfMonth.toString,
-            liabilityStartMonth = now.getMonthValue.toString,
-            liabilityStartYear = now.getYear.toString
+            liabilityStartDate = previousEclTaxYearStartYear.getDayOfMonth.toString,
+            liabilityStartMonth = previousEclTaxYearStartYear.getMonthValue.toString,
+            liabilityStartYear = previousEclTaxYearStartYear.getYear.toString
           )
     }
     this

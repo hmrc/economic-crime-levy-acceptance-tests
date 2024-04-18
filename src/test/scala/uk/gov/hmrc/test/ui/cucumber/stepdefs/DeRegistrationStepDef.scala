@@ -19,8 +19,9 @@ package uk.gov.hmrc.test.ui.cucumber.stepdefs
 import uk.gov.hmrc.test.ui.pages.SharedActions
 import uk.gov.hmrc.test.ui.pages.deregistration.DeRegistrationPage
 import uk.gov.hmrc.test.ui.pages.deregistration.DeRegistrationPage._
+import uk.gov.hmrc.test.ui.utils.DateUtil
 
-class DeRegistrationStepDef extends BaseStepDef {
+class DeRegistrationStepDef extends BaseStepDef with DateUtil {
 
   Then("^I should see the de registered ECL reference number as (.*)$") { (value: String) =>
     SharedActions.assertEclReferenceNumber(value)
