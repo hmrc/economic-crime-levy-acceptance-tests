@@ -19,16 +19,17 @@ package uk.gov.hmrc.test.ui.cucumber.stepdefs
 import uk.gov.hmrc.test.ui.pages.SharedActions
 import uk.gov.hmrc.test.ui.pages.deregistration.DeRegistrationPage
 import uk.gov.hmrc.test.ui.pages.deregistration.DeRegistrationPage._
+import uk.gov.hmrc.test.ui.utils.DateUtil
 
-
-class DeRegistrationStepDef extends BaseStepDef {
+class DeRegistrationStepDef extends BaseStepDef with DateUtil {
 
   Then("^I should see the de registered ECL reference number as (.*)$") { (value: String) =>
     SharedActions.assertEclReferenceNumber(value)
   }
 
-  When("I click on the View or amend your returns or View your payments link to view the deregistered (.*) details$") { (linkName: String) =>
-    ProvideViewEclAccountAfterDeRegistration(linkName)
+  When("I click on the View or amend your returns or View your payments link to view the deregistered (.*) details$") {
+    (linkName: String) =>
+      ProvideViewEclAccountAfterDeRegistration(linkName)
   }
 
   When("the links (.*) under the Action column should be visible on the the page$") { (linkName: String) =>
@@ -40,7 +41,11 @@ class DeRegistrationStepDef extends BaseStepDef {
       .provideEclDeRegistration()
       .submitPage()
       .provideReasonForDeRegistering()
-      .provideEclDeRegistrationDate(deRegistrationDate = now.getDayOfMonth.toString, deRegistrationMonth = now.getMonthValue.toString, deRegistrationYear = now.getYear.toString)
+      .provideEclDeRegistrationDate(
+        deRegistrationDate = now.getDayOfMonth.toString,
+        deRegistrationMonth = now.getMonthValue.toString,
+        deRegistrationYear = now.getYear.toString
+      )
       .provideDeRegistrationFirstContactDetails("Tom Oliver", "Director", "verify@oc.com", "01632 000 001")
       .submitPage()
   }

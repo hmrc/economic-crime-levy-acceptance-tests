@@ -26,7 +26,6 @@ object EclLiableForPreviousFinancialYearPage extends BasePage {
 
   val heading = "Are you liable for any previous financial years?"
 
-
   def navigateTo(): this.type = {
     get(url)
     this

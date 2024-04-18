@@ -23,7 +23,7 @@ import uk.gov.hmrc.test.ui.pages.{BasePage, SharedActions}
 
 object DeRegistrationPage extends BasePage {
 
-  val url =
+  val url     =
     s"${TestConfiguration.url("economic-crime-levy-registration-frontend")}/register-for-economic-crime-levy/deregister-start"
   val heading = "Request to deregister from HMRC for the Economic Crime Levy"
   def navigateTo(): this.type = {
@@ -36,7 +36,7 @@ object DeRegistrationPage extends BasePage {
       case "Returns" =>
         SharedActions
           .clickById("view-returns")
-      case _ =>
+      case _         =>
         SharedActions
           .clickById("view-payment-history")
     }
@@ -47,13 +47,13 @@ object DeRegistrationPage extends BasePage {
     linkName match {
       case "Payments" =>
         val paymentElements = driver.findElements(By.linkText("Make a payment"))
-        Assert.assertTrue(paymentElements. size() > 0)
+        Assert.assertTrue(paymentElements.size() > 0)
 
         val elements = driver.findElements(By.linkText("Request a refund"))
-        Assert.assertTrue(elements. size() > 0)
-      case _ =>
+        Assert.assertTrue(elements.size() > 0)
+      case _          =>
         val amendElements = driver.findElements(By.linkText("Amend return"))
-        Assert.assertTrue(amendElements. size() > 0)
+        Assert.assertTrue(amendElements.size() > 0)
     }
     this
   }
@@ -72,7 +72,7 @@ object DeRegistrationPage extends BasePage {
       case "value_2" =>
         SharedActions
           .clickById("value_2")
-      case _ =>
+      case _         =>
         SharedActions
           .clickById("value_0")
     }
@@ -84,7 +84,8 @@ object DeRegistrationPage extends BasePage {
   def provideEclDeRegistrationDate(
     deRegistrationDate: String,
     deRegistrationMonth: String,
-    deRegistrationYear: String ): this.type = {
+    deRegistrationYear: String
+  ): this.type = {
     onPage(DeRegisterDateNoLongerLiablePage.heading)
     sendKeys(By.id("value.day"), deRegistrationDate)
     sendKeys(By.id("value.month"), deRegistrationMonth)
@@ -97,7 +98,8 @@ object DeRegistrationPage extends BasePage {
     contactName: String,
     contactRole: String,
     emailAddress: String,
-    contactNumber: String): this.type = {
+    contactNumber: String
+  ): this.type = {
     SharedActions.enterDetails(contactName)
     SharedActions.enterDetails(contactRole)
     SharedActions.enterDetails(emailAddress)

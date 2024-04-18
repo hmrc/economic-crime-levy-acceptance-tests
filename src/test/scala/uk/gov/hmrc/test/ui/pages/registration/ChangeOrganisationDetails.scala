@@ -18,10 +18,9 @@ package uk.gov.hmrc.test.ui.pages.registration
 
 import uk.gov.hmrc.test.ui.cucumber.stepdefs.BaseStepDef
 import uk.gov.hmrc.test.ui.pages.{BasePage, SharedActions}
+import uk.gov.hmrc.test.ui.utils.DateUtil
 
-
-
-object ChangeOrganisationDetails extends BasePage with BaseStepDef {
+object ChangeOrganisationDetails extends BasePage with BaseStepDef with DateUtil {
 
   val cssForChangeBusinessSector: String       =
     "a[href='/register-for-economic-crime-levy/change-answer/what-is-your-business-sector']"
@@ -35,7 +34,7 @@ object ChangeOrganisationDetails extends BasePage with BaseStepDef {
     "a[href='/register-for-economic-crime-levy/change-answer/aml-regulated-activity-question']"
   val cssForChangeEntityType: String           =
     "a[href='/register-for-economic-crime-levy/change-answer/what-is-your-entity-type']"
-  val cssForChangeLiabilityStartDate: String =
+  val cssForChangeLiabilityStartDate: String   =
     "a[href='/register-for-economic-crime-levy/change-answer/liability-start-date']"
   val cssForSaveAndContinue                    = "button[class='govuk-button']"
 
@@ -95,7 +94,11 @@ object ChangeOrganisationDetails extends BasePage with BaseStepDef {
   def changeLiabilityStartDate(): this.type = {
     clickByCssSelector(cssForChangeLiabilityStartDate)
     RegistrationPage
-      .provideEclLiabilityDate(liabilityStartDate = now.getDayOfMonth.toString, liabilityStartMonth = now.getMonthValue.toString, liabilityStartYear = now.getYear.toString)
+      .provideEclLiabilityDate(
+        liabilityStartDate = previousEclTaxYearStartYear.getDayOfMonth.toString,
+        liabilityStartMonth = previousEclTaxYearStartYear.getMonthValue.toString,
+        liabilityStartYear = previousEclTaxYearStartYear.getYear.toString
+      )
 //    submitPage()
     this
   }

@@ -21,15 +21,16 @@ import uk.gov.hmrc.test.ui.conf.TestConfiguration
 import uk.gov.hmrc.test.ui.pages.utils.EclTaxYear
 import uk.gov.hmrc.test.ui.pages.{BasePage, SharedActions}
 
+import java.time.LocalDate
+
 object AmlRegulatedActivityPage extends BasePage {
 
   val url =
     s"${TestConfiguration.url("economic-crime-levy-registration-frontend")}/register-for-economic-crime-levy/aml-regulated-activity-question"
 
-  val expectedTaxYearStart = EclTaxYear.currentFyStartYear
-  val expectedTaxYearEnd   = EclTaxYear.currentFyEndYear
-  val heading              =
-    "Did you carry out anti-money laundering (AML) regulated activity between 1 April " + expectedTaxYearStart + " and 31 March " + expectedTaxYearEnd + "?"
+  val eclTaxYear: EclTaxYear = EclTaxYear.fromCurrentDate(LocalDate.now())
+  val heading: String        =
+    "Did you carry out anti-money laundering (AML) regulated activity between 1 April " + eclTaxYear.startYear.toString + " and 31 March " + eclTaxYear.finishYear.toString + "?"
 
   def navigateTo(): this.type = {
     get(url)

@@ -22,8 +22,8 @@ import org.openqa.selenium.{By, WebDriver, WebElement}
 import org.scalatest.matchers.should.Matchers
 import uk.gov.hmrc.test.ui.driver.BrowserDriver
 
-import java.util
 import java.time.Duration
+import java.util
 
 trait BasePage extends BrowserDriver with Matchers {
 
@@ -57,9 +57,8 @@ trait BasePage extends BrowserDriver with Matchers {
     new WebDriverWait(driver, Duration.ofSeconds(20))
       .until(ExpectedConditions.visibilityOfElementLocated(locator))
 
-  private def clear(locator: By): Unit = {
+  private def clear(locator: By): Unit =
     findElement(locator).clear()
-  }
   protected def sendKeys(locator: By, value: String): Unit = {
     clear(locator)
     findElement(locator).sendKeys(value)

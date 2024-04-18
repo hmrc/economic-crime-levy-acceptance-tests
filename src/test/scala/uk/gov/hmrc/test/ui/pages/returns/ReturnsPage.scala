@@ -22,17 +22,18 @@ import uk.gov.hmrc.test.ui.conf.TestConfiguration
 import uk.gov.hmrc.test.ui.pages.utils.EclTaxYear
 import uk.gov.hmrc.test.ui.pages.{BasePage, SharedActions}
 
+import java.time.LocalDate
+
 object ReturnsPage extends BasePage {
 
   val url =
     s"${TestConfiguration.url("economic-crime-levy-returns-frontend")}/submit-economic-crime-levy-return/period/23XY"
 
-  val expectedTaxYearStart = EclTaxYear.currentFyStartYear
-  val expectedTaxYearEnd   = EclTaxYear.currentFyEndYear
-
-  val heading          = "Submit your Economic Crime Levy return for " + expectedTaxYearStart + "-" + expectedTaxYearEnd
-  val recentDueHeading =
-    "Submit your Economic Crime Levy return for " + (EclTaxYear.currentFyStartYear.toInt - 1).toString + "-" + (EclTaxYear.currentFyEndYear.toInt - 1).toString
+  val eclTaxYear: EclTaxYear   = EclTaxYear.fromDate(LocalDate.now())
+  val heading: String          =
+    "Submit your Economic Crime Levy return for " + eclTaxYear.previous.startYear.toString + "-" + eclTaxYear.previous.finishYear.toString
+  val recentDueHeading: String =
+    "Submit your Economic Crime Levy return for " + eclTaxYear.previous.previous.startYear.toString + "-" + eclTaxYear.previous.previous.finishYear.toString
 
   def navigateTo(): this.type = {
     get(url)
@@ -192,9 +193,9 @@ object ReturnsPage extends BasePage {
 
   def assertAmendedReturnAnswers(data: DataTable): this.type = {
     val returnCompletedBy = data.column(1).get(0)
-    val role = data.column(1).get(1)
-    val emailAddress = data.column(1).get(2)
-    val telephoneNumber = data.column(1).get(3)
+    val role              = data.column(1).get(1)
+    val emailAddress      = data.column(1).get(2)
+    val telephoneNumber   = data.column(1).get(3)
 
     val actualReturnCompletedBy = getText(
       By.cssSelector("dl:nth-child(8) > div:nth-child(1) > dd:nth-child(2)")
