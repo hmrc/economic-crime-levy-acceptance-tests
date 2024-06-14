@@ -79,6 +79,9 @@ Feature: ECL Dashboard details
     When I am on the ECL account dashboard
     And I should be on the page that says You have no payments due.
     When I click on the View your payments link to view my fully paid interest
+    Then I click on the Back link
+    Then I am on the ECL account dashboard
+    When I click on the View your payments link to view my fully paid interest
     Then the interest row should display the fully paid interest payment information under Payment History
       | Payment Date   | 9 February 2022                                       |
       | Payment Type   | Interest charge for ECL return number XMECL0000000011 |
@@ -101,4 +104,3 @@ Feature: ECL Dashboard details
       | Actions        | Make a payment                             |
     And I click make a payment link to pay the overdue payment
     Then I should be on the page that says Select an amount to pay
-

@@ -68,6 +68,10 @@ Feature: Submit ECL Return
     Given I am signed in to the return journey
     When I click on the change link to modify my economic crime levy accounting period
     Then I should be on the page that says Check your answers
+    Then I click on the Back link
+    Then I should be on the page that says Amount of Economic Crime Levy you need to pay
+    Then I click the Save and continue button
+    Then I should be on the page that says Check your answers
 
   Scenario: User wants to change their ECL accounting period length before submitting the returns
     Given I am signed in to the return journey

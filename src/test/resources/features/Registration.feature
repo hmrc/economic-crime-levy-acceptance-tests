@@ -51,6 +51,10 @@ Feature: Register for ECL
     Given I am signed in to the registration journey
     When I click on the change link and select No on whether or not I carried out AML-regulated activity in current FY
     Then I should be on the page that says Are you liable for any previous financial years?
+    When I click on the Back link
+    Then I should be on the page that says Did you carry out anti-money laundering (AML) regulated activity between 1 April 2023 and 31 March 2024?
+    Then I click the Save and continue button
+    Then I should be on the page that says Check your answers
 
   Scenario: User wants to change the entity type of the organisation before submitting the registration
     Given I am signed in to the registration journey

@@ -10,6 +10,10 @@ Feature: Claim enrolment for ECL
     Given I am signed in to the enrolment journey
     When I select No option for whether or not I have the ECL reference number
     Then I should be on the page that says You need to register for the Economic Crime Levy
+    Then I click on the Back link
+    Then I should be on the page that says Do you have an Economic Crime Levy (ECL) reference number?
+    Then I click the Save and continue button
+    Then I should be on the page that says You need to register for the Economic Crime Levy
 
   Scenario: User selects the answer I do not know for do they have an Economic Crime Levy reference number?
     Given I am signed in to the enrolment journey
