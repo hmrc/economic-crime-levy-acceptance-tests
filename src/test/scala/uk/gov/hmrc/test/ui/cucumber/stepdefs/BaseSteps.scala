@@ -1,5 +1,5 @@
 /*
- * Copyright 2023 HM Revenue & Customs
+ * Copyright 2024 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,13 +14,19 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.test.ui.driver
+package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
-import org.openqa.selenium.WebDriver
-import uk.gov.hmrc.selenium.webdriver.Driver
+import uk.gov.hmrc.test.ui.pages.BasePage
+import uk.gov.hmrc.test.ui.pages.SharedActions.{clickBackButton, clickButton}
 
-trait BrowserDriver {
+class BaseSteps extends BaseStepDef with BasePage {
 
-  implicit def driver: WebDriver = Driver.instance
+  Then("""^I click on the Back link$""") { () =>
+    clickBackButton()
+  }
+
+  Then("""^I click the Save and continue button$""") { () =>
+    clickButton()
+  }
 
 }

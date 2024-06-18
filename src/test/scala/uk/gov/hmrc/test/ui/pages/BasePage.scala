@@ -16,9 +16,8 @@
 
 package uk.gov.hmrc.test.ui.pages
 
-import org.junit.Assert
-import org.openqa.selenium.support.ui.{ExpectedConditions, FluentWait, Wait, WebDriverWait}
-import org.openqa.selenium.{By, WebDriver, WebElement}
+import org.openqa.selenium.support.ui._
+import org.openqa.selenium.{By, WebElement}
 import org.scalatest.matchers.should.Matchers
 import uk.gov.hmrc.test.ui.driver.BrowserDriver
 
@@ -30,28 +29,24 @@ trait BasePage extends BrowserDriver with Matchers {
   protected def get(url: String): Unit =
     driver.get(url)
 
-  private val fluentWait: Wait[WebDriver] = new FluentWait[WebDriver](driver)
-    .withTimeout(Duration.ofSeconds(250))
-    .pollingEvery(Duration.ofSeconds(20))
-
-  def clickElement(locator: By): Unit = {
-    waitForElementToBeClickable(locator)
-    findElement(locator).click()
-  }
-
   def findElement(locator: By): WebElement =
     driver.findElement(locator)
 
   def waitForElementToBeClickable(locator: By): WebElement =
-    fluentWait.until(ExpectedConditions.elementToBeClickable(findElement(locator)))
+    waitFor(ExpectedConditions.elementToBeClickable(findElement(locator)))
 
   protected def getText(locator: By): String = {
     waitForElementToBePresent(locator)
     findElement(locator).getText
   }
 
+  def waitFor[T](condition: ExpectedCondition[T]): T = {
+    val wait = new WebDriverWait(driver, Duration.ofSeconds(10))
+    wait.until(condition)
+  }
+
   private def waitForElementToBePresent(locator: By): WebElement =
-    fluentWait.until(ExpectedConditions.presenceOfElementLocated(locator))
+    waitFor(ExpectedConditions.presenceOfElementLocated(locator))
 
   def waitforTextBoxToBeAvailable(locator: By) =
     new WebDriverWait(driver, Duration.ofSeconds(20))
@@ -59,6 +54,7 @@ trait BasePage extends BrowserDriver with Matchers {
 
   private def clear(locator: By): Unit =
     findElement(locator).clear()
+
   protected def sendKeys(locator: By, value: String): Unit = {
     clear(locator)
     findElement(locator).sendKeys(value)
@@ -81,11 +77,4 @@ trait BasePage extends BrowserDriver with Matchers {
   def clickByCssSelector(css: String): Unit =
     driver.findElement(By.cssSelector(css)).click()
 
-  def confirmUrl(url: String): Unit = {
-    fluentWait.until(ExpectedConditions.urlContains(url))
-    val currentUrl = driver.getCurrentUrl
-    Assert.assertEquals(currentUrl, url)
-  }
 }
-
-case class PageNotFoundException(s: String) extends Exception(s)

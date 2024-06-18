@@ -17,11 +17,13 @@
 package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
 import io.cucumber.datatable.DataTable
+import io.cucumber.scala.{EN, ScalaDsl}
+import org.scalatest.matchers.should.Matchers
 import uk.gov.hmrc.test.ui.pages.account.AccountPage._
 import uk.gov.hmrc.test.ui.pages.account._
 import uk.gov.hmrc.test.ui.pages.returns.ReturnsPage
 
-class AccountStepDef extends BaseStepDef {
+class AccountStepDef extends ScalaDsl with EN with Matchers {
 
   Given("I am signed in to the account journey with my ECL reference as (.*)$") { (eclReference: String) =>
     AccountPage
@@ -40,7 +42,7 @@ class AccountStepDef extends BaseStepDef {
 
   When("""I click on the Submit an Economic Crime Levy return link""") { () =>
     provideSubmitAnEclReturn()
-      .submitPage()
+    submitPage()
   }
 
   When("""I click on the View or amend your returns link to view the (DUE|OVERDUE|SUBMITTED) return details$""") {
