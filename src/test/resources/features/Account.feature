@@ -21,6 +21,7 @@ Feature: ECL Dashboard details
       | return status |
       | DUE           |
       | OVERDUE       |
+      | OVERDUE       |
       | SUBMITTED     |
 
   Scenario: User that is registered for ECL can make a returns submission through ECL dashboard
