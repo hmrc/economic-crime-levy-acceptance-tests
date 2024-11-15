@@ -33,6 +33,15 @@ Run tests as follows:
 ./run-tests.sh <browser> <environment>
 ```
 
+Those scripts are used in jenkins for relevant ECL acceptance-tests builds:
+
+```bash
+./run_registration.sh chrome local
+./run_returns.sh chrome local
+./run_account.sh chrome local
+./run_enrolment.sh chrome local
+```
+
 ## Scalafmt
 
 Check all project files are formatted as expected as follows:
