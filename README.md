@@ -18,10 +18,6 @@ Start `ECONOMIC_CRIME_LEVY` services as follows:
 sm2 --start ECONOMIC_CRIME_LEVY_ALL
 ```
 
-### Docker Selenium Grid
-
-Confirm that [docker-selenium-grid](https://github.com/hmrc/docker-selenium-grid) is up-to-date and follow the provided [instructions](https://github.com/hmrc/docker-selenium-grid/blob/main/README.md).
-
 ## Tests
 
 Run tests as follows:
@@ -31,6 +27,15 @@ Run tests as follows:
 
 ```bash
 ./run-tests.sh <browser> <environment>
+```
+
+Those scripts are used in jenkins for relevant ECL acceptance-tests builds:
+
+```bash
+./run_registration.sh chrome local
+./run_returns.sh chrome local
+./run_account.sh chrome local
+./run_enrolment.sh chrome local
 ```
 
 ## Scalafmt
