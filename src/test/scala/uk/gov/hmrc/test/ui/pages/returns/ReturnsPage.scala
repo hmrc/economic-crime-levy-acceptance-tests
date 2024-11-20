@@ -26,10 +26,11 @@ import java.time.LocalDate
 
 object ReturnsPage extends BasePage {
 
+  //http://localhost:14002/submit-economic-crime-levy-return/period/23XY
   val url =
-    s"${TestConfiguration.url("economic-crime-levy-returns-frontend")}/submit-economic-crime-levy-return/period/23XY"
+    s"${TestConfiguration.url("economic-crime-levy-returns-frontend")}/submit-economic-crime-levy-return/period/24XY"
 
-  val eclTaxYear: EclTaxYear   = EclTaxYear.fromDate(LocalDate.now())
+  val eclTaxYear: EclTaxYear   = EclTaxYear.fromDate(LocalDate.now().withYear(2025))
   val heading: String          =
     "Submit your Economic Crime Levy return for " + eclTaxYear.previous.startYear.toString + "-" + eclTaxYear.previous.finishYear.toString
   val recentDueHeading: String =
