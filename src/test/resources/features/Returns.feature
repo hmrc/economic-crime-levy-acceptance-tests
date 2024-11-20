@@ -12,12 +12,12 @@ Feature: Submit ECL Return
     When I enter 12 month accounting period revenue <UK Revenue> and select Yes for my AML-regulated activity for the full financial year
     Then I should be on the page that says <Expected content>
     Examples:
-      | UK Revenue | Expected content         |
-      | 10200000   | You need to pay £10,000  |
-      | 35999999   | You need to pay £10,000  |
-      | 36000000   | You need to pay £36,000  |
-      | 999999999  | You need to pay £36,000  |
-      | 1000000000 | You need to pay £250,000 |
+      | UK Revenue | Expected content        |
+      | 10200000   | You need to pay £10,000 |
+      | 35999999   | You need to pay £10,000 |
+      | 36000000   | You need to pay £36,000 |
+      | 999999999  | You need to pay £36,000 |
+      | 1000000000 | You need to pay £500,000  |
 
   Scenario Outline: Return submission for 12 month accounting period and AML-regulated activity for the non-full financial year
     Given I am signed in to the return journey
@@ -28,7 +28,7 @@ Feature: Submit ECL Return
       | UK Revenue | AMLDays | Expected content            |
       | 10200000   | 60      | You need to pay £1,643.83   |
       | 999999999  | 204     | You need to pay £20,120.54  |
-      | 1000000000 | 330     | You need to pay £226,027.39 |
+      | 1000000000 | 330     | You need to pay £452,054.79 |
 
   Scenario Outline: Return submission for non 12 month accounting period and AML-regulated activity for the full financial year
     Given I am signed in to the return journey
@@ -39,7 +39,7 @@ Feature: Submit ECL Return
       | UK Revenue | APDays | Expected content         |
       | 10000000   | 182    | You need to pay £10,000  |
       | 8000000    | 73     | You need to pay £36,000  |
-      | 1300000000 | 450    | You need to pay £250,000 |
+      | 1300000000 | 450    | You need to pay £500,000 |
 
 
   Scenario Outline: Return submission for non 12 month accounting period and AML-regulated activity for the non-full financial year
@@ -52,7 +52,7 @@ Feature: Submit ECL Return
       | UK Revenue | APDays | AMLDays | Expected content            |
       | 10000000   | 113    | 198     | You need to pay £5,424.65   |
       | 31000000   | 284    | 300     | You need to pay £29,589.04  |
-      | 350000000  | 91     | 256     | You need to pay £175,342.46 |
+      | 350000000  | 91     | 256     | You need to pay £350,684.93 |
 
   Scenario: User wants to go to check your answers page directly without providing any of the previous pages details
     Given I am signed in to the return journey
