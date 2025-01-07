@@ -30,7 +30,7 @@ object ReturnsPage extends BasePage {
   val url =
     s"${TestConfiguration.url("economic-crime-levy-returns-frontend")}/submit-economic-crime-levy-return/period/24XY"
 
-  val eclTaxYear: EclTaxYear   = EclTaxYear.fromDate(LocalDate.now().withYear(2025))
+  val eclTaxYear: EclTaxYear   = EclTaxYear.fromDate(LocalDate.now().withYear(2026))
   val heading: String          =
     "Submit your Economic Crime Levy return for " + eclTaxYear.previous.startYear.toString + "-" + eclTaxYear.previous.finishYear.toString
   val recentDueHeading: String =
