@@ -26,12 +26,6 @@ Run tests as follows:
 * Argument `<environment>` must be `local`, `dev`, `qa` or `staging`.
 
 ```bash
-./run-tests.sh <browser> <environment>
-```
-
-Those scripts are used in jenkins for relevant ECL acceptance-tests builds:
-
-```bash
 ./run_registration.sh chrome local
 ./run_returns.sh chrome local
 ./run_account.sh chrome local
