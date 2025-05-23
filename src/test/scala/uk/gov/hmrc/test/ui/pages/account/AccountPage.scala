@@ -53,6 +53,12 @@ object AccountPage extends BasePage {
     this
   }
 
+  def provideSubmitAltEclReturn(): this.type = {
+    SharedActions.clickById("submit-return")
+    onPage(ReturnsPage.recent2backDueHeading)
+    this
+  }
+
   def provideViewOrAmendAnEclReturn(returnStatus: String): this.type = {
     SharedActions.clickById("view-returns")
     this

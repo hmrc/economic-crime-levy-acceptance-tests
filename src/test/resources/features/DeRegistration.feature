@@ -1,4 +1,4 @@
-@all @account @registration
+@all @registration
 Feature: ECL account Dashboard after De-registration
 
   Scenario: User view their dashboard after successful de-registration
@@ -7,7 +7,7 @@ Feature: ECL account Dashboard after De-registration
     Then I should see the de registered ECL reference number as ECL reference number: XMECL00000000019
     And I should be on the page that says You deregistered this account.
     And I should be on the page that says You have no returns due.
-    And I should be on the page that says You have an overdue payment for 1 April 2022 to 31 March 2023.
+    And I should be on the page that says You have an overdue payment for 1 April 2023 to 31 March 2024.
 
   Scenario Outline: User views payments after successful de-registration
     Given I am signed in to the account journey with my ECL reference as XMECL00000000019

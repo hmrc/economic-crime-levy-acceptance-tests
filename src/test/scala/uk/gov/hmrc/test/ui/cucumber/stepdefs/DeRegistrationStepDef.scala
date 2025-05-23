@@ -42,7 +42,7 @@ class DeRegistrationStepDef extends BaseStepDef with DateUtil {
       .submitPage()
       .provideReasonForDeRegistering()
       .provideEclDeRegistrationDate(
-        deRegistrationDate = now.getDayOfMonth.toString,
+        deRegistrationDate = (now.getDayOfMonth -1).toString,
         deRegistrationMonth = now.getMonthValue.toString,
         deRegistrationYear = now.getYear.toString
       )

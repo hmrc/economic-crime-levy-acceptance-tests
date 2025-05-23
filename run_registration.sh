@@ -3,5 +3,5 @@
 BROWSER=$1
 ENVIRONMENT=$2
 
-sbt clean -Dbrowser="${BROWSER:=chrome}" -Denvironment="${ENVIRONMENT:=local}" "testOnly uk.gov.hmrc.test.ui.cucumber.runner.RunRegistration" testReport
+sbt clean -Dbrowser="${BROWSER:=chrome}" -Denvironment="${ENVIRONMENT:=local}" "testOnly uk.gov.hmrc.test.ui.cucumber.runner.RunRegistration" testReport -Dbrowser.option.headless=false
 
