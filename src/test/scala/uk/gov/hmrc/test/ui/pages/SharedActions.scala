@@ -89,6 +89,14 @@ object SharedActions extends BasePage {
     this
   }
 
+  def waitForPageTitle(title: String): this.type = {
+    val actualTitle = getText(
+      By.cssSelector(".govuk-heading-L")
+    )
+    actualTitle should be(title)
+    this
+  }
+
   def selectContinueWithSavedAnswers(): this.type = {
     SharedActions
       .clickById("yes")

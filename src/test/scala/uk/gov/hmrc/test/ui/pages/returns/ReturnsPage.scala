@@ -35,6 +35,9 @@ object ReturnsPage extends BasePage {
     "Submit your Economic Crime Levy return for " + eclTaxYear.previous.startYear.toString + "-" + eclTaxYear.previous.finishYear.toString
   val recentDueHeading: String =
     "Submit your Economic Crime Levy return for " + eclTaxYear.previous.previous.startYear.toString + "-" + eclTaxYear.previous.previous.finishYear.toString
+  val recent2backDueHeading: String =
+    "Submit your Economic Crime Levy return for " + eclTaxYear.previous.previous.previous.startYear.toString + "-" + eclTaxYear.previous.previous.previous.finishYear.toString
+
 
   def navigateTo(): this.type = {
     get(url)

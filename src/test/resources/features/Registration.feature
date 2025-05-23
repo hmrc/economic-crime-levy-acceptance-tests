@@ -111,15 +111,12 @@ Feature: Register for ECL
     When I provide Yes to AML question and the turnover is below £10.2m threshold but No liability for previous year ECL
     Then I should be on the page that says You do not need to register for the Economic Crime Levy
 
-  Scenario Outline: User registers a <Entity type> failed GRS identifiers and tries again
+  Scenario: User registers a Limited company failed GRS identifiers and tries again
     Given I am signed in to the registration journey
-    When I provide details of my <Entity type> and fail the GRS journey
+    When I provide details of my Limited company and fail the GRS journey
     Then I should be on the page that says The details you have entered do not match our records
     And I click on the try again button
     Then I should be on the page that says What is your entity type?
-    Examples:
-      | Entity type     |
-      | Limited company |
 
   Scenario: User is able to cancel the amend registrations they have submitted through ECL account dashboard
     Given I am signed in to the account journey with my ECL reference as XMECL0000000001

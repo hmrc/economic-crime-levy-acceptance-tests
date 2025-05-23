@@ -22,6 +22,7 @@ import org.scalatest.matchers.should.Matchers
 import uk.gov.hmrc.test.ui.pages.account.AccountPage._
 import uk.gov.hmrc.test.ui.pages.account._
 import uk.gov.hmrc.test.ui.pages.returns.ReturnsPage
+import java.time.LocalDate
 
 class AccountStepDef extends ScalaDsl with EN with Matchers {
 
@@ -41,7 +42,11 @@ class AccountStepDef extends ScalaDsl with EN with Matchers {
   }
 
   When("""I click on the Submit an Economic Crime Levy return link""") { () =>
+    if (LocalDate.now().getMonthValue >= 8){
     provideSubmitAnEclReturn()
+    } else {
+    provideSubmitAltEclReturn()
+    }
     submitPage()
   }
 
@@ -94,6 +99,13 @@ class AccountStepDef extends ScalaDsl with EN with Matchers {
     (arg: DataTable) =>
       assertPaymentYouOweForOverdue(arg)
   }
+
+ var currentYearECL = "1 April 2024 to 31 March 2025"
+ var previousYearECL = " 1 April 2023 to 31 March 2024"
+ var previousPreviousYearECL = " 1 April 2022 to 31 March 2023"
+
+  var previousYearECLDate = "30 September 2024"
+  var paymentDate =  "9 February 2023"
 
   And("I click make a payment link to pay the overdue payment") { () =>
     provideMakeAPayment()
