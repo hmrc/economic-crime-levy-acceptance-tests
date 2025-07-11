@@ -183,6 +183,14 @@
       "ruleId": 10062,
       "urlIsRegex": "true",
       "newLevel": -1
+    },
+    {
+      "contextId": 24,
+      "reason": "PII Disclosure - ZAP mistakenly detects credit card patterns in test data/reference numbers",
+      "url": "http:\/\/localhost:14002\/submit-economic-crime-levy-return\/period\/24XY",
+      "ruleId": 10062,
+      "urlIsRegex": "true",
+      "newLevel": -1
     }
   ]
 }
