@@ -100,11 +100,11 @@ class AccountStepDef extends ScalaDsl with EN with Matchers {
       assertPaymentYouOweForOverdue(arg)
   }
 
- var currentYearECL = "1 April 2024 to 31 March 2025"
- var previousYearECL = " 1 April 2023 to 31 March 2024"
- var previousPreviousYearECL = " 1 April 2022 to 31 March 2023"
+ var currentYearECL = "1 April 2025 to 31 March 2026"
+ var previousYearECL = " 1 April 2024 to 31 March 2025"
+ var previousPreviousYearECL = " 1 April 2024 to 31 March 2025"
 
-  var previousYearECLDate = "30 September 2024"
+  var previousYearECLDate = "30 September 2025"
   var paymentDate =  "9 February 2023"
 
   And("I click make a payment link to pay the overdue payment") { () =>

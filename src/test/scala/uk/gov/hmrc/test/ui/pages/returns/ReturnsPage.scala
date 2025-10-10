@@ -28,14 +28,16 @@ object ReturnsPage extends BasePage {
 
   //http://localhost:14002/submit-economic-crime-levy-return/period/23XY
   val url =
-    s"${TestConfiguration.url("economic-crime-levy-returns-frontend")}/submit-economic-crime-levy-return/period/24XY"
+    s"${TestConfiguration.url("economic-crime-levy-returns-frontend")}/submit-economic-crime-levy-return/period/25XY"
 
   val eclTaxYear: EclTaxYear   = EclTaxYear.fromDate(LocalDate.now())
   val heading: String          =
     "Submit your Economic Crime Levy return for " + eclTaxYear.previous.startYear.toString + "-" + eclTaxYear.previous.finishYear.toString
   val recentDueHeading: String =
-    "Submit your Economic Crime Levy return for " + eclTaxYear.previous.previous.startYear.toString + "-" + eclTaxYear.previous.previous.finishYear.toString
+    "Submit your Economic Crime Levy return for " + eclTaxYear.startYear.toString + "-" + eclTaxYear.finishYear.toString
   val recent2backDueHeading: String =
+    "Submit your Economic Crime Levy return for " + eclTaxYear.previous.previous.startYear.toString + "-" + eclTaxYear.previous.previous.finishYear.toString
+  val recent3backDueHeading: String =
     "Submit your Economic Crime Levy return for " + eclTaxYear.previous.previous.previous.startYear.toString + "-" + eclTaxYear.previous.previous.previous.finishYear.toString
 
 
