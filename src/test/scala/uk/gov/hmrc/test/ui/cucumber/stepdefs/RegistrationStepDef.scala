@@ -264,8 +264,8 @@ class RegistrationStepDef extends BaseStepDef {
   }
 
   Then("I should be on the placeholder page that mentions an overdue payment for previousYearECL") { () =>
-    val assertion =  "1 April " + (eclStartYear)  +" to 31 March "+ (eclStartYear + 1)
-    print("previous Year ECL should be:  1 April 2022 to 31 March 2023   this assertion is"+assertion)
+    val assertion =  "1 April " + (2023)  +" to 31 March "+ (2024)
+    print("previous Year ECL should be:  1 April 2022 to 31 March 2023   this assertion is: " + assertion)
     SharedActions.assertPartialTextIsDisplayed(assertion)
   }
 

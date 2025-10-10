@@ -49,13 +49,13 @@ object AccountPage extends BasePage {
 
   def provideSubmitAnEclReturn(): this.type = {
     SharedActions.clickById("submit-return")
-    onPage(ReturnsPage.recentDueHeading)
+    onPage(ReturnsPage.recent2backDueHeading)
     this
   }
 
   def provideSubmitAltEclReturn(): this.type = {
     SharedActions.clickById("submit-return")
-    onPage(ReturnsPage.recent2backDueHeading)
+    onPage(ReturnsPage.recent3backDueHeading)
     this
   }
 

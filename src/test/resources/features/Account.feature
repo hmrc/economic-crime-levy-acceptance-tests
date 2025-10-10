@@ -1,18 +1,18 @@
 @all @account
 Feature: ECL Dashboard details
 
-  Scenario: User that is registered for ECL can view the information about returns on ECL dashboard
+  Scenario:1. User that is registered for ECL can view the information about returns on ECL dashboard
     Given I am signed in to the account journey with my ECL reference as XMECL0000000005
     When I am on the ECL account dashboard
     Then I should be on the page that says Your Economic Crime Levy account
 
-  Scenario: User is able to submit most recent returns
+  Scenario:2. User is able to submit most recent returns
     Given I am signed in to the account journey with my ECL reference as XMECL0000000005
     When I click on the Submit an Economic Crime Levy return link
     And I provide the details to submit the economic crime levy return
     Then I should be on the page that says Return submitted
 
-  Scenario Outline: User is able to see their returns details for the previous and current financial years
+  Scenario Outline:3.User is able to see their returns details for the previous and current financial years
     Given I am signed in to the account journey with my ECL reference as XMECL0000000005
     When I click on the View or amend your returns link to view the <return status> return details
     Then I should be on the page that says Your Economic Crime Levy returns
@@ -22,23 +22,23 @@ Feature: ECL Dashboard details
       | OVERDUE       |
       | SUBMITTED     |
 
-  Scenario: User that is registered for ECL can make a returns submission through ECL dashboard
+  Scenario:4. User that is registered for ECL can make a returns submission through ECL dashboard
     Given I am signed in to the account journey with my ECL reference as XMECL0000000005
     When I provide the registration details to submit a return through ECL dashboard link
     Then I should be on the page that says ECL registration details
 
-  Scenario: User that is registered for ECL can view their completed payments
+  Scenario:5. User that is registered for ECL can view their completed payments
     Given I am signed in to the account journey with my ECL reference as XMECL0000000005
     When I am on the ECL account dashboard
     Then I should be on the page that says You have no payments due.
 
-  Scenario: User that is registered for ECL can view their overdue payments
+  Scenario:6. User that is registered for ECL can view their overdue payments
     Given I am signed in to the account journey with my ECL reference as XMECL0000000007
     When I am on the ECL account dashboard
     Then I should be on the placeholder page that mentions an overdue payment for previousYearECL
     And I should be on the page that says We are charging you interest on this payment. You owe £20,500.
 
-  Scenario Outline: User is able to see their payment details for the previous and current financial years
+  Scenario Outline:7. User is able to see their payment details for the previous and current financial years
     Given I am signed in to the account journey with my ECL reference as <ECL Reference Number>
     When I click on the View your payments link to view the <payment status> payment details
     Then I should be on the page that says Your Economic Crime Levy payments
@@ -50,17 +50,17 @@ Feature: ECL Dashboard details
       | XMECL0000000007      | PARTIALLY PAID | 2400   |
       | XMECL0000000005      | PAID           | 14000  |
 
-  Scenario: User is able to see the payment service page for make an ECL payment
+  Scenario:8. User is able to see the payment service page for make an ECL payment
     Given I am signed in to the account journey with my ECL reference as XMECL0000000007
     When I click on the Make an ECL payment link to pay the OVERDUE payment
     Then I should be on the page that says Select an amount to pay
 
-  Scenario: User without overdue payment views their ECL dashboard and see the interest payment as the most urgent payment to be made
+  Scenario:9. User without overdue payment views their ECL dashboard and see the interest payment as the most urgent payment to be made
     Given I am signed in to the account journey with my ECL reference as XMECL00000000010
     When I am on the ECL account dashboard
     And I should be on the page that says You owe an interest payment. Interest will continue to be accrued if not paid.
 
-  Scenario: User clicks "View Payment" for partially-paid interest
+  Scenario:10. User clicks "View Payment" for partially-paid interest
     Given I am signed in to the account journey with my ECL reference as XMECL00000000014
     When I click on the View your payments link to view my interest charge
     Then the interest row should display the partial interest payment information under Payments you owe
@@ -70,7 +70,7 @@ Feature: ECL Dashboard details
       | Payment Status |                                                       |
       | Actions        |                                                       |
 
-  Scenario: User clicks "View Payment" for fully paid interest
+  Scenario:11. User clicks "View Payment" for fully paid interest
     Given I am signed in to the account journey with my ECL reference as XMECL00000000011
     When I am on the ECL account dashboard
     And I should be on the page that says You have no payments due.
@@ -86,7 +86,7 @@ Feature: ECL Dashboard details
       | Payment Status | PAID                                                  |
       | Actions        | Request a refund                                      |
 
-  Scenario: User clicks "View Payment" to see the overdue payment information
+  Scenario:12. User clicks "View Payment" to see the overdue payment information
     Given I am signed in to the account journey with my ECL reference as XMECL00000000012
     When I am on the ECL account dashboard
     And I should be on the placeholder page that mentions an overdue payment for previousYearECL
