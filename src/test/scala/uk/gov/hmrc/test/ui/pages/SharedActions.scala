@@ -33,6 +33,9 @@ object SharedActions extends BasePage {
   def assertPartialTextIsDisplayed(value: String): Unit =
     assert(getText(By.id("main-content")).contains(value))
 
+  def penaltyInformation(value: String): Unit =
+    assert(getText(By.className("govuk-heading-l")).contains(value))
+
   def clickById(id: String): Unit =
     driver.findElement(By.id(id)).click()
 
