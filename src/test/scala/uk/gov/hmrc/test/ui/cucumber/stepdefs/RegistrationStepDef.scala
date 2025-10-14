@@ -263,15 +263,19 @@ class RegistrationStepDef extends BaseStepDef {
     SharedActions.assertPartialTextIsDisplayed(value)
   }
 
+  Then("^I should be on the page that displays (.*)$") { (value: String) =>
+    SharedActions.penaltyInformation(value)
+  }
+
   Then("I should be on the placeholder page that mentions an overdue payment for previousYearECL") { () =>
-    val assertion =  "1 April " + (2023)  +" to 31 March "+ (2024)
+    val assertion = "1 April " + 2023 + " to 31 March " + 2024
     print("previous Year ECL should be:  1 April 2022 to 31 March 2023   this assertion is: " + assertion)
     SharedActions.assertPartialTextIsDisplayed(assertion)
   }
 
   Then("I should be on the placeholder page that mentions an overdue payment for currentYearECL") { () =>
-    val assertion =  "1 April " + (eclStartYear + 1)  +" to 31 March "+ eclStartYear
-    print("current Year ECL should be: 1 April 2023 to 31 March 2024 this one is: "+assertion)
+    val assertion = "1 April " + (eclStartYear + 1) + " to 31 March " + eclStartYear
+    print("current Year ECL should be: 1 April 2023 to 31 March 2024 this one is: " + assertion)
     SharedActions.assertPartialTextIsDisplayed(assertion)
   }
 

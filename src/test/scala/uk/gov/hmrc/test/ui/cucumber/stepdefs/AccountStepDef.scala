@@ -42,10 +42,10 @@ class AccountStepDef extends ScalaDsl with EN with Matchers {
   }
 
   When("""I click on the Submit an Economic Crime Levy return link""") { () =>
-    if (LocalDate.now().getMonthValue >= 8){
-    provideSubmitAnEclReturn()
+    if (LocalDate.now().getMonthValue >= 8) {
+      provideSubmitAnEclReturn()
     } else {
-    provideSubmitAltEclReturn()
+      provideSubmitAltEclReturn()
     }
     submitPage()
   }
@@ -85,6 +85,10 @@ class AccountStepDef extends ScalaDsl with EN with Matchers {
     provideViewEclPayment(paymentStatus)
   }
 
+  And("I click on the View your payments link") { () =>
+    paymentHistoryLink()
+  }
+
   Then("""the interest row should display the partial interest payment information under Payments you owe$""") {
     (arg: DataTable) =>
       assertPaymentHistoryForPartiallyPaidInterest(arg)
@@ -100,12 +104,16 @@ class AccountStepDef extends ScalaDsl with EN with Matchers {
       assertPaymentYouOweForOverdue(arg)
   }
 
- var currentYearECL = "1 April 2025 to 31 March 2026"
- var previousYearECL = " 1 April 2024 to 31 March 2025"
- var previousPreviousYearECL = " 1 April 2024 to 31 March 2025"
+  Then("""the penalty data should not be displayed""") { (arg: DataTable) =>
+    penaltyVerification(arg)
+  }
+
+  var currentYearECL          = "1 April 2025 to 31 March 2026"
+  var previousYearECL         = " 1 April 2024 to 31 March 2025"
+  var previousPreviousYearECL = " 1 April 2024 to 31 March 2025"
 
   var previousYearECLDate = "30 September 2025"
-  var paymentDate =  "9 February 2023"
+  var paymentDate         = "9 February 2023"
 
   And("I click make a payment link to pay the overdue payment") { () =>
     provideMakeAPayment()

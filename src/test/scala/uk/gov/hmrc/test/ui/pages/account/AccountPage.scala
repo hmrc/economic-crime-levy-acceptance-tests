@@ -84,6 +84,11 @@ object AccountPage extends BasePage {
     this
   }
 
+  def paymentHistoryLink(): this.type = {
+    SharedActions.clickById("view-payment-history")
+    this
+  }
+
   def validatePaymentStatusDueBy(paymentStatus: String): this.type = {
     paymentStatus match {
       case "DUE"            =>
@@ -277,4 +282,89 @@ object AccountPage extends BasePage {
     SharedActions.clickButton()
     this
   }
+  def elementDoesNotExist(by: By): Boolean = driver.findElements(by).size() == 0
+
+  def penaltyVerification(data: DataTable): this.type = {
+    val penalty  = data.column(1).get(0)
+    val penalty2 = data.column(1).get(1)
+    val penalty3 = data.column(1).get(2)
+    val penalty4 = data.column(1).get(3)
+    val penalty5 = data.column(1).get(4)
+    val penalty6 = data.column(1).get(5)
+
+    val actualPenalty =
+      if (
+        elementDoesNotExist(
+          By.cssSelector("table:nth-child(2) > tbody:nth-child(3) > tr:nth-child(1) > td:nth-child(7)")
+        )
+      ) {
+        "penalty"
+      } else {
+        getText(By.cssSelector("table:nth-child(2) > tbody:nth-child(3) > tr:nth-child(1) > td:nth-child(7)"))
+      }
+    actualPenalty should be(penalty)
+
+    val actualPenalty2 =
+      if (
+        elementDoesNotExist(
+          By.cssSelector("table:nth-child(2) > tbody:nth-child(3) > tr:nth-child(1) > td:nth-child(7)")
+        )
+      ) {
+        "penalty"
+      } else {
+        getText(By.cssSelector("table:nth-child(2) > tbody:nth-child(3) > tr:nth-child(1) > td:nth-child(7)"))
+      }
+    actualPenalty2 should be(penalty2)
+
+    val actualPenalty3 =
+      if (
+        elementDoesNotExist(
+          By.cssSelector("table:nth-child(2) > tbody:nth-child(3) > tr:nth-child(1) > td:nth-child(7)")
+        )
+      ) {
+        "penalty"
+      } else {
+        getText(By.cssSelector("table:nth-child(2) > tbody:nth-child(3) > tr:nth-child(1) > td:nth-child(7)"))
+      }
+    actualPenalty3 should be(penalty3)
+
+    val actualPenalty4 =
+      if (
+        elementDoesNotExist(
+          By.cssSelector("table:nth-child(2) > tbody:nth-child(3) > tr:nth-child(1) > td:nth-child(7)")
+        )
+      ) {
+        "penalty"
+      } else {
+        getText(By.cssSelector("table:nth-child(2) > tbody:nth-child(3) > tr:nth-child(1) > td:nth-child(7)"))
+      }
+    actualPenalty4 should be(penalty4)
+
+    val actualPenalty5 =
+      if (
+        elementDoesNotExist(
+          By.cssSelector("table:nth-child(2) > tbody:nth-child(3) > tr:nth-child(1) > td:nth-child(7)")
+        )
+      ) {
+        "penalty"
+      } else {
+        getText(By.cssSelector("table:nth-child(2) > tbody:nth-child(3) > tr:nth-child(1) > td:nth-child(7)"))
+      }
+    actualPenalty5 should be(penalty5)
+
+    val actualPenalty6 =
+      if (
+        elementDoesNotExist(
+          By.cssSelector("table:nth-child(2) > tbody:nth-child(3) > tr:nth-child(1) > td:nth-child(7)")
+        )
+      ) {
+        "penalty"
+      } else {
+        getText(By.cssSelector("table:nth-child(2) > tbody:nth-child(3) > tr:nth-child(1) > td:nth-child(7)"))
+      }
+    actualPenalty6 should be(penalty6)
+    this
+
+  }
+
 }

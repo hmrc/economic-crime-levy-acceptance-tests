@@ -22,7 +22,7 @@ import java.time.LocalDate
 
 trait DateUtil {
 
-  val now: LocalDate = LocalDate.now()
-  val previousEclTaxYear: EclTaxYear = EclTaxYear.fromCurrentDate(now).previous
-  val previousEclTaxYearStartYear:  LocalDate = previousEclTaxYear.startDate
+  val now: LocalDate                         = LocalDate.now()
+  val previousEclTaxYear: EclTaxYear         = EclTaxYear.fromCurrentDate(now).previous
+  val previousEclTaxYearStartYear: LocalDate = previousEclTaxYear.startDate
 }
