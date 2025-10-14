@@ -124,7 +124,7 @@ Feature: ECL Dashboard details
         | XMECL0000000028      |
 
 
-  Scenario Outline:14. User clicks "View your Payment" to see the Penalty payment information is displayed
+  Scenario Outline:14. User clicks "View your Payment" to see the Penalty payment information is not displayed
     Given I am signed in to the account journey with my ECL reference as <ECL Reference Number>
     When I am on the ECL account dashboard
     And I click on the View your payments link
