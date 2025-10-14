@@ -100,3 +100,24 @@ Feature: ECL Dashboard details
       | Actions        | Make a payment                             |
     And I click make a payment link to pay the overdue payment
     Then I should be on the page that says Select an amount to pay
+
+     Scenario Outline:13. User clicks "View Payment" to see the overdue payment information
+      Given I am signed in to the account journey with my ECL reference as <ECL Reference Number>
+       When I am on the ECL account dashboard
+       And I click on the View your payments link
+    Then the penalty data should not be displayed
+      | Column1   | penalty                          |
+      | Column2   | penalty                          |
+      | Column3   | penalty                          |
+      | Column4   | penalty                          |
+      | Column5   | penalty                          |
+      | Column6   | penalty                          |
+      Examples:
+        | ECL Reference Number |
+        | XMECL0000000003      |
+        | XMECL0000000029      |
+        | XMECL0000000027      |
+        | XMECL0000000026      |
+        | XMECL0000000025      |
+        | XMECL0000000024      |
+        | XMECL0000000028      |

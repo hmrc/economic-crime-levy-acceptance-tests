@@ -20,4 +20,3 @@ import org.scalatest.matchers.should.Matchers
 import io.cucumber.scala.{EN, ScalaDsl}
 
 trait BaseStepDef extends ScalaDsl with EN with Matchers {}
-
