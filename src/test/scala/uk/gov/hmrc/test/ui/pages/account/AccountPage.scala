@@ -182,23 +182,23 @@ object AccountPage extends BasePage {
     val amountPaid    = data.column(1).get(2)
 
     val actualPaymentType = getText(
-      By.cssSelector("tbody tr:nth-child(2) td:nth-child(2)")
+      By.cssSelector("tbody tr:nth-child(3) td:nth-child(2)")
     )
     actualPaymentType should be(paymentType)
     val actualPaymentPeriod = getText(
-      By.cssSelector("tbody tr:nth-child(2) td:nth-child(3)")
+      By.cssSelector("tbody tr:nth-child(3) td:nth-child(3)")
     )
     actualPaymentPeriod should be(paymentPeriod)
     val actualAmountPaid = getText(
-      By.cssSelector("tbody tr:nth-child(2) td:nth-child(4)")
+      By.cssSelector("tbody tr:nth-child(3) td:nth-child(4)")
     )
     actualAmountPaid should be(amountPaid)
     val actualPaymentStatus = getText(
-      By.cssSelector("tbody tr:nth-child(2) td:nth-child(5)")
+      By.cssSelector("tbody tr:nth-child(3) td:nth-child(5)")
     )
     Assert.assertTrue(actualPaymentStatus.equals(""))
     val actualActions       = getText(
-      By.cssSelector("tbody tr:nth-child(2) td:nth-child(6)")
+      By.cssSelector("tbody tr:nth-child(3) td:nth-child(6)")
     )
     Assert.assertTrue(actualActions.equals(" "))
     this
