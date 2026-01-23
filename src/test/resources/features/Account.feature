@@ -93,7 +93,7 @@ Feature: ECL Dashboard details
     When I click on the View your payments link to view my overdue
     Then the overdue row should display the overdue payment information under Payment you owe
       | Payment Date   | 30 September 2024                          |
-      | Payment Type   | Levy for ECL return number XMECL0000000012 |
+      | Payment Type   | Interest charge for ECL return number XMECL0000000012 |
       | Financial year | 1 April 2023 to 31 March 2024              |
       | You paid HMRC  | £4,000                                     |
       | Payment Status | OVERDUE                                    |
