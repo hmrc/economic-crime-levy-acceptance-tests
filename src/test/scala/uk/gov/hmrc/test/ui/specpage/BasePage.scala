@@ -19,7 +19,8 @@ package uk.gov.hmrc.test.ui.specpage
 import org.openqa.selenium.support.ui._
 import org.openqa.selenium.{By, WebElement}
 import org.scalatest.matchers.should.Matchers
-import uk.gov.hmrc.test.ui.Driver.instance.BrowserDriver
+import uk.gov.hmrc.selenium.webdriver.Driver
+import uk.gov.hmrc.test.ui.driver.BrowserDriver
 
 import java.time.Duration
 import java.util

@@ -13,11 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-package uk.gov.hmrc.test.ui.pages
+package uk.gov.hmrc.test.ui.specpage
 
 import org.junit.Assert
 import org.openqa.selenium.By
+import uk.gov.hmrc.selenium.webdriver.Driver
 
 object SharedActions extends BasePage {
 
