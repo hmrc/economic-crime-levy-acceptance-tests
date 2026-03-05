@@ -1,3 +1,19 @@
+/*
+ * Copyright 2026 HM Revenue & Customs
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package uk.gov.hmrc.test.ui.spec
 
 import org.scalatest.matchers.should.Matchers
@@ -18,13 +34,17 @@ class DeRegistrationSpec extends BaseSpec with Matchers {
 
     Scenario("User views payments after successful de-registration [link=Returns]") {
       Given("I am signed in to the account journey with my ECL reference as XMECL00000000019")
-      When("I click on the View or amend your returns or View your payments link to view the deregistered Returns details")
+      When(
+        "I click on the View or amend your returns or View your payments link to view the deregistered Returns details"
+      )
       Then("the links Returns under the Action column should be visible on the the page")
     }
 
     Scenario("User views payments after successful de-registration [link=Payments]") {
       Given("I am signed in to the account journey with my ECL reference as XMECL00000000019")
-      When("I click on the View or amend your returns or View your payments link to view the deregistered Payments details")
+      When(
+        "I click on the View or amend your returns or View your payments link to view the deregistered Payments details"
+      )
       Then("the links Payments under the Action column should be visible on the the page")
     }
 

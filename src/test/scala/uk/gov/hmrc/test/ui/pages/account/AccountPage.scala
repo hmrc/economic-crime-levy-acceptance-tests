@@ -176,10 +176,11 @@ object AccountPage extends BasePage {
     this
   }
 
-  def assertPaymentHistoryForPartiallyPaidInterest(data: DataTable): this.type = {
-    val paymentType   = data.column(1).get(0)
-    val paymentPeriod = data.column(1).get(1)
-    val amountPaid    = data.column(1).get(2)
+  def assertPaymentHistoryForPartiallyPaidInterest(data: Map[String, String]): this.type = {
+
+    val paymentType   = data.getOrElse("Payment Type", sys.error("Keys not found"))
+    val paymentPeriod = data.getOrElse("Financial year", sys.error("Keys not found"))
+    val amountPaid    = data.getOrElse("Amount Paid", sys.error("Keys not found"))
 
     val actualPaymentType = getText(
       By.cssSelector("tbody tr:nth-child(2) td:nth-child(2)")
@@ -204,13 +205,13 @@ object AccountPage extends BasePage {
     this
   }
 
-  def assertPaymentHistoryForFullyPaidInterest(data: DataTable): this.type = {
-    val paymentDate   = data.column(1).get(0)
-    val paymentType   = data.column(1).get(1)
-    val paymentPeriod = data.column(1).get(2)
-    val youPaidHmrc   = data.column(1).get(3)
-    val paymentStatus = data.column(1).get(4)
-    val actions       = data.column(1).get(5)
+  def assertPaymentHistoryForFullyPaidInterest(data: Map[String, String]): this.type = {
+    val paymentDate   = data.getOrElse("Payment Date", sys.error("Keys not found"))
+    val paymentType   = data.getOrElse("Payment Type", sys.error("Keys not found"))
+    val paymentPeriod = data.getOrElse("Payment Period", sys.error("Keys not found"))
+    val youPaidHmrc   = data.getOrElse("You paid HMRC", sys.error("Keys not found"))
+    val paymentStatus = data.getOrElse("Payment Status", sys.error("Keys not found"))
+    val actions       = data.getOrElse("Actions", sys.error("Keys not found"))
 
     val actualPaymentDate = getText(
       By.cssSelector("tr:nth-child(1) td:nth-child(1)")
@@ -239,13 +240,13 @@ object AccountPage extends BasePage {
     this
   }
 
-  def assertPaymentYouOweForOverdue(data: DataTable): this.type = {
-    val paymentDate   = data.column(1).get(0)
-    val paymentType   = data.column(1).get(1)
-    val paymentPeriod = data.column(1).get(2)
-    val youPaidHmrc   = data.column(1).get(3)
-    val paymentStatus = data.column(1).get(4)
-    val actions       = data.column(1).get(5)
+  def assertPaymentYouOweForOverdue(data: Map[String, String]): this.type = {
+    val paymentDate   = data.getOrElse("Payment Date", sys.error("Keys not found"))
+    val paymentType   = data.getOrElse("Payment Type", sys.error("Keys not found"))
+    val paymentPeriod = data.getOrElse("Financial year", sys.error("Keys not found"))
+    val youPaidHmrc   = data.getOrElse("You paid HMRC", sys.error("Keys not found"))
+    val paymentStatus = data.getOrElse("Payment Status", sys.error("Keys not found"))
+    val actions       = data.getOrElse("Actions", sys.error("Keys not found"))
 
     val actualPaymentDate = getText(
       By.cssSelector(".govuk-table__cell.govuk-table__header")
@@ -284,13 +285,13 @@ object AccountPage extends BasePage {
   }
   def elementDoesNotExist(by: By): Boolean = driver.findElements(by).size() == 0
 
-  def penaltyVerification(data: DataTable): this.type = {
-    val penalty  = data.column(1).get(0)
-    val penalty2 = data.column(1).get(1)
-    val penalty3 = data.column(1).get(2)
-    val penalty4 = data.column(1).get(3)
-    val penalty5 = data.column(1).get(4)
-    val penalty6 = data.column(1).get(5)
+  def penaltyVerification(data: Map[String, String]): this.type = {
+    val penalty  = data.getOrElse("Column1", sys.error("Keys not found"))
+    val penalty2 = data.getOrElse("Column2", sys.error("Keys not found"))
+    val penalty3 = data.getOrElse("Column3", sys.error("Keys not found"))
+    val penalty4 = data.getOrElse("Column4", sys.error("Keys not found"))
+    val penalty5 = data.getOrElse("Column5", sys.error("Keys not found"))
+    val penalty6 = data.getOrElse("Column6", sys.error("Keys not found"))
 
     val actualPenalty =
       if (

@@ -1,3 +1,19 @@
+/*
+ * Copyright 2026 HM Revenue & Customs
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package uk.gov.hmrc.test.ui.spec
 import org.scalatest.matchers.should.Matchers
 import org.scalatest.featurespec.AnyFeatureSpec
@@ -6,7 +22,9 @@ class RegistrationSpec extends BaseSpec with Matchers {
 
   Feature("Register for ECL") {
 
-    Scenario("User registers a <Entity type> supervised by HMRC for AML that is liable for ECL [Entity type=Sole trader]") {
+    Scenario(
+      "User registers a <Entity type> supervised by HMRC for AML that is liable for ECL [Entity type=Sole trader]"
+    ) {
       Given("I am signed in to the registration journey")
       When("I provide details of my Sole trader that is supervised by HMRC and liable for current ECL")
       Then("I should be on the page that says Registration submitted")
@@ -24,7 +42,9 @@ class RegistrationSpec extends BaseSpec with Matchers {
       Then("I should be on the page that says Check your answers")
     }
 
-    Scenario("User wants to go to check your answers page directly without providing any of the previous pages details") {
+    Scenario(
+      "User wants to go to check your answers page directly without providing any of the previous pages details"
+    ) {
       Given("I am signed in to the registration journey")
       When("I go to check your answers page directly without providing answers for any of the previous page questions")
       Then("I should be on the page that says The answers you provided are not valid")
@@ -50,7 +70,9 @@ class RegistrationSpec extends BaseSpec with Matchers {
       Then("I should be on the page that says Check your answers")
     }
 
-    Scenario("User wants to change the the organisation details (Business sector, AML supervisor, UK revenue and Accounting Period) before submitting the registration") {
+    Scenario(
+      "User wants to change the the organisation details (Business sector, AML supervisor, UK revenue and Accounting Period) before submitting the registration"
+    ) {
       Given("I am signed in to the registration journey")
       When("I click on the change link and edit my organisation details")
       Then("I should be on the page that says Check your answers")
@@ -58,10 +80,14 @@ class RegistrationSpec extends BaseSpec with Matchers {
 
     Scenario("User wants to change the AML regulated activity of the organisation before submitting the registration") {
       Given("I am signed in to the registration journey")
-      When("I click on the change link and select No on whether or not I carried out AML-regulated activity in current FY")
+      When(
+        "I click on the change link and select No on whether or not I carried out AML-regulated activity in current FY"
+      )
       Then("I should be on the page that says Are you liable for any previous financial years?")
       When("I click on the Back link")
-      Then("I should be on the page that says Did you carry out anti-money laundering (AML) regulated activity between 1 April 2025 and 31 March 2026?")
+      Then(
+        "I should be on the page that says Did you carry out anti-money laundering (AML) regulated activity between 1 April 2025 and 31 March 2026?"
+      )
       Then("I click the Save and continue button")
       Then("I should be on the page that says Check your answers")
     }
@@ -90,9 +116,13 @@ class RegistrationSpec extends BaseSpec with Matchers {
       Then("I should be on the page that says Registration received")
     }
 
-    Scenario("User registers <Other Entity> as entity type for AML that is liable for ECL [Other Entity=Unincorporated Association]") {
+    Scenario(
+      "User registers <Other Entity> as entity type for AML that is liable for ECL [Other Entity=Unincorporated Association]"
+    ) {
       Given("I am signed in to the registration journey")
-      When("I provide details of my other entity is Unincorporated Association that is supervised by HMRC and liable for ECL")
+      When(
+        "I provide details of my other entity is Unincorporated Association that is supervised by HMRC and liable for ECL"
+      )
       Then("I should be on the page that says Registration received")
     }
 
@@ -102,7 +132,9 @@ class RegistrationSpec extends BaseSpec with Matchers {
       Then("I should be on the page that says Registration received")
     }
 
-    Scenario("User registers <Other Entity> as entity type for AML that is liable for ECL [Other Entity=Non-UK Establishment]") {
+    Scenario(
+      "User registers <Other Entity> as entity type for AML that is liable for ECL [Other Entity=Non-UK Establishment]"
+    ) {
       Given("I am signed in to the registration journey")
       When("I provide details of my other entity is Non-UK Establishment that is supervised by HMRC and liable for ECL")
       Then("I should be on the page that says Registration received")
@@ -114,33 +146,45 @@ class RegistrationSpec extends BaseSpec with Matchers {
       Then("I should be on the page that says Registration submitted")
     }
 
-    Scenario("Users who answer No whether or not they started AML regulated activity in current FY and No to previous FY") {
+    Scenario(
+      "Users who answer No whether or not they started AML regulated activity in current FY and No to previous FY"
+    ) {
       Given("I am signed in to the registration journey")
       When("I select No on whether or not I carried out AML-regulated activity in current FY and in previous FY")
       Then("I should be on the page that says You do not need to register for the Economic Crime Levy")
     }
 
-    Scenario("User registers a limited company supervised by HMRC for AML who have turnover of £10.2m and above that is liable for previous FY") {
+    Scenario(
+      "User registers a limited company supervised by HMRC for AML who have turnover of £10.2m and above that is liable for previous FY"
+    ) {
       Given("I am signed in to the registration journey")
       When("I provide Yes to AML question and the turnover is £10.2m and above and Yes liable for previous FY")
       Then("I should be on the page that says Registration submitted")
     }
 
-    Scenario("User registers a limited company supervised by HMRC for AML who have turnover of £10.2m and above that is not liable for previous FY") {
+    Scenario(
+      "User registers a limited company supervised by HMRC for AML who have turnover of £10.2m and above that is not liable for previous FY"
+    ) {
       Given("I am signed in to the registration journey")
       When("I provide Yes to AML question and the turnover is £10.2m and above and No liable for previous FY")
       Then("I should be on the page that says Registration submitted")
     }
 
-    Scenario("User registers a limited company supervised by HMRC for AML who have turnover of below £10.2m and that is liable for previous FY") {
+    Scenario(
+      "User registers a limited company supervised by HMRC for AML who have turnover of below £10.2m and that is liable for previous FY"
+    ) {
       Given("I am signed in to the registration journey")
       When("I provide Yes to AML question and the turnover is below £10.2m threshold and Yes liable for previous FY")
       Then("I should be on the page that says Registration submitted")
     }
 
-    Scenario("User registers a limited company supervised by HMRC for AML who have turnover of below £10.2m and that is not liable for previous FY") {
+    Scenario(
+      "User registers a limited company supervised by HMRC for AML who have turnover of below £10.2m and that is not liable for previous FY"
+    ) {
       Given("I am signed in to the registration journey")
-      When("I provide Yes to AML question and the turnover is below £10.2m threshold but No liability for previous year ECL")
+      When(
+        "I provide Yes to AML question and the turnover is below £10.2m threshold but No liability for previous year ECL"
+      )
       Then("I should be on the page that says You do not need to register for the Economic Crime Levy")
     }
 

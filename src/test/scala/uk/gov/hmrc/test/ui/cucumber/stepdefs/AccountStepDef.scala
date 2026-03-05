@@ -90,21 +90,21 @@ class AccountStepDef extends ScalaDsl with EN with Matchers {
   }
 
   Then("""the interest row should display the partial interest payment information under Payments you owe$""") {
-    (arg: DataTable) =>
+    (arg: Map[String, String]) =>
       assertPaymentHistoryForPartiallyPaidInterest(arg)
   }
 
   Then("""the interest row should display the fully paid interest payment information under Payment History$""") {
-    (arg: DataTable) =>
+    (arg: Map[String, String]) =>
       assertPaymentHistoryForFullyPaidInterest(arg)
   }
 
   Then("""the overdue row should display the overdue payment information under Payment you owe$""") {
-    (arg: DataTable) =>
+    (arg: Map[String, String]) =>
       assertPaymentYouOweForOverdue(arg)
   }
 
-  Then("""the penalty data should not be displayed""") { (arg: DataTable) =>
+  Then("""the penalty data should not be displayed""") { (arg: Map[String, String]) =>
     penaltyVerification(arg)
   }
 

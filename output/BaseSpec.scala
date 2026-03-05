@@ -14,16 +14,25 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.test.ui.specpage.enrolment
+package uk.gov.hmrc.test.ui.spec
 
-import uk.gov.hmrc.test.ui.conf.TestConfiguration
-import uk.gov.hmrc.test.ui.pages.BasePage
+import org.scalatest.featurespec.AnyFeatureSpec
+import org.scalatest.matchers.should.Matchers
+import org.scalatest.{BeforeAndAfterEach, GivenWhenThen}
+import uk.gov.hmrc.selenium.webdriver.{Browser, ScreenshotOnFailure}
 
-object FindEclReferenceNumberPage extends BasePage {
+trait BaseSpec
+    extends AnyFeatureSpec
+    with GivenWhenThen
+    with Matchers
+    with BeforeAndAfterEach
+    with Browser
+    with ScreenshotOnFailure {
 
-  val url =
-    s"${TestConfiguration.url("economic-crime-levy-enrolment-frontend")}/add-economic-crime-levy/find-your-ecl-reference-number/"
+  override def beforeEach(): Unit =
+    startBrowser()
 
-  val heading = "How to find your Economic Crime Levy reference number"
+  override def afterEach(): Unit =
+    quitBrowser()
 
 }
