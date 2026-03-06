@@ -438,11 +438,12 @@ object RegistrationPage extends BasePage with DateUtil {
     this
   }
 
-  def assertAmendedRegistrationAnswers(data: DataTable): this.type = {
-    val returnCompletedBy = data.column(1).get(0)
-    val role              = data.column(1).get(1)
-    val emailAddress      = data.column(1).get(2)
-    val telephoneNumber   = data.column(1).get(3)
+  def assertAmendedRegistrationAnswers(data: Map[String, String]): this.type = {
+    val returnCompletedBy = data.getOrElse("First contact name", sys.error("Keys not found"))
+    val role              = data.getOrElse("First contact role", sys.error("Keys not found"))
+    val emailAddress      = data.getOrElse("First contact email address", sys.error("Keys not found"))
+    val telephoneNumber   = data.getOrElse("First contact telephone number", sys.error("Keys not found"))
+
 
     val actualReturnCompletedBy = getText(
       By.cssSelector("dl:nth-child(14) > div:nth-child(1) > dd:nth-child(2)")

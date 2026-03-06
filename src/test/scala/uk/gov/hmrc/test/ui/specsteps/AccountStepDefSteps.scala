@@ -16,9 +16,6 @@
 
 package uk.gov.hmrc.test.ui.specsteps
 
-import io.cucumber.datatable.DataTable
-import io.cucumber.scala.{EN, ScalaDsl}
-import org.scalatest.matchers.should.Matchers
 import uk.gov.hmrc.test.ui.specpage.account.AccountPage._
 import uk.gov.hmrc.test.ui.specpage.account._
 import uk.gov.hmrc.test.ui.specpage.returns.ReturnsPage

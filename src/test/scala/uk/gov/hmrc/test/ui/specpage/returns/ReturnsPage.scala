@@ -16,11 +16,10 @@
 
 package uk.gov.hmrc.test.ui.specpage.returns
 
-import io.cucumber.datatable.DataTable
 import org.openqa.selenium.By
 import uk.gov.hmrc.test.ui.conf.TestConfiguration
-import uk.gov.hmrc.test.ui.pages.utils.EclTaxYear
-import uk.gov.hmrc.test.ui.pages.{BasePage, SharedActions}
+import uk.gov.hmrc.test.ui.specpage.utils.EclTaxYear
+import uk.gov.hmrc.test.ui.specpage.{BasePage, SharedActions}
 
 import java.time.LocalDate
 
@@ -196,11 +195,12 @@ object ReturnsPage extends BasePage {
     this
   }
 
-  def assertAmendedReturnAnswers(data: DataTable): this.type = {
-    val returnCompletedBy = data.column(1).get(0)
-    val role              = data.column(1).get(1)
-    val emailAddress      = data.column(1).get(2)
-    val telephoneNumber   = data.column(1).get(3)
+  def assertAmendedReturnAnswers(data: Map[String, String]): this.type = {
+
+    val returnCompletedBy = data.getOrElse("First contact name", sys.error("returnCompletedBy Keys not found"))
+    val role              = data.getOrElse("First contact role", sys.error("role Keys not found"))
+    val emailAddress      = data.getOrElse("First contact email address", sys.error("emailAddress Keys not found"))
+    val telephoneNumber   = data.getOrElse("First contact telephone number", sys.error("telephoneNumber Keys not found"))
 
     val actualReturnCompletedBy = getText(
       By.cssSelector("dl:nth-child(8) > div:nth-child(1) > dd:nth-child(2)")

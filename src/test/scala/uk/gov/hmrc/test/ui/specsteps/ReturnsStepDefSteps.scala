@@ -16,10 +16,10 @@
 
 package uk.gov.hmrc.test.ui.specsteps
 import io.cucumber.datatable.DataTable
-import uk.gov.hmrc.test.ui.pages.SharedActions
-import uk.gov.hmrc.test.ui.pages.account.AccountPage
-import uk.gov.hmrc.test.ui.pages.returns.ReturnsPage._
-import uk.gov.hmrc.test.ui.pages.returns._
+import uk.gov.hmrc.test.ui.specpage.SharedActions
+import uk.gov.hmrc.test.ui.specpage.account.AccountPage
+import uk.gov.hmrc.test.ui.specpage.returns.ReturnsPage._
+import uk.gov.hmrc.test.ui.specpage.returns._
 
 object ReturnsStepDefSteps {
 
@@ -234,7 +234,7 @@ object ReturnsStepDefSteps {
   }
 
   // the amended return information should display under Amended answers on the Check your answers page$
-  def andTheAmendedReturnInformationShouldDisplayUnderAmendedAnswersOnTheCheckYourAnswersPage(arg: DataTable): Unit =
+  def andTheAmendedReturnInformationShouldDisplayUnderAmendedAnswersOnTheCheckYourAnswersPage(arg: Map[String, String]): Unit =
     assertAmendedReturnAnswers(arg)
       .submitPage()
 

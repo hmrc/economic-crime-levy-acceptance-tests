@@ -15,11 +15,10 @@
  */
 
 package uk.gov.hmrc.test.ui.specsteps
-import io.cucumber.datatable.DataTable
-import uk.gov.hmrc.test.ui.pages.SharedActions
-import uk.gov.hmrc.test.ui.pages.account.AccountPage
-import uk.gov.hmrc.test.ui.pages.registration.RegistrationPage._
-import uk.gov.hmrc.test.ui.pages.registration._
+import uk.gov.hmrc.test.ui.specpage.SharedActions
+import uk.gov.hmrc.test.ui.specpage.account.AccountPage
+import uk.gov.hmrc.test.ui.specpage.registration.RegistrationPage._
+import uk.gov.hmrc.test.ui.specpage.registration._
 
 object RegistrationStepDefSteps {
 
@@ -371,7 +370,7 @@ object RegistrationStepDefSteps {
 
   // the amended registration information should display under Amended answers on the Check your answers page$
   def andTheAmendedRegistrationInformationShouldDisplayUnderAmendedAnswersOnTheCheckYourAnswersPage(
-    arg: DataTable
+    arg: Map[String, String]
   ): Unit =
     assertAmendedRegistrationAnswers(arg)
       .submitPage()

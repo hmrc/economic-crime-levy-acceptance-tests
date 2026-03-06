@@ -219,15 +219,7 @@ object AccountPage extends BasePage {
     val actions       = data.getOrElse("Actions", sys.error("Keys not found"))
 
 
-//  def assertPaymentHistoryForFullyPaidInterest(data: DataTable): this.type = {
-//    val paymentDate   = data.column(1).get(0)
-//    val paymentType   = data.column(1).get(1)
-//    val paymentPeriod = data.column(1).get(2)
-//    val youPaidHmrc   = data.column(1).get(3)
-//    val paymentStatus = data.column(1).get(4)
-//    val actions       = data.column(1).get(5)
-
-    val actualPaymentDate = getText(
+   val actualPaymentDate = getText(
       By.cssSelector("tr:nth-child(1) td:nth-child(1)")
     )
     actualPaymentDate should be(paymentDate)
