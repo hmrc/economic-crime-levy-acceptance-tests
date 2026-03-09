@@ -20,7 +20,7 @@ import org.junit.Assert
 import org.openqa.selenium.By
 import uk.gov.hmrc.selenium.webdriver.Driver
 import uk.gov.hmrc.test.ui.conf.TestConfiguration
-import uk.gov.hmrc.test.ui.pages.{BasePage, SharedActions}
+import uk.gov.hmrc.test.ui.specpage.{BasePage, SharedActions}
 
 object DeRegistrationPage extends BasePage {
 

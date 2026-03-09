@@ -17,7 +17,7 @@
 package uk.gov.hmrc.test.ui.specpage.enrolment
 
 import uk.gov.hmrc.test.ui.conf.TestConfiguration
-import uk.gov.hmrc.test.ui.pages.BasePage
+import uk.gov.hmrc.test.ui.specpage.BasePage
 
 object FindEclReferenceNumberPage extends BasePage {
 

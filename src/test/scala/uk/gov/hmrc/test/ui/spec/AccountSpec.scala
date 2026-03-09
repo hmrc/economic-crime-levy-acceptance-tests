@@ -29,15 +29,15 @@ class AccountSpec extends BaseSpec with Matchers {
       Given("I am signed in to the account journey with my ECL reference as XMECL0000000005")
       givenIAmSignedInToTheAccountJourneyWithMyECLReferenceAsX(
         "XMECL0000000005"
-      ) // auto-chosen (score=1.00, AccountStepDefSteps.scala)
+      ) 
 
       When("I am on the ECL account dashboard")
-      whenIAmOnTheECLAccountDashboard() // auto-chosen (score=1.00, AccountStepDefSteps.scala)
+      whenIAmOnTheECLAccountDashboard() 
 
       Then("I should be on the page that says Your Economic Crime Levy account")
       thenIShouldBeOnThePageThatSaysX(
         "Your Economic Crime Levy account"
-      ) // auto-chosen (score=1.00, RegistrationStepDefSteps.scala)
+      ) 
 
     }
 
@@ -45,16 +45,16 @@ class AccountSpec extends BaseSpec with Matchers {
       Given("I am signed in to the account journey with my ECL reference as XMECL0000000005")
       givenIAmSignedInToTheAccountJourneyWithMyECLReferenceAsX(
         "XMECL0000000005"
-      ) // auto-chosen (score=1.00, AccountStepDefSteps.scala)
+      ) 
 
       When("I click on the Submit an Economic Crime Levy return link")
-      whenIClickOnTheSubmitAnEconomicCrimeLevyReturnLink() // auto-chosen (score=1.00, AccountStepDefSteps.scala)
+      whenIClickOnTheSubmitAnEconomicCrimeLevyReturnLink() 
 
       And("I provide the details to submit the economic crime levy return")
-      whenIProvideTheDetailsToSubmitTheEconomicCrimeLevyReturn() // auto-chosen (score=1.00, ReturnsStepDefSteps.scala)
+      whenIProvideTheDetailsToSubmitTheEconomicCrimeLevyReturn() 
 
       Then("I should be on the page that says Return submitted")
-      thenIShouldBeOnThePageThatSaysX("Return submitted") // auto-chosen (score=1.00, RegistrationStepDefSteps.scala)
+      thenIShouldBeOnThePageThatSaysX("Return submitted") 
 
     }
 
@@ -64,19 +64,19 @@ class AccountSpec extends BaseSpec with Matchers {
       Given("I am signed in to the account journey with my ECL reference as XMECL0000000005")
       givenIAmSignedInToTheAccountJourneyWithMyECLReferenceAsX(
         "XMECL0000000005"
-      ) // auto-chosen (score=1.00, AccountStepDefSteps.scala)
+      ) 
 
       When("I click on the View or amend your returns link to view the OVERDUE return details")
       whenIClickOnTheViewOrAmendYourReturnsLinkToViewTheReturnDetails("OVERDUE")
-      // ⚠️ No step-def match found for: I click on the View or amend your returns link to view the OVERDUE return details
+      
 
       Then("I should be on the page that says Your Economic Crime Levy returns")
       thenIShouldBeOnThePageThatSaysX(
         "Your Economic Crime Levy returns"
-      ) // auto-chosen (score=1.00, RegistrationStepDefSteps.scala)
+      ) 
 
       And("I should see the return status as OVERDUE")
-      whenIShouldSeeTheReturnStatusAsX("OVERDUE") // auto-chosen (score=1.00, AccountStepDefSteps.scala)
+      whenIShouldSeeTheReturnStatusAsX("OVERDUE") 
 
     }
 
@@ -86,19 +86,19 @@ class AccountSpec extends BaseSpec with Matchers {
       Given("I am signed in to the account journey with my ECL reference as XMECL0000000005")
       givenIAmSignedInToTheAccountJourneyWithMyECLReferenceAsX(
         "XMECL0000000005"
-      ) // auto-chosen (score=1.00, AccountStepDefSteps.scala)
+      ) 
 
       When("I click on the View or amend your returns link to view the SUBMITTED return details")
       whenIClickOnTheViewOrAmendYourReturnsLinkToViewTheReturnDetails("SUBMITTED")
-      // ⚠️ No step-def match found for: I click on the View or amend your returns link to view the SUBMITTED return details
+      
 
       Then("I should be on the page that says Your Economic Crime Levy returns")
       thenIShouldBeOnThePageThatSaysX(
         "Your Economic Crime Levy returns"
-      ) // auto-chosen (score=1.00, RegistrationStepDefSteps.scala)
+      ) 
 
       And("I should see the return status as SUBMITTED")
-      whenIShouldSeeTheReturnStatusAsX("SUBMITTED") // auto-chosen (score=1.00, AccountStepDefSteps.scala)
+      whenIShouldSeeTheReturnStatusAsX("SUBMITTED") 
 
     }
 
@@ -106,15 +106,15 @@ class AccountSpec extends BaseSpec with Matchers {
       Given("I am signed in to the account journey with my ECL reference as XMECL0000000005")
       givenIAmSignedInToTheAccountJourneyWithMyECLReferenceAsX(
         "XMECL0000000005"
-      ) // auto-chosen (score=1.00, AccountStepDefSteps.scala)
+      ) 
 
       When("I provide the registration details to submit a return through ECL dashboard link")
-      whenIProvideTheRegistrationDetailsToSubmitAReturnThroughECLDashboardLink() // auto-chosen (score=1.00, AccountStepDefSteps.scala)
+      whenIProvideTheRegistrationDetailsToSubmitAReturnThroughECLDashboardLink() 
 
       Then("I should be on the page that says ECL registration details")
       thenIShouldBeOnThePageThatSaysX(
         "ECL registration details"
-      ) // auto-chosen (score=1.00, RegistrationStepDefSteps.scala)
+      ) 
 
     }
 
@@ -122,15 +122,15 @@ class AccountSpec extends BaseSpec with Matchers {
       Given("I am signed in to the account journey with my ECL reference as XMECL0000000005")
       givenIAmSignedInToTheAccountJourneyWithMyECLReferenceAsX(
         "XMECL0000000005"
-      ) // auto-chosen (score=1.00, AccountStepDefSteps.scala)
+      ) 
 
       When("I am on the ECL account dashboard")
-      whenIAmOnTheECLAccountDashboard() // auto-chosen (score=1.00, AccountStepDefSteps.scala)
+      whenIAmOnTheECLAccountDashboard() 
 
       Then("I should be on the page that says You have no payments due.")
       thenIShouldBeOnThePageThatSaysX(
         "You have no payments due."
-      ) // auto-chosen (score=1.00, RegistrationStepDefSteps.scala)
+      ) 
 
     }
 
@@ -138,18 +138,18 @@ class AccountSpec extends BaseSpec with Matchers {
       Given("I am signed in to the account journey with my ECL reference as XMECL0000000007")
       givenIAmSignedInToTheAccountJourneyWithMyECLReferenceAsX(
         "XMECL0000000007"
-      ) // auto-chosen (score=1.00, AccountStepDefSteps.scala)
+      ) 
 
       When("I am on the ECL account dashboard")
-      whenIAmOnTheECLAccountDashboard() // auto-chosen (score=1.00, AccountStepDefSteps.scala)
+      whenIAmOnTheECLAccountDashboard() 
 
       Then("I should be on the placeholder page that mentions an overdue payment for previousYearECL")
-      thenIShouldBeOnThePlaceholderPageThatMentionsAnOverduePaymentForPreviousYearECL() // auto-chosen (score=1.00, RegistrationStepDefSteps.scala)
+      thenIShouldBeOnThePlaceholderPageThatMentionsAnOverduePaymentForPreviousYearECL() 
 
       And("I should be on the page that says We are charging you interest on this payment. You owe £20,500.")
       thenIShouldBeOnThePageThatSaysX(
         "We are charging you interest on this payment. You owe £20,500."
-      ) // auto-chosen (score=1.00, RegistrationStepDefSteps.scala)
+      ) 
 
     }
 
@@ -159,21 +159,21 @@ class AccountSpec extends BaseSpec with Matchers {
       Given("I am signed in to the account journey with my ECL reference as XMECL0000000007")
       givenIAmSignedInToTheAccountJourneyWithMyECLReferenceAsX(
         "XMECL0000000007"
-      ) // auto-chosen (score=1.00, AccountStepDefSteps.scala)
+      ) 
 
       When("I click on the View your payments link to view the OVERDUE payment details")
-      andIClickOnTheViewYourPaymentsLink() // auto-chosen (score=1.00, AccountStepDefSteps.scala)
+      andIClickOnTheViewYourPaymentsLink() 
 
       Then("I should be on the page that says Your Economic Crime Levy payments")
       thenIShouldBeOnThePageThatSaysX(
         "Your Economic Crime Levy payments"
-      ) // auto-chosen (score=1.00, RegistrationStepDefSteps.scala)
+      ) 
 
       And("I should see the OVERDUE payment amount 20500")
-      andIShouldSeeTheXPaymentAmountX("OVERDUE", "20500") // auto-chosen (score=1.00, AccountStepDefSteps.scala)
+      andIShouldSeeTheXPaymentAmountX("OVERDUE", "20500") 
 
       And("I should see the payment status as OVERDUE")
-      whenIShouldSeeThePaymentStatusAsX("OVERDUE") // auto-chosen (score=1.00, AccountStepDefSteps.scala)
+      whenIShouldSeeThePaymentStatusAsX("OVERDUE") 
 
     }
 
@@ -183,21 +183,21 @@ class AccountSpec extends BaseSpec with Matchers {
       Given("I am signed in to the account journey with my ECL reference as XMECL0000000007")
       givenIAmSignedInToTheAccountJourneyWithMyECLReferenceAsX(
         "XMECL0000000007"
-      ) // auto-chosen (score=1.00, AccountStepDefSteps.scala)
+      ) 
 
       When("I click on the View your payments link to view the PARTIALLY PAID payment details")
-      andIClickOnTheViewYourPaymentsLink() // auto-chosen (score=1.00, AccountStepDefSteps.scala)
+      andIClickOnTheViewYourPaymentsLink() 
 
       Then("I should be on the page that says Your Economic Crime Levy payments")
       thenIShouldBeOnThePageThatSaysX(
         "Your Economic Crime Levy payments"
-      ) // auto-chosen (score=1.00, RegistrationStepDefSteps.scala)
+      ) 
 
       And("I should see the PARTIALLY PAID payment amount 2400")
-      andIShouldSeeTheXPaymentAmountX("PARTIALLY PAID", "2400") // auto-chosen (score=1.00, AccountStepDefSteps.scala)
+      andIShouldSeeTheXPaymentAmountX("PARTIALLY PAID", "2400") 
 
       And("I should see the payment status as PARTIALLY PAID")
-      whenIShouldSeeThePaymentStatusAsX("PARTIALLY PAID") // auto-chosen (score=1.00, AccountStepDefSteps.scala)
+      whenIShouldSeeThePaymentStatusAsX("PARTIALLY PAID") 
 
     }
 
@@ -207,21 +207,21 @@ class AccountSpec extends BaseSpec with Matchers {
       Given("I am signed in to the account journey with my ECL reference as XMECL0000000005")
       givenIAmSignedInToTheAccountJourneyWithMyECLReferenceAsX(
         "XMECL0000000005"
-      ) // auto-chosen (score=1.00, AccountStepDefSteps.scala)
+      ) 
 
       When("I click on the View your payments link to view the PAID payment details")
-      andIClickOnTheViewYourPaymentsLink() // auto-chosen (score=1.00, AccountStepDefSteps.scala)
+      andIClickOnTheViewYourPaymentsLink() 
 
       Then("I should be on the page that says Your Economic Crime Levy payments")
       thenIShouldBeOnThePageThatSaysX(
         "Your Economic Crime Levy payments"
-      ) // auto-chosen (score=1.00, RegistrationStepDefSteps.scala)
+      ) 
 
       And("I should see the PAID payment amount 14000")
-      andIShouldSeeTheXPaymentAmountX("PAID", "14000") // auto-chosen (score=1.00, AccountStepDefSteps.scala)
+      andIShouldSeeTheXPaymentAmountX("PAID", "14000") 
 
       And("I should see the payment status as PAID")
-      whenIShouldSeeThePaymentStatusAsX("PAID") // auto-chosen (score=1.00, AccountStepDefSteps.scala)
+      whenIShouldSeeThePaymentStatusAsX("PAID") 
 
     }
 
@@ -229,16 +229,16 @@ class AccountSpec extends BaseSpec with Matchers {
       Given("I am signed in to the account journey with my ECL reference as XMECL0000000007")
       givenIAmSignedInToTheAccountJourneyWithMyECLReferenceAsX(
         "XMECL0000000007"
-      ) // auto-chosen (score=1.00, AccountStepDefSteps.scala)
+      ) 
 
       When("I click on the Make an ECL payment link to pay the OVERDUE payment")
       whenIClickOnTheMakeAnECLPaymentLinkToPayThePayment("OVERDUE")
-      // ⚠️ No step-def match found for: I click on the Make an ECL payment link to pay the OVERDUE payment
+      
 
       Then("I should be on the page that says Select an amount to pay")
       thenIShouldBeOnThePageThatSaysX(
         "Select an amount to pay"
-      ) // auto-chosen (score=1.00, RegistrationStepDefSteps.scala)
+      ) 
 
     }
 
@@ -248,17 +248,17 @@ class AccountSpec extends BaseSpec with Matchers {
       Given("I am signed in to the account journey with my ECL reference as XMECL00000000010")
       givenIAmSignedInToTheAccountJourneyWithMyECLReferenceAsX(
         "XMECL00000000010"
-      ) // auto-chosen (score=1.00, AccountStepDefSteps.scala)
+      ) 
 
       When("I am on the ECL account dashboard")
-      whenIAmOnTheECLAccountDashboard() // auto-chosen (score=1.00, AccountStepDefSteps.scala)
+      whenIAmOnTheECLAccountDashboard() 
 
       And(
         "I should be on the page that says You owe an interest payment. Interest will continue to be accrued if not paid."
       )
       thenIShouldBeOnThePageThatSaysX(
         "You owe an interest payment. Interest will continue to be accrued if not paid."
-      ) // auto-chosen (score=1.00, RegistrationStepDefSteps.scala)
+      ) 
 
     }
 
@@ -266,14 +266,14 @@ class AccountSpec extends BaseSpec with Matchers {
       Given("I am signed in to the account journey with my ECL reference as XMECL00000000014")
       givenIAmSignedInToTheAccountJourneyWithMyECLReferenceAsX(
         "XMECL00000000014"
-      ) // auto-chosen (score=1.00, AccountStepDefSteps.scala)
+      ) 
 
       When("I click on the View your payments link to view my interest charge")
       whenIClickOnTheViewYourPaymentsLinkToViewMyX(
         "interest charge"
-      ) // auto-chosen (score=1.00, AccountStepDefSteps.scala)
-      // --- Other possible matches ---
-      // andIClickOnTheViewYourPaymentsLink() [1.00] (AccountStepDefSteps.scala) pattern: I click on the View your payments link
+      ) 
+      
+      
 
       val paymentInformation: Map[String, String] = Map(
         "Payment Type"   -> "Interest charge for ECL return number XMECL0000000014",
@@ -286,7 +286,7 @@ class AccountSpec extends BaseSpec with Matchers {
       Then("the interest row should display the partial interest payment information under Payments you owe")
       thenTheInterestRowShouldDisplayThePartialInterestPaymentInformationUnderPaymentsYouOwe(
         paymentInformation
-      ) // auto-chosen (score=1.00, AccountStepDefSteps.scala)
+      ) 
 
     }
 
@@ -294,35 +294,35 @@ class AccountSpec extends BaseSpec with Matchers {
       Given("I am signed in to the account journey with my ECL reference as XMECL00000000011")
       givenIAmSignedInToTheAccountJourneyWithMyECLReferenceAsX(
         "XMECL00000000011"
-      ) // auto-chosen (score=1.00, AccountStepDefSteps.scala)
+      ) 
 
       When("I am on the ECL account dashboard")
-      whenIAmOnTheECLAccountDashboard() // auto-chosen (score=1.00, AccountStepDefSteps.scala)
+      whenIAmOnTheECLAccountDashboard() 
 
       And("I should be on the page that says You have no payments due.")
       thenIShouldBeOnThePageThatSaysX(
         "You have no payments due."
-      ) // auto-chosen (score=1.00, RegistrationStepDefSteps.scala)
+      ) 
 
       When("I click on the View your payments link to view my fully paid interest")
       whenIClickOnTheViewYourPaymentsLinkToViewMyX(
         "fully paid interest"
-      ) // auto-chosen (score=1.00, AccountStepDefSteps.scala)
-      // --- Other possible matches ---
-      // andIClickOnTheViewYourPaymentsLink() [1.00] (AccountStepDefSteps.scala) pattern: I click on the View your payments link
+      ) 
+      
+      
 
       Then("I click on the Back link")
-      thenIClickOnTheBackLink() // auto-chosen (score=1.00, BaseStepsSteps.scala)
+      thenIClickOnTheBackLink() 
 
       Then("I am on the ECL account dashboard")
-      whenIAmOnTheECLAccountDashboard() // auto-chosen (score=1.00, AccountStepDefSteps.scala)
+      whenIAmOnTheECLAccountDashboard() 
 
       When("I click on the View your payments link to view my fully paid interest")
       whenIClickOnTheViewYourPaymentsLinkToViewMyX(
         "fully paid interest"
-      ) // auto-chosen (score=1.00, AccountStepDefSteps.scala)
-      // --- Other possible matches ---
-      // andIClickOnTheViewYourPaymentsLink() [1.00] (AccountStepDefSteps.scala) pattern: I click on the View your payments link
+      ) 
+      
+      
 
       val paymentDetails: Map[String, String] = Map(
         "Payment Date"   -> "9 February 2023",
@@ -336,7 +336,7 @@ class AccountSpec extends BaseSpec with Matchers {
       Then("the interest row should display the fully paid interest payment information under Payment History")
       thenTheInterestRowShouldDisplayTheFullyPaidInterestPaymentInformationUnderPaymentHistory(
         paymentDetails
-      ) // auto-chosen (score=1.00, AccountStepDefSteps.scala)
+      ) 
 
     }
 
@@ -344,18 +344,18 @@ class AccountSpec extends BaseSpec with Matchers {
       Given("I am signed in to the account journey with my ECL reference as XMECL00000000012")
       givenIAmSignedInToTheAccountJourneyWithMyECLReferenceAsX(
         "XMECL00000000012"
-      ) // auto-chosen (score=1.00, AccountStepDefSteps.scala)
+      ) 
 
       When("I am on the ECL account dashboard")
-      whenIAmOnTheECLAccountDashboard() // auto-chosen (score=1.00, AccountStepDefSteps.scala)
+      whenIAmOnTheECLAccountDashboard() 
 
       And("I should be on the placeholder page that mentions an overdue payment for previousYearECL")
-      thenIShouldBeOnThePlaceholderPageThatMentionsAnOverduePaymentForPreviousYearECL() // auto-chosen (score=1.00, RegistrationStepDefSteps.scala)
+      thenIShouldBeOnThePlaceholderPageThatMentionsAnOverduePaymentForPreviousYearECL() 
 
       When("I click on the View your payments link to view my overdue")
-      whenIClickOnTheViewYourPaymentsLinkToViewMyX("overdue") // auto-chosen (score=1.00, AccountStepDefSteps.scala)
-      // --- Other possible matches ---
-      // andIClickOnTheViewYourPaymentsLink() [1.00] (AccountStepDefSteps.scala) pattern: I click on the View your payments link
+      whenIClickOnTheViewYourPaymentsLinkToViewMyX("overdue") 
+      
+      
 
       val paymentDetails2: Map[String, String] = Map(
         "Payment Date"   -> "30 September 2024",
@@ -369,15 +369,15 @@ class AccountSpec extends BaseSpec with Matchers {
       Then("the overdue row should display the overdue payment information under Payment you owe")
       thenTheOverdueRowShouldDisplayTheOverduePaymentInformationUnderPaymentYouOwe(
         paymentDetails2
-      ) // auto-chosen (score=1.00, AccountStepDefSteps.scala)
+      ) 
 
       And("I click make a payment link to pay the overdue payment")
-      andIClickMakeAPaymentLinkToPayTheOverduePayment() // auto-chosen (score=1.00, AccountStepDefSteps.scala)
+      andIClickMakeAPaymentLinkToPayTheOverduePayment() 
 
       Then("I should be on the page that says Select an amount to pay")
       thenIShouldBeOnThePageThatSaysX(
         "Select an amount to pay"
-      ) // auto-chosen (score=1.00, RegistrationStepDefSteps.scala)
+      ) 
 
     }
 
@@ -387,13 +387,13 @@ class AccountSpec extends BaseSpec with Matchers {
       Given("I am signed in to the account journey with my ECL reference as XMECL0000000003")
       givenIAmSignedInToTheAccountJourneyWithMyECLReferenceAsX(
         "XMECL0000000003"
-      ) // auto-chosen (score=1.00, AccountStepDefSteps.scala)
+      ) 
 
       When("I am on the ECL account dashboard")
-      whenIAmOnTheECLAccountDashboard() // auto-chosen (score=1.00, AccountStepDefSteps.scala)
+      whenIAmOnTheECLAccountDashboard() 
 
       And("I click on the View your payments link")
-      andIClickOnTheViewYourPaymentsLink() // auto-chosen (score=1.00, AccountStepDefSteps.scala)
+      andIClickOnTheViewYourPaymentsLink() 
 
       val penalty: Map[String, String] = Map(
         "Column1" -> "penalty",
@@ -405,7 +405,7 @@ class AccountSpec extends BaseSpec with Matchers {
       )
 
       Then("the penalty data should not be displayed")
-      thenThePenaltyDataShouldNotBeDisplayed(penalty) // auto-chosen (score=1.00, AccountStepDefSteps.scala)
+      thenThePenaltyDataShouldNotBeDisplayed(penalty) 
 
     }
 
@@ -415,13 +415,13 @@ class AccountSpec extends BaseSpec with Matchers {
       Given("I am signed in to the account journey with my ECL reference as XMECL0000000029")
       givenIAmSignedInToTheAccountJourneyWithMyECLReferenceAsX(
         "XMECL0000000029"
-      ) // auto-chosen (score=1.00, AccountStepDefSteps.scala)
+      ) 
 
       When("I am on the ECL account dashboard")
-      whenIAmOnTheECLAccountDashboard() // auto-chosen (score=1.00, AccountStepDefSteps.scala)
+      whenIAmOnTheECLAccountDashboard() 
 
       And("I click on the View your payments link")
-      andIClickOnTheViewYourPaymentsLink() // auto-chosen (score=1.00, AccountStepDefSteps.scala)
+      andIClickOnTheViewYourPaymentsLink() 
       val penalty: Map[String, String] = Map(
         "Column1" -> "penalty",
         "Column2" -> "penalty",
@@ -432,7 +432,7 @@ class AccountSpec extends BaseSpec with Matchers {
       )
 
       Then("the penalty data should not be displayed")
-      thenThePenaltyDataShouldNotBeDisplayed(penalty) // auto-chosen (score=1.00, AccountStepDefSteps.scala)
+      thenThePenaltyDataShouldNotBeDisplayed(penalty) 
 
     }
 
@@ -442,13 +442,13 @@ class AccountSpec extends BaseSpec with Matchers {
       Given("I am signed in to the account journey with my ECL reference as XMECL0000000027")
       givenIAmSignedInToTheAccountJourneyWithMyECLReferenceAsX(
         "XMECL0000000027"
-      ) // auto-chosen (score=1.00, AccountStepDefSteps.scala)
+      ) 
 
       When("I am on the ECL account dashboard")
-      whenIAmOnTheECLAccountDashboard() // auto-chosen (score=1.00, AccountStepDefSteps.scala)
+      whenIAmOnTheECLAccountDashboard() 
 
       And("I click on the View your payments link")
-      andIClickOnTheViewYourPaymentsLink() // auto-chosen (score=1.00, AccountStepDefSteps.scala)
+      andIClickOnTheViewYourPaymentsLink() 
 
       val penalty: Map[String, String] = Map(
         "Column1" -> "penalty",
@@ -460,7 +460,7 @@ class AccountSpec extends BaseSpec with Matchers {
       )
 
       Then("the penalty data should not be displayed")
-      thenThePenaltyDataShouldNotBeDisplayed(penalty) // auto-chosen (score=1.00, AccountStepDefSteps.scala)
+      thenThePenaltyDataShouldNotBeDisplayed(penalty) 
 
     }
 
@@ -470,13 +470,13 @@ class AccountSpec extends BaseSpec with Matchers {
       Given("I am signed in to the account journey with my ECL reference as XMECL0000000026")
       givenIAmSignedInToTheAccountJourneyWithMyECLReferenceAsX(
         "XMECL0000000026"
-      ) // auto-chosen (score=1.00, AccountStepDefSteps.scala)
+      ) 
 
       When("I am on the ECL account dashboard")
-      whenIAmOnTheECLAccountDashboard() // auto-chosen (score=1.00, AccountStepDefSteps.scala)
+      whenIAmOnTheECLAccountDashboard() 
 
       And("I click on the View your payments link")
-      andIClickOnTheViewYourPaymentsLink() // auto-chosen (score=1.00, AccountStepDefSteps.scala)
+      andIClickOnTheViewYourPaymentsLink() 
 
       val penalty: Map[String, String] = Map(
         "Column1" -> "penalty",
@@ -488,7 +488,7 @@ class AccountSpec extends BaseSpec with Matchers {
       )
 
       Then("the penalty data should not be displayed")
-      thenThePenaltyDataShouldNotBeDisplayed(penalty) // auto-chosen (score=1.00, AccountStepDefSteps.scala)
+      thenThePenaltyDataShouldNotBeDisplayed(penalty) 
 
     }
 
@@ -498,13 +498,13 @@ class AccountSpec extends BaseSpec with Matchers {
       Given("I am signed in to the account journey with my ECL reference as XMECL0000000025")
       givenIAmSignedInToTheAccountJourneyWithMyECLReferenceAsX(
         "XMECL0000000025"
-      ) // auto-chosen (score=1.00, AccountStepDefSteps.scala)
+      ) 
 
       When("I am on the ECL account dashboard")
-      whenIAmOnTheECLAccountDashboard() // auto-chosen (score=1.00, AccountStepDefSteps.scala)
+      whenIAmOnTheECLAccountDashboard() 
 
       And("I click on the View your payments link")
-      andIClickOnTheViewYourPaymentsLink() // auto-chosen (score=1.00, AccountStepDefSteps.scala)
+      andIClickOnTheViewYourPaymentsLink() 
 
       val penalty: Map[String, String] = Map(
         "Column1" -> "penalty",
@@ -516,7 +516,7 @@ class AccountSpec extends BaseSpec with Matchers {
       )
 
       Then("the penalty data should not be displayed")
-      thenThePenaltyDataShouldNotBeDisplayed(penalty) // auto-chosen (score=1.00, AccountStepDefSteps.scala)
+      thenThePenaltyDataShouldNotBeDisplayed(penalty) 
 
     }
 
@@ -526,13 +526,13 @@ class AccountSpec extends BaseSpec with Matchers {
       Given("I am signed in to the account journey with my ECL reference as XMECL0000000024")
       givenIAmSignedInToTheAccountJourneyWithMyECLReferenceAsX(
         "XMECL0000000024"
-      ) // auto-chosen (score=1.00, AccountStepDefSteps.scala)
+      ) 
 
       When("I am on the ECL account dashboard")
-      whenIAmOnTheECLAccountDashboard() // auto-chosen (score=1.00, AccountStepDefSteps.scala)
+      whenIAmOnTheECLAccountDashboard() 
 
       And("I click on the View your payments link")
-      andIClickOnTheViewYourPaymentsLink() // auto-chosen (score=1.00, AccountStepDefSteps.scala)
+      andIClickOnTheViewYourPaymentsLink() 
 
       val penalty: Map[String, String] = Map(
         "Column1" -> "penalty",
@@ -544,7 +544,7 @@ class AccountSpec extends BaseSpec with Matchers {
       )
 
       Then("the penalty data should not be displayed")
-      thenThePenaltyDataShouldNotBeDisplayed(penalty) // auto-chosen (score=1.00, AccountStepDefSteps.scala)
+      thenThePenaltyDataShouldNotBeDisplayed(penalty) 
 
     }
 
@@ -554,13 +554,13 @@ class AccountSpec extends BaseSpec with Matchers {
       Given("I am signed in to the account journey with my ECL reference as XMECL0000000028")
       givenIAmSignedInToTheAccountJourneyWithMyECLReferenceAsX(
         "XMECL0000000028"
-      ) // auto-chosen (score=1.00, AccountStepDefSteps.scala)
+      ) 
 
       When("I am on the ECL account dashboard")
-      whenIAmOnTheECLAccountDashboard() // auto-chosen (score=1.00, AccountStepDefSteps.scala)
+      whenIAmOnTheECLAccountDashboard() 
 
       And("I click on the View your payments link")
-      andIClickOnTheViewYourPaymentsLink() // auto-chosen (score=1.00, AccountStepDefSteps.scala)
+      andIClickOnTheViewYourPaymentsLink() 
 
       val penalty: Map[String, String] = Map(
         "Column1" -> "penalty",
@@ -572,7 +572,7 @@ class AccountSpec extends BaseSpec with Matchers {
       )
 
       Then("the penalty data should not be displayed")
-      thenThePenaltyDataShouldNotBeDisplayed(penalty) // auto-chosen (score=1.00, AccountStepDefSteps.scala)
+      thenThePenaltyDataShouldNotBeDisplayed(penalty) 
 
     }
 
@@ -582,18 +582,18 @@ class AccountSpec extends BaseSpec with Matchers {
       Given("I am signed in to the account journey with my ECL reference as XMECL0000000027")
       givenIAmSignedInToTheAccountJourneyWithMyECLReferenceAsX(
         "XMECL0000000027"
-      ) // auto-chosen (score=1.00, AccountStepDefSteps.scala)
+      ) 
 
       When("I am on the ECL account dashboard")
-      whenIAmOnTheECLAccountDashboard() // auto-chosen (score=1.00, AccountStepDefSteps.scala)
+      whenIAmOnTheECLAccountDashboard() 
 
       And("I click on the View your payments link")
-      andIClickOnTheViewYourPaymentsLink() // auto-chosen (score=1.00, AccountStepDefSteps.scala)
+      andIClickOnTheViewYourPaymentsLink() 
 
       And("I should be on the page that displays You have not made any Economic Crime Levy payments.")
       thenIShouldBeOnThePageThatDisplaysX(
         "You have not made any Economic Crime Levy payments."
-      ) // auto-chosen (score=1.00, RegistrationStepDefSteps.scala)
+      ) 
 
     }
 
@@ -603,18 +603,18 @@ class AccountSpec extends BaseSpec with Matchers {
       Given("I am signed in to the account journey with my ECL reference as XMECL0000000026")
       givenIAmSignedInToTheAccountJourneyWithMyECLReferenceAsX(
         "XMECL0000000026"
-      ) // auto-chosen (score=1.00, AccountStepDefSteps.scala)
+      ) 
 
       When("I am on the ECL account dashboard")
-      whenIAmOnTheECLAccountDashboard() // auto-chosen (score=1.00, AccountStepDefSteps.scala)
+      whenIAmOnTheECLAccountDashboard() 
 
       And("I click on the View your payments link")
-      andIClickOnTheViewYourPaymentsLink() // auto-chosen (score=1.00, AccountStepDefSteps.scala)
+      andIClickOnTheViewYourPaymentsLink() 
 
       And("I should be on the page that displays You have not made any Economic Crime Levy payments.")
       thenIShouldBeOnThePageThatDisplaysX(
         "You have not made any Economic Crime Levy payments."
-      ) // auto-chosen (score=1.00, RegistrationStepDefSteps.scala)
+      ) 
 
     }
 
@@ -624,18 +624,18 @@ class AccountSpec extends BaseSpec with Matchers {
       Given("I am signed in to the account journey with my ECL reference as XMECL0000000025")
       givenIAmSignedInToTheAccountJourneyWithMyECLReferenceAsX(
         "XMECL0000000025"
-      ) // auto-chosen (score=1.00, AccountStepDefSteps.scala)
+      ) 
 
       When("I am on the ECL account dashboard")
-      whenIAmOnTheECLAccountDashboard() // auto-chosen (score=1.00, AccountStepDefSteps.scala)
+      whenIAmOnTheECLAccountDashboard() 
 
       And("I click on the View your payments link")
-      andIClickOnTheViewYourPaymentsLink() // auto-chosen (score=1.00, AccountStepDefSteps.scala)
+      andIClickOnTheViewYourPaymentsLink() 
 
       And("I should be on the page that displays You have not made any Economic Crime Levy payments.")
       thenIShouldBeOnThePageThatDisplaysX(
         "You have not made any Economic Crime Levy payments."
-      ) // auto-chosen (score=1.00, RegistrationStepDefSteps.scala)
+      ) 
 
     }
 
@@ -645,18 +645,18 @@ class AccountSpec extends BaseSpec with Matchers {
       Given("I am signed in to the account journey with my ECL reference as XMECL0000000024")
       givenIAmSignedInToTheAccountJourneyWithMyECLReferenceAsX(
         "XMECL0000000024"
-      ) // auto-chosen (score=1.00, AccountStepDefSteps.scala)
+      ) 
 
       When("I am on the ECL account dashboard")
-      whenIAmOnTheECLAccountDashboard() // auto-chosen (score=1.00, AccountStepDefSteps.scala)
+      whenIAmOnTheECLAccountDashboard() 
 
       And("I click on the View your payments link")
-      andIClickOnTheViewYourPaymentsLink() // auto-chosen (score=1.00, AccountStepDefSteps.scala)
+      andIClickOnTheViewYourPaymentsLink() 
 
       And("I should be on the page that displays You have not made any Economic Crime Levy payments.")
       thenIShouldBeOnThePageThatDisplaysX(
         "You have not made any Economic Crime Levy payments."
-      ) // auto-chosen (score=1.00, RegistrationStepDefSteps.scala)
+      ) 
 
     }
 
@@ -666,18 +666,18 @@ class AccountSpec extends BaseSpec with Matchers {
       Given("I am signed in to the account journey with my ECL reference as XMECL0000000028")
       givenIAmSignedInToTheAccountJourneyWithMyECLReferenceAsX(
         "XMECL0000000028"
-      ) // auto-chosen (score=1.00, AccountStepDefSteps.scala)
+      ) 
 
       When("I am on the ECL account dashboard")
-      whenIAmOnTheECLAccountDashboard() // auto-chosen (score=1.00, AccountStepDefSteps.scala)
+      whenIAmOnTheECLAccountDashboard() 
 
       And("I click on the View your payments link")
-      andIClickOnTheViewYourPaymentsLink() // auto-chosen (score=1.00, AccountStepDefSteps.scala)
+      andIClickOnTheViewYourPaymentsLink() 
 
       And("I should be on the page that displays You have not made any Economic Crime Levy payments.")
       thenIShouldBeOnThePageThatDisplaysX(
         "You have not made any Economic Crime Levy payments."
-      ) // auto-chosen (score=1.00, RegistrationStepDefSteps.scala)
+      ) 
 
     }
   }

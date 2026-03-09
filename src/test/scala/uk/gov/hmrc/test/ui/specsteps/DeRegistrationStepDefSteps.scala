@@ -15,28 +15,27 @@
  */
 
 package uk.gov.hmrc.test.ui.specsteps
-import uk.gov.hmrc.test.ui.pages.SharedActions
-import uk.gov.hmrc.test.ui.pages.deregistration.DeRegistrationPage
-import uk.gov.hmrc.test.ui.pages.deregistration.DeRegistrationPage._
-import uk.gov.hmrc.test.ui.utils.DateUtil
+import uk.gov.hmrc.test.ui.specpage.SharedActions
+import uk.gov.hmrc.test.ui.specpage.deregistration.DeRegistrationPage
+import uk.gov.hmrc.test.ui.specpage.deregistration.DeRegistrationPage._
 
 import java.time.LocalDate.now
 
 object DeRegistrationStepDefSteps {
 
-  // ^I should see the de registered ECL reference number as (.*)$
+
   def thenIShouldSeeTheDeRegisteredECLReferenceNumberAsX(value: String): Unit =
     SharedActions.assertEclReferenceNumber(value)
 
-  // I click on the View or amend your returns or View your payments link to view the deregistered (.*) details$
+
   def whenIClickOnTheViewOrAmendYourReturnsOrViewYourPaymentsLinkToViewTheDeregisteredXDetails(linkName: String): Unit =
     ProvideViewEclAccountAfterDeRegistration(linkName)
 
-  // the links (.*) under the Action column should be visible on the the page$
+
   def whenTheLinksXUnderTheActionColumnShouldBeVisibleOnTheThePage(linkName: String): Unit =
     getPaymentAndReturnLinks(linkName)
 
-  // I provide the details to de register the ECL account from the system
+
   def whenIProvideTheDetailsToDeRegisterTheECLAccountFromTheSystem(): Unit =
     DeRegistrationPage
       .provideEclDeRegistration()

@@ -16,7 +16,7 @@
 
 package uk.gov.hmrc.test.ui.utils
 
-import uk.gov.hmrc.test.ui.pages.utils.EclTaxYear
+import uk.gov.hmrc.test.ui.specpage.utils.EclTaxYear
 
 import java.time.LocalDate
 

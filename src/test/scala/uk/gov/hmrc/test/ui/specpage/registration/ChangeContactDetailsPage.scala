@@ -16,7 +16,7 @@
 
 package uk.gov.hmrc.test.ui.specpage.registration
 
-import uk.gov.hmrc.test.ui.pages.{BasePage, SharedActions}
+import uk.gov.hmrc.test.ui.specpage.{BasePage, SharedActions}
 
 object ChangeContactDetailsPage extends BasePage {
 

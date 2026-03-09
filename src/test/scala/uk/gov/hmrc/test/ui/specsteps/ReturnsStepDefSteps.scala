@@ -15,7 +15,6 @@
  */
 
 package uk.gov.hmrc.test.ui.specsteps
-import io.cucumber.datatable.DataTable
 import uk.gov.hmrc.test.ui.specpage.SharedActions
 import uk.gov.hmrc.test.ui.specpage.account.AccountPage
 import uk.gov.hmrc.test.ui.specpage.returns.ReturnsPage._
@@ -23,7 +22,7 @@ import uk.gov.hmrc.test.ui.specpage.returns._
 
 object ReturnsStepDefSteps {
 
-  // I am signed in to the return journey
+
   def givenIAmSignedInToTheReturnJourney(): Unit = {
     ReturnsPage
       .navigateTo()
@@ -38,7 +37,7 @@ object ReturnsStepDefSteps {
       .startAndSignIn()
   }
 
-  // I provide the details to submit the economic crime levy return
+
   def whenIProvideTheDetailsToSubmitTheEconomicCrimeLevyReturn(): Unit = {
     selectAccountingPeriod("Yes")
     onPage(UkRevenuePage.heading)
@@ -50,7 +49,7 @@ object ReturnsStepDefSteps {
       .provideCheckYourAnswers()
   }
 
-  // ^I enter 12 month accounting period revenue (.*) and select (.*) for my AML-regulated activity for the full financial year$
+
   def whenIEnter12MonthAccountingPeriodRevenueXAndSelectXForMyAMLregulatedActivityForTheFullFinancialYear(
     ukRevenue: String,
     value: String
@@ -64,13 +63,13 @@ object ReturnsStepDefSteps {
       .selectAmlRegulatedActivity(value)
   }
 
-  // ^I enter the number of days (.*) I carried out AML regulated activity during the financial year$
+
   def andIEnterTheNumberOfDaysXICarriedOutAMLRegulatedActivityDuringTheFinancialYear(days: String): Unit = {
     provideAmlRegulatedActivityDays(days)
     onPage(AmountDuePage.heading)
   }
 
-  // ^I select (.*) for my accounting period 12 months and enter the length of my accounting period as (.*) days$
+
   def whenISelectXForMyAccountingPeriod12MonthsAndEnterTheLengthOfMyAccountingPeriodAsXDays(
     value: String,
     days: String
@@ -82,7 +81,7 @@ object ReturnsStepDefSteps {
     onPage(UkRevenuePage.heading)
   }
 
-  // ^I enter my UK revenue (.*) for the accounting period and select (.*) for my AML-regulated activity for the full financial year$
+
   def whenIEnterMyUKRevenueXForTheAccountingPeriodAndSelectXForMyAMLregulatedActivityForTheFullFinancialYear(
     ukRevenue: String,
     value: String
@@ -93,13 +92,13 @@ object ReturnsStepDefSteps {
       .selectAmlRegulatedActivity(value)
   }
 
-  // I go to the return submission check your answers page directly without providing answers for any of the previous page questions
+
   def andIGoToTheReturnSubmissionCheckYourAnswersPageDirectlyWithoutProvidingAnswersForAnyOfThePreviousPageQuestions()
     : Unit =
     CheckYourAnswersPage
       .navigateTo()
 
-  // I click on the change link to modify my contact details
+
   def whenIClickOnTheChangeLinkToModifyMyContactDetails(): Unit = {
     selectAccountingPeriod("Yes")
     ReturnsPage
@@ -110,7 +109,7 @@ object ReturnsStepDefSteps {
       .provideChangeContactDetails("James Bond 007", "Compliance Officer", "verify@oc.com", "014753777777")
   }
 
-  // I click on the change link to modify my economic crime levy accounting period
+
   def whenIClickOnTheChangeLinkToModifyMyEconomicCrimeLevyAccountingPeriod(): Unit = {
     selectAccountingPeriod("Yes")
     ReturnsPage
@@ -122,7 +121,7 @@ object ReturnsStepDefSteps {
       .submitPage()
   }
 
-  // I click on the change link to modify my accounting period length
+
   def whenIClickOnTheChangeLinkToModifyMyAccountingPeriodLength(): Unit = {
     selectAccountingPeriod("Yes")
     ReturnsPage
@@ -134,7 +133,7 @@ object ReturnsStepDefSteps {
       .provideChangeAccountingPeriodLength("364")
   }
 
-  // I click on the change link to modify my uk revenue
+
   def whenIClickOnTheChangeLinkToModifyMyUkRevenue(): Unit = {
     selectAccountingPeriod("Yes")
     ReturnsPage
@@ -146,7 +145,7 @@ object ReturnsStepDefSteps {
       .submitPage()
   }
 
-  // I click on the change link to modify my AML-regulated activity for the full financial year
+
   def whenIClickOnTheChangeLinkToModifyMyAMLregulatedActivityForTheFullFinancialYear(): Unit = {
     selectAccountingPeriod("Yes")
     ReturnsPage
@@ -157,7 +156,7 @@ object ReturnsStepDefSteps {
       .provideChangeAmlRegulatedActivity("No")
   }
 
-  // I click on the change link to modify my AML-regulated activity length
+
   def whenIClickOnTheChangeLinkToModifyMyAMLregulatedActivityLength(): Unit = {
     selectAccountingPeriod("Yes")
     ReturnsPage
@@ -169,17 +168,17 @@ object ReturnsStepDefSteps {
       .provideChangeAmlRegulatedActivityLength("291")
   }
 
-  // ^I should be see the amount of ECL need to pay (.*)$
+
   def thenIShouldBeSeeTheAmountOfECLNeedToPayX(value: String): Unit =
     SharedActions
       .validateLevyAmount(value)
 
-  // ^I enter 12 month accounting period revenue is (.*) that falls in the small band size$
+
   def whenIEnter12MonthAccountingPeriodRevenueIsXThatFallsInTheSmallBandSize(ukRevenue: String): Unit =
     selectAccountingPeriod("Yes")
       .provideUkRevenue(ukRevenue)
 
-  // I click on the change link to edit my uk revenue from amount due page and select (.*) for my AML-regulated activity for the full financial year$
+
   def whenIClickOnTheChangeLinkToEditMyUkRevenueFromAmountDuePageAndSelectXForMyAMLregulatedActivityForTheFullFinancialYear(
     value: String
   ): Unit =
@@ -188,7 +187,7 @@ object ReturnsStepDefSteps {
       .provideChangeUkRevenue("20200000")
       .selectAmlRegulatedActivity(value)
 
-  // I click on the change link to edit my accounting period and select (.*) for my AML-regulated activity for the full financial year$
+
   def whenIClickOnTheChangeLinkToEditMyAccountingPeriodAndSelectXForMyAMLregulatedActivityForTheFullFinancialYear(
     value: String
   ): Unit =
@@ -197,19 +196,19 @@ object ReturnsStepDefSteps {
       .provideChangeAccountingPeriod("No")
       .selectAmlRegulatedActivity(value)
 
-  // ^I should see my ecl return number is (.*) and the amount to pay is (.*)$
+
   def thenIShouldSeeMyEclReturnNumberIsXAndTheAmountToPayIsX(eclReturnNumber: String, amountToPay: String): Unit =
     ReturnsPage
       .assertEclReturnNumber(eclReturnNumber)
       .assertAmountNeedToPay(amountToPay)
 
-  // I enter the information required to calculate the amount due
+
   def whenIEnterTheInformationRequiredToCalculateTheAmountDue(): Unit =
     selectAccountingPeriod("Yes")
       .provideUkRevenueInAccountingPeriod()
       .selectAmlRegulatedActivity()
 
-  // I provide the details for a return submission
+
   def whenIProvideTheDetailsForAReturnSubmission(): Unit =
     selectAccountingPeriod("Yes")
       .provideUkRevenueForNilReturnSubmission()
@@ -217,12 +216,12 @@ object ReturnsStepDefSteps {
       .provideContactDetails("Oliver Tom", "Account Manager", "test@test.com", "01632 960 001")
       .provideCheckYourAnswers()
 
-  // ^I should see the amount to pay is (.*)$
+
   def thenIShouldSeeTheAmountToPayIsX(amountToPay: String): Unit =
     SharedActions
       .assertTextByCssSelector(".govuk-label--m", amountToPay)
 
-  // I provide the details to amend the submitted economic crime levy return
+
   def whenIProvideTheDetailsToAmendTheSubmittedEconomicCrimeLevyReturn(): Unit = {
     AccountPage
       .provideViewOrAmendAnEclReturn("amend")
@@ -233,26 +232,26 @@ object ReturnsStepDefSteps {
       .provideChangeContactDetails("James Bond 007", "Compliance Officer", "verify@oc.com", "014753777777")
   }
 
-  // the amended return information should display under Amended answers on the Check your answers page$
+
   def andTheAmendedReturnInformationShouldDisplayUnderAmendedAnswersOnTheCheckYourAnswersPage(arg: Map[String, String]): Unit =
     assertAmendedReturnAnswers(arg)
       .submitPage()
 
-  // Overload for ScalaTest (no DataTable, accepts varargs)
-//  def andTheAmendedReturnInformationShouldDisplayUnderAmendedAnswersOnTheCheckYourAnswersPage(links: (String, String)*): Unit = {
-//    links.foreach { case (text, url) =>
-//      val driverWait: WebDriverWait =
-//        new WebDriverWait(Driver.instance, Duration.ofSeconds(10), Duration.ofSeconds(1))
-//      driverWait.until(
-//        ExpectedConditions.elementToBeClickable(
-//          Driver.instance.findElement(By.id(url))
-//        )
-//      )
-//      verifyLinkById(url, text)
-//    }
-//  }
 
-  // I provide some details for the economic crime levy return submission and experience a system timeout
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   def whenIProvideSomeDetailsForTheEconomicCrimeLevyReturnSubmissionAndExperienceASystemTimeout(): Unit = {
     selectAccountingPeriod("Yes")
     onPage(UkRevenuePage.heading)
@@ -263,12 +262,12 @@ object ReturnsStepDefSteps {
       .provideContactDetails("Oliver Tom", "Account Manager", "test@test.com", "01632 960 001")
   }
 
-  // I return to the service to complete the the return submission
+
   def andIReturnToTheServiceToCompleteTheTheReturnSubmission(): Unit =
     provideReturnSubmissionAfterTimeout()
       .submitPage()
 
-  // I should be able to resume the submission from where I left off
+
   def andIShouldBeAbleToResumeTheSubmissionFromWhereILeftOff(): Unit =
     SharedActions
       .selectContinueWithSavedAnswers()

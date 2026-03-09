@@ -25,7 +25,6 @@ import java.time.LocalDate
 
 object ReturnsPage extends BasePage {
 
-  //http://localhost:14002/submit-economic-crime-levy-return/period/23XY
   val url =
     s"${TestConfiguration.url("economic-crime-levy-returns-frontend")}/submit-economic-crime-levy-return/period/25XY"
 

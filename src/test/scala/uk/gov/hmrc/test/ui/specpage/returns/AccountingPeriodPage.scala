@@ -17,7 +17,7 @@
 package uk.gov.hmrc.test.ui.specpage.returns
 
 import uk.gov.hmrc.test.ui.conf.TestConfiguration
-import uk.gov.hmrc.test.ui.pages.{BasePage, SharedActions}
+import uk.gov.hmrc.test.ui.specpage.{BasePage, SharedActions}
 
 object AccountingPeriodPage extends BasePage {
   val url =

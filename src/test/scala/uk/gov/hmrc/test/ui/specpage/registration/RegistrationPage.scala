@@ -16,11 +16,10 @@
 
 package uk.gov.hmrc.test.ui.specpage.registration
 
-import io.cucumber.datatable.DataTable
 import org.openqa.selenium.By
 import uk.gov.hmrc.test.ui.conf.TestConfiguration
-import uk.gov.hmrc.test.ui.pages.registration.BusinessSectorPage.cssForSaveAndContinue
-import uk.gov.hmrc.test.ui.pages.{BasePage, SharedActions}
+import uk.gov.hmrc.test.ui.specpage.registration.BusinessSectorPage.cssForSaveAndContinue
+import uk.gov.hmrc.test.ui.specpage.{BasePage, SharedActions}
 import uk.gov.hmrc.test.ui.utils.DateUtil
 
 object RegistrationPage extends BasePage with DateUtil {

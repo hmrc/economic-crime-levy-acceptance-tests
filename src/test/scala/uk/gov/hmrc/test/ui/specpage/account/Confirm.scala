@@ -17,7 +17,7 @@
 package uk.gov.hmrc.test.ui.specpage.account
 
 import org.openqa.selenium.By
-import uk.gov.hmrc.test.ui.pages.BasePage
+import uk.gov.hmrc.test.ui.specpage.BasePage
 
 object Confirm extends BasePage {
   def copyEclReturnNumber(): String = {

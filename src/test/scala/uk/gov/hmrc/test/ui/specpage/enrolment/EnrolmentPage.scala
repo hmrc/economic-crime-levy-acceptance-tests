@@ -18,7 +18,7 @@ package uk.gov.hmrc.test.ui.specpage.enrolment
 
 import org.openqa.selenium.By
 import uk.gov.hmrc.test.ui.conf.TestConfiguration
-import uk.gov.hmrc.test.ui.pages.{BasePage, SharedActions}
+import uk.gov.hmrc.test.ui.specpage.{BasePage, SharedActions}
 
 object EnrolmentPage extends BasePage {
 

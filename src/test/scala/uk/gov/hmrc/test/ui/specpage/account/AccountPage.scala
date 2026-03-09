@@ -16,13 +16,12 @@
 
 package uk.gov.hmrc.test.ui.specpage.account
 
-import io.cucumber.datatable.DataTable
 import org.junit.Assert
 import org.openqa.selenium.By
 import uk.gov.hmrc.selenium.webdriver.Driver
 import uk.gov.hmrc.test.ui.conf.TestConfiguration
-import uk.gov.hmrc.test.ui.pages.returns.ReturnsPage
-import uk.gov.hmrc.test.ui.pages.{BasePage, SharedActions}
+import uk.gov.hmrc.test.ui.specpage.returns.ReturnsPage
+import uk.gov.hmrc.test.ui.specpage.{BasePage, SharedActions}
 
 object AccountPage extends BasePage {
 
@@ -183,10 +182,6 @@ object AccountPage extends BasePage {
     val paymentPeriod = data.getOrElse("Financial year", sys.error("Keys not found"))
     val amountPaid    = data.getOrElse("Amount Paid", sys.error("Keys not found"))
 
-//    def assertPaymentHistoryForPartiallyPaidInterest(data: DataTable): this.type = {
-//    val paymentType   = data.column(1).get(0)
-//    val paymentPeriod = data.column(1).get(1)
-//    val amountPaid    = data.column(1).get(2)
 
     val actualPaymentType = getText(
       By.cssSelector("tbody tr:nth-child(2) td:nth-child(2)")
@@ -255,14 +250,6 @@ object AccountPage extends BasePage {
     val actions       = data.getOrElse("Actions", sys.error("Keys not found"))
 
 
-//  def assertPaymentYouOweForOverdue(data: DataTable): this.type = {
-//    val paymentDate   = data.column(1).get(0)
-//    val paymentType   = data.column(1).get(1)
-//    val paymentPeriod = data.column(1).get(2)
-//    val youPaidHmrc   = data.column(1).get(3)
-//    val paymentStatus = data.column(1).get(4)
-//    val actions       = data.column(1).get(5)
-
     val actualPaymentDate = getText(
       By.cssSelector(".govuk-table__cell.govuk-table__header")
     )
@@ -309,14 +296,6 @@ object AccountPage extends BasePage {
     val penalty5 = data.getOrElse("Column5", sys.error("Keys not found"))
     val penalty6 = data.getOrElse("Column6", sys.error("Keys not found"))
 
-//
-//    def penaltyVerification(data: DataTable): this.type = {
-//    val penalty  = data.column(1).get(0)
-//    val penalty2 = data.column(1).get(1)
-//    val penalty3 = data.column(1).get(2)
-//    val penalty4 = data.column(1).get(3)
-//    val penalty5 = data.column(1).get(4)
-//    val penalty6 = data.column(1).get(5)
 
     val actualPenalty =
       if (
