@@ -1,5 +1,5 @@
 /*
- * Copyright 2024 HM Revenue & Customs
+ * Copyright 2023 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,15 +14,19 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.test.ui.utils
+package uk.gov.hmrc.test.ui.specpage.account
 
-import uk.gov.hmrc.test.ui.specpage.utils.EclTaxYear
+import org.openqa.selenium.By
+import uk.gov.hmrc.test.ui.specpage.BasePage
 
-import java.time.LocalDate
+object Confirm extends BasePage {
+  def copyEclReturnNumber(): String = {
+    val panelText = getText(By.cssSelector("td:nth-child(3)"))
+    return panelText
+  }
 
-trait DateUtil {
-
-  val now: LocalDate                         = LocalDate.now()
-  val previousEclTaxYear: EclTaxYear         = EclTaxYear.fromCurrentDate(now).previous
-  val previousEclTaxYearStartYear: LocalDate = previousEclTaxYear.startDate
+  def copyEclReferenceNumber(): String = {
+    val panelText = getText(By.cssSelector(".govuk-caption-m")).stripPrefix("ECL reference number: ")
+    return panelText
+  }
 }

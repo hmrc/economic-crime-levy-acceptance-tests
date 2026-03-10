@@ -1,5 +1,5 @@
 /*
- * Copyright 2024 HM Revenue & Customs
+ * Copyright 2023 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,15 +14,25 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.test.ui.utils
+package uk.gov.hmrc.test.ui.specpage.registration
 
-import uk.gov.hmrc.test.ui.specpage.utils.EclTaxYear
+import uk.gov.hmrc.test.ui.conf.TestConfiguration
+import uk.gov.hmrc.test.ui.specpage.{BasePage, SharedActions}
 
-import java.time.LocalDate
+object FirstContactNamePage extends BasePage {
 
-trait DateUtil {
+  val url =
+    s"${TestConfiguration.url("economic-crime-levy-registration-frontend")}/register-for-economic-crime-levy/contact-name"
 
-  val now: LocalDate                         = LocalDate.now()
-  val previousEclTaxYear: EclTaxYear         = EclTaxYear.fromCurrentDate(now).previous
-  val previousEclTaxYearStartYear: LocalDate = previousEclTaxYear.startDate
+  val heading = "Provide a contact name"
+
+  def navigateTo(): this.type = {
+    get(url)
+    this
+  }
+
+  def submitPage(): this.type = {
+    SharedActions.clickButton()
+    this
+  }
 }

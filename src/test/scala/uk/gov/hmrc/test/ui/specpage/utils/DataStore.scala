@@ -1,5 +1,5 @@
 /*
- * Copyright 2024 HM Revenue & Customs
+ * Copyright 2023 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,15 +14,18 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.test.ui.utils
+package uk.gov.hmrc.test.ui.specpage.utils
 
-import uk.gov.hmrc.test.ui.specpage.utils.EclTaxYear
+object DataStore {
 
-import java.time.LocalDate
+  var eclReference: String = "XMECL0000000001"
 
-trait DateUtil {
+  def setEclReference(value: String): this.type = {
+    eclReference = value
+    this
+  }
 
-  val now: LocalDate                         = LocalDate.now()
-  val previousEclTaxYear: EclTaxYear         = EclTaxYear.fromCurrentDate(now).previous
-  val previousEclTaxYearStartYear: LocalDate = previousEclTaxYear.startDate
+  def getEclReference: String =
+    eclReference
+
 }

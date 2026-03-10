@@ -1,5 +1,5 @@
 /*
- * Copyright 2024 HM Revenue & Customs
+ * Copyright 2023 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,15 +14,25 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.test.ui.utils
+package uk.gov.hmrc.test.ui.specpage.returns
 
-import uk.gov.hmrc.test.ui.specpage.utils.EclTaxYear
+import uk.gov.hmrc.test.ui.conf.TestConfiguration
+import uk.gov.hmrc.test.ui.specpage.{BasePage, SharedActions}
 
-import java.time.LocalDate
+object AmountDuePage extends BasePage {
+  val url =
+    s"${TestConfiguration.url("economic-crime-levy-returns-frontend")}/submit-economic-crime-levy-return/amount-due"
 
-trait DateUtil {
+  val heading = "Amount of Economic Crime Levy you need to pay"
 
-  val now: LocalDate                         = LocalDate.now()
-  val previousEclTaxYear: EclTaxYear         = EclTaxYear.fromCurrentDate(now).previous
-  val previousEclTaxYearStartYear: LocalDate = previousEclTaxYear.startDate
+  def navigateTo(): this.type = {
+    get(url)
+    this
+  }
+
+  def submitPage(): this.type = {
+    SharedActions.clickButton()
+    this
+  }
+
 }

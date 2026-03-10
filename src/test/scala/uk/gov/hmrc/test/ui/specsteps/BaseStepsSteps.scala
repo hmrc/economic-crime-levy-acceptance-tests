@@ -1,5 +1,5 @@
 /*
- * Copyright 2024 HM Revenue & Customs
+ * Copyright 2026 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,15 +14,18 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.test.ui.utils
+package uk.gov.hmrc.test.ui.specsteps
 
-import uk.gov.hmrc.test.ui.specpage.utils.EclTaxYear
+import uk.gov.hmrc.test.ui.specpage.SharedActions.{clickBackButton, clickButton}
 
-import java.time.LocalDate
+object BaseStepsSteps {
 
-trait DateUtil {
+  
+  def thenIClickOnTheBackLink(): Unit =
+    clickBackButton()
 
-  val now: LocalDate                         = LocalDate.now()
-  val previousEclTaxYear: EclTaxYear         = EclTaxYear.fromCurrentDate(now).previous
-  val previousEclTaxYearStartYear: LocalDate = previousEclTaxYear.startDate
+  
+  def thenIClickTheSaveAndContinueButton(): Unit =
+    clickButton()
+
 }
