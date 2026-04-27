@@ -38,16 +38,11 @@ object AccountStepDefSteps {
   def whenIAmOnTheECLAccountDashboard(): Unit =
     onPage(AccountPage.heading)
 
-  
+
   def whenIClickOnTheSubmitAnEconomicCrimeLevyReturnLink(): Unit = {
-    if (LocalDate.now().getMonthValue >= 8) {
-      provideSubmitAnEclReturn()
-    } else {
-      provideSubmitAltEclReturn()
-    }
+    provideSubmitAnEclReturn()
     submitPage()
   }
-
   
   def whenIClickOnTheViewOrAmendYourReturnsLinkToViewTheReturnDetails(returnStatus: String): Unit =
     provideViewOrAmendAnEclReturn(returnStatus)

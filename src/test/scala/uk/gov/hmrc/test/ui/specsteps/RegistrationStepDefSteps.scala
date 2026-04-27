@@ -260,8 +260,8 @@ object RegistrationStepDefSteps {
 
 
   def thenIShouldBeOnThePlaceholderPageThatMentionsAnOverduePaymentForPreviousYearECL(): Unit = {
-    val assertion = "1 April " + 2023 + " to 31 March " + 2024
-    print("previous Year ECL should be:  1 April 2022 to 31 March 2023   this assertion is: " + assertion)
+    val assertion = "1 April " + 2024 + " to 31 March " + 2025
+    print("previous Year ECL should be:  1 April 2023 to 31 March 2024   this assertion is: " + assertion)
     SharedActions.assertPartialTextIsDisplayed(assertion)
   }
 

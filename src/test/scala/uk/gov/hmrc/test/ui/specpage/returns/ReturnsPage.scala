@@ -25,14 +25,23 @@ import java.time.LocalDate
 
 object ReturnsPage extends BasePage {
 
+  val periodKey = "25XY"
+
   val url =
-    s"${TestConfiguration.url("economic-crime-levy-returns-frontend")}/submit-economic-crime-levy-return/period/25XY"
+    s"${TestConfiguration.url("economic-crime-levy-returns-frontend")}/submit-economic-crime-levy-return/period/$periodKey"
+
+  private def eclTaxYearFromPeriodKey(periodKey: String): String = {
+    val startYear  = 2000 + periodKey.take(2).toInt
+    val finishYear = startYear + 1
+
+    s"$startYear-$finishYear"
+  }
 
   val eclTaxYear: EclTaxYear        = EclTaxYear.fromDate(LocalDate.now())
   val heading: String               =
     "Submit your Economic Crime Levy return for " + eclTaxYear.previous.startYear.toString + "-" + eclTaxYear.previous.finishYear.toString
-  val recentDueHeading: String      =
-    "Submit your Economic Crime Levy return for " + eclTaxYear.startYear.toString + "-" + eclTaxYear.finishYear.toString
+  val recentDueHeading: String =
+    s"Submit your Economic Crime Levy return for ${eclTaxYearFromPeriodKey(periodKey)}"
   val recent2backDueHeading: String =
     "Submit your Economic Crime Levy return for " + eclTaxYear.previous.previous.startYear.toString + "-" + eclTaxYear.previous.previous.finishYear.toString
   val recent3backDueHeading: String =
