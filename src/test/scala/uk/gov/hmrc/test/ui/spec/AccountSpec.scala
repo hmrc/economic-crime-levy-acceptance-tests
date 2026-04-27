@@ -277,7 +277,7 @@ class AccountSpec extends BaseSpec with Matchers {
 
       val paymentInformation: Map[String, String] = Map(
         "Payment Type"   -> "Interest charge for ECL return number XMECL0000000014",
-        "Financial year" -> "1 April 2024 to 31 March 2025",
+        "Financial year" -> "1 April 2025 to 31 March 2026",
         "Amount Paid"    -> "£12.73",
         "Payment Status" -> "",
         "Actions"        -> ""
@@ -325,9 +325,9 @@ class AccountSpec extends BaseSpec with Matchers {
       
 
       val paymentDetails: Map[String, String] = Map(
-        "Payment Date"   -> "9 February 2023",
+        "Payment Date"   -> "9 February 2024",
         "Payment Type"   -> "Interest charge for ECL return number XMECL0000000011",
-        "Payment Period" -> "1 April 2023 to 31 March 2024",
+        "Payment Period" -> "1 April 2024 to 31 March 2025",
         "You paid HMRC"  -> "£114.84",
         "Payment Status" -> "PAID",
         "Actions"        -> "Request a refund"
@@ -358,9 +358,9 @@ class AccountSpec extends BaseSpec with Matchers {
       
 
       val paymentDetails2: Map[String, String] = Map(
-        "Payment Date"   -> "30 September 2024",
+        "Payment Date"   -> "30 September 2025",
         "Payment Type"   -> "Interest charge for ECL return number XMECL0000000012",
-        "Financial year" -> "1 April 2023 to 31 March 2024",
+        "Financial year" -> "1 April 2024 to 31 March 2025",
         "You paid HMRC"  -> "£4,000",
         "Payment Status" -> "OVERDUE",
         "Actions"        -> "Make a payment"
