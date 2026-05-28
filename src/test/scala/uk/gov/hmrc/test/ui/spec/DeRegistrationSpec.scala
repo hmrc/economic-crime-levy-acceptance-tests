@@ -41,8 +41,8 @@ class DeRegistrationSpec extends BaseSpec with Matchers {
       And("I should be on the page that says You have no returns due.")
       thenIShouldBeOnThePageThatSaysX("You have no returns due.")  
 
-      And("I should be on the page that says You have an overdue payment for 1 April 2023 to 31 March 2024.")
-      thenIShouldBeOnThePageThatSaysX("You have an overdue payment for 1 April 2023 to 31 March 2024.")  
+      And("I should be on the page that says You have an overdue payment for 1 April 2024 to 31 March 2025.")
+      thenIShouldBeOnThePageThatSaysX("You have an overdue payment for 1 April 2024 to 31 March 2025.")
 
     }
 
