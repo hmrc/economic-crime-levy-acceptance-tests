@@ -27,19 +27,19 @@ class DeRegistrationSpec extends BaseSpec with Matchers {
 
     Scenario("User view their dashboard after successful de-registration") {
       Given("I am signed in to the account journey with my ECL reference as XMECL00000000019")
-      givenIAmSignedInToTheAccountJourneyWithMyECLReferenceAsX("XMECL00000000019")  
+      givenIAmSignedInToTheAccountJourneyWithMyECLReferenceAsX("XMECL00000000019")
 
       When("I am on the ECL account dashboard")
-      whenIAmOnTheECLAccountDashboard()  
+      whenIAmOnTheECLAccountDashboard()
 
       Then("I should see the de registered ECL reference number as ECL reference number: XMECL00000000019")
-      thenIShouldSeeTheDeRegisteredECLReferenceNumberAsX("ECL reference number: XMECL00000000019")  
+      thenIShouldSeeTheDeRegisteredECLReferenceNumberAsX("ECL reference number: XMECL00000000019")
 
       And("I should be on the page that says You deregistered this account.")
-      thenIShouldBeOnThePageThatSaysX("You deregistered this account.")  
+      thenIShouldBeOnThePageThatSaysX("You deregistered this account.")
 
       And("I should be on the page that says You have no returns due.")
-      thenIShouldBeOnThePageThatSaysX("You have no returns due.")  
+      thenIShouldBeOnThePageThatSaysX("You have no returns due.")
 
       And("I should be on the page that says You have an overdue payment for 1 April 2024 to 31 March 2025.")
       thenIShouldBeOnThePageThatSaysX("You have an overdue payment for 1 April 2024 to 31 March 2025.")
@@ -48,37 +48,41 @@ class DeRegistrationSpec extends BaseSpec with Matchers {
 
     Scenario("User views payments after successful de-registration [link=Returns]") {
       Given("I am signed in to the account journey with my ECL reference as XMECL00000000019")
-      givenIAmSignedInToTheAccountJourneyWithMyECLReferenceAsX("XMECL00000000019")  
+      givenIAmSignedInToTheAccountJourneyWithMyECLReferenceAsX("XMECL00000000019")
 
-      When("I click on the View or amend your returns or View your payments link to view the deregistered Returns details")
-      whenIClickOnTheViewOrAmendYourReturnsOrViewYourPaymentsLinkToViewTheDeregisteredXDetails("Returns")  
+      When(
+        "I click on the View or amend your returns or View your payments link to view the deregistered Returns details"
+      )
+      whenIClickOnTheViewOrAmendYourReturnsOrViewYourPaymentsLinkToViewTheDeregisteredXDetails("Returns")
 
       Then("the links Returns under the Action column should be visible on the the page")
-      whenTheLinksXUnderTheActionColumnShouldBeVisibleOnTheThePage("Returns")  
+      whenTheLinksXUnderTheActionColumnShouldBeVisibleOnTheThePage("Returns")
 
     }
 
     Scenario("User views payments after successful de-registration [link=Payments]") {
       Given("I am signed in to the account journey with my ECL reference as XMECL00000000019")
-      givenIAmSignedInToTheAccountJourneyWithMyECLReferenceAsX("XMECL00000000019")  
+      givenIAmSignedInToTheAccountJourneyWithMyECLReferenceAsX("XMECL00000000019")
 
-      When("I click on the View or amend your returns or View your payments link to view the deregistered Payments details")
-      whenIClickOnTheViewOrAmendYourReturnsOrViewYourPaymentsLinkToViewTheDeregisteredXDetails("Payments")  
+      When(
+        "I click on the View or amend your returns or View your payments link to view the deregistered Payments details"
+      )
+      whenIClickOnTheViewOrAmendYourReturnsOrViewYourPaymentsLinkToViewTheDeregisteredXDetails("Payments")
 
       Then("the links Payments under the Action column should be visible on the the page")
-      whenTheLinksXUnderTheActionColumnShouldBeVisibleOnTheThePage("Payments")  
+      whenTheLinksXUnderTheActionColumnShouldBeVisibleOnTheThePage("Payments")
 
     }
 
     Scenario("User able to request ECL de-registration") {
       Given("I am signed in to the account journey with my ECL reference as XMECL00000000002")
-      givenIAmSignedInToTheAccountJourneyWithMyECLReferenceAsX("XMECL00000000002")  
+      givenIAmSignedInToTheAccountJourneyWithMyECLReferenceAsX("XMECL00000000002")
 
       When("I provide the details to de register the ECL account from the system")
-      whenIProvideTheDetailsToDeRegisterTheECLAccountFromTheSystem()  
+      whenIProvideTheDetailsToDeRegisterTheECLAccountFromTheSystem()
 
       Then("I should be on the page that says Deregistration requested")
-      thenIShouldBeOnThePageThatSaysX("Deregistration requested")  
+      thenIShouldBeOnThePageThatSaysX("Deregistration requested")
 
     }
   }

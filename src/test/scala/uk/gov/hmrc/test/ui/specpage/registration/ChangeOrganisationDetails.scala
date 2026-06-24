@@ -19,7 +19,7 @@ package uk.gov.hmrc.test.ui.specpage.registration
 import uk.gov.hmrc.test.ui.specpage.{BasePage, SharedActions}
 import uk.gov.hmrc.test.ui.utils.DateUtil
 
-object ChangeOrganisationDetails extends BasePage with  DateUtil {
+object ChangeOrganisationDetails extends BasePage with DateUtil {
 
   val cssForChangeBusinessSector: String       =
     "a[href='/register-for-economic-crime-levy/change-answer/what-is-your-business-sector']"
@@ -101,7 +101,7 @@ object ChangeOrganisationDetails extends BasePage with  DateUtil {
 //    submitPage()
     this
   }
-  def submitPage(): this.type = {
+  def submitPage(): this.type               = {
     SharedActions.clickButton()
     this
   }

@@ -137,7 +137,7 @@ object AccountPage extends BasePage {
     this
   }
 
-  def provideSubmitReturn(): this.type = {
+  def provideSubmitReturn(): this.type      = {
     SharedActions
       .clickLinkByPartialText("Submit return")
     this
@@ -182,7 +182,6 @@ object AccountPage extends BasePage {
     val paymentPeriod = data.getOrElse("Financial year", sys.error("Keys not found"))
     val amountPaid    = data.getOrElse("Amount Paid", sys.error("Keys not found"))
 
-
     val actualPaymentType = getText(
       By.cssSelector("tbody tr:nth-child(2) td:nth-child(2)")
     )
@@ -213,8 +212,7 @@ object AccountPage extends BasePage {
     val paymentStatus = data.getOrElse("Payment Status", sys.error("Keys not found"))
     val actions       = data.getOrElse("Actions", sys.error("Keys not found"))
 
-
-   val actualPaymentDate = getText(
+    val actualPaymentDate = getText(
       By.cssSelector("tr:nth-child(1) td:nth-child(1)")
     )
     actualPaymentDate should be(paymentDate)
@@ -249,7 +247,6 @@ object AccountPage extends BasePage {
     val paymentStatus = data.getOrElse("Payment Status", sys.error("Keys not found"))
     val actions       = data.getOrElse("Actions", sys.error("Keys not found"))
 
-
     val actualPaymentDate = getText(
       By.cssSelector(".govuk-table__cell.govuk-table__header")
     )
@@ -277,16 +274,15 @@ object AccountPage extends BasePage {
     this
   }
 
-  def provideMakeAPayment(): this.type = {
+  def provideMakeAPayment(): this.type     = {
     SharedActions.clickLinkByPartialText("Make a payment")
     this
   }
-  def submitPage(): this.type = {
+  def submitPage(): this.type              = {
     SharedActions.clickButton()
     this
   }
   def elementDoesNotExist(by: By): Boolean = Driver.instance.findElements(by).size() == 0
-
 
   def penaltyVerification(data: Map[String, String]): this.type = {
     val penalty  = data.getOrElse("Column1", sys.error("Keys not found"))
@@ -295,7 +291,6 @@ object AccountPage extends BasePage {
     val penalty4 = data.getOrElse("Column4", sys.error("Keys not found"))
     val penalty5 = data.getOrElse("Column5", sys.error("Keys not found"))
     val penalty6 = data.getOrElse("Column6", sys.error("Keys not found"))
-
 
     val actualPenalty =
       if (

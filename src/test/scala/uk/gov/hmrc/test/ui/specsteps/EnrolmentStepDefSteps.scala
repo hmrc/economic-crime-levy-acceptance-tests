@@ -19,12 +19,10 @@ import uk.gov.hmrc.test.ui.specpage.enrolment.EnrolmentPage
 
 object EnrolmentStepDefSteps {
 
-
   def givenIAmSignedInToTheEnrolmentJourney(): Unit =
     EnrolmentPage
       .navigateTo()
       .startAndSignIn()
-
 
   def whenIProvideTheDetailsOfMyECLReferenceNumber(): Unit =
     EnrolmentPage
@@ -32,16 +30,13 @@ object EnrolmentStepDefSteps {
       .provideEclReferenceNumber("XMECL0000000001")
       .provideEclRegistrationDate(registrationDate = "01", registrationMonth = "03", registrationYear = "2023")
 
-
   def whenISelectNoorUnknownOptionForWhetherOrNotIHaveTheECLReferenceNumber(value: String): Unit =
     EnrolmentPage
       .selectEclReferenceNumber(value)
 
-
   def whenIEnterTheEconomicCrimeLevyReferenceNumberX(eclReferenceNumber: String): Unit =
     EnrolmentPage
       .provideInvalidEclReferenceNumber(eclReferenceNumber)
-
 
   def whenIEnterTheECLRegistrationDateDayAsXMonthAsXAndYearAsX(day: String, month: String, year: String): Unit = {
     EnrolmentPage

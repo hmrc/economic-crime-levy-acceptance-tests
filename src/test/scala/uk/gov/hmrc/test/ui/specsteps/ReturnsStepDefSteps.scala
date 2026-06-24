@@ -22,7 +22,6 @@ import uk.gov.hmrc.test.ui.specpage.returns._
 
 object ReturnsStepDefSteps {
 
-
   def givenIAmSignedInToTheReturnJourney(): Unit = {
     ReturnsPage
       .navigateTo()
@@ -37,7 +36,6 @@ object ReturnsStepDefSteps {
       .startAndSignIn()
   }
 
-
   def whenIProvideTheDetailsToSubmitTheEconomicCrimeLevyReturn(): Unit = {
     selectAccountingPeriod("Yes")
     onPage(UkRevenuePage.heading)
@@ -48,7 +46,6 @@ object ReturnsStepDefSteps {
       .provideContactDetails("Oliver Tom", "Account Manager", "test@test.com", "01632 960 001")
       .provideCheckYourAnswers()
   }
-
 
   def whenIEnter12MonthAccountingPeriodRevenueXAndSelectXForMyAMLregulatedActivityForTheFullFinancialYear(
     ukRevenue: String,
@@ -63,12 +60,10 @@ object ReturnsStepDefSteps {
       .selectAmlRegulatedActivity(value)
   }
 
-
   def andIEnterTheNumberOfDaysXICarriedOutAMLRegulatedActivityDuringTheFinancialYear(days: String): Unit = {
     provideAmlRegulatedActivityDays(days)
     onPage(AmountDuePage.heading)
   }
-
 
   def whenISelectXForMyAccountingPeriod12MonthsAndEnterTheLengthOfMyAccountingPeriodAsXDays(
     value: String,
@@ -81,7 +76,6 @@ object ReturnsStepDefSteps {
     onPage(UkRevenuePage.heading)
   }
 
-
   def whenIEnterMyUKRevenueXForTheAccountingPeriodAndSelectXForMyAMLregulatedActivityForTheFullFinancialYear(
     ukRevenue: String,
     value: String
@@ -92,12 +86,10 @@ object ReturnsStepDefSteps {
       .selectAmlRegulatedActivity(value)
   }
 
-
   def andIGoToTheReturnSubmissionCheckYourAnswersPageDirectlyWithoutProvidingAnswersForAnyOfThePreviousPageQuestions()
     : Unit =
     CheckYourAnswersPage
       .navigateTo()
-
 
   def whenIClickOnTheChangeLinkToModifyMyContactDetails(): Unit = {
     selectAccountingPeriod("Yes")
@@ -108,7 +100,6 @@ object ReturnsStepDefSteps {
       .provideContactDetails("Oliver Tom", "Account Manager", "test@test.com", "01632 960 001")
       .provideChangeContactDetails("James Bond 007", "Compliance Officer", "verify@oc.com", "014753777777")
   }
-
 
   def whenIClickOnTheChangeLinkToModifyMyEconomicCrimeLevyAccountingPeriod(): Unit = {
     selectAccountingPeriod("Yes")
@@ -121,7 +112,6 @@ object ReturnsStepDefSteps {
       .submitPage()
   }
 
-
   def whenIClickOnTheChangeLinkToModifyMyAccountingPeriodLength(): Unit = {
     selectAccountingPeriod("Yes")
     ReturnsPage
@@ -132,7 +122,6 @@ object ReturnsStepDefSteps {
       .provideChangeAccountingPeriod("No")
       .provideChangeAccountingPeriodLength("364")
   }
-
 
   def whenIClickOnTheChangeLinkToModifyMyUkRevenue(): Unit = {
     selectAccountingPeriod("Yes")
@@ -145,7 +134,6 @@ object ReturnsStepDefSteps {
       .submitPage()
   }
 
-
   def whenIClickOnTheChangeLinkToModifyMyAMLregulatedActivityForTheFullFinancialYear(): Unit = {
     selectAccountingPeriod("Yes")
     ReturnsPage
@@ -155,7 +143,6 @@ object ReturnsStepDefSteps {
       .provideContactDetails("Oliver Tom", "Account Manager", "test@test.com", "01632 960 001")
       .provideChangeAmlRegulatedActivity("No")
   }
-
 
   def whenIClickOnTheChangeLinkToModifyMyAMLregulatedActivityLength(): Unit = {
     selectAccountingPeriod("Yes")
@@ -168,16 +155,13 @@ object ReturnsStepDefSteps {
       .provideChangeAmlRegulatedActivityLength("291")
   }
 
-
   def thenIShouldBeSeeTheAmountOfECLNeedToPayX(value: String): Unit =
     SharedActions
       .validateLevyAmount(value)
 
-
   def whenIEnter12MonthAccountingPeriodRevenueIsXThatFallsInTheSmallBandSize(ukRevenue: String): Unit =
     selectAccountingPeriod("Yes")
       .provideUkRevenue(ukRevenue)
-
 
   def whenIClickOnTheChangeLinkToEditMyUkRevenueFromAmountDuePageAndSelectXForMyAMLregulatedActivityForTheFullFinancialYear(
     value: String
@@ -187,7 +171,6 @@ object ReturnsStepDefSteps {
       .provideChangeUkRevenue("20200000")
       .selectAmlRegulatedActivity(value)
 
-
   def whenIClickOnTheChangeLinkToEditMyAccountingPeriodAndSelectXForMyAMLregulatedActivityForTheFullFinancialYear(
     value: String
   ): Unit =
@@ -196,18 +179,15 @@ object ReturnsStepDefSteps {
       .provideChangeAccountingPeriod("No")
       .selectAmlRegulatedActivity(value)
 
-
   def thenIShouldSeeMyEclReturnNumberIsXAndTheAmountToPayIsX(eclReturnNumber: String, amountToPay: String): Unit =
     ReturnsPage
       .assertEclReturnNumber(eclReturnNumber)
       .assertAmountNeedToPay(amountToPay)
 
-
   def whenIEnterTheInformationRequiredToCalculateTheAmountDue(): Unit =
     selectAccountingPeriod("Yes")
       .provideUkRevenueInAccountingPeriod()
       .selectAmlRegulatedActivity()
-
 
   def whenIProvideTheDetailsForAReturnSubmission(): Unit =
     selectAccountingPeriod("Yes")
@@ -216,11 +196,9 @@ object ReturnsStepDefSteps {
       .provideContactDetails("Oliver Tom", "Account Manager", "test@test.com", "01632 960 001")
       .provideCheckYourAnswers()
 
-
   def thenIShouldSeeTheAmountToPayIsX(amountToPay: String): Unit =
     SharedActions
       .assertTextByCssSelector(".govuk-label--m", amountToPay)
-
 
   def whenIProvideTheDetailsToAmendTheSubmittedEconomicCrimeLevyReturn(): Unit = {
     AccountPage
@@ -232,25 +210,11 @@ object ReturnsStepDefSteps {
       .provideChangeContactDetails("James Bond 007", "Compliance Officer", "verify@oc.com", "014753777777")
   }
 
-
-  def andTheAmendedReturnInformationShouldDisplayUnderAmendedAnswersOnTheCheckYourAnswersPage(arg: Map[String, String]): Unit =
+  def andTheAmendedReturnInformationShouldDisplayUnderAmendedAnswersOnTheCheckYourAnswersPage(
+    arg: Map[String, String]
+  ): Unit =
     assertAmendedReturnAnswers(arg)
       .submitPage()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
   def whenIProvideSomeDetailsForTheEconomicCrimeLevyReturnSubmissionAndExperienceASystemTimeout(): Unit = {
     selectAccountingPeriod("Yes")
@@ -262,11 +226,9 @@ object ReturnsStepDefSteps {
       .provideContactDetails("Oliver Tom", "Account Manager", "test@test.com", "01632 960 001")
   }
 
-
   def andIReturnToTheServiceToCompleteTheTheReturnSubmission(): Unit =
     provideReturnSubmissionAfterTimeout()
       .submitPage()
-
 
   def andIShouldBeAbleToResumeTheSubmissionFromWhereILeftOff(): Unit =
     SharedActions

@@ -40,7 +40,7 @@ object ReturnsPage extends BasePage {
   val eclTaxYear: EclTaxYear        = EclTaxYear.fromDate(LocalDate.now())
   val heading: String               =
     "Submit your Economic Crime Levy return for " + eclTaxYear.previous.startYear.toString + "-" + eclTaxYear.previous.finishYear.toString
-  val recentDueHeading: String =
+  val recentDueHeading: String      =
     s"Submit your Economic Crime Levy return for ${eclTaxYearFromPeriodKey(periodKey)}"
   val recent2backDueHeading: String =
     "Submit your Economic Crime Levy return for " + eclTaxYear.previous.previous.startYear.toString + "-" + eclTaxYear.previous.previous.finishYear.toString
@@ -85,7 +85,7 @@ object ReturnsPage extends BasePage {
     onPage(AmlRegulatedActivityPage.heading)
     this
   }
-  def selectAmlRegulatedActivity(): this.type = {
+  def selectAmlRegulatedActivity(): this.type                                   = {
     SharedActions
       .selectYesOrNo("Yes")
     onPage(AmountDuePage.heading)

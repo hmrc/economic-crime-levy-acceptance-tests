@@ -36,7 +36,7 @@ object UkRevenuePage extends BasePage {
     submitPage()
     this
   }
-  def submitPage(): this.type = {
+  def submitPage(): this.type        = {
     SharedActions.clickButton()
     this
   }
