@@ -1,5 +1,5 @@
 /*
- * Copyright 2024 HM Revenue & Customs
+ * Copyright 2026 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,9 +24,9 @@ import uk.gov.hmrc.test.ui.specpage.{BasePage, SharedActions}
 
 object DeRegistrationPage extends BasePage {
 
-  val url     =
+  val url                     =
     s"${TestConfiguration.url("economic-crime-levy-registration-frontend")}/register-for-economic-crime-levy/deregister-start"
-  val heading = "Request to deregister from HMRC for the Economic Crime Levy"
+  val heading                 = "Request to deregister from HMRC for the Economic Crime Levy"
   def navigateTo(): this.type = {
     get(url)
     this
@@ -107,7 +107,7 @@ object DeRegistrationPage extends BasePage {
     SharedActions.enterDetails(contactNumber)
     this
   }
-  def submitPage(): this.type = {
+  def submitPage(): this.type                                             = {
     SharedActions.clickButton()
     this
   }

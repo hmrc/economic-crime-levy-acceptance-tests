@@ -1,5 +1,5 @@
 /*
- * Copyright 2023 HM Revenue & Customs
+ * Copyright 2026 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,7 +19,7 @@ package uk.gov.hmrc.test.ui.specpage.registration
 import uk.gov.hmrc.test.ui.specpage.{BasePage, SharedActions}
 import uk.gov.hmrc.test.ui.utils.DateUtil
 
-object ChangeOrganisationDetails extends BasePage with  DateUtil {
+object ChangeOrganisationDetails extends BasePage with DateUtil {
 
   val cssForChangeBusinessSector: String       =
     "a[href='/register-for-economic-crime-levy/change-answer/what-is-your-business-sector']"
@@ -101,7 +101,7 @@ object ChangeOrganisationDetails extends BasePage with  DateUtil {
 //    submitPage()
     this
   }
-  def submitPage(): this.type = {
+  def submitPage(): this.type               = {
     SharedActions.clickButton()
     this
   }

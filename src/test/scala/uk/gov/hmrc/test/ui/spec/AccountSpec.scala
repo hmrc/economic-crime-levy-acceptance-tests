@@ -29,15 +29,15 @@ class AccountSpec extends BaseSpec with Matchers {
       Given("I am signed in to the account journey with my ECL reference as XMECL0000000005")
       givenIAmSignedInToTheAccountJourneyWithMyECLReferenceAsX(
         "XMECL0000000005"
-      ) 
+      )
 
       When("I am on the ECL account dashboard")
-      whenIAmOnTheECLAccountDashboard() 
+      whenIAmOnTheECLAccountDashboard()
 
       Then("I should be on the page that says Your Economic Crime Levy account")
       thenIShouldBeOnThePageThatSaysX(
         "Your Economic Crime Levy account"
-      ) 
+      )
 
     }
 
@@ -45,16 +45,16 @@ class AccountSpec extends BaseSpec with Matchers {
       Given("I am signed in to the account journey with my ECL reference as XMECL0000000005")
       givenIAmSignedInToTheAccountJourneyWithMyECLReferenceAsX(
         "XMECL0000000005"
-      ) 
+      )
 
       When("I click on the Submit an Economic Crime Levy return link")
-      whenIClickOnTheSubmitAnEconomicCrimeLevyReturnLink() 
+      whenIClickOnTheSubmitAnEconomicCrimeLevyReturnLink()
 
       And("I provide the details to submit the economic crime levy return")
-      whenIProvideTheDetailsToSubmitTheEconomicCrimeLevyReturn() 
+      whenIProvideTheDetailsToSubmitTheEconomicCrimeLevyReturn()
 
       Then("I should be on the page that says Return submitted")
-      thenIShouldBeOnThePageThatSaysX("Return submitted") 
+      thenIShouldBeOnThePageThatSaysX("Return submitted")
 
     }
 
@@ -64,19 +64,18 @@ class AccountSpec extends BaseSpec with Matchers {
       Given("I am signed in to the account journey with my ECL reference as XMECL0000000005")
       givenIAmSignedInToTheAccountJourneyWithMyECLReferenceAsX(
         "XMECL0000000005"
-      ) 
+      )
 
       When("I click on the View or amend your returns link to view the OVERDUE return details")
       whenIClickOnTheViewOrAmendYourReturnsLinkToViewTheReturnDetails("OVERDUE")
-      
 
       Then("I should be on the page that says Your Economic Crime Levy returns")
       thenIShouldBeOnThePageThatSaysX(
         "Your Economic Crime Levy returns"
-      ) 
+      )
 
       And("I should see the return status as OVERDUE")
-      whenIShouldSeeTheReturnStatusAsX("OVERDUE") 
+      whenIShouldSeeTheReturnStatusAsX("OVERDUE")
 
     }
 
@@ -86,19 +85,18 @@ class AccountSpec extends BaseSpec with Matchers {
       Given("I am signed in to the account journey with my ECL reference as XMECL0000000005")
       givenIAmSignedInToTheAccountJourneyWithMyECLReferenceAsX(
         "XMECL0000000005"
-      ) 
+      )
 
       When("I click on the View or amend your returns link to view the SUBMITTED return details")
       whenIClickOnTheViewOrAmendYourReturnsLinkToViewTheReturnDetails("SUBMITTED")
-      
 
       Then("I should be on the page that says Your Economic Crime Levy returns")
       thenIShouldBeOnThePageThatSaysX(
         "Your Economic Crime Levy returns"
-      ) 
+      )
 
       And("I should see the return status as SUBMITTED")
-      whenIShouldSeeTheReturnStatusAsX("SUBMITTED") 
+      whenIShouldSeeTheReturnStatusAsX("SUBMITTED")
 
     }
 
@@ -106,15 +104,15 @@ class AccountSpec extends BaseSpec with Matchers {
       Given("I am signed in to the account journey with my ECL reference as XMECL0000000005")
       givenIAmSignedInToTheAccountJourneyWithMyECLReferenceAsX(
         "XMECL0000000005"
-      ) 
+      )
 
       When("I provide the registration details to submit a return through ECL dashboard link")
-      whenIProvideTheRegistrationDetailsToSubmitAReturnThroughECLDashboardLink() 
+      whenIProvideTheRegistrationDetailsToSubmitAReturnThroughECLDashboardLink()
 
       Then("I should be on the page that says ECL registration details")
       thenIShouldBeOnThePageThatSaysX(
         "ECL registration details"
-      ) 
+      )
 
     }
 
@@ -122,15 +120,15 @@ class AccountSpec extends BaseSpec with Matchers {
       Given("I am signed in to the account journey with my ECL reference as XMECL0000000005")
       givenIAmSignedInToTheAccountJourneyWithMyECLReferenceAsX(
         "XMECL0000000005"
-      ) 
+      )
 
       When("I am on the ECL account dashboard")
-      whenIAmOnTheECLAccountDashboard() 
+      whenIAmOnTheECLAccountDashboard()
 
       Then("I should be on the page that says You have no payments due.")
       thenIShouldBeOnThePageThatSaysX(
         "You have no payments due."
-      ) 
+      )
 
     }
 
@@ -138,18 +136,18 @@ class AccountSpec extends BaseSpec with Matchers {
       Given("I am signed in to the account journey with my ECL reference as XMECL0000000007")
       givenIAmSignedInToTheAccountJourneyWithMyECLReferenceAsX(
         "XMECL0000000007"
-      ) 
+      )
 
       When("I am on the ECL account dashboard")
-      whenIAmOnTheECLAccountDashboard() 
+      whenIAmOnTheECLAccountDashboard()
 
       Then("I should be on the placeholder page that mentions an overdue payment for previousYearECL")
-      thenIShouldBeOnThePlaceholderPageThatMentionsAnOverduePaymentForPreviousYearECL() 
+      thenIShouldBeOnThePlaceholderPageThatMentionsAnOverduePaymentForPreviousYearECL()
 
       And("I should be on the page that says We are charging you interest on this payment. You owe £20,500.")
       thenIShouldBeOnThePageThatSaysX(
         "We are charging you interest on this payment. You owe £20,500."
-      ) 
+      )
 
     }
 
@@ -159,21 +157,21 @@ class AccountSpec extends BaseSpec with Matchers {
       Given("I am signed in to the account journey with my ECL reference as XMECL0000000007")
       givenIAmSignedInToTheAccountJourneyWithMyECLReferenceAsX(
         "XMECL0000000007"
-      ) 
+      )
 
       When("I click on the View your payments link to view the OVERDUE payment details")
-      andIClickOnTheViewYourPaymentsLink() 
+      andIClickOnTheViewYourPaymentsLink()
 
       Then("I should be on the page that says Your Economic Crime Levy payments")
       thenIShouldBeOnThePageThatSaysX(
         "Your Economic Crime Levy payments"
-      ) 
+      )
 
       And("I should see the OVERDUE payment amount 20500")
-      andIShouldSeeTheXPaymentAmountX("OVERDUE", "20500") 
+      andIShouldSeeTheXPaymentAmountX("OVERDUE", "20500")
 
       And("I should see the payment status as OVERDUE")
-      whenIShouldSeeThePaymentStatusAsX("OVERDUE") 
+      whenIShouldSeeThePaymentStatusAsX("OVERDUE")
 
     }
 
@@ -183,21 +181,21 @@ class AccountSpec extends BaseSpec with Matchers {
       Given("I am signed in to the account journey with my ECL reference as XMECL0000000007")
       givenIAmSignedInToTheAccountJourneyWithMyECLReferenceAsX(
         "XMECL0000000007"
-      ) 
+      )
 
       When("I click on the View your payments link to view the PARTIALLY PAID payment details")
-      andIClickOnTheViewYourPaymentsLink() 
+      andIClickOnTheViewYourPaymentsLink()
 
       Then("I should be on the page that says Your Economic Crime Levy payments")
       thenIShouldBeOnThePageThatSaysX(
         "Your Economic Crime Levy payments"
-      ) 
+      )
 
       And("I should see the PARTIALLY PAID payment amount 2400")
-      andIShouldSeeTheXPaymentAmountX("PARTIALLY PAID", "2400") 
+      andIShouldSeeTheXPaymentAmountX("PARTIALLY PAID", "2400")
 
       And("I should see the payment status as PARTIALLY PAID")
-      whenIShouldSeeThePaymentStatusAsX("PARTIALLY PAID") 
+      whenIShouldSeeThePaymentStatusAsX("PARTIALLY PAID")
 
     }
 
@@ -207,21 +205,21 @@ class AccountSpec extends BaseSpec with Matchers {
       Given("I am signed in to the account journey with my ECL reference as XMECL0000000005")
       givenIAmSignedInToTheAccountJourneyWithMyECLReferenceAsX(
         "XMECL0000000005"
-      ) 
+      )
 
       When("I click on the View your payments link to view the PAID payment details")
-      andIClickOnTheViewYourPaymentsLink() 
+      andIClickOnTheViewYourPaymentsLink()
 
       Then("I should be on the page that says Your Economic Crime Levy payments")
       thenIShouldBeOnThePageThatSaysX(
         "Your Economic Crime Levy payments"
-      ) 
+      )
 
       And("I should see the PAID payment amount 14000")
-      andIShouldSeeTheXPaymentAmountX("PAID", "14000") 
+      andIShouldSeeTheXPaymentAmountX("PAID", "14000")
 
       And("I should see the payment status as PAID")
-      whenIShouldSeeThePaymentStatusAsX("PAID") 
+      whenIShouldSeeThePaymentStatusAsX("PAID")
 
     }
 
@@ -229,16 +227,15 @@ class AccountSpec extends BaseSpec with Matchers {
       Given("I am signed in to the account journey with my ECL reference as XMECL0000000007")
       givenIAmSignedInToTheAccountJourneyWithMyECLReferenceAsX(
         "XMECL0000000007"
-      ) 
+      )
 
       When("I click on the Make an ECL payment link to pay the OVERDUE payment")
       whenIClickOnTheMakeAnECLPaymentLinkToPayThePayment("OVERDUE")
-      
 
       Then("I should be on the page that says Select an amount to pay")
       thenIShouldBeOnThePageThatSaysX(
         "Select an amount to pay"
-      ) 
+      )
 
     }
 
@@ -248,17 +245,17 @@ class AccountSpec extends BaseSpec with Matchers {
       Given("I am signed in to the account journey with my ECL reference as XMECL00000000010")
       givenIAmSignedInToTheAccountJourneyWithMyECLReferenceAsX(
         "XMECL00000000010"
-      ) 
+      )
 
       When("I am on the ECL account dashboard")
-      whenIAmOnTheECLAccountDashboard() 
+      whenIAmOnTheECLAccountDashboard()
 
       And(
         "I should be on the page that says You owe an interest payment. Interest will continue to be accrued if not paid."
       )
       thenIShouldBeOnThePageThatSaysX(
         "You owe an interest payment. Interest will continue to be accrued if not paid."
-      ) 
+      )
 
     }
 
@@ -266,14 +263,12 @@ class AccountSpec extends BaseSpec with Matchers {
       Given("I am signed in to the account journey with my ECL reference as XMECL00000000014")
       givenIAmSignedInToTheAccountJourneyWithMyECLReferenceAsX(
         "XMECL00000000014"
-      ) 
+      )
 
       When("I click on the View your payments link to view my interest charge")
       whenIClickOnTheViewYourPaymentsLinkToViewMyX(
         "interest charge"
-      ) 
-      
-      
+      )
 
       val paymentInformation: Map[String, String] = Map(
         "Payment Type"   -> "Interest charge for ECL return number XMECL0000000014",
@@ -286,7 +281,7 @@ class AccountSpec extends BaseSpec with Matchers {
       Then("the interest row should display the partial interest payment information under Payments you owe")
       thenTheInterestRowShouldDisplayThePartialInterestPaymentInformationUnderPaymentsYouOwe(
         paymentInformation
-      ) 
+      )
 
     }
 
@@ -294,35 +289,31 @@ class AccountSpec extends BaseSpec with Matchers {
       Given("I am signed in to the account journey with my ECL reference as XMECL00000000011")
       givenIAmSignedInToTheAccountJourneyWithMyECLReferenceAsX(
         "XMECL00000000011"
-      ) 
+      )
 
       When("I am on the ECL account dashboard")
-      whenIAmOnTheECLAccountDashboard() 
+      whenIAmOnTheECLAccountDashboard()
 
       And("I should be on the page that says You have no payments due.")
       thenIShouldBeOnThePageThatSaysX(
         "You have no payments due."
-      ) 
+      )
 
       When("I click on the View your payments link to view my fully paid interest")
       whenIClickOnTheViewYourPaymentsLinkToViewMyX(
         "fully paid interest"
-      ) 
-      
-      
+      )
 
       Then("I click on the Back link")
-      thenIClickOnTheBackLink() 
+      thenIClickOnTheBackLink()
 
       Then("I am on the ECL account dashboard")
-      whenIAmOnTheECLAccountDashboard() 
+      whenIAmOnTheECLAccountDashboard()
 
       When("I click on the View your payments link to view my fully paid interest")
       whenIClickOnTheViewYourPaymentsLinkToViewMyX(
         "fully paid interest"
-      ) 
-      
-      
+      )
 
       val paymentDetails: Map[String, String] = Map(
         "Payment Date"   -> "9 February 2024",
@@ -336,7 +327,7 @@ class AccountSpec extends BaseSpec with Matchers {
       Then("the interest row should display the fully paid interest payment information under Payment History")
       thenTheInterestRowShouldDisplayTheFullyPaidInterestPaymentInformationUnderPaymentHistory(
         paymentDetails
-      ) 
+      )
 
     }
 
@@ -344,18 +335,16 @@ class AccountSpec extends BaseSpec with Matchers {
       Given("I am signed in to the account journey with my ECL reference as XMECL00000000012")
       givenIAmSignedInToTheAccountJourneyWithMyECLReferenceAsX(
         "XMECL00000000012"
-      ) 
+      )
 
       When("I am on the ECL account dashboard")
-      whenIAmOnTheECLAccountDashboard() 
+      whenIAmOnTheECLAccountDashboard()
 
       And("I should be on the placeholder page that mentions an overdue payment for previousYearECL")
-      thenIShouldBeOnThePlaceholderPageThatMentionsAnOverduePaymentForPreviousYearECL() 
+      thenIShouldBeOnThePlaceholderPageThatMentionsAnOverduePaymentForPreviousYearECL()
 
       When("I click on the View your payments link to view my overdue")
-      whenIClickOnTheViewYourPaymentsLinkToViewMyX("overdue") 
-      
-      
+      whenIClickOnTheViewYourPaymentsLinkToViewMyX("overdue")
 
       val paymentDetails2: Map[String, String] = Map(
         "Payment Date"   -> "30 September 2025",
@@ -369,15 +358,15 @@ class AccountSpec extends BaseSpec with Matchers {
       Then("the overdue row should display the overdue payment information under Payment you owe")
       thenTheOverdueRowShouldDisplayTheOverduePaymentInformationUnderPaymentYouOwe(
         paymentDetails2
-      ) 
+      )
 
       And("I click make a payment link to pay the overdue payment")
-      andIClickMakeAPaymentLinkToPayTheOverduePayment() 
+      andIClickMakeAPaymentLinkToPayTheOverduePayment()
 
       Then("I should be on the page that says Select an amount to pay")
       thenIShouldBeOnThePageThatSaysX(
         "Select an amount to pay"
-      ) 
+      )
 
     }
 
@@ -387,13 +376,13 @@ class AccountSpec extends BaseSpec with Matchers {
       Given("I am signed in to the account journey with my ECL reference as XMECL0000000003")
       givenIAmSignedInToTheAccountJourneyWithMyECLReferenceAsX(
         "XMECL0000000003"
-      ) 
+      )
 
       When("I am on the ECL account dashboard")
-      whenIAmOnTheECLAccountDashboard() 
+      whenIAmOnTheECLAccountDashboard()
 
       And("I click on the View your payments link")
-      andIClickOnTheViewYourPaymentsLink() 
+      andIClickOnTheViewYourPaymentsLink()
 
       val penalty: Map[String, String] = Map(
         "Column1" -> "penalty",
@@ -405,7 +394,7 @@ class AccountSpec extends BaseSpec with Matchers {
       )
 
       Then("the penalty data should not be displayed")
-      thenThePenaltyDataShouldNotBeDisplayed(penalty) 
+      thenThePenaltyDataShouldNotBeDisplayed(penalty)
 
     }
 
@@ -415,13 +404,13 @@ class AccountSpec extends BaseSpec with Matchers {
       Given("I am signed in to the account journey with my ECL reference as XMECL0000000029")
       givenIAmSignedInToTheAccountJourneyWithMyECLReferenceAsX(
         "XMECL0000000029"
-      ) 
+      )
 
       When("I am on the ECL account dashboard")
-      whenIAmOnTheECLAccountDashboard() 
+      whenIAmOnTheECLAccountDashboard()
 
       And("I click on the View your payments link")
-      andIClickOnTheViewYourPaymentsLink() 
+      andIClickOnTheViewYourPaymentsLink()
       val penalty: Map[String, String] = Map(
         "Column1" -> "penalty",
         "Column2" -> "penalty",
@@ -432,7 +421,7 @@ class AccountSpec extends BaseSpec with Matchers {
       )
 
       Then("the penalty data should not be displayed")
-      thenThePenaltyDataShouldNotBeDisplayed(penalty) 
+      thenThePenaltyDataShouldNotBeDisplayed(penalty)
 
     }
 
@@ -442,13 +431,13 @@ class AccountSpec extends BaseSpec with Matchers {
       Given("I am signed in to the account journey with my ECL reference as XMECL0000000027")
       givenIAmSignedInToTheAccountJourneyWithMyECLReferenceAsX(
         "XMECL0000000027"
-      ) 
+      )
 
       When("I am on the ECL account dashboard")
-      whenIAmOnTheECLAccountDashboard() 
+      whenIAmOnTheECLAccountDashboard()
 
       And("I click on the View your payments link")
-      andIClickOnTheViewYourPaymentsLink() 
+      andIClickOnTheViewYourPaymentsLink()
 
       val penalty: Map[String, String] = Map(
         "Column1" -> "penalty",
@@ -460,7 +449,7 @@ class AccountSpec extends BaseSpec with Matchers {
       )
 
       Then("the penalty data should not be displayed")
-      thenThePenaltyDataShouldNotBeDisplayed(penalty) 
+      thenThePenaltyDataShouldNotBeDisplayed(penalty)
 
     }
 
@@ -470,13 +459,13 @@ class AccountSpec extends BaseSpec with Matchers {
       Given("I am signed in to the account journey with my ECL reference as XMECL0000000026")
       givenIAmSignedInToTheAccountJourneyWithMyECLReferenceAsX(
         "XMECL0000000026"
-      ) 
+      )
 
       When("I am on the ECL account dashboard")
-      whenIAmOnTheECLAccountDashboard() 
+      whenIAmOnTheECLAccountDashboard()
 
       And("I click on the View your payments link")
-      andIClickOnTheViewYourPaymentsLink() 
+      andIClickOnTheViewYourPaymentsLink()
 
       val penalty: Map[String, String] = Map(
         "Column1" -> "penalty",
@@ -488,7 +477,7 @@ class AccountSpec extends BaseSpec with Matchers {
       )
 
       Then("the penalty data should not be displayed")
-      thenThePenaltyDataShouldNotBeDisplayed(penalty) 
+      thenThePenaltyDataShouldNotBeDisplayed(penalty)
 
     }
 
@@ -498,13 +487,13 @@ class AccountSpec extends BaseSpec with Matchers {
       Given("I am signed in to the account journey with my ECL reference as XMECL0000000025")
       givenIAmSignedInToTheAccountJourneyWithMyECLReferenceAsX(
         "XMECL0000000025"
-      ) 
+      )
 
       When("I am on the ECL account dashboard")
-      whenIAmOnTheECLAccountDashboard() 
+      whenIAmOnTheECLAccountDashboard()
 
       And("I click on the View your payments link")
-      andIClickOnTheViewYourPaymentsLink() 
+      andIClickOnTheViewYourPaymentsLink()
 
       val penalty: Map[String, String] = Map(
         "Column1" -> "penalty",
@@ -516,7 +505,7 @@ class AccountSpec extends BaseSpec with Matchers {
       )
 
       Then("the penalty data should not be displayed")
-      thenThePenaltyDataShouldNotBeDisplayed(penalty) 
+      thenThePenaltyDataShouldNotBeDisplayed(penalty)
 
     }
 
@@ -526,13 +515,13 @@ class AccountSpec extends BaseSpec with Matchers {
       Given("I am signed in to the account journey with my ECL reference as XMECL0000000024")
       givenIAmSignedInToTheAccountJourneyWithMyECLReferenceAsX(
         "XMECL0000000024"
-      ) 
+      )
 
       When("I am on the ECL account dashboard")
-      whenIAmOnTheECLAccountDashboard() 
+      whenIAmOnTheECLAccountDashboard()
 
       And("I click on the View your payments link")
-      andIClickOnTheViewYourPaymentsLink() 
+      andIClickOnTheViewYourPaymentsLink()
 
       val penalty: Map[String, String] = Map(
         "Column1" -> "penalty",
@@ -544,7 +533,7 @@ class AccountSpec extends BaseSpec with Matchers {
       )
 
       Then("the penalty data should not be displayed")
-      thenThePenaltyDataShouldNotBeDisplayed(penalty) 
+      thenThePenaltyDataShouldNotBeDisplayed(penalty)
 
     }
 
@@ -554,13 +543,13 @@ class AccountSpec extends BaseSpec with Matchers {
       Given("I am signed in to the account journey with my ECL reference as XMECL0000000028")
       givenIAmSignedInToTheAccountJourneyWithMyECLReferenceAsX(
         "XMECL0000000028"
-      ) 
+      )
 
       When("I am on the ECL account dashboard")
-      whenIAmOnTheECLAccountDashboard() 
+      whenIAmOnTheECLAccountDashboard()
 
       And("I click on the View your payments link")
-      andIClickOnTheViewYourPaymentsLink() 
+      andIClickOnTheViewYourPaymentsLink()
 
       val penalty: Map[String, String] = Map(
         "Column1" -> "penalty",
@@ -572,7 +561,7 @@ class AccountSpec extends BaseSpec with Matchers {
       )
 
       Then("the penalty data should not be displayed")
-      thenThePenaltyDataShouldNotBeDisplayed(penalty) 
+      thenThePenaltyDataShouldNotBeDisplayed(penalty)
 
     }
 
@@ -582,18 +571,18 @@ class AccountSpec extends BaseSpec with Matchers {
       Given("I am signed in to the account journey with my ECL reference as XMECL0000000027")
       givenIAmSignedInToTheAccountJourneyWithMyECLReferenceAsX(
         "XMECL0000000027"
-      ) 
+      )
 
       When("I am on the ECL account dashboard")
-      whenIAmOnTheECLAccountDashboard() 
+      whenIAmOnTheECLAccountDashboard()
 
       And("I click on the View your payments link")
-      andIClickOnTheViewYourPaymentsLink() 
+      andIClickOnTheViewYourPaymentsLink()
 
       And("I should be on the page that displays You have not made any Economic Crime Levy payments.")
       thenIShouldBeOnThePageThatDisplaysX(
         "You have not made any Economic Crime Levy payments."
-      ) 
+      )
 
     }
 
@@ -603,18 +592,18 @@ class AccountSpec extends BaseSpec with Matchers {
       Given("I am signed in to the account journey with my ECL reference as XMECL0000000026")
       givenIAmSignedInToTheAccountJourneyWithMyECLReferenceAsX(
         "XMECL0000000026"
-      ) 
+      )
 
       When("I am on the ECL account dashboard")
-      whenIAmOnTheECLAccountDashboard() 
+      whenIAmOnTheECLAccountDashboard()
 
       And("I click on the View your payments link")
-      andIClickOnTheViewYourPaymentsLink() 
+      andIClickOnTheViewYourPaymentsLink()
 
       And("I should be on the page that displays You have not made any Economic Crime Levy payments.")
       thenIShouldBeOnThePageThatDisplaysX(
         "You have not made any Economic Crime Levy payments."
-      ) 
+      )
 
     }
 
@@ -624,18 +613,18 @@ class AccountSpec extends BaseSpec with Matchers {
       Given("I am signed in to the account journey with my ECL reference as XMECL0000000025")
       givenIAmSignedInToTheAccountJourneyWithMyECLReferenceAsX(
         "XMECL0000000025"
-      ) 
+      )
 
       When("I am on the ECL account dashboard")
-      whenIAmOnTheECLAccountDashboard() 
+      whenIAmOnTheECLAccountDashboard()
 
       And("I click on the View your payments link")
-      andIClickOnTheViewYourPaymentsLink() 
+      andIClickOnTheViewYourPaymentsLink()
 
       And("I should be on the page that displays You have not made any Economic Crime Levy payments.")
       thenIShouldBeOnThePageThatDisplaysX(
         "You have not made any Economic Crime Levy payments."
-      ) 
+      )
 
     }
 
@@ -645,18 +634,18 @@ class AccountSpec extends BaseSpec with Matchers {
       Given("I am signed in to the account journey with my ECL reference as XMECL0000000024")
       givenIAmSignedInToTheAccountJourneyWithMyECLReferenceAsX(
         "XMECL0000000024"
-      ) 
+      )
 
       When("I am on the ECL account dashboard")
-      whenIAmOnTheECLAccountDashboard() 
+      whenIAmOnTheECLAccountDashboard()
 
       And("I click on the View your payments link")
-      andIClickOnTheViewYourPaymentsLink() 
+      andIClickOnTheViewYourPaymentsLink()
 
       And("I should be on the page that displays You have not made any Economic Crime Levy payments.")
       thenIShouldBeOnThePageThatDisplaysX(
         "You have not made any Economic Crime Levy payments."
-      ) 
+      )
 
     }
 
@@ -666,18 +655,18 @@ class AccountSpec extends BaseSpec with Matchers {
       Given("I am signed in to the account journey with my ECL reference as XMECL0000000028")
       givenIAmSignedInToTheAccountJourneyWithMyECLReferenceAsX(
         "XMECL0000000028"
-      ) 
+      )
 
       When("I am on the ECL account dashboard")
-      whenIAmOnTheECLAccountDashboard() 
+      whenIAmOnTheECLAccountDashboard()
 
       And("I click on the View your payments link")
-      andIClickOnTheViewYourPaymentsLink() 
+      andIClickOnTheViewYourPaymentsLink()
 
       And("I should be on the page that displays You have not made any Economic Crime Levy payments.")
       thenIShouldBeOnThePageThatDisplaysX(
         "You have not made any Economic Crime Levy payments."
-      ) 
+      )
 
     }
   }

@@ -24,338 +24,357 @@ class RegistrationSpec extends BaseSpec with Matchers {
 
   Feature("Register for ECL") {
 
-    Scenario("User registers a <Entity type> supervised by HMRC for AML that is liable for ECL [Entity type=Sole trader]") {
+    Scenario(
+      "User registers a <Entity type> supervised by HMRC for AML that is liable for ECL [Entity type=Sole trader]"
+    ) {
       Given("I am signed in to the registration journey")
-      givenIAmSignedInToTheRegistrationJourney()  
+      givenIAmSignedInToTheRegistrationJourney()
 
       When("I provide details of my Sole trader that is supervised by HMRC and liable for current ECL")
-      whenIProvideDetailsOfMyXThatIsSupervisedByHMRCAndLiableForCurrentECL("Sole trader")  
+      whenIProvideDetailsOfMyXThatIsSupervisedByHMRCAndLiableForCurrentECL("Sole trader")
 
       Then("I should be on the page that says Registration submitted")
-      thenIShouldBeOnThePageThatSaysX("Registration submitted")  
+      thenIShouldBeOnThePageThatSaysX("Registration submitted")
 
     }
 
     Scenario("User wants to use another UK address as his registered address for the main contact") {
       Given("I am signed in to the registration journey")
-      givenIAmSignedInToTheRegistrationJourney()  
+      givenIAmSignedInToTheRegistrationJourney()
 
       When("I provide the details of another UK address as my main contact address")
-      andIProvideTheDetailsOfAnotherUKAddressAsMyMainContactAddress()  
+      andIProvideTheDetailsOfAnotherUKAddressAsMyMainContactAddress()
 
       Then("I should be on the page that says Check your answers")
-      thenIShouldBeOnThePageThatSaysX("Check your answers")  
+      thenIShouldBeOnThePageThatSaysX("Check your answers")
 
     }
 
     Scenario("User wants to use another non UK address as his registered address for the main contact") {
       Given("I am signed in to the registration journey")
-      givenIAmSignedInToTheRegistrationJourney()  
+      givenIAmSignedInToTheRegistrationJourney()
 
       When("I provide the details of a non UK address as my main contact address")
-      andIProvideTheDetailsOfANonUKAddressAsMyMainContactAddress()  
+      andIProvideTheDetailsOfANonUKAddressAsMyMainContactAddress()
 
       Then("I should be on the page that says Check your answers")
-      thenIShouldBeOnThePageThatSaysX("Check your answers")  
+      thenIShouldBeOnThePageThatSaysX("Check your answers")
 
     }
 
-    Scenario("User wants to go to check your answers page directly without providing any of the previous pages details") {
+    Scenario(
+      "User wants to go to check your answers page directly without providing any of the previous pages details"
+    ) {
       Given("I am signed in to the registration journey")
-      givenIAmSignedInToTheRegistrationJourney()  
+      givenIAmSignedInToTheRegistrationJourney()
 
       When("I go to check your answers page directly without providing answers for any of the previous page questions")
-      andIGoToCheckYourAnswersPageDirectlyWithoutProvidingAnswersForAnyOfThePreviousPageQuestions()  
+      andIGoToCheckYourAnswersPageDirectlyWithoutProvidingAnswersForAnyOfThePreviousPageQuestions()
 
       Then("I should be on the page that says The answers you provided are not valid")
-      thenIShouldBeOnThePageThatSaysX("The answers you provided are not valid")  
+      thenIShouldBeOnThePageThatSaysX("The answers you provided are not valid")
 
     }
 
     Scenario("User wants to change the contact details before submitting the registration") {
       Given("I am signed in to the registration journey")
-      givenIAmSignedInToTheRegistrationJourney()  
+      givenIAmSignedInToTheRegistrationJourney()
 
       When("I click on the change link and edit my contact details")
-      whenIClickOnTheChangeLinkAndEditMyContactDetails()  
+      whenIClickOnTheChangeLinkAndEditMyContactDetails()
 
       Then("I should be on the page that says Check your answers")
-      thenIShouldBeOnThePageThatSaysX("Check your answers")  
+      thenIShouldBeOnThePageThatSaysX("Check your answers")
 
     }
 
     Scenario("User wants to remove the secondary contact details before submitting the registration") {
       Given("I am signed in to the registration journey")
-      givenIAmSignedInToTheRegistrationJourney()  
+      givenIAmSignedInToTheRegistrationJourney()
 
       When("I click on the change link to modify my secondary contact")
-      whenIClickOnTheChangeLinkToModifyMySecondaryContact()  
+      whenIClickOnTheChangeLinkToModifyMySecondaryContact()
 
       And("I select No on whether or not to add a secondary contact details")
-      whenISelectXOnWhetherOrNotToAddASecondaryContactDetails("No")  
+      whenISelectXOnWhetherOrNotToAddASecondaryContactDetails("No")
 
       Then("I should be on the page that says Check your answers")
-      thenIShouldBeOnThePageThatSaysX("Check your answers")  
+      thenIShouldBeOnThePageThatSaysX("Check your answers")
 
     }
 
     Scenario("User wants to change the contact address before submitting the registration") {
       Given("I am signed in to the registration journey")
-      givenIAmSignedInToTheRegistrationJourney()  
+      givenIAmSignedInToTheRegistrationJourney()
 
       When("I click on the change link to modify the registered address")
-      whenIClickOnTheChangeLinkToModifyTheRegisteredAddress()  
+      whenIClickOnTheChangeLinkToModifyTheRegisteredAddress()
 
       And("I select No on whether or not to use a different UK address as my main contact address")
-      whenISelectXOnWhetherOrNotToUseADifferentUKAddressAsMyMainContactAddress("No")  
+      whenISelectXOnWhetherOrNotToUseADifferentUKAddressAsMyMainContactAddress("No")
 
       Then("I should be on the page that says Check your answers")
-      thenIShouldBeOnThePageThatSaysX("Check your answers")  
+      thenIShouldBeOnThePageThatSaysX("Check your answers")
 
     }
 
-    Scenario("User wants to change the the organisation details (Business sector, AML supervisor, UK revenue and Accounting Period) before submitting the registration") {
+    Scenario(
+      "User wants to change the the organisation details (Business sector, AML supervisor, UK revenue and Accounting Period) before submitting the registration"
+    ) {
       Given("I am signed in to the registration journey")
-      givenIAmSignedInToTheRegistrationJourney()  
+      givenIAmSignedInToTheRegistrationJourney()
 
       When("I click on the change link and edit my organisation details")
-      whenIClickOnTheChangeLinkAndEditMyOrganisationDetails()  
+      whenIClickOnTheChangeLinkAndEditMyOrganisationDetails()
 
       Then("I should be on the page that says Check your answers")
-      thenIShouldBeOnThePageThatSaysX("Check your answers")  
+      thenIShouldBeOnThePageThatSaysX("Check your answers")
 
     }
 
     Scenario("User wants to change the AML regulated activity of the organisation before submitting the registration") {
       Given("I am signed in to the registration journey")
-      givenIAmSignedInToTheRegistrationJourney()  
+      givenIAmSignedInToTheRegistrationJourney()
 
-      When("I click on the change link and select No on whether or not I carried out AML-regulated activity in current FY")
-      whenIClickOnTheChangeLinkAndSelectXOnWhetherOrNotICarriedOutAMLregulatedActivityInCurrentFY("No")  
+      When(
+        "I click on the change link and select No on whether or not I carried out AML-regulated activity in current FY"
+      )
+      whenIClickOnTheChangeLinkAndSelectXOnWhetherOrNotICarriedOutAMLregulatedActivityInCurrentFY("No")
 
       Then("I should be on the page that says Are you liable for any previous financial years?")
-      thenIShouldBeOnThePageThatSaysX("Are you liable for any previous financial years?")  
+      thenIShouldBeOnThePageThatSaysX("Are you liable for any previous financial years?")
 
       When("I click on the Back link")
-      thenIClickOnTheBackLink()  
+      thenIClickOnTheBackLink()
 
-      Then("I should be on the page that says Did you carry out anti-money laundering (AML) regulated activity between 1 April 2025 and 31 March 2026?")
-      thenIShouldBeOnThePageThatSaysX("Did you carry out anti-money laundering (AML) regulated activity between 1 April 2025 and 31 March 2026?")  
+      Then(
+        "I should be on the page that says Did you carry out anti-money laundering (AML) regulated activity between 1 April 2025 and 31 March 2026?"
+      )
+      thenIShouldBeOnThePageThatSaysX(
+        "Did you carry out anti-money laundering (AML) regulated activity between 1 April 2025 and 31 March 2026?"
+      )
 
       Then("I click the Save and continue button")
-      thenIClickTheSaveAndContinueButton()  
+      thenIClickTheSaveAndContinueButton()
 
       Then("I should be on the page that says Check your answers")
-      thenIShouldBeOnThePageThatSaysX("Check your answers")  
+      thenIShouldBeOnThePageThatSaysX("Check your answers")
 
     }
 
     Scenario("User wants to change the entity type of the organisation before submitting the registration") {
       Given("I am signed in to the registration journey")
-      givenIAmSignedInToTheRegistrationJourney()  
+      givenIAmSignedInToTheRegistrationJourney()
 
       When("I click on the change link and select the new entity type")
-      whenIClickOnTheChangeLinkAndSelectTheNewEntityType()  
+      whenIClickOnTheChangeLinkAndSelectTheNewEntityType()
 
       Then("I should be on the page that says Check your answers")
-      thenIShouldBeOnThePageThatSaysX("Check your answers")  
+      thenIShouldBeOnThePageThatSaysX("Check your answers")
 
     }
 
     Scenario("User selects their entity type as General or Scottish Partnership [Entity type=General partnership]") {
       Given("I am signed in to the registration journey")
-      givenIAmSignedInToTheRegistrationJourney()  
+      givenIAmSignedInToTheRegistrationJourney()
 
       When("I select my entity type as General partnership and provide the registration details")
-      whenISelectMyEntityTypeAsXAndProvideTheRegistrationDetails("General partnership")  
+      whenISelectMyEntityTypeAsXAndProvideTheRegistrationDetails("General partnership")
 
       Then("I should be on the page that says Check your answers")
-      thenIShouldBeOnThePageThatSaysX("Check your answers")  
+      thenIShouldBeOnThePageThatSaysX("Check your answers")
 
     }
 
     Scenario("User selects their entity type as General or Scottish Partnership [Entity type=Scottish partnership]") {
       Given("I am signed in to the registration journey")
-      givenIAmSignedInToTheRegistrationJourney()  
+      givenIAmSignedInToTheRegistrationJourney()
 
       When("I select my entity type as Scottish partnership and provide the registration details")
-      whenISelectMyEntityTypeAsXAndProvideTheRegistrationDetails("Scottish partnership")  
+      whenISelectMyEntityTypeAsXAndProvideTheRegistrationDetails("Scottish partnership")
 
       Then("I should be on the page that says Check your answers")
-      thenIShouldBeOnThePageThatSaysX("Check your answers")  
+      thenIShouldBeOnThePageThatSaysX("Check your answers")
 
     }
 
     Scenario("User registers <Other Entity> as entity type for AML that is liable for ECL [Other Entity=Charity]") {
       Given("I am signed in to the registration journey")
-      givenIAmSignedInToTheRegistrationJourney()  
+      givenIAmSignedInToTheRegistrationJourney()
 
       When("I provide details of my other entity is Charity that is supervised by HMRC and liable for ECL")
-      whenIProvideDetailsOfMyOtherEntityIsXThatIsSupervisedByHMRCAndLiableForECL("Charity")  
-      
-      
+      whenIProvideDetailsOfMyOtherEntityIsXThatIsSupervisedByHMRCAndLiableForECL("Charity")
 
       Then("I should be on the page that says Registration received")
-      thenIShouldBeOnThePageThatSaysX("Registration received")  
+      thenIShouldBeOnThePageThatSaysX("Registration received")
 
     }
 
-    Scenario("User registers <Other Entity> as entity type for AML that is liable for ECL [Other Entity=Unincorporated Association]") {
+    Scenario(
+      "User registers <Other Entity> as entity type for AML that is liable for ECL [Other Entity=Unincorporated Association]"
+    ) {
       Given("I am signed in to the registration journey")
-      givenIAmSignedInToTheRegistrationJourney()  
+      givenIAmSignedInToTheRegistrationJourney()
 
-      When("I provide details of my other entity is Unincorporated Association that is supervised by HMRC and liable for ECL")
-      whenIProvideDetailsOfMyOtherEntityIsXThatIsSupervisedByHMRCAndLiableForECL("Unincorporated Association")  
-      
-      
+      When(
+        "I provide details of my other entity is Unincorporated Association that is supervised by HMRC and liable for ECL"
+      )
+      whenIProvideDetailsOfMyOtherEntityIsXThatIsSupervisedByHMRCAndLiableForECL("Unincorporated Association")
 
       Then("I should be on the page that says Registration received")
-      thenIShouldBeOnThePageThatSaysX("Registration received")  
+      thenIShouldBeOnThePageThatSaysX("Registration received")
 
     }
 
     Scenario("User registers <Other Entity> as entity type for AML that is liable for ECL [Other Entity=Trust]") {
       Given("I am signed in to the registration journey")
-      givenIAmSignedInToTheRegistrationJourney()  
+      givenIAmSignedInToTheRegistrationJourney()
 
       When("I provide details of my other entity is Trust that is supervised by HMRC and liable for ECL")
-      whenIProvideDetailsOfMyOtherEntityIsXThatIsSupervisedByHMRCAndLiableForECL("Trust")  
-      
-      
+      whenIProvideDetailsOfMyOtherEntityIsXThatIsSupervisedByHMRCAndLiableForECL("Trust")
 
       Then("I should be on the page that says Registration received")
-      thenIShouldBeOnThePageThatSaysX("Registration received")  
+      thenIShouldBeOnThePageThatSaysX("Registration received")
 
     }
 
-    Scenario("User registers <Other Entity> as entity type for AML that is liable for ECL [Other Entity=Non-UK Establishment]") {
+    Scenario(
+      "User registers <Other Entity> as entity type for AML that is liable for ECL [Other Entity=Non-UK Establishment]"
+    ) {
       Given("I am signed in to the registration journey")
-      givenIAmSignedInToTheRegistrationJourney()  
+      givenIAmSignedInToTheRegistrationJourney()
 
       When("I provide details of my other entity is Non-UK Establishment that is supervised by HMRC and liable for ECL")
-      whenIProvideDetailsOfMyOtherEntityIsXThatIsSupervisedByHMRCAndLiableForECL("Non-UK Establishment")  
-      
-      
+      whenIProvideDetailsOfMyOtherEntityIsXThatIsSupervisedByHMRCAndLiableForECL("Non-UK Establishment")
 
       Then("I should be on the page that says Registration received")
-      thenIShouldBeOnThePageThatSaysX("Registration received")  
+      thenIShouldBeOnThePageThatSaysX("Registration received")
 
     }
 
     Scenario("Users who answer NO to AML question for the current FY but YES to previous FY") {
       Given("I am signed in to the registration journey")
-      givenIAmSignedInToTheRegistrationJourney()  
+      givenIAmSignedInToTheRegistrationJourney()
 
       When("I provide details of my limited company and indicate liability for previous year ECL")
-      whenIProvideDetailsOfMyLimitedCompanyAndIndicateLiabilityForPreviousYearECL()  
+      whenIProvideDetailsOfMyLimitedCompanyAndIndicateLiabilityForPreviousYearECL()
 
       Then("I should be on the page that says Registration submitted")
-      thenIShouldBeOnThePageThatSaysX("Registration submitted")  
+      thenIShouldBeOnThePageThatSaysX("Registration submitted")
 
     }
 
-    Scenario("Users who answer No whether or not they started AML regulated activity in current FY and No to previous FY") {
+    Scenario(
+      "Users who answer No whether or not they started AML regulated activity in current FY and No to previous FY"
+    ) {
       Given("I am signed in to the registration journey")
-      givenIAmSignedInToTheRegistrationJourney()  
+      givenIAmSignedInToTheRegistrationJourney()
 
       When("I select No on whether or not I carried out AML-regulated activity in current FY and in previous FY")
-      whenISelectXOnWhetherOrNotICarriedOutAMLregulatedActivityInCurrentFYAndInPreviousFY("No")  
+      whenISelectXOnWhetherOrNotICarriedOutAMLregulatedActivityInCurrentFYAndInPreviousFY("No")
 
       Then("I should be on the page that says You do not need to register for the Economic Crime Levy")
-      thenIShouldBeOnThePageThatSaysX("You do not need to register for the Economic Crime Levy")  
+      thenIShouldBeOnThePageThatSaysX("You do not need to register for the Economic Crime Levy")
 
     }
 
-    Scenario("User registers a limited company supervised by HMRC for AML who have turnover of £10.2m and above that is liable for previous FY") {
+    Scenario(
+      "User registers a limited company supervised by HMRC for AML who have turnover of £10.2m and above that is liable for previous FY"
+    ) {
       Given("I am signed in to the registration journey")
-      givenIAmSignedInToTheRegistrationJourney()  
+      givenIAmSignedInToTheRegistrationJourney()
 
       When("I provide Yes to AML question and the turnover is £10.2m and above and Yes liable for previous FY")
-      whenIProvideYesToAMLQuestionAndTheTurnoverIsmAndAboveAndXLiableForPreviousFY("Yes")  
+      whenIProvideYesToAMLQuestionAndTheTurnoverIsmAndAboveAndXLiableForPreviousFY("Yes")
 
       Then("I should be on the page that says Registration submitted")
-      thenIShouldBeOnThePageThatSaysX("Registration submitted")  
+      thenIShouldBeOnThePageThatSaysX("Registration submitted")
 
     }
 
-    Scenario("User registers a limited company supervised by HMRC for AML who have turnover of £10.2m and above that is not liable for previous FY") {
+    Scenario(
+      "User registers a limited company supervised by HMRC for AML who have turnover of £10.2m and above that is not liable for previous FY"
+    ) {
       Given("I am signed in to the registration journey")
-      givenIAmSignedInToTheRegistrationJourney()  
+      givenIAmSignedInToTheRegistrationJourney()
 
       When("I provide Yes to AML question and the turnover is £10.2m and above and No liable for previous FY")
-      whenIProvideYesToAMLQuestionAndTheTurnoverIsmAndAboveAndXLiableForPreviousFY("No")  
+      whenIProvideYesToAMLQuestionAndTheTurnoverIsmAndAboveAndXLiableForPreviousFY("No")
 
       Then("I should be on the page that says Registration submitted")
-      thenIShouldBeOnThePageThatSaysX("Registration submitted")  
+      thenIShouldBeOnThePageThatSaysX("Registration submitted")
 
     }
 
-    Scenario("User registers a limited company supervised by HMRC for AML who have turnover of below £10.2m and that is liable for previous FY") {
+    Scenario(
+      "User registers a limited company supervised by HMRC for AML who have turnover of below £10.2m and that is liable for previous FY"
+    ) {
       Given("I am signed in to the registration journey")
-      givenIAmSignedInToTheRegistrationJourney()  
+      givenIAmSignedInToTheRegistrationJourney()
 
       When("I provide Yes to AML question and the turnover is below £10.2m threshold and Yes liable for previous FY")
-      whenIProvideYesToAMLQuestionAndTheTurnoverIsBelowThresholdAndXLiableForPreviousFY("Yes")  
-      
-      
+      whenIProvideYesToAMLQuestionAndTheTurnoverIsBelowThresholdAndXLiableForPreviousFY("Yes")
 
       Then("I should be on the page that says Registration submitted")
-      thenIShouldBeOnThePageThatSaysX("Registration submitted")  
+      thenIShouldBeOnThePageThatSaysX("Registration submitted")
 
     }
 
-    Scenario("User registers a limited company supervised by HMRC for AML who have turnover of below £10.2m and that is not liable for previous FY") {
+    Scenario(
+      "User registers a limited company supervised by HMRC for AML who have turnover of below £10.2m and that is not liable for previous FY"
+    ) {
       Given("I am signed in to the registration journey")
-      givenIAmSignedInToTheRegistrationJourney()  
+      givenIAmSignedInToTheRegistrationJourney()
 
-      When("I provide Yes to AML question and the turnover is below £10.2m threshold but No liability for previous year ECL")
-      whenIProvideYesToAMLQuestionAndTheTurnoverIsBelowThresholdButXLiabilityForPreviousYearECL("No")  
+      When(
+        "I provide Yes to AML question and the turnover is below £10.2m threshold but No liability for previous year ECL"
+      )
+      whenIProvideYesToAMLQuestionAndTheTurnoverIsBelowThresholdButXLiabilityForPreviousYearECL("No")
 
       Then("I should be on the page that says You do not need to register for the Economic Crime Levy")
-      thenIShouldBeOnThePageThatSaysX("You do not need to register for the Economic Crime Levy")  
+      thenIShouldBeOnThePageThatSaysX("You do not need to register for the Economic Crime Levy")
 
     }
 
     Scenario("User registers a Limited company failed GRS identifiers and tries again") {
       Given("I am signed in to the registration journey")
-      givenIAmSignedInToTheRegistrationJourney()  
+      givenIAmSignedInToTheRegistrationJourney()
 
       When("I provide details of my Limited company and fail the GRS journey")
-      whenIProvideDetailsOfMyXAndFailTheGRSJourney("Limited company")  
+      whenIProvideDetailsOfMyXAndFailTheGRSJourney("Limited company")
 
       Then("I should be on the page that says The details you have entered do not match our records")
-      thenIShouldBeOnThePageThatSaysX("The details you have entered do not match our records")  
+      thenIShouldBeOnThePageThatSaysX("The details you have entered do not match our records")
 
       And("I click on the try again button")
-      andIClickOnTheTryAgainButton()  
+      andIClickOnTheTryAgainButton()
 
       Then("I should be on the page that says What is your entity type?")
-      thenIShouldBeOnThePageThatSaysX("What is your entity type?")  
+      thenIShouldBeOnThePageThatSaysX("What is your entity type?")
 
     }
 
     Scenario("User is able to cancel the amend registrations they have submitted through ECL account dashboard") {
       Given("I am signed in to the account journey with my ECL reference as XMECL0000000001")
-      givenIAmSignedInToTheAccountJourneyWithMyECLReferenceAsX("XMECL0000000001")  
+      givenIAmSignedInToTheAccountJourneyWithMyECLReferenceAsX("XMECL0000000001")
 
       When("I provide the details to amend the submitted economic crime levy registration")
-      whenIProvideTheDetailsToAmendTheSubmittedEconomicCrimeLevyRegistration()  
+      whenIProvideTheDetailsToAmendTheSubmittedEconomicCrimeLevyRegistration()
 
       And("I decide to cancel this amendments")
-      andIDecideToCancelThisAmendments()  
+      andIDecideToCancelThisAmendments()
 
       Then("I should be on the page that says Your Economic Crime Levy account")
-      thenIShouldBeOnThePageThatSaysX("Your Economic Crime Levy account")  
+      thenIShouldBeOnThePageThatSaysX("Your Economic Crime Levy account")
 
     }
 
     Scenario("User amends the submitted registration via ECL account dashboard") {
       Given("I am signed in to the account journey with my ECL reference as XMECL0000000001")
-      givenIAmSignedInToTheAccountJourneyWithMyECLReferenceAsX("XMECL0000000001")  
+      givenIAmSignedInToTheAccountJourneyWithMyECLReferenceAsX("XMECL0000000001")
 
       When("I provide the details to amend the submitted economic crime levy registration")
-      whenIProvideTheDetailsToAmendTheSubmittedEconomicCrimeLevyRegistration()  
-
+      whenIProvideTheDetailsToAmendTheSubmittedEconomicCrimeLevyRegistration()
 
       val contactDetails: Map[String, String] = Map(
         "First contact name"             -> "James Bond",
@@ -364,47 +383,44 @@ class RegistrationSpec extends BaseSpec with Matchers {
         "First contact telephone number" -> "01475344272"
       )
 
-
       And("the amended registration information should display under Amended answers on the Check your answers page")
-      andTheAmendedRegistrationInformationShouldDisplayUnderAmendedAnswersOnTheCheckYourAnswersPage(contactDetails)  
+      andTheAmendedRegistrationInformationShouldDisplayUnderAmendedAnswersOnTheCheckYourAnswersPage(contactDetails)
 
       And("I should be on the page that says Economic Crime Levy registration amendment requested")
-      thenIShouldBeOnThePageThatSaysX("Economic Crime Levy registration amendment requested")  
+      thenIShouldBeOnThePageThatSaysX("Economic Crime Levy registration amendment requested")
 
     }
 
     Scenario("User is amend the liability start date for registrations to previous FY through ECL account dashboard") {
       Given("I am signed in to the account journey with my ECL reference as XMECL0000000001")
-      givenIAmSignedInToTheAccountJourneyWithMyECLReferenceAsX("XMECL0000000001")  
+      givenIAmSignedInToTheAccountJourneyWithMyECLReferenceAsX("XMECL0000000001")
 
       When("I provide the details to amend the liability start date for registration")
-      whenIProvideTheDetailsToAmendTheLiabilityStartDateForRegistration()  
+      whenIProvideTheDetailsToAmendTheLiabilityStartDateForRegistration()
 
       Then("I should be on the page that says Economic Crime Levy registration amendment requested")
-      thenIShouldBeOnThePageThatSaysX("Economic Crime Levy registration amendment requested")  
+      thenIShouldBeOnThePageThatSaysX("Economic Crime Levy registration amendment requested")
 
     }
 
     Scenario("User is able to save progress in the registration journey and resume later") {
       Given("I am signed in to the registration journey")
-      givenIAmSignedInToTheRegistrationJourney()  
+      givenIAmSignedInToTheRegistrationJourney()
 
       When("I provide some details for the economic crime levy registration and experience a system timeout")
-      whenIProvideSomeDetailsForTheEconomicCrimeLevyRegistrationAndExperienceASystemTimeout()  
-      
-      
+      whenIProvideSomeDetailsForTheEconomicCrimeLevyRegistrationAndExperienceASystemTimeout()
 
       And("I return to the service to complete the registration")
-      andIReturnToTheServiceToCompleteTheRegistration()  
+      andIReturnToTheServiceToCompleteTheRegistration()
 
       Then("I should be on the page that says Your answers have been saved")
-      thenIShouldBeOnThePageThatSaysX("Your answers have been saved")  
+      thenIShouldBeOnThePageThatSaysX("Your answers have been saved")
 
       And("I should be able to resume the registration from where I left off")
-      andIShouldBeAbleToResumeTheRegistrationFromWhereILeftOff()  
+      andIShouldBeAbleToResumeTheRegistrationFromWhereILeftOff()
 
       Then("I should be on the page that says Registration submitted")
-      thenIShouldBeOnThePageThatSaysX("Registration submitted")  
+      thenIShouldBeOnThePageThatSaysX("Registration submitted")
 
     }
   }

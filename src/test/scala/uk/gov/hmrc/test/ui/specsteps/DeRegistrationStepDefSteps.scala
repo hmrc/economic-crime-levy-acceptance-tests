@@ -23,18 +23,14 @@ import java.time.LocalDate.now
 
 object DeRegistrationStepDefSteps {
 
-
   def thenIShouldSeeTheDeRegisteredECLReferenceNumberAsX(value: String): Unit =
     SharedActions.assertEclReferenceNumber(value)
-
 
   def whenIClickOnTheViewOrAmendYourReturnsOrViewYourPaymentsLinkToViewTheDeregisteredXDetails(linkName: String): Unit =
     ProvideViewEclAccountAfterDeRegistration(linkName)
 
-
   def whenTheLinksXUnderTheActionColumnShouldBeVisibleOnTheThePage(linkName: String): Unit =
     getPaymentAndReturnLinks(linkName)
-
 
   def whenIProvideTheDetailsToDeRegisterTheECLAccountFromTheSystem(): Unit =
     DeRegistrationPage

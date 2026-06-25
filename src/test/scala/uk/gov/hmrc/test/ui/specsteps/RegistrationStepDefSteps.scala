@@ -24,12 +24,10 @@ object RegistrationStepDefSteps {
 
   val eclStartYear = previousEclTaxYearStartYear.getYear
 
-
   def givenIAmSignedInToTheRegistrationJourney(): Unit =
     RegistrationPage
       .navigateTo()
       .startAndSignIn()
-
 
   def whenIProvideDetailsOfMyXThatIsSupervisedByHMRCAndLiableForCurrentECL(entityType: String): Unit =
     provideEclLiableForCurrentFinancialYear()
@@ -47,13 +45,11 @@ object RegistrationStepDefSteps {
       .submitPage()
       .provideCheckYourAnswers()
 
-
   def whenIProvideDetailsOfMyLimitedCompanyThatIsSupervisedByAnOtherProfessionalBodyAndLiableForECL(): Unit =
     provideUkRevenue()
       .provideHmrcOrOtherAmlSupervisor("Other")
       .provideEntityType("Limited company")
       .provideGrsData()
-
 
   def andIProvideTheDetailsOfAnotherUKAddressAsMyMainContactAddress(): Unit =
     provideEclLiableForCurrentFinancialYear("No")
@@ -72,7 +68,6 @@ object RegistrationStepDefSteps {
       .provideAnotherUkRegisteredAddress("No")
       .submitPage()
 
-
   def andIProvideTheDetailsOfANonUKAddressAsMyMainContactAddress(): Unit =
     provideEclLiableForCurrentFinancialYear("No")
       .provideEclLiabilityDate(
@@ -90,11 +85,9 @@ object RegistrationStepDefSteps {
       .provideAnotherUkRegisteredAddress("Yes")
       .submitPage()
 
-
   def andIGoToCheckYourAnswersPageDirectlyWithoutProvidingAnswersForAnyOfThePreviousPageQuestions(): Unit =
     CheckYourAnswersPage
       .navigateTo()
-
 
   def whenIClickOnTheChangeLinkAndEditMyContactDetails(): Unit =
     provideEclLiableForCurrentFinancialYear()
@@ -111,7 +104,6 @@ object RegistrationStepDefSteps {
       .provideRegisteredAddress("Yes")
       .provideChangeFirstContactDetails()
       .provideChangeSecondContactDetails()
-
 
   def whenIClickOnTheChangeLinkToModifyMySecondaryContact(): Unit =
     provideEclLiableForCurrentFinancialYear()
@@ -130,11 +122,9 @@ object RegistrationStepDefSteps {
       .provideChangeSecondContactDetails()
       .provideChangeSecondaryContact()
 
-
   def whenISelectXOnWhetherOrNotToAddASecondaryContactDetails(value: String): Unit =
     SharedActions
       .selectYesOrNo(value)
-
 
   def whenIClickOnTheChangeLinkToModifyTheRegisteredAddress(): Unit =
     provideEclLiableForCurrentFinancialYear("No")
@@ -154,11 +144,9 @@ object RegistrationStepDefSteps {
       .submitPage()
       .provideChangeRegisteredAddress()
 
-
   def whenISelectXOnWhetherOrNotToUseADifferentUKAddressAsMyMainContactAddress(value: String): Unit =
     provideNonUkRegisteredAddress(value)
       .submitPage()
-
 
   def whenIClickOnTheChangeLinkAndEditMyOrganisationDetails(): Unit =
     provideEclLiableForCurrentFinancialYear()
@@ -175,7 +163,6 @@ object RegistrationStepDefSteps {
       .provideRegisteredAddress("Yes")
       .provideChangeOrganisationDetails()
 
-
   def whenIClickOnTheChangeLinkAndSelectXOnWhetherOrNotICarriedOutAMLregulatedActivityInCurrentFY(value: String): Unit =
     provideEclLiableForCurrentFinancialYear()
       .provideEclLiabilityDate(
@@ -190,7 +177,6 @@ object RegistrationStepDefSteps {
       .provideAddAnotherContactYesOrNo("No")
       .provideRegisteredAddress("Yes")
       .provideChangeAmlRegulatedActivity()
-
 
   def whenIClickOnTheChangeLinkAndSelectTheNewEntityType(): Unit =
     provideEclLiableForCurrentFinancialYear()
@@ -207,7 +193,6 @@ object RegistrationStepDefSteps {
       .provideRegisteredAddress("Yes")
       .provideChangeEntityType()
 
-
   def whenISelectMyEntityTypeAsXAndProvideTheRegistrationDetails(entityType: String): Unit =
     provideEclLiableForCurrentFinancialYear()
       .provideEclLiabilityDate(
@@ -221,7 +206,6 @@ object RegistrationStepDefSteps {
       .provideAddAnotherContactYesOrNo("No")
       .provideRegisteredAddress("Yes")
       .provideCheckYourAnswers()
-
 
   def whenIProvideDetailsOfMyOtherEntityIsXThatIsSupervisedByHMRCAndLiableForECL(otherEntityType: String): Unit =
     provideEclLiableForCurrentFinancialYear("No")
@@ -239,25 +223,20 @@ object RegistrationStepDefSteps {
       .provideGrsData()
       .provideCheckYourAnswers()
 
-
   def whenIEnterMyOverseasTaxIdentifierAsXForTheNonUKEstablishmentBusiness(overseasTaxIdentifier: String): Unit = {
     OverseasTaxIdentifierPage
       .navigateTo()
     provideOverseasTaxIdentifier(overseasTaxIdentifier)
   }
 
-
   def thenIShouldSeeAnErrorThatSaysX(value: String): Unit =
     SharedActions.assertPartialTextIsDisplayed(value)
-
 
   def thenIShouldBeOnThePageThatSaysX(value: String): Unit =
     SharedActions.assertPartialTextIsDisplayed(value)
 
-
   def thenIShouldBeOnThePageThatDisplaysX(value: String): Unit =
     SharedActions.penaltyInformation(value)
-
 
   def thenIShouldBeOnThePlaceholderPageThatMentionsAnOverduePaymentForPreviousYearECL(): Unit = {
     val assertion = "1 April " + 2024 + " to 31 March " + 2025
@@ -265,17 +244,14 @@ object RegistrationStepDefSteps {
     SharedActions.assertPartialTextIsDisplayed(assertion)
   }
 
-
   def thenIShouldBeOnThePlaceholderPageThatMentionsAnOverduePaymentForCurrentYearECL(): Unit = {
     val assertion = "1 April " + (eclStartYear + 1) + " to 31 March " + eclStartYear
     print("current Year ECL should be: 1 April 2023 to 31 March 2024 this one is: " + assertion)
     SharedActions.assertPartialTextIsDisplayed(assertion)
   }
 
-
   def thenIShouldBeOnThePlaceholderPageThatSaysX(value: String): Unit =
     SharedActions.assertHtmlContains(value)
-
 
   def whenIProvideDetailsOfMyLimitedCompanyAndIndicateLiabilityForPreviousYearECL(): Unit =
     areYouRegisteringForCurrentFinancialYear()
@@ -295,7 +271,6 @@ object RegistrationStepDefSteps {
       .provideRegisteredAddress("Yes")
       .provideCheckYourAnswers()
 
-
   def whenIProvideYesToAMLQuestionAndTheTurnoverIsmAndAboveAndXLiableForPreviousFY(value: String): Unit =
     areYouRegisteringForCurrentFinancialYear()
       .provideAmlRegulated()
@@ -310,7 +285,6 @@ object RegistrationStepDefSteps {
       .provideAddAnotherContactYesOrNo("No")
       .provideRegisteredAddress("Yes")
       .provideCheckYourAnswers()
-
 
   def whenIProvideYesToAMLQuestionAndTheTurnoverIsBelowThresholdAndXLiableForPreviousFY(value: String): Unit =
     areYouRegisteringForCurrentFinancialYear()
@@ -327,7 +301,6 @@ object RegistrationStepDefSteps {
       .provideRegisteredAddress("Yes")
       .provideCheckYourAnswers()
 
-
   def whenIProvideYesToAMLQuestionAndTheTurnoverIsBelowThresholdButXLiabilityForPreviousYearECL(value: String): Unit =
     areYouRegisteringForCurrentFinancialYear()
       .provideAmlRegulated()
@@ -335,7 +308,6 @@ object RegistrationStepDefSteps {
       .provideRelevantAccountingPeriod()
       .provideUkRevenue("1020000")
       .provideEclLiableForPreviousFinancialYear(value)
-
 
   def whenIProvideDetailsOfMyXAndFailTheGRSJourney(entityType: String): Unit =
     areYouRegisteringForCurrentFinancialYear()
@@ -348,7 +320,6 @@ object RegistrationStepDefSteps {
       .provideGrsDataForIdentifiersDoNotMatch()
       .provideGrsData()
 
-
   def whenIProvideTheDetailsToAmendTheSubmittedEconomicCrimeLevyRegistration(): Unit = {
     AccountPage
       .provideAmendAnEclRegistration()
@@ -358,37 +329,19 @@ object RegistrationStepDefSteps {
       .provideChangeFirstContactDetails()
   }
 
-
   def andIDecideToCancelThisAmendments(): Unit =
     AmendmentPage
       .provideCancelAmendment()
       .provideSelectYesOrNo()
 
-
   def andIClickOnTheTryAgainButton(): Unit =
     SharedActions.clickTryAgainButton()
-
 
   def andTheAmendedRegistrationInformationShouldDisplayUnderAmendedAnswersOnTheCheckYourAnswersPage(
     arg: Map[String, String]
   ): Unit =
     assertAmendedRegistrationAnswers(arg)
       .submitPage()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
   def whenIProvideTheDetailsToAmendTheLiabilityStartDateForRegistration(): Unit = {
     AccountPage
@@ -399,7 +352,6 @@ object RegistrationStepDefSteps {
       .provideChangeLiabilityStartDate()
       .submitPage()
   }
-
 
   def whenIProvideSomeDetailsForTheEconomicCrimeLevyRegistrationAndExperienceASystemTimeout(): Unit =
     provideEclLiableForCurrentFinancialYear()
@@ -415,17 +367,14 @@ object RegistrationStepDefSteps {
       .provideAddAnotherContactYesOrNo("No")
       .provideRegisteredAddress("Yes")
 
-
   def andIReturnToTheServiceToCompleteTheRegistration(): Unit =
     provideRegistrationSubmissionAfterTimeout()
       .submitPage()
-
 
   def andIShouldBeAbleToResumeTheRegistrationFromWhereILeftOff(): Unit =
     SharedActions
       .selectContinueWithSavedAnswers()
       .submitPage()
-
 
   def whenISelectXOnWhetherOrNotICarriedOutAMLregulatedActivityInCurrentFYAndInPreviousFY(value: String): Unit = {
     AmlRegulatedActivityPage

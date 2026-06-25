@@ -1,5 +1,5 @@
 /*
- * Copyright 2023 HM Revenue & Customs
+ * Copyright 2026 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -182,7 +182,7 @@ object RegistrationPage extends BasePage with DateUtil {
     this
   }
 
-  def provideChangeOrganisationDetails(): this.type = {
+  def provideChangeOrganisationDetails(): this.type  = {
     ChangeOrganisationDetails
       .changeBusinessSector()
       .changeAmlSupervisor()
@@ -297,7 +297,7 @@ object RegistrationPage extends BasePage with DateUtil {
     this
   }
 
-  def provideOtherEntityName(otherEntityName: String): this.type = {
+  def provideOtherEntityName(otherEntityName: String): this.type           = {
     SharedActions
       .selectLabelByPartialText(otherEntityName)
     submitPage()
@@ -373,12 +373,12 @@ object RegistrationPage extends BasePage with DateUtil {
       .enterDetails(uniqueTaxpayerReference)
     this
   }
-  def provideOverseasTaxIdentifier(overseasTaxIdentifier: String): this.type = {
+  def provideOverseasTaxIdentifier(overseasTaxIdentifier: String): this.type             = {
     SharedActions
       .enterDetails(overseasTaxIdentifier)
     this
   }
-  def provideOtherEntityCheckYourAnswers(): this.type = {
+  def provideOtherEntityCheckYourAnswers(): this.type                                    = {
     submitPage()
     this
   }
@@ -443,7 +443,6 @@ object RegistrationPage extends BasePage with DateUtil {
     val emailAddress      = data.getOrElse("First contact email address", sys.error("Keys not found"))
     val telephoneNumber   = data.getOrElse("First contact telephone number", sys.error("Keys not found"))
 
-
     val actualReturnCompletedBy = getText(
       By.cssSelector("dl:nth-child(14) > div:nth-child(1) > dd:nth-child(2)")
     )
@@ -465,7 +464,7 @@ object RegistrationPage extends BasePage with DateUtil {
     actualTelephoneNumber should be(telephoneNumber)
     this
   }
-  def doYouHaveUtrForUnIncorporatedAssociation(value: String): this.type = {
+  def doYouHaveUtrForUnIncorporatedAssociation(value: String): this.type     = {
     value match {
       case "No" =>
         SharedActions.selectYesOrNo(value)

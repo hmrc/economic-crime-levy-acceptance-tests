@@ -23,7 +23,6 @@ import java.time.LocalDate
 
 object AccountStepDefSteps {
 
-  
   def givenIAmSignedInToTheAccountJourneyWithMyECLReferenceAsX(eclReference: String): Unit =
     AccountPage
       .navigateTo()
@@ -34,72 +33,54 @@ object AccountStepDefSteps {
       )
       .startAndSignIn()
 
-  
   def whenIAmOnTheECLAccountDashboard(): Unit =
     onPage(AccountPage.heading)
-
 
   def whenIClickOnTheSubmitAnEconomicCrimeLevyReturnLink(): Unit = {
     provideSubmitAnEclReturn()
     submitPage()
   }
-  
+
   def whenIClickOnTheViewOrAmendYourReturnsLinkToViewTheReturnDetails(returnStatus: String): Unit =
     provideViewOrAmendAnEclReturn(returnStatus)
 
-  
   def whenIShouldSeeTheReturnStatusAsX(returnStatus: String): Unit =
     validateReturnStatusDueBy(returnStatus)
 
-  
   def whenIProvideTheRegistrationDetailsToSubmitAReturnThroughECLDashboardLink(): Unit =
     provideViewOrAmendAnEclReturn("DUE")
       .provideSubmitReturn()
 
-  
   def whenIClickOnTheViewYourPaymentsLinkToViewThePaymentDetails(paymentStatus: String): Unit =
     provideViewEclPayment(paymentStatus)
 
-  
   def whenIShouldSeeThePaymentStatusAsX(paymentStatus: String): Unit =
     validatePaymentStatusDueBy(paymentStatus)
 
-  
   def andIShouldSeeTheXPaymentAmountX(paymentStatus: String, amount: String): Unit =
     assertPayAmountValue(paymentStatus, amount)
 
-  
   def whenIClickOnTheMakeAnECLPaymentLinkToPayThePayment(paymentStatus: String): Unit =
     provideMakeAnEclPayment(paymentStatus)
 
-  
   def whenIClickOnTheViewYourPaymentsLinkToViewMyX(paymentStatus: String): Unit =
     provideViewEclPayment(paymentStatus)
 
-  
   def andIClickOnTheViewYourPaymentsLink(): Unit =
     paymentHistoryLink()
 
-  
   def thenTheInterestRowShouldDisplayThePartialInterestPaymentInformationUnderPaymentsYouOwe(
     arg: Map[String, String]
   ): Unit =
     assertPaymentHistoryForPartiallyPaidInterest(arg)
 
-
-
-  
   def thenTheInterestRowShouldDisplayTheFullyPaidInterestPaymentInformationUnderPaymentHistory(
     arg: Map[String, String]
   ): Unit =
     assertPaymentHistoryForFullyPaidInterest(arg)
 
-
-
-  
   def thenTheOverdueRowShouldDisplayTheOverduePaymentInformationUnderPaymentYouOwe(arg: Map[String, String]): Unit =
     assertPaymentYouOweForOverdue(arg)
-
 
   def thenThePenaltyDataShouldNotBeDisplayed(arg: Map[String, String]): Unit =
     penaltyVerification(arg)
@@ -107,7 +88,6 @@ object AccountStepDefSteps {
   def andIClickMakeAPaymentLinkToPayTheOverduePayment(): Unit =
     provideMakeAPayment()
 
-  
   def thenIShouldBeOnTheMostRecentReturnsDuePageForSubmitTheECL(): Unit =
     onPage(ReturnsPage.recentDueHeading)
 

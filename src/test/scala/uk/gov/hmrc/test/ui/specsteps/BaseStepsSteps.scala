@@ -20,11 +20,9 @@ import uk.gov.hmrc.test.ui.specpage.SharedActions.{clickBackButton, clickButton}
 
 object BaseStepsSteps {
 
-  
   def thenIClickOnTheBackLink(): Unit =
     clickBackButton()
 
-  
   def thenIClickTheSaveAndContinueButton(): Unit =
     clickButton()
 
