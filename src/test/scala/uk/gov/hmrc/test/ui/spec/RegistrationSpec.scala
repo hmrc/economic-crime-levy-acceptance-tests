@@ -149,7 +149,7 @@ class RegistrationSpec extends BaseSpec with Matchers {
       thenIClickOnTheBackLink()
 
       Then(
-        "I should be on the page that says Did you carry out anti-money laundering (AML) regulated activity between 1 April 2025 and 31 March 2026?"
+        s"I should be on the page that says ${AmlRegulatedActivityPage.heading}"
       )
       thenIShouldBeOnThePageThatSaysX(
         AmlRegulatedActivityPage.heading
