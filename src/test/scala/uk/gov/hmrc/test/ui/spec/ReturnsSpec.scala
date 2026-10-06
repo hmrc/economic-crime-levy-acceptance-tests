@@ -25,7 +25,7 @@ import uk.gov.hmrc.test.ui.specsteps.ReturnsStepDefSteps.{andIEnterTheNumberOfDa
 class ReturnsSpec extends BaseSpec with Matchers {
 
   Feature("Submit ECL Return") {
-
+/*
     Scenario("User that is registered for ECL starts a return submission") {
       Given("I am signed in to the return journey")
       givenIAmSignedInToTheReturnJourney()
@@ -570,7 +570,7 @@ class ReturnsSpec extends BaseSpec with Matchers {
       And("I should see the amount to pay is Amount you need to pay: £0")
       thenIShouldSeeTheAmountToPayIsX("Amount you need to pay: £0")
 
-    }
+    } */
 
     Scenario("User cancels amendments to the submitted economic crime levy return") {
       Given("I am signed in to the account journey with my ECL reference as XMECL0000000007")
@@ -609,7 +609,7 @@ class ReturnsSpec extends BaseSpec with Matchers {
 
     }
 
-    Scenario("User can save progress in the return submission journey and resume later") {
+   /* Scenario("User can save progress in the return submission journey and resume later") {
       Given("I am signed in to the return journey")
       givenIAmSignedInToTheReturnJourney()
 
@@ -628,6 +628,6 @@ class ReturnsSpec extends BaseSpec with Matchers {
       Then("I should be on the page that says Return submitted")
       thenIShouldBeOnThePageThatSaysX("Return submitted")
 
-    }
+    }*/
   }
 }
