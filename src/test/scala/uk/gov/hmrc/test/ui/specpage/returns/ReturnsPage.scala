@@ -25,6 +25,8 @@ import java.time.LocalDate
 
 object ReturnsPage extends BasePage {
 
+  // Before amending this key, please check in returns frontend repo in application.conf for the value in variable preventReturnSubmissionEnabled.
+  // You can't use the same period key as this value as it is 'Prevented'
   val periodKey = "25XY"
 
   val url =
