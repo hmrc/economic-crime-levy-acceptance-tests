@@ -28,7 +28,7 @@ object ReturnsStepDefSteps {
       .provideEnrolmentDetails(
         enrolmentKey = "HMRC-ECL-ORG",
         identifierName = "EclRegistrationReference",
-        identifierValue = "XMECL0000000001"
+        identifierValue = "XMECL0000000002"
       )
       .submitPage()
     onPage(ReturnsPage.recentDueHeading)
