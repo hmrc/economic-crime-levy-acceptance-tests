@@ -25,7 +25,7 @@ import java.time.LocalDate
 
 object ReturnsPage extends BasePage {
 
-  val periodKey = "26XY"
+  val periodKey = "25XY"
 
   val url =
     s"${TestConfiguration.url("economic-crime-levy-returns-frontend")}/submit-economic-crime-levy-return/period/$periodKey"
